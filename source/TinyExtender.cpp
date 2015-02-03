@@ -15,7 +15,7 @@ PFNGLCOMPRESSEDTEXSUBIMAGE3DPROC __teCompressedTexSubImage3D = 0;
 PFNGLCOMPRESSEDTEXSUBIMAGE2DPROC __teCompressedTexSubImage2D = 0;
 PFNGLCOMPRESSEDTEXSUBIMAGE1DPROC __teCompressedTexSubImage1D = 0;
 PFNGLGETCOMPRESSEDTEXIMAGEPROC __teGetCompressedTexImage = 0;
-/*PFNGLCLIENTACTIVETEXTUREPROC __teClientActiveTexture = 0;
+PFNGLCLIENTACTIVETEXTUREPROC __teClientActiveTexture = 0;
 PFNGLMULTITEXCOORD1DPROC __teMultiTexCoord1d = 0;
 PFNGLMULTITEXCOORD1DVPROC __teMultiTexCoord1dv = 0;
 PFNGLMULTITEXCOORD1FPROC __teMultiTexCoord1f = 0;
@@ -51,7 +51,7 @@ PFNGLMULTITEXCOORD4SVPROC __teMultiTexCoord4sv = 0;
 PFNGLLOADTRANSPOSEMATRIXFPROC __teLoadTransposeMatrixf = 0;
 PFNGLLOADTRANSPOSEMATRIXDPROC __teLoadTransposeMatrixd = 0;
 PFNGLMULTTRANSPOSEMATRIXFPROC __teMultTransposeMatrixf = 0;
-PFNGLMULTTRANSPOSEMATRIXDPROC __teMultTransposeMatrixd = 0;*/
+PFNGLMULTTRANSPOSEMATRIXDPROC __teMultTransposeMatrixd = 0;
 
 //OpenGL 1.4 Extensions
 PFNGLBLENDFUNCSEPARATEPROC __teBlendFuncSeparate = 0;
@@ -122,7 +122,7 @@ PFNGLUNMAPBUFFERPROC __teUnmapBuffer = 0;
 PFNGLGETBUFFERPARAMETERIVPROC __teGetBufferParameteriv = 0;
 PFNGLGETBUFFERPOINTERVPROC __teGetBufferPointerv = 0;
 //OpenGL 2.0 Extensions
-PFNGLBLENDEQUATIONSEPARATEPROC glBlendEquationSeparate = 0;
+PFNGLBLENDEQUATIONSEPARATEPROC __teBlendEquationSeparate = 0;
 PFNGLDRAWBUFFERSPROC __teDrawBuffers = 0;
 PFNGLSTENCILOPSEPARATEPROC __teStencilOpSeparate = 0;
 PFNGLSTENCILFUNCSEPARATEPROC __teStencilFuncSeparate = 0;
@@ -237,7 +237,7 @@ GLvoid TinyExtender::InitializeExtensions()
 void* TinyExtender::GetProcAddress(const GLubyte* ProcName)
 {
 #if defined(_WIN32)
-	return wglGetProcAddress(ProcName);
+	return wglGetProcAddress((LPCTSTR)ProcName);
 #endif
 
 #if defined(__linux__)
@@ -265,6 +265,7 @@ GLvoid TinyExtender::Load1_3Extensions()
 	glCompressedTexSubImage2D = (PFNGLCOMPRESSEDTEXSUBIMAGE2DPROC)TinyExtender::GetProcAddress((const GLubyte*)"glCompressedTexSubImage2D");
 	glCompressedTexSubImage1D = (PFNGLCOMPRESSEDTEXSUBIMAGE1DPROC)TinyExtender::GetProcAddress((const GLubyte*)"glCompressedTexSubImage1D");
 	glGetCompressedTexImage = (PFNGLGETCOMPRESSEDTEXIMAGEPROC)TinyExtender::GetProcAddress((const GLubyte*)"glGetCompressedTexImage");
+	
 }
 
 GLvoid TinyExtender::Load1_4Extensions()
@@ -455,4 +456,395 @@ GLvoid TinyExtender::Load3_0Extensions()
 	glBeginTransformFeedback = (PFNGLBEGINTRANSFORMFEEDBACKPROC)TinyExtender::GetProcAddress((const GLubyte*)"glBeginTransformFeedback");
 	glEndTransformFeedback = (PFNGLENDTRANSFORMFEEDBACKPROC)TinyExtender::GetProcAddress((const GLubyte*)"glEndTransformFeedback");
 	glBindBufferRange = (PFNGLBINDBUFFERRANGEPROC)TinyExtender::GetProcAddress((const GLubyte*)"glBindBufferRange");
+	glBindBufferBase = TinyExtender::GetProcAddress((const GLubyte*)"glBindBufferBase");
+	glTransformFeedbackVaryings = TinyExtender::GetProcAddress((const GLubyte*)"glTransformFeedbackVaryings");
+	glGetTransformFeedbackVarying = TinyExtender::GetProcAddress((const GLubyte*)"glGetTransformFeedbackVarying");
+	glClampColor = TinyExtender::GetProcAddress((const GLubyte*)"glClampColor");
+	glBeginConditionalRender = TinyExtender::GetProcAddress((const GLubyte*)"glBeginConditionalRender");
+	glEndConditionalRender = TinyExtender::GetProcAddress((const GLubyte*)"glEndConditionalRender");
+	glVertexAttribIPointer = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribIPointer");
+	glGetVertexAttribIiv = TinyExtender::GetProcAddress((const GLubyte*)"glGetVertexAttribIiv");
+	glGetVertexAttribIuiv = TinyExtender::GetProcAddress((const GLubyte*)"glGetVertexAttribIuiv");
+	glVertexAttribI1i = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI1i");
+	glVertexAttribI2i = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI2i");
+	glVertexAttribI3i = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI3i");
+	glVertexAttribI4i = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI4i");
+	glVertexAttribI1ui = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI1ui");
+	glVertexAttribI2ui = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI2ui");
+	glVertexAttribI3ui = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI3ui");
+	glVertexAttribI4ui = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI4ui");
+	glVertexAttribI1iv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI1iv");
+	glVertexAttribI2iv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI2iv");
+	glVertexAttribI3iv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI3iv");
+	glVertexAttribI4iv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI4iv");
+	glVertexAttribI1uiv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI1uiv");
+	glVertexAttribI2uiv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI2uiv");
+	glVertexAttribI3uiv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI3uiv");
+	glVertexAttribI4uiv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI4uiv");
+	glVertexAttribI4bv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI4bv");
+	glVertexAttribI4sv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI4sv");
+	glVertexAttribI4ubv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI4ubv");
+	glVertexAttribI4usv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribI4usv");
+	glGetUniformuiv = TinyExtender::GetProcAddress((const GLubyte*)"glGetUniformuiv");
+	glBindFragDataLocation = TinyExtender::GetProcAddress((const GLubyte*)"glBindFragDataLocation");
+	glGetFragDataLocation = TinyExtender::GetProcAddress((const GLubyte*)"glGetFragDataLocation");
+	glUniform1ui = TinyExtender::GetProcAddress((const GLubyte*)"glUniform1ui");
+	glUniform2ui = TinyExtender::GetProcAddress((const GLubyte*)"glUniform2ui");
+	glUniform3ui = TinyExtender::GetProcAddress((const GLubyte*)"glUniform3ui");
+	glUniform4ui = TinyExtender::GetProcAddress((const GLubyte*)"glUniform4ui");
+	glUniform1uiv = TinyExtender::GetProcAddress((const GLubyte*)"glUniform1uiv");
+	glUniform2uiv = TinyExtender::GetProcAddress((const GLubyte*)"glUniform2uiv");
+	glUniform3uiv = TinyExtender::GetProcAddress((const GLubyte*)"glUniform3uiv");
+	glUniform4uiv = TinyExtender::GetProcAddress((const GLubyte*)"glUniform4uiv");
+	glTexParameterIiv = TinyExtender::GetProcAddress((const GLubyte*)"glTexParameterIiv");
+	glTexParameterIuiv = TinyExtender::GetProcAddress((const GLubyte*)"glTexParameterIuiv");
+	glGetTexParameterIiv = TinyExtender::GetProcAddress((const GLubyte*)"glGetTexParameterIiv");
+	glGetTexParameterIuiv = TinyExtender::GetProcAddress((const GLubyte*)"glGetTexParameterIuiv");
+	glClearBufferiv = TinyExtender::GetProcAddress((const GLubyte*)"glClearBufferiv");
+	glClearBufferuiv = TinyExtender::GetProcAddress((const GLubyte*)"glClearBufferuiv");
+	glClearBufferfv = TinyExtender::GetProcAddress((const GLubyte*)"glClearBufferfv");
+	glClearBufferi = TinyExtender::GetProcAddress((const GLubyte*)"glClearBufferi");
+	glGetStringi = TinyExtender::GetProcAddress((const GLubyte*)"glGetStringi");
+	glIsRenderbuffer = TinyExtender::GetProcAddress((const GLubyte*)"glIsRenderbuffer");
+	glBindRenderbuffer = TinyExtender::GetProcAddress((const GLubyte*)"glBindRenderbuffer");
+	glDeleteRenderbuffers = TinyExtender::GetProcAddress((const GLubyte*)"glDeleteRenderbuffers");
+	glGenRenderbuffers = TinyExtender::GetProcAddress((const GLubyte*)"glGenRenderbuffers");
+	glRenderbufferStorage = TinyExtender::GetProcAddress((const GLubyte*)"glRenderbufferStorage");
+	glGetRenderbufferParameteriv = TinyExtender::GetProcAddress((const GLubyte*)"glGetRenderbufferParameteriv");
+	glIsFramebuffer = TinyExtender::GetProcAddress((const GLubyte*)"glIsFramebuffer");
+	glBindFramebuffer = TinyExtender::GetProcAddress((const GLubyte*)"glBindFramebuffer");
+	glDeleteFramebuffers = TinyExtender::GetProcAddress((const GLubyte*)"glDeleteFramebuffers");
+	glGenFramebuffers = TinyExtender::GetProcAddress((const GLubyte*)"glGenFramebuffers");
+	glCheckFrameBufferStatus = TinyExtender::GetProcAddress((const GLubyte*)"glCheckFrameBufferStatus");
+	glFramebufferTexture1D = TinyExtender::GetProcAddress((const GLubyte*)"glFramebufferTexture1D");
+	glFramebufferTexture2D = TinyExtender::GetProcAddress((const GLubyte*)"glFramebufferTexture2D");
+	glFramebufferTexture3D = TinyExtender::GetProcAddress((const GLubyte*)"glFramebufferTexture3D");
+	glFramebufferRenderbuffer = TinyExtender::GetProcAddress((const GLubyte*)"glFramebufferRenderbuffer");
+	glGetFramebufferAttachmentParameteriv = TinyExtender::GetProcAddress((const GLubyte*)"glGetFramebufferAttachmentParameteriv");
+	glGenerateMapmap = TinyExtender::GetProcAddress((const GLubyte*)"glGenerateMapmap");
+	glBlitFramebuffer = TinyExtender::GetProcAddress((const GLubyte*)"glBlitFramebuffer");
+	glRenderbufferStorageMultisample = TinyExtender::GetProcAddress((const GLubyte*)"glRenderbufferStorageMultisample");
+	glFramebufferTextureLayer = TinyExtender::GetProcAddress((const GLubyte*)"glFramebufferTextureLayer");
+	glMapBufferRange = TinyExtender::GetProcAddress((const GLubyte*)"glMapBufferRange");
+	glFlushMappedBufferRange = TinyExtender::GetProcAddress((const GLubyte*)"glFlushMappedBufferRange");
+	glBindVertexArray = TinyExtender::GetProcAddress((const GLubyte*)"glBindVertexArray");
+	glDeleteVertexArrays = TinyExtender::GetProcAddress((const GLubyte*)"glDeleteVertexArrays");
+	glGenVertexArrays = TinyExtender::GetProcAddress((const GLubyte*)"glGenVertexArrays");
+	glIsVertexArray = TinyExtender::GetProcAddress((const GLubyte*)"glIsVertexArray");
+}
+GLvoid TinyExtender::Load3_1Extensions()
+{
+	glDrawArraysInstanced = TinyExtender::GetProcAddress((const GLubyte*)"glDrawArraysInstanced");
+	glDrawElementsInstanced = TinyExtender::GetProcAddress((const GLubyte*)"glDrawElementsInstanced");
+	glTexBuffer = TinyExtender::GetProcAddress((const GLubyte*)"glTexBuffer");
+	glPrimtiveRestartIndex = TinyExtender::GetProcAddress((const GLubyte*)"glPrimtiveRestartIndex");
+	glCopyBufferSubdata = TinyExtender::GetProcAddress((const GLubyte*)"glCopyBufferSubdata");
+	glGetUniformIndices = TinyExtender::GetProcAddress((const GLubyte*)"glGetUniformIndices");
+	glGetActiveUniformsiv = TinyExtender::GetProcAddress((const GLubyte*)"glGetActiveUniformsiv");
+	glGetActiveUniformName = TinyExtender::GetProcAddress((const GLubyte*)"glGetActiveUniformName");
+	glGetUniformBlockIndex = TinyExtender::GetProcAddress((const GLubyte*)"glGetUniformBlockIndex");
+	glGetActiveUniformBlockiv = TinyExtender::GetProcAddress((const GLubyte*)"glGetActiveUniformBlockiv");
+	glGetActiveUniformBlockName = TinyExtender::GetProcAddress((const GLubyte*)"glGetActiveUniformBlockName");
+	glUniformBlockBinding = TinyExtender::GetProcAddress((const GLubyte*)"glUniformBlockBinding");
+}
+
+GLvoid TinyExtender::Load3_2Extensions()
+{
+	glDrawElementsBaseVertex = TinyExtender::GetProcAddress((const GLubyte*)"glDrawElementsBaseVertex");
+	glDrawRangeElementsBaseVertex = TinyExtender::GetProcAddress((const GLubyte*)"glDrawRangeElementsBaseVertex");
+	glDrawElementsInstancedBaseVertex = TinyExtender::GetProcAddress((const GLubyte*)"glDrawElementsInstancedBaseVertex");
+	glMultiDrawElementsBaseVertex = TinyExtender::GetProcAddress((const GLubyte*)"glMultiDrawElementsBaseVertex");
+	glProvokingVertex = TinyExtender::GetProcAddress((const GLubyte*)"glProvokingVertex");
+	glFenceSync = TinyExtender::GetProcAddress((const GLubyte*)"glFenceSync");
+	glIsSync = TinyExtender::GetProcAddress((const GLubyte*)"glIsSync");
+	glDeleteSynce = TinyExtender::GetProcAddress((const GLubyte*)"glDeleteSynce");
+	glClientWaitSync = TinyExtender::GetProcAddress((const GLubyte*)"glClientWaitSync");
+	glWaitSync = TinyExtender::GetProcAddress((const GLubyte*)"glWaitSync");
+	glGetInteger64v = TinyExtender::GetProcAddress((const GLubyte*)"glGetInteger64v");
+	glGetSynciv = TinyExtender::GetProcAddress((const GLubyte*)"glGetSynciv");
+	glGetInteger64i_v = TinyExtender::GetProcAddress((const GLubyte*)"glGetInteger64i_v");
+	glGetBufferParameteri64v = TinyExtender::GetProcAddress((const GLubyte*)"glGetBufferParameteri64v");
+	glFramebufferTexture = TinyExtender::GetProcAddress((const GLubyte*)"glFramebufferTexture");
+	glTexImage2DMultiSample = TinyExtender::GetProcAddress((const GLubyte*)"glTexImage2DMultiSample");
+	glTexImage3DMultisample = TinyExtender::GetProcAddress((const GLubyte*)"glTexImage3DMultisample");
+	glGetMultisamplefv = TinyExtender::GetProcAddress((const GLubyte*)"glGetMultisamplefv");
+	glSampleMaski = TinyExtender::GetProcAddress((const GLubyte*)"glSampleMaski");
+}
+
+GLvoid TinyExtender::Load3_3Extensions()
+{
+	glBindFragDataLocationIndexed = TinyExtender::GetProcAddress((const GLubyte*)"glBindFragDataLocationIndexed");
+	glGetFragDataIndex = TinyExtender::GetProcAddress((const GLubyte*)"glGetFragDataIndex");
+	glGenSamplers = TinyExtender::GetProcAddress((const GLubyte*)"glGenSamplers");
+	glDeleteSamplers = TinyExtender::GetProcAddress((const GLubyte*)"glDeleteSamplers");
+	glIsSampler = TinyExtender::GetProcAddress((const GLubyte*)"glIsSampler");
+	glBindSampler = TinyExtender::GetProcAddress((const GLubyte*)"glBindSampler");
+	glSamplerParameteri = TinyExtender::GetProcAddress((const GLubyte*)"glSamplerParameteri");
+	glSamplerParameteriv = TinyExtender::GetProcAddress((const GLubyte*)"glSamplerParameteriv");
+	glSamplerParameterf = TinyExtender::GetProcAddress((const GLubyte*)"glSamplerParameterf");
+	glSamplerParameterfv = TinyExtender::GetProcAddress((const GLubyte*)"glSamplerParameterfv");
+	glSamplerParameterIiv = TinyExtender::GetProcAddress((const GLubyte*)"glSamplerParameterIiv");
+	glSamplerParameterIuiv = TinyExtender::GetProcAddress((const GLubyte*)"glSamplerParameterIuiv");
+	glGetSamplerParameteriv = TinyExtender::GetProcAddress((const GLubyte*)"glGetSamplerParameteriv");
+	glGetSamplerParameterIiv = TinyExtender::GetProcAddress((const GLubyte*)"glGetSamplerParameterIiv");
+	glGetSamplerParameterfv = TinyExtender::GetProcAddress((const GLubyte*)"glGetSamplerParameterfv");
+	glGetSamplerParameterIuiv = TinyExtender::GetProcAddress((const GLubyte*)"glGetSamplerParameterIuiv");
+	glQueryCounter = TinyExtender::GetProcAddress((const GLubyte*)"glQueryCounter");
+	glGetQueryObjecti64v = TinyExtender::GetProcAddress((const GLubyte*)"glGetQueryObjecti64v");
+	glGetQueryObjectui64v = TinyExtender::GetProcAddress((const GLubyte*)"glGetQueryObjectui64v");
+	glVertexAttribDivisor = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribDivisor");
+	glVertexAttribP1ui = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribP1ui");
+	glVertexAttribP1uiv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribP1uiv");
+	glVertexAttribP2ui = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribP2ui");
+	glVertexAttribP2uiv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribP2uiv");
+	glVertexAttribP3ui = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribP3ui");
+	glVertexAttribP3uiv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribP3uiv");
+	glVertexAttribP4ui = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribP4ui");
+	glVertexAtttrib4uiv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAtttrib4uiv");
+	glVertexP2ui = TinyExtender::GetProcAddress((const GLubyte*)"glVertexP2ui");
+	glVertexP2uiv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexP2uiv");
+	glVertexP3ui = TinyExtender::GetProcAddress((const GLubyte*)"glVertexP3ui");
+	glVertexP3uiv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexP3uiv");
+	glVertexP4ui = TinyExtender::GetProcAddress((const GLubyte*)"glVertexP4ui");
+	glVertexP4uiv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexP4uiv");
+	glTexCoordP1ui = TinyExtender::GetProcAddress((const GLubyte*)"glTexCoordP1ui");
+	glTexCoordP1uiv = TinyExtender::GetProcAddress((const GLubyte*)"glTexCoordP1uiv");
+	glTexCoordP2ui = TinyExtender::GetProcAddress((const GLubyte*)"glTexCoordP2ui");
+	glTexCoordP2uiv = TinyExtender::GetProcAddress((const GLubyte*)"glTexCoordP2uiv");
+	glTexCoordP3ui = TinyExtender::GetProcAddress((const GLubyte*)"glTexCoordP3ui");
+	glTexCoordP3uiv = TinyExtender::GetProcAddress((const GLubyte*)"glTexCoordP3uiv");
+	glTexCoordP4ui = TinyExtender::GetProcAddress((const GLubyte*)"glTexCoordP4ui");
+	glTexCoordP4uiv = TinyExtender::GetProcAddress((const GLubyte*)"glTexCoordP4uiv");
+	glMultiTexCoordP1ui = TinyExtender::GetProcAddress((const GLubyte*)"glMultiTexCoordP1ui");
+	glMultiTexCoordP1uiv = TinyExtender::GetProcAddress((const GLubyte*)"glMultiTexCoordP1uiv");
+	glMultiTexCoordP2ui = TinyExtender::GetProcAddress((const GLubyte*)"glMultiTexCoordP2ui");
+	glMultiTexCoordP2uiv = TinyExtender::GetProcAddress((const GLubyte*)"glMultiTexCoordP2uiv");
+	glMultiTexCoordP3ui = TinyExtender::GetProcAddress((const GLubyte*)"glMultiTexCoordP3ui");
+	glMultiTexCoordP3uiv = TinyExtender::GetProcAddress((const GLubyte*)"glMultiTexCoordP3uiv");
+	glMultiTexCoordP4ui = TinyExtender::GetProcAddress((const GLubyte*)"glMultiTexCoordP4ui");
+	glMultiTexCoordP4uiv = TinyExtender::GetProcAddress((const GLubyte*)"glMultiTexCoordP4uiv");
+	glNormalP3ui = TinyExtender::GetProcAddress((const GLubyte*)"glNormalP3ui");
+	glNormalP3uiv = TinyExtender::GetProcAddress((const GLubyte*)"glNormalP3uiv");
+	glColorP3ui = TinyExtender::GetProcAddress((const GLubyte*)"glColorP3ui");
+	glColorP3uiv = TinyExtender::GetProcAddress((const GLubyte*)"glColorP3uiv");
+	glColorP4ui = TinyExtender::GetProcAddress((const GLubyte*)"glColorP4ui");
+	glColorP4uiv = TinyExtender::GetProcAddress((const GLubyte*)"glColorP4uiv");
+	glSecondaryColorP3ui = TinyExtender::GetProcAddress((const GLubyte*)"glSecondaryColorP3ui");
+	glSecondaryColorP3uiv = TinyExtender::GetProcAddress((const GLubyte*)"glSecondaryColorP3uiv");
+}
+
+GLvoid TinyExtender::Load4_0Extensions()
+{
+	glMinSampleShading = TinyExtender::GetProcAddress((const GLubyte*)"glMinSampleShading");
+	glBlendEquationi = TinyExtender::GetProcAddress((const GLubyte*)"glBlendEquationi");
+	glBlendEquationSeparatei = TinyExtender::GetProcAddress((const GLubyte*)"glBlendEquationSeparatei");
+	glBlendFunci = TinyExtender::GetProcAddress((const GLubyte*)"glBlendFunci");
+	glBlendFuncSeparatei = TinyExtender::GetProcAddress((const GLubyte*)"glBlendFuncSeparatei");
+	glDrawArraysIndirect = TinyExtender::GetProcAddress((const GLubyte*)"glDrawArraysIndirect");
+	glDrawElementsIndirect = TinyExtender::GetProcAddress((const GLubyte*)"glDrawElementsIndirect");
+	glUniform1d = TinyExtender::GetProcAddress((const GLubyte*)"glUniform1d");
+	glUniform2d = TinyExtender::GetProcAddress((const GLubyte*)"glUniform2d");
+	glUniform3d = TinyExtender::GetProcAddress((const GLubyte*)"glUniform3d");
+	glUniform4d = TinyExtender::GetProcAddress((const GLubyte*)"glUniform4d");
+	glUniform1dv = TinyExtender::GetProcAddress((const GLubyte*)"glUniform1dv");
+	glUniform2dv = TinyExtender::GetProcAddress((const GLubyte*)"glUniform2dv");
+	glUniform3dv = TinyExtender::GetProcAddress((const GLubyte*)"glUniform3dv");
+	glUniform4dv = TinyExtender::GetProcAddress((const GLubyte*)"glUniform4dv");
+	glUniformMatrix2dv = TinyExtender::GetProcAddress((const GLubyte*)"glUniformMatrix2dv");
+	glUniformMatrix3dv = TinyExtender::GetProcAddress((const GLubyte*)"glUniformMatrix3dv");
+	glUniformMatrix4dv = TinyExtender::GetProcAddress((const GLubyte*)"glUniformMatrix4dv");
+	glUniformMatrix2x3dv = TinyExtender::GetProcAddress((const GLubyte*)"glUniformMatrix2x3dv");
+	glUniformMatrix2x4dv = TinyExtender::GetProcAddress((const GLubyte*)"glUniformMatrix2x4dv");
+	glUniformMatrix3x2dv = TinyExtender::GetProcAddress((const GLubyte*)"glUniformMatrix3x2dv");
+	glUniformMatrix3x4dv = TinyExtender::GetProcAddress((const GLubyte*)"glUniformMatrix3x4dv");
+	glUniformMatrix4x2dv = TinyExtender::GetProcAddress((const GLubyte*)"glUniformMatrix4x2dv");
+	glUniformMatrix4x3dv = TinyExtender::GetProcAddress((const GLubyte*)"glUniformMatrix4x3dv");
+	glGetUniformdv = TinyExtender::GetProcAddress((const GLubyte*)"glGetUniformdv");
+	glGetSubroutineUniformLocation = TinyExtender::GetProcAddress((const GLubyte*)"glGetSubroutineUniformLocation");
+	glGetSubroutineIndex = TinyExtender::GetProcAddress((const GLubyte*)"glGetSubroutineIndex");
+	glGetActiveSubroutineUniformiv = TinyExtender::GetProcAddress((const GLubyte*)"glGetActiveSubroutineUniformiv");
+	glGetActiveSubroutineUniformName = TinyExtender::GetProcAddress((const GLubyte*)"glGetActiveSubroutineUniformName");
+	glGetActiveSubroutineName = TinyExtender::GetProcAddress((const GLubyte*)"glGetActiveSubroutineName");
+	glUniformSubroutinesuiv = TinyExtender::GetProcAddress((const GLubyte*)"glUniformSubroutinesuiv");
+	glGetUniformSubroutineuiv = TinyExtender::GetProcAddress((const GLubyte*)"glGetUniformSubroutineuiv");
+	glGetProgramStageiv = TinyExtender::GetProcAddress((const GLubyte*)"glGetProgramStageiv");
+	glPatchParameteri = TinyExtender::GetProcAddress((const GLubyte*)"glPatchParameteri");
+	glPatchParameteriv = TinyExtender::GetProcAddress((const GLubyte*)"glPatchParameteriv");
+	glBindTransformFeedback = TinyExtender::GetProcAddress((const GLubyte*)"glBindTransformFeedback");
+	glDeleteTransformFeedbacks = TinyExtender::GetProcAddress((const GLubyte*)"glDeleteTransformFeedbacks");
+	glGenTransformFeedbacks = TinyExtender::GetProcAddress((const GLubyte*)"glGenTransformFeedbacks");
+	glIsTransformFeedback = TinyExtender::GetProcAddress((const GLubyte*)"glIsTransformFeedback");
+	glPauseTransformFeedback = TinyExtender::GetProcAddress((const GLubyte*)"glPauseTransformFeedback");
+	glResumeTransformFeedback = TinyExtender::GetProcAddress((const GLubyte*)"glResumeTransformFeedback");
+	glDrawTransformFeedback = TinyExtender::GetProcAddress((const GLubyte*)"glDrawTransformFeedback");
+	glDrawTransformFeedbackStream = TinyExtender::GetProcAddress((const GLubyte*)"glDrawTransformFeedbackStream");
+	glBeginQueryIndexed = TinyExtender::GetProcAddress((const GLubyte*)"glBeginQueryIndexed");
+	glEndQueryIndexed = TinyExtender::GetProcAddress((const GLubyte*)"glEndQueryIndexed");
+	glGetQueryIndexediv = TinyExtender::GetProcAddress((const GLubyte*)"glGetQueryIndexediv");
+}
+
+GLvoid TinyExtender::Load4_1Extensions()
+{
+	glReleaseShaderCompiler = TinyExtender::GetProcAddress((const GLubyte*)"glReleaseShaderCompiler");
+	glShaderBinary = TinyExtender::GetProcAddress((const GLubyte*)"glShaderBinary");
+	glGetShaderPrecisionFormat = TinyExtender::GetProcAddress((const GLubyte*)"glGetShaderPrecisionFormat");
+	glDepthRangef = TinyExtender::GetProcAddress((const GLubyte*)"glDepthRangef");
+	glClearDepthf = TinyExtender::GetProcAddress((const GLubyte*)"glClearDepthf");
+	glGetProgramBinary = TinyExtender::GetProcAddress((const GLubyte*)"glGetProgramBinary");
+	glProgramBinary = TinyExtender::GetProcAddress((const GLubyte*)"glProgramBinary");
+	glProgramParameteri = TinyExtender::GetProcAddress((const GLubyte*)"glProgramParameteri");
+	glUseProgramStages = TinyExtender::GetProcAddress((const GLubyte*)"glUseProgramStages");
+	glActiveShaderProgram = TinyExtender::GetProcAddress((const GLubyte*)"glActiveShaderProgram");
+	glCreateShaderProgramv = TinyExtender::GetProcAddress((const GLubyte*)"glCreateShaderProgramv");
+	glBindProgramPipeline = TinyExtender::GetProcAddress((const GLubyte*)"glBindProgramPipeline");
+	glDeleteProgramPipelines = TinyExtender::GetProcAddress((const GLubyte*)"glDeleteProgramPipelines");
+	glGenProgramPipelines = TinyExtender::GetProcAddress((const GLubyte*)"glGenProgramPipelines");
+	glIsProgramPipeline = TinyExtender::GetProcAddress((const GLubyte*)"glIsProgramPipeline");
+	GetProgramPipelineiv = TinyExtender::GetProcAddress((const GLubyte*)"GetProgramPipelineiv");
+	glProgramUniform1i = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform1i");
+	glProgramUniform1iv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform1iv");
+	glProgramUniform1f = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform1f");
+	glProgramUniform1fv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform1fv");
+	glProgramUniform1d = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform1d");
+	glProgramUniform1dv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform1dv");
+	glProgramUniform1ui = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform1ui");
+	glProgramUniform1uiv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform1uiv");
+	glProgramUniform2i = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform2i");
+	glProgramUniform2iv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform2iv");
+	glProgramUniform2f = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform2f");
+	glProgramUniform2fv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform2fv");
+	glProgramUniform2d = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform2d");
+	glProgramUniform2dv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform2dv");
+	glProgramUniform2ui = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform2ui");
+	glProgramUniform2uiv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform2uiv");
+	glProgramUniform3i = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform3i");
+	glProgramUniform3iv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform3iv");
+	glProgramUniform3f = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform3f");
+	glProgramUniform3fv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform3fv");
+	glProgramUniform3d = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform3d");
+	glProgramUniform3dv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform3dv");
+	glProgramUniform3ui = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform3ui");
+	glProgramUniform3uiv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform3uiv");
+	glProgramUniform4i = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform4i");
+	glProgramUniform4iv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform4iv");
+	glProgramUniform4f = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform4f");
+	glProgramUniform4fv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform4fv");
+	glProgramUniform4d = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform4d");
+	glProgramUniform4dv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform4dv");
+	glProgramUniform4ui = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform4ui");
+	glProgramUniform4uiv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniform4uiv");
+	glProgramUniformMatrix2fv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniformMatrix2fv");
+	glProgramUniformMatrix3fv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniformMatrix3fv");
+	glProgramUniformMatrix4fv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniformMatrix4fv");
+	glProgramUniformMatrix2dv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniformMatrix2dv");
+	glProgramUniformMatrix3dv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniformMatrix3dv");
+	glProgramUniformMatrix4dv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniformMatrix4dv");
+	glProgramUniformMatrix2x3fv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniformMatrix2x3fv");
+	glProgramUniformMatrix3x2fv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniformMatrix3x2fv");
+	glProgramUniformMatrix2x4fv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniformMatrix2x4fv");
+	glProgramUniformMatrix4x2fv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniformMatrix4x2fv");
+	glProgramUniformMatrix3x4fv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniformMatrix3x4fv");
+	glProgramUniformMatrix4x3fv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniformMatrix4x3fv");
+	glProgramUniformMatrix2x3dv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniformMatrix2x3dv");
+	glProgramUniformMatrix3x2dv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniformMatrix3x2dv");
+	glProgramUniformMatrix2x4dv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniformMatrix2x4dv");
+	glProgramUniformMatrix4x2dv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniformMatrix4x2dv");
+	glProgramUniformMatrix3x4dv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniformMatrix3x4dv");
+	glProgramUniformMatrix4x3dv = TinyExtender::GetProcAddress((const GLubyte*)"glProgramUniformMatrix4x3dv");
+	glValidateProgramPipeline = TinyExtender::GetProcAddress((const GLubyte*)"glValidateProgramPipeline");
+	glGetProgramPipelineInfoLog = TinyExtender::GetProcAddress((const GLubyte*)"glGetProgramPipelineInfoLog");
+	glVertexAttribL1d = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribL1d");
+	glVertexAttribL2d = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribL2d");
+	glVertexAttribL3d = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribL3d");
+	glVertexAttribL4d = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribL4d");
+	glVertexAttribL1dv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribL1dv");
+	glVertexAttribL2dv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribL2dv");
+	glVertexAttribL3dv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribL3dv");
+	glVertexAttribL4dv = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribL4dv");
+	glVertexAttribLPointer = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribLPointer");
+	glGetVertexAttribLdv = TinyExtender::GetProcAddress((const GLubyte*)"glGetVertexAttribLdv");
+	glViewportarrayv = TinyExtender::GetProcAddress((const GLubyte*)"glViewportarrayv");
+	glViewportIndexedf = TinyExtender::GetProcAddress((const GLubyte*)"glViewportIndexedf");
+	glViewportIndexedfv = TinyExtender::GetProcAddress((const GLubyte*)"glViewportIndexedfv");
+	glScissorArrayv = TinyExtender::GetProcAddress((const GLubyte*)"glScissorArrayv");
+	glScissorIndexed = TinyExtender::GetProcAddress((const GLubyte*)"glScissorIndexed");
+	glScissorIndexedv = TinyExtender::GetProcAddress((const GLubyte*)"glScissorIndexedv");
+	glDepthRangeIndexed = TinyExtender::GetProcAddress((const GLubyte*)"glDepthRangeIndexed");
+	glGetFloati_v = TinyExtender::GetProcAddress((const GLubyte*)"glGetFloati_v");
+	glGetDoublei_v = TinyExtender::GetProcAddress((const GLubyte*)"glGetDoublei_v");
+}
+
+GLvoid TinyExtender::Load4_2Extensions()
+{
+	glDrawArraysInstancedBaseInstance = TinyExtender::GetProcAddress((const GLubyte*)"glDrawArraysInstancedBaseInstance");
+	glDrawElementsInstancedBaseInstance = TinyExtender::GetProcAddress((const GLubyte*)"glDrawElementsInstancedBaseInstance");
+	glDrawElementsInstancedBaseVertexBaseInstance = TinyExtender::GetProcAddress((const GLubyte*)"glDrawElementsInstancedBaseVertexBaseInstance");
+	glGetInternalFormativ = TinyExtender::GetProcAddress((const GLubyte*)"glGetInternalFormativ");
+	glGetActiveAtomicCounterBufferiv = TinyExtender::GetProcAddress((const GLubyte*)"glGetActiveAtomicCounterBufferiv");
+	glBindImageTexture = TinyExtender::GetProcAddress((const GLubyte*)"glBindImageTexture");
+	glMemoryBarrier = TinyExtender::GetProcAddress((const GLubyte*)"glMemoryBarrier");
+	glTexStorage1D = TinyExtender::GetProcAddress((const GLubyte*)"glTexStorage1D");
+	glTexStorage2D = TinyExtender::GetProcAddress((const GLubyte*)"glTexStorage2D");
+	glTexStorage3D = TinyExtender::GetProcAddress((const GLubyte*)"glTexStorage3D");
+	glDrawTransformFeedbackInstanced = TinyExtender::GetProcAddress((const GLubyte*)"glDrawTransformFeedbackInstanced");
+	glDrawTransformFeedbackStreamInstanced = TinyExtender::GetProcAddress((const GLubyte*)"glDrawTransformFeedbackStreamInstanced");
+}
+
+GLvoid TinyExtender::Load4_3Extensions()
+{
+	glClearBufferData = TinyExtender::GetProcAddress((const GLubyte*)"glClearBufferData");
+	glClearBufferSubdata = TinyExtender::GetProcAddress((const GLubyte*)"glClearBufferSubdata");
+	glDispatchCompute = TinyExtender::GetProcAddress((const GLubyte*)"glDispatchCompute");
+	glDispatchComputeIndirect = TinyExtender::GetProcAddress((const GLubyte*)"glDispatchComputeIndirect");
+	glCopyImageSubdata = TinyExtender::GetProcAddress((const GLubyte*)"glCopyImageSubdata");
+	glFramebufferParameteri = TinyExtender::GetProcAddress((const GLubyte*)"glFramebufferParameteri");
+	glGetFramebufferParameteriv = TinyExtender::GetProcAddress((const GLubyte*)"glGetFramebufferParameteriv");
+	glGetInternalFormati64v = TinyExtender::GetProcAddress((const GLubyte*)"glGetInternalFormati64v");
+	glInvalidateTexSubImage = TinyExtender::GetProcAddress((const GLubyte*)"glInvalidateTexSubImage");
+	glInvalidateTexImage = TinyExtender::GetProcAddress((const GLubyte*)"glInvalidateTexImage");
+	glInvalidateBufferSubdata = TinyExtender::GetProcAddress((const GLubyte*)"glInvalidateBufferSubdata");
+	glInvalidateBufferData = TinyExtender::GetProcAddress((const GLubyte*)"glInvalidateBufferData");
+	glInvalidateFramebuffer = TinyExtender::GetProcAddress((const GLubyte*)"glInvalidateFramebuffer");
+	glInvalidateSubFramebuffer = TinyExtender::GetProcAddress((const GLubyte*)"glInvalidateSubFramebuffer");
+	glMultiDrawArraysIndirect = TinyExtender::GetProcAddress((const GLubyte*)"glMultiDrawArraysIndirect");
+	glMultiDrawElementsIndirect = TinyExtender::GetProcAddress((const GLubyte*)"glMultiDrawElementsIndirect");
+	glGetProgramInterfaceiv = TinyExtender::GetProcAddress((const GLubyte*)"glGetProgramInterfaceiv");
+	glGetProgramResourceIndex = TinyExtender::GetProcAddress((const GLubyte*)"glGetProgramResourceIndex");
+	glGetProgramResourceName = TinyExtender::GetProcAddress((const GLubyte*)"glGetProgramResourceName");
+	glGetProgramResourceiv = TinyExtender::GetProcAddress((const GLubyte*)"glGetProgramResourceiv");
+	glGetProgramResourceLocation = TinyExtender::GetProcAddress((const GLubyte*)"glGetProgramResourceLocation");
+	glGetProgramResourceLocationIndex = TinyExtender::GetProcAddress((const GLubyte*)"glGetProgramResourceLocationIndex");
+	glShaderStorageBlockBinding = TinyExtender::GetProcAddress((const GLubyte*)"glShaderStorageBlockBinding");
+	glTexBufferRange = TinyExtender::GetProcAddress((const GLubyte*)"glTexBufferRange");
+	glTexStorage2DMultisample = TinyExtender::GetProcAddress((const GLubyte*)"glTexStorage2DMultisample");
+	glTexStorage3DMultisample = TinyExtender::GetProcAddress((const GLubyte*)"glTexStorage3DMultisample");
+	glTextureView = TinyExtender::GetProcAddress((const GLubyte*)"glTextureView");
+	glBindVertexBuffer = TinyExtender::GetProcAddress((const GLubyte*)"glBindVertexBuffer");
+	glVertexAttribFormat = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribFormat");
+	glVertexAttribIFormat = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribIFormat");
+	glVertexAttribLFormat = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribLFormat");
+	glVertexAttribBinding = TinyExtender::GetProcAddress((const GLubyte*)"glVertexAttribBinding");
+	glVertexBindingDivisor = TinyExtender::GetProcAddress((const GLubyte*)"glVertexBindingDivisor");
+	glDebugMessageControl = TinyExtender::GetProcAddress((const GLubyte*)"glDebugMessageControl");
+	glDebugMessageInsert = TinyExtender::GetProcAddress((const GLubyte*)"glDebugMessageInsert");
+	glDebugMessageCallback = TinyExtender::GetProcAddress((const GLubyte*)"glDebugMessageCallback");
+	glGetDebugMessageLog = TinyExtender::GetProcAddress((const GLubyte*)"glGetDebugMessageLog");
+	glPushDebugGroup = TinyExtender::GetProcAddress((const GLubyte*)"glPushDebugGroup");
+	glPopDebugGroup = TinyExtender::GetProcAddress((const GLubyte*)"glPopDebugGroup");
+	glObjectLabel = TinyExtender::GetProcAddress((const GLubyte*)"glObjectLabel");
+	glObjectPtrLabel = TinyExtender::GetProcAddress((const GLubyte*)"glObjectPtrLabel");
+	glGetObjectPtrLabel = TinyExtender::GetProcAddress((const GLubyte*)"glGetObjectPtrLabel");
+}
+
+GLvoid TinyExtender::Load4_4Extensions()
+{
+	glBufferStorage = TinyExtender::GetProcAddress((const GLubyte*)"glBufferStorage");
+	glClearTexImage = TinyExtender::GetProcAddress((const GLubyte*)"glClearTexImage");
+	glClearTexSubImage = TinyExtender::GetProcAddress((const GLubyte*)"glClearTexSubImage");
+	glBindBuffersBase = TinyExtender::GetProcAddress((const GLubyte*)"glBindBuffersBase");
+	glBindBuffersRange = TinyExtender::GetProcAddress((const GLubyte*)"glBindBuffersRange");
+	glBindTextures = TinyExtender::GetProcAddress((const GLubyte*)"glBindTextures");
+	glBindSamplers = TinyExtender::GetProcAddress((const GLubyte*)"glBindSamplers");
+	glBindImageTextures = TinyExtender::GetProcAddress((const GLubyte*)"glBindImageTextures");
+	glBindVertexBuffers = TinyExtender::GetProcAddress((const GLubyte*)"glBindVertexBuffers");
 }

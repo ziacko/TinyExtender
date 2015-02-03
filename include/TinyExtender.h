@@ -13,8 +13,9 @@
 
 #if defined(__linux__)
 #include <GL/glx.h>
-
 #endif
+
+#include "dependencies/glext.h"
 
 //OpenGL 1.2 Extensions
 extern PFNGLDRAWRANGEELEMENTSPROC __teDrawRangeElements;
@@ -36,7 +37,7 @@ extern PFNGLCOMPRESSEDTEXSUBIMAGE3DPROC __teCompressedTexSubImage3D;
 extern PFNGLCOMPRESSEDTEXSUBIMAGE2DPROC __teCompressedTexSubImage2D;
 extern PFNGLCOMPRESSEDTEXSUBIMAGE1DPROC __teCompressedTexSubImage1D;
 extern PFNGLGETCOMPRESSEDTEXIMAGEPROC __teGetCompressedTexImage;
-/*extern PFNGLCLIENTACTIVETEXTUREPROC __teClientActiveTexture;
+extern PFNGLCLIENTACTIVETEXTUREPROC __teClientActiveTexture;
 extern PFNGLMULTITEXCOORD1DPROC __teMultiTexCoord1d;
 extern PFNGLMULTITEXCOORD1DVPROC __teMultiTexCoord1dv;
 extern PFNGLMULTITEXCOORD1FPROC __teMultiTexCoord1f;
@@ -72,7 +73,7 @@ extern PFNGLMULTITEXCOORD4SVPROC __teMultiTexCoord4sv;
 extern PFNGLLOADTRANSPOSEMATRIXFPROC __teLoadTransposeMatrixf;
 extern PFNGLLOADTRANSPOSEMATRIXDPROC __teLoadTransposeMatrixd;
 extern PFNGLMULTTRANSPOSEMATRIXFPROC __teMultTransposeMatrixf;
-extern PFNGLMULTTRANSPOSEMATRIXDPROC __teMultTransposeMatrixd;*/
+extern PFNGLMULTTRANSPOSEMATRIXDPROC __teMultTransposeMatrixd;
 #define glActiveTexture GETFUNCTION(__teActiveTexture)
 #define glSampleCoverage GETFUNCTION(__teSampleCoverage)
 #define glCompressedTexImage3D GETFUNCTION(__teCompressedTexImage3D)
@@ -82,6 +83,39 @@ extern PFNGLMULTTRANSPOSEMATRIXDPROC __teMultTransposeMatrixd;*/
 #define glCompressedTexSubImage2D GETFUNCTION(__teCompressedTexSubImage2D)
 #define glCompressedTexSubImage1D GETFUNCTION(__teCompressedTexSubImage1D)
 #define glGetCompressedTexImage GETFUNCTION(__teGetCompressedTexImage)
+#define glClientActiveTexture GETFUNCTION(__teClientActiveTexture)
+#define glMultiTexCoord1d GETFUNCTION(__teMultiTexCoord1d)
+#define glMultiTexCoord1dv GETFUNCTION(__teMultiTexCoord1dv)
+#define glMultiTexCoord1f GETFUNCTION(__teMultiTexCoord1f)
+#define glMultiTexCoord1fv GETFUNCTION(__teMultiTexCoord1fv)
+#define glMultiTexCoord1i GETFUNCTION(__teMultiTexCoord1i)
+#define glMultiTexCoord1iv GETFUNCTION(__teMultiTexCoord1iv)
+#define glMultiTexCoord1s GETFUNCTION(__teMultiTexCoord1s)
+#define glMultiTexCoord2sv GETFUNCTION(__teMultiTexCoord2sv)
+#define glMultiTexCoord2d GETFUNCTION(__teMultiTexCoord2d)
+#define glMultiTexCoord2dv GETFUNCTION(__teMultiTexCoord2dv)
+#define glMultiTexCoord2f GETFUNCTION(__teMultiTexCoord2f)
+#define glMultiTexCoord2fv GETFUNCTION(__teMultiTexCoord2fv)
+#define glMultiTexCoord2i GETFUNCTION(__teMultiTexCoord2i)
+#define glMultiTexCoord2iv GETFUNCTION(__teMultiTexCoord2iv)
+#define glMultiTexCoord2s GETFUNCTION(__teMultiTexCoord2s)
+#define glMultiTexCoord2sv GETFUNCTION(__teMultiTexCoord2sv)
+#define glMultiTexCoord3d GETFUNCTION(__teMultiTexCoord3d)
+#define glMultiTexCoord3dv GETFUNCTION(__teMultiTexCoord3dv)
+#define glMultiTexCoord3f GETFUNCTION(__teMultiTexCoord3f)
+#define glMultiTexCoord3fv GETFUNCTION(__teMultiTexCoord3fv)
+#define glMultiTexCoord3i GETFUNCTION(__teMultiTexCoord3i)
+#define glMultiTexCoord3iv GETFUNCTION(__teMultiTexCoord3iv)
+#define glMultiTexCoord3s GETFUNCTION(__teMultiTexCoord3s)
+#define glMultiTexCoord3sv GETFUNCTION(__teMultiTexCoord3sv)
+#define glMultiTexCoord4d GETFUNCTION(__teMultiTexCoord4d)
+#define glMultiTexCoord4dv GETFUNCTION(__teMultiTexCoord4dv)
+#define glMultiTexCoord4f GETFUNCTION(__teMultiTexCoord4f)
+#define glMultiTexCoord4fv GETFUNCTION(__teMultiTexCoord4fv)
+#define glMultiTexCoord4i GETFUNCTION(__teMultiTexCoord4i)
+#define glMultiTexCoord4iv GETFUNCTION(__teMultiTexCoord4iv)
+#define glMultiTexCoord4s GETFUNCTION(__teMultiTexCoord4s)
+#define glMultiTexCoord4sv GETFUNCTION(__teMultiTexCoord4sv)
 
 //OpenGL 1.4 Extensions
 extern PFNGLBLENDFUNCSEPARATEPROC __teBlendFuncSeparate;
@@ -503,7 +537,6 @@ extern PFNGLBINDVERTEXARRAYPROC __teBindVertexArray;
 extern PFNGLDELETEVERTEXARRAYSPROC __teDeleteVertexArrays;
 extern PFNGLGENVERTEXARRAYSPROC __teGenVertexArrays;
 extern PFNGLISVERTEXARRAYPROC __teIsVertexArray;
-
 #define glColorMaski GETFUNCTION(__teColorMaski)
 #define glGetBooleani_v GETFUNCTION(__teGetBooleani_v)
 #define glGetIntegeri_v GETFUNCTION(__teGetIntegeri_v)
@@ -575,7 +608,7 @@ extern PFNGLISVERTEXARRAYPROC __teIsVertexArray;
 #define glCheckFrameBufferStatus GETFUNCTION(__teCheckFramebufferStatus)
 #define glFramebufferTexture1D GETFUNCTION(__teFramebufferTexture1D)
 #define glFramebufferTexture2D GETFUNCTION(__teFramebufferTexture2D)
-#define glFramebufferTexture3D GETFUNCTION(__teFrameBufferTexture3D0
+#define glFramebufferTexture3D GETFUNCTION(__teFramebufferTexture3D)
 #define glFramebufferRenderbuffer GETFUNCTION(__teFramebufferRenderbuffer)
 #define glGetFramebufferAttachmentParameteriv GETFUNCTION(__teGetFramebufferAttachmentParameteriv)
 #define glGenerateMapmap GETFUNCTION(__teGenerateMipmap)
@@ -604,7 +637,7 @@ extern PFNGLGETACTIVEUNIFORMBLOCKNAMEPROC __teGetActiveUniformBlockName;
 extern PFNGLUNIFORMBLOCKBINDINGPROC __teUniformBlockBinding;
 #define glDrawArraysInstanced GETFUNCTION(__teDrawArraysInstanced)
 #define glDrawElementsInstanced GETFUNCTION(__teDrawElementsInstanced)
-#define glTexBuffer GEFUNCTION(__teTexBuffer)
+#define glTexBuffer GETFUNCTION(__teTexBuffer)
 #define glPrimtiveRestartIndex GETFUNCTION(__tePrimitiveRestartIndex)
 #define glCopyBufferSubdata GETFUNCTION(__teCopyBufferSubdata)
 #define glGetUniformIndices GETFUNCTION(__teGetUniformIndices)
@@ -736,8 +769,8 @@ extern PFNGLSECONDARYCOLORP3UIVPROC __teSecondaryColorP3uiv;
 #define glVertexAttribDivisor GETFUNCTION(__teVertexAttribDivisor)
 #define glVertexAttribP1ui GETFUNCTION(__teVertexAttribP1ui)
 #define glVertexAttribP1uiv GETFUNCTION(__teVertexAttribP1uiv)
-#define glVertexAttribP2ui GETFUNCTION(__teVertexAttribPI2ui)
-#define glVertexAttribP2uiv GETFUNCTION(__teVertexAttribPI2uiv)
+#define glVertexAttribP2ui GETFUNCTION(__teVertexAttribP2ui)
+#define glVertexAttribP2uiv GETFUNCTION(__teVertexAttribP2uiv)
 #define glVertexAttribP3ui GETFUNCTION(__teVertexAttribP3ui)
 #define glVertexAttribP3uiv GETFUNCTION(__teVertexAttribP3uiv)
 #define glVertexAttribP4ui GETFUNCTION(__teVertexAttribP4ui)
@@ -1033,7 +1066,7 @@ extern PFNGLGETDOUBLEI_VPROC __teGetDoublei_v;
 #define glVertexAttribL3dv GETFUNCTION(__teVertexAttribL3dv)
 #define glVertexAttribL4dv GETFUNCTION(__teVertexAttribL4dv)
 #define glVertexAttribLPointer GETFUNCTION(__teVertexAttribLPointer)
-#define glVertexAttribLdv GETFUNCTION(__teVertexAttribLdv)
+#define glGetVertexAttribLdv GETFUNCTION(__teGetVertexAttribLdv)
 #define glViewportarrayv GETFUNCTION(__teViewportArrayv)
 #define glViewportIndexedf GETFUNCTION(__teViewportIndexedf)
 #define glViewportIndexedfv GETFUNCTION(__teViewportIndexedfv)
@@ -1177,7 +1210,6 @@ extern PFNGLBINDVERTEXBUFFERSPROC __teBindVertexBuffers;
 #define glBindImageTextures GETFUNCTION(__teBindImageTextures)
 #define glBindVertexBuffers GETFUNCTION(__teBindVertexBuffers)
 
-#include <GL/glext.h>
 #include <stdio.h>
 
 class TinyExtender
