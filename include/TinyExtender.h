@@ -37,6 +37,7 @@ extern PFNGLCOMPRESSEDTEXSUBIMAGE3DPROC __teCompressedTexSubImage3D;
 extern PFNGLCOMPRESSEDTEXSUBIMAGE2DPROC __teCompressedTexSubImage2D;
 extern PFNGLCOMPRESSEDTEXSUBIMAGE1DPROC __teCompressedTexSubImage1D;
 extern PFNGLGETCOMPRESSEDTEXIMAGEPROC __teGetCompressedTexImage;
+#if defined(__WIN32)
 extern PFNGLCLIENTACTIVETEXTUREPROC __teClientActiveTexture;
 extern PFNGLMULTITEXCOORD1DPROC __teMultiTexCoord1d;
 extern PFNGLMULTITEXCOORD1DVPROC __teMultiTexCoord1dv;
@@ -74,6 +75,7 @@ extern PFNGLLOADTRANSPOSEMATRIXFPROC __teLoadTransposeMatrixf;
 extern PFNGLLOADTRANSPOSEMATRIXDPROC __teLoadTransposeMatrixd;
 extern PFNGLMULTTRANSPOSEMATRIXFPROC __teMultTransposeMatrixf;
 extern PFNGLMULTTRANSPOSEMATRIXDPROC __teMultTransposeMatrixd;
+#endif
 #define glActiveTexture GETFUNCTION(__teActiveTexture)
 #define glSampleCoverage GETFUNCTION(__teSampleCoverage)
 #define glCompressedTexImage3D GETFUNCTION(__teCompressedTexImage3D)
@@ -83,6 +85,7 @@ extern PFNGLMULTTRANSPOSEMATRIXDPROC __teMultTransposeMatrixd;
 #define glCompressedTexSubImage2D GETFUNCTION(__teCompressedTexSubImage2D)
 #define glCompressedTexSubImage1D GETFUNCTION(__teCompressedTexSubImage1D)
 #define glGetCompressedTexImage GETFUNCTION(__teGetCompressedTexImage)
+#if defined(__WIN32)
 #define glClientActiveTexture GETFUNCTION(__teClientActiveTexture)
 #define glMultiTexCoord1d GETFUNCTION(__teMultiTexCoord1d)
 #define glMultiTexCoord1dv GETFUNCTION(__teMultiTexCoord1dv)
@@ -116,7 +119,7 @@ extern PFNGLMULTTRANSPOSEMATRIXDPROC __teMultTransposeMatrixd;
 #define glMultiTexCoord4iv GETFUNCTION(__teMultiTexCoord4iv)
 #define glMultiTexCoord4s GETFUNCTION(__teMultiTexCoord4s)
 #define glMultiTexCoord4sv GETFUNCTION(__teMultiTexCoord4sv)
-
+#endif
 //OpenGL 1.4 Extensions
 extern PFNGLBLENDFUNCSEPARATEPROC __teBlendFuncSeparate;
 extern PFNGLMULTIDRAWARRAYSPROC __teMultiDrawArrays;
@@ -509,7 +512,7 @@ extern PFNGLGETTEXPARAMETERIUIVPROC __teGetTexParameterIuiv;
 extern PFNGLCLEARBUFFERIVPROC __teClearBufferiv;
 extern PFNGLCLEARBUFFERUIVPROC __teClearBufferuiv;
 extern PFNGLCLEARBUFFERFVPROC __teClearBufferfv;
-extern PFNGLCLEARBUFFERFIPROC __teClearBufferi;
+extern PFNGLCLEARBUFFERFIPROC __teClearBufferfi;
 extern PFNGLGETSTRINGIPROC __teGetStringi;
 extern PFNGLISRENDERBUFFERPROC __teIsRenderbuffer;
 extern PFNGLBINDRENDERBUFFERPROC __teBindRenderbuffer;
@@ -593,7 +596,7 @@ extern PFNGLISVERTEXARRAYPROC __teIsVertexArray;
 #define glClearBufferiv GETFUNCTION(__teClearBufferiv)
 #define glClearBufferuiv GETFUNCTION(__teClearBufferuiv)
 #define glClearBufferfv GETFUNCTION(__teClearBufferfv)
-#define glClearBufferi GETFUNCTION(__teClearBufferi)
+#define glClearBufferfi GETFUNCTION(__teClearBufferfi)
 #define glGetStringi GETFUNCTION(__teGetStringi)
 #define glIsRenderbuffer GETFUNCTION(__teIsRenderbuffer)
 #define glBindRenderbuffer GETFUNCTION(__teBindRenderbuffer)
@@ -611,7 +614,7 @@ extern PFNGLISVERTEXARRAYPROC __teIsVertexArray;
 #define glFramebufferTexture3D GETFUNCTION(__teFramebufferTexture3D)
 #define glFramebufferRenderbuffer GETFUNCTION(__teFramebufferRenderbuffer)
 #define glGetFramebufferAttachmentParameteriv GETFUNCTION(__teGetFramebufferAttachmentParameteriv)
-#define glGenerateMapmap GETFUNCTION(__teGenerateMipmap)
+#define glGenerateMipmap GETFUNCTION(__teGenerateMipmap)
 #define glBlitFramebuffer GETFUNCTION(__teBlitFramebuffer)
 #define glRenderbufferStorageMultisample GETFUNCTION(__teRenderbufferStorageMultisample)
 #define glFramebufferTextureLayer GETFUNCTION(__teFramebufferTextureLayer)
@@ -668,14 +671,14 @@ extern PFNGLTEXIMAGE2DMULTISAMPLEPROC __teTexImage2DMultisample;
 extern PFNGLTEXIMAGE3DMULTISAMPLEPROC __teTexImage3DMultisample;
 extern PFNGLGETMULTISAMPLEFVPROC __teGetMultisamplefv;
 extern PFNGLSAMPLEMASKIPROC __teSampleMaski;
-#define glDrawElementsBaseVertex GETFUNCTION(__teDrawRangeElementsBaseVertex)
+#define glDrawElementsBaseVertex GETFUNCTION(__teDrawElementsBaseVertex)
 #define glDrawRangeElementsBaseVertex GETFUNCTION(__teDrawRangeElementsBaseVertex)
 #define glDrawElementsInstancedBaseVertex GETFUNCTION(__teDrawElementsInstancedBaseVertex)
 #define glMultiDrawElementsBaseVertex GETFUNCTION(__teMultiDrawElementsBaseVertex)
 #define glProvokingVertex GETFUNCTION(__teProvokingVertex)
 #define glFenceSync GETFUNCTION(__teFenceSync)
 #define glIsSync GETFUNCTION(__teIsSync)
-#define glDeleteSynce GETFUNCTION(__teDeleteSync)
+#define glDeleteSync GETFUNCTION(__teDeleteSync)
 #define glClientWaitSync GETFUNCTION(__teClientWaitSync)
 #define glWaitSync GETFUNCTION(__teWaitSync)
 #define glGetInteger64v GETFUNCTION(__teGetInteger64v)
@@ -774,7 +777,7 @@ extern PFNGLSECONDARYCOLORP3UIVPROC __teSecondaryColorP3uiv;
 #define glVertexAttribP3ui GETFUNCTION(__teVertexAttribP3ui)
 #define glVertexAttribP3uiv GETFUNCTION(__teVertexAttribP3uiv)
 #define glVertexAttribP4ui GETFUNCTION(__teVertexAttribP4ui)
-#define glVertexAtttrib4uiv GETFUNCTION(__teVertexAttribP4uiv)
+#define glVertexAttribP4uiv GETFUNCTION(__teVertexAttribP4uiv)
 #define glVertexP2ui GETFUNCTION(__teVertexP2ui)
 #define glVertexP2uiv GETFUNCTION(__teVertexP2uiv)
 #define glVertexP3ui GETFUNCTION(__teVertexP3ui)
@@ -886,8 +889,8 @@ extern PFNGLGETQUERYINDEXEDIVPROC __teGetQueryIndexediv;
 #define glUniformSubroutinesuiv GETFUNCTION(__teUniformSubroutinesuiv)
 #define glGetUniformSubroutineuiv GETFUNCTION(__teGetUniformSubroutineuiv)
 #define glGetProgramStageiv GETFUNCTION(__teGetProgramStageiv)
-#define glPatchParameteri GETFUNCTION(__tePatchParameterfv)
-#define glPatchParameteriv GETFUNCTION(__tePatchParameterfv)
+#define glPatchParameteri GETFUNCTION(__tePatchParameteri)
+#define glPatchParameterfv GETFUNCTION(__tePatchParameterfv)
 #define glBindTransformFeedback GETFUNCTION(__teBindTransformFeedback)
 #define glDeleteTransformFeedbacks GETFUNCTION(__teDeleteTransformFeedbacks)
 #define glGenTransformFeedbacks GETFUNCTION(__teGenTransformFeedbacks)
@@ -1004,7 +1007,7 @@ extern PFNGLGETDOUBLEI_VPROC __teGetDoublei_v;
 #define glDeleteProgramPipelines GETFUNCTION(__teDeleteProgramPipelines)
 #define glGenProgramPipelines GETFUNCTION(__teGenProgramPipelines)
 #define glIsProgramPipeline GETFUNCTION(__teIsProgramPipeline)
-#define GetProgramPipelineiv GETFUNCTION(__teGetProgramPipelineiv)
+#define glGetProgramPipelineiv GETFUNCTION(__teGetProgramPipelineiv)
 #define glProgramUniform1i GETFUNCTION(__teProgramUniform1i)
 #define glProgramUniform1iv GETFUNCTION(__teProgramUniform1iv)
 #define glProgramUniform1f GETFUNCTION(__teProgramUniform1f)
