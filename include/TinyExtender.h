@@ -3,6 +3,22 @@
 
 #define GETFUNCTION(function) function
 
+#define GLVERSION1_2 1L << 1
+#define GLVERSION1_3 1L << 2
+#define GLVERSION1_4 1L << 3
+#define GLVERSION1_5 1L << 4
+#define GLVERSION2_0 1L << 5
+#define GLVERSION2_1 1L << 6
+#define GLVERSION3_0 1L << 7
+#define GLVERSION3_1 1L << 8
+#define GLVERSION3_2 1L << 9
+#define GLVERSION3_3 1L << 10
+#define GLVERSION4_0 1L << 11
+#define GLVERSION4_1 1L << 12
+#define GLVERSION4_2 1L << 13
+#define GLVERSION4_3 1L << 14
+#define GLVERSION4_4 1L << 15
+
 #if defined(_WIN32)
 #include <Windows.h>
 #include <gl/GL.h>
@@ -1224,14 +1240,12 @@ public:
 
 	static GLvoid InitializeExtensions();
 
-	static GLvoid InititalizeExtensionsSpecific(GLuint OpenGLVersion);
-	GLfloat GetOpenGLVersion();
-	GLchar** GetAllSupportedExtensions();
-
-	static void* GetProcAddress(const GLubyte* ProcName);
+	static GLvoid InitializeExtensionsSpecific(GLbitfield OpenGLVersions);
+	static GLvoid GetOpenGLVersion(GLuint& Version_Major, GLuint& Version_Minor);
+	static GLboolean IsExtensionSupported(const GLubyte* ExtensionName);
 
 private:
-	static GLfloat GLVersion;
+	static GLuint GLVersion_Major, GLVersion_Minor;
 
 	static GLvoid Load1_2Extensions();
 	static GLvoid Load1_3Extensions();
@@ -1247,7 +1261,13 @@ private:
 	static GLvoid Load4_1Extensions();
 	static GLvoid Load4_2Extensions();
 	static GLvoid Load4_3Extensions();
-	static GLvoid Load4_4Extensions();
+	static GLvoid Load4_4Extensions();	
+
+	static GLvoid InitializeGLVersion();
+
+	static GLvoid PrintErrorMessage(GLuint Version_Major, GLuint Version_Minor);
+
+	static void* GetProcAddress(const GLubyte* ProcName);
 };
 
 #endif

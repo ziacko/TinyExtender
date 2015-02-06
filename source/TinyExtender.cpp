@@ -1,5 +1,5 @@
 ﻿#include "TinyExtender.h"
-
+#include <string.h>
 //OpenGL 1.2 Extensions
 PFNGLDRAWRANGEELEMENTSPROC __teDrawRangeElements = 0;
 PFNGLTEXIMAGE3DPROC __teTexImage3D = 0;
@@ -613,14 +613,181 @@ PFNGLBINDSAMPLERSPROC __teBindSamplers = 0;
 PFNGLBINDIMAGETEXTURESPROC __teBindImageTextures = 0;
 PFNGLBINDVERTEXBUFFERSPROC __teBindVertexBuffers = 0;
 
+
 GLvoid TinyExtender::InitializeExtensions()
 {
-	//Load1_2Extensions();
-	//Load1_3Extensions();
-	//Load1_4Extensions();
-	//Load1_5Extensions();
-	Load2_0Extensions();
-	//Load2_1Extensions();
+	TinyExtender::InitializeGLVersion();
+	GLuint Version_Major, Version_Minor;
+	Version_Major = TinyExtender::GLVersion_Major;
+	Version_Minor = TinyExtender::GLVersion_Minor;
+
+	//this was a bad idea...
+	//(Version_Major >= 1 && Version_Minor >= 2) ? Load1_2Extensions() : TinyExtender::PrintErrorMessage(Version_Major, Version_Minor);
+	
+	if(Version_Major > 1 || (Version_Minor >=  2 && Version_Major >= 1))
+	{
+		Load1_2Extensions();
+	}
+
+	else
+	{
+		TinyExtender::PrintErrorMessage(1, 2);
+		return; 
+	}
+
+	if(Version_Major > 1 || (Version_Minor >= 3 && Version_Major >= 1))
+	{
+		Load1_3Extensions();
+	}
+
+	else
+	{
+		TinyExtender::PrintErrorMessage(1, 3);
+		return;
+	}
+
+	if(Version_Major > 1 || (Version_Minor >= 4 && Version_Major >= 1))
+	{
+		Load1_4Extensions();
+	}
+
+	else
+	{
+		TinyExtender::PrintErrorMessage(1, 4);
+		return;
+	}
+
+	if(Version_Major > 1 || (Version_Minor >= 5 && Version_Major >= 1))
+	{
+		Load1_5Extensions();
+	}
+
+	else
+	{
+		TinyExtender::PrintErrorMessage(1, 5);
+		return;
+	}
+
+	if(Version_Major > 2 || (Version_Minor >= 0 && Version_Major >= 2))
+	{
+		Load2_0Extensions();
+	}
+
+	else
+	{
+		TinyExtender::PrintErrorMessage(2, 0);
+		return;
+	}
+
+	if(Version_Major > 2 || (Version_Minor >= 1 && Version_Major >= 2))
+	{
+		Load2_1Extensions();
+	}
+
+	else
+	{
+		TinyExtender::PrintErrorMessage(2, 1);
+		return;
+	}
+
+	if(Version_Major > 3 || (Version_Minor >= 0 && Version_Major >= 3))
+	{
+		Load3_0Extensions();
+	}
+
+	else
+	{
+		TinyExtender::PrintErrorMessage(3, 0);
+		return;
+	}
+
+	if(Version_Major > 3 || (Version_Minor >= 1 && Version_Major >= 3))
+	{
+		Load3_1Extensions();
+	}
+
+	else
+	{
+		TinyExtender::PrintErrorMessage(3, 1);
+		return;
+	}
+
+	if(Version_Major > 3 || (Version_Minor >= 2 && Version_Major >= 3))
+	{
+		Load3_2Extensions();
+	}
+
+	else
+	{
+		TinyExtender::PrintErrorMessage(3, 2);
+		return;
+	}
+
+	if(Version_Major > 3 || (Version_Minor >= 3 && Version_Major >= 3))
+	{
+		Load3_3Extensions();
+	}
+
+	else
+	{
+		TinyExtender::PrintErrorMessage(3, 3);
+		return;
+	}
+
+	if(Version_Major > 4 || (Version_Minor >= 0 && Version_Major >= 4))
+	{
+		Load4_0Extensions();
+	}
+
+	else
+	{
+		TinyExtender::PrintErrorMessage(4, 0);
+		return;
+	}
+
+	if(Version_Major > 4 || (Version_Minor >= 1 && Version_Major >= 4))
+	{
+		Load4_1Extensions();
+	}
+
+	else
+	{
+		TinyExtender::PrintErrorMessage(4, 1);
+		return;
+	}
+
+	if(Version_Major > 4 || (Version_Minor >= 2 && Version_Major >= 4))
+	{
+		Load4_2Extensions();
+	}
+
+	else
+	{
+		TinyExtender::PrintErrorMessage(4, 2);
+		return;
+	}
+
+	if(Version_Major > 4 || (Version_Minor >= 3 && Version_Minor >= 4))
+	{
+		Load4_3Extensions();
+	}
+
+	else
+	{
+		TinyExtender::PrintErrorMessage(4, 3);
+	}
+
+	if(Version_Major > 4 || (Version_Minor >= 4 && Version_Major >= 4))
+	{
+		Load4_4Extensions();
+	}
+
+	else
+	{
+		TinyExtender::PrintErrorMessage(4, 4);
+		return;
+	}
+	
 }
 
 void* TinyExtender::GetProcAddress(const GLubyte* ProcName)
@@ -632,7 +799,6 @@ void* TinyExtender::GetProcAddress(const GLubyte* ProcName)
 #if defined(__linux__)
 	return glXGetProcAddress(ProcName);
 #endif
-
 }
 
 GLvoid TinyExtender::Load1_2Extensions()
@@ -653,7 +819,6 @@ GLvoid TinyExtender::Load1_3Extensions()
 	glCompressedTexSubImage3D = (PFNGLCOMPRESSEDTEXSUBIMAGE3DPROC)TinyExtender::GetProcAddress((const GLubyte*)"glCompressedTexSubImage3D");
 	glCompressedTexSubImage2D = (PFNGLCOMPRESSEDTEXSUBIMAGE2DPROC)TinyExtender::GetProcAddress((const GLubyte*)"glCompressedTexSubImage2D");
 	glCompressedTexSubImage1D = (PFNGLCOMPRESSEDTEXSUBIMAGE1DPROC)TinyExtender::GetProcAddress((const GLubyte*)"glCompressedTexSubImage1D");
-	//glGetCompressedTexImage = (PFNGLGETCOMPRESSEDTEXIMAGEPROC)TinyExtender::GetProcAddress((const GLubyte*)"glGetCompressedTexImage");	
 }
 
 GLvoid TinyExtender::Load1_4Extensions()
@@ -920,6 +1085,7 @@ GLvoid TinyExtender::Load3_0Extensions()
 	glGenVertexArrays = (PFNGLGENVERTEXARRAYSPROC)TinyExtender::GetProcAddress((const GLubyte*)"glGenVertexArrays");
 	glIsVertexArray = (PFNGLISVERTEXARRAYPROC)TinyExtender::GetProcAddress((const GLubyte*)"glIsVertexArray");
 }
+
 GLvoid TinyExtender::Load3_1Extensions()
 {
 	glDrawArraysInstanced = (PFNGLDRAWARRAYSINSTANCEDPROC)TinyExtender::GetProcAddress((const GLubyte*)"glDrawArraysInstanced");
@@ -1236,3 +1402,211 @@ GLvoid TinyExtender::Load4_4Extensions()
 	glBindImageTextures = (PFNGLBINDIMAGETEXTURESPROC)TinyExtender::GetProcAddress((const GLubyte*)"glBindImageTextures");
 	glBindVertexBuffers = (PFNGLBINDVERTEXBUFFERSPROC)TinyExtender::GetProcAddress((const GLubyte*)"glBindVertexBuffers");
 }
+
+GLvoid TinyExtender::GetOpenGLVersion(GLuint& Version_Major, GLuint& Version_Minor)
+{
+	Version_Major = TinyExtender::GLVersion_Major;
+	Version_Minor = TinyExtender::GLVersion_Minor;
+}
+
+GLvoid TinyExtender::InitializeExtensionsSpecific(GLbitfield OpenGLVersions)
+{
+	TinyExtender::InitializeGLVersion();	
+	if(OpenGLVersions & GLVERSION1_2)
+	{
+		if(TinyExtender::GLVersion_Major >= 1 && TinyExtender::GLVersion_Minor >= 2)
+		{
+			TinyExtender::Load1_2Extensions();
+		}
+
+		printf("Error: OpenGL version 1.2 extensions not supported. (dude update your freaking drivers!)\n");
+	}
+
+	if(OpenGLVersions & GLVERSION1_3)
+	{
+		if(TinyExtender::GLVersion_Major >= 1 && TinyExtender::GLVersion_Minor >= 3)
+		{
+			TinyExtender::Load1_3Extensions();
+		}
+
+		printf("Error: OpenGL version 1.3 extensions not supported\n");
+	}
+
+	if(OpenGLVersions & GLVERSION1_4)
+	{
+		if(TinyExtender::GLVersion_Major >= 1 && TinyExtender::GLVersion_Minor >= 4)
+		{
+			TinyExtender::Load1_4Extensions();
+		}
+
+		printf("Error: OpenGL versions 1.4 extensions not supported\n");
+	}
+
+	if(OpenGLVersions & GLVERSION1_5)
+	{
+		if(TinyExtender::GLVersion_Major >= 1 && TinyExtender::GLVersion_Minor >= 5)
+		{
+			TinyExtender::Load1_5Extensions();
+		}
+
+		printf("Error: OpenGL versions 1.4 extensions not supported\n");
+	}
+
+	if(OpenGLVersions & GLVERSION2_0)
+	{
+		if(TinyExtender::GLVersion_Major >= 2 && TinyExtender::GLVersion_Minor >= 0)
+		{
+			TinyExtender::Load2_0Extensions();
+		}
+
+		printf("Error: OpenGL versions 2.0 extensions not supported\n");
+	}
+
+	if(OpenGLVersions & GLVERSION2_1)
+	{
+		if(TinyExtender::GLVersion_Major >= 2 && TinyExtender::GLVersion_Minor >= 1)
+		{
+			TinyExtender::Load2_1Extensions();
+		}
+
+		printf("Error: OpenGL versions 2.1 extensions not supported\n");
+	}
+
+	if(OpenGLVersions & GLVERSION3_0)
+	{
+		if(TinyExtender::GLVersion_Major >= 3 && TinyExtender::GLVersion_Minor >= 0)
+		{
+			TinyExtender::Load3_0Extensions();
+		}
+
+		printf("Error: OpenGL versions 3.0 extensions not supported\n");
+	}
+
+	if(OpenGLVersions & GLVERSION3_1)
+	{
+		if(TinyExtender::GLVersion_Major >= 3 && TinyExtender::GLVersion_Minor >= 1)
+		{
+			TinyExtender::Load3_1Extensions();
+		}
+
+		printf("Error: OpenGL versions 3.1 extensions not supported\n");
+	}
+
+	if(OpenGLVersions & GLVERSION3_2)
+	{
+		if(TinyExtender::GLVersion_Major >= 3 && TinyExtender::GLVersion_Minor >= 2)
+		{
+			TinyExtender::Load3_2Extensions();
+		}
+
+		printf("Error: OpenGL versions 3.2 extensions not supported\n");
+	}
+
+	if(OpenGLVersions & GLVERSION3_3)
+	{
+		if(TinyExtender::GLVersion_Major >= 3 && TinyExtender::GLVersion_Minor >= 3)
+		{
+			TinyExtender::Load3_3Extensions();
+		}
+
+		printf("Error: OpenGL versions 3.3 extensions not supported\n");
+	}
+
+	if(OpenGLVersions & GLVERSION4_0)
+	{
+		if(TinyExtender::GLVersion_Major >= 4 && TinyExtender::GLVersion_Minor >= 0)
+		{
+			TinyExtender::Load4_0Extensions();
+		}
+
+		printf("Error: OpenGL versions 4.0 extensions not supported\n");
+	}
+
+	if(OpenGLVersions & GLVERSION4_1)
+	{
+		if(TinyExtender::GLVersion_Major >= 4 && TinyExtender::GLVersion_Minor >= 1)
+		{
+			TinyExtender::Load4_1Extensions();
+		}
+
+		printf("Error: OpenGL versions 4.1 extensions not supported\n");
+	}
+
+	if(OpenGLVersions & GLVERSION4_2)
+	{
+		if(TinyExtender::GLVersion_Major >= 4 && TinyExtender::GLVersion_Minor >= 2)
+		{
+			TinyExtender::Load4_2Extensions();
+		}
+
+		printf("Error: OpenGL versions 4.2 extensions not supported\n");
+	}
+
+	if(OpenGLVersions & GLVERSION4_3)
+	{
+		if(TinyExtender::GLVersion_Major >= 4 && TinyExtender::GLVersion_Minor >= 3)
+		{
+			TinyExtender::Load4_3Extensions();
+		}
+
+		printf("Error: OpenGL versions 4.3 extensions not supported\n");
+	}
+
+	if(OpenGLVersions & GLVERSION4_4)
+	{
+		if(TinyExtender::GLVersion_Major >= 4 && TinyExtender::GLVersion_Minor >= 4)
+		{
+			TinyExtender::Load4_4Extensions();
+		}
+
+		printf("Error: OpenGL versions 4.4 extensions not supported\n");
+	}
+}
+
+GLvoid TinyExtender::InitializeGLVersion()
+{
+	const GLubyte* VersionString = glGetString(GL_VERSION);
+
+	TinyExtender::GLVersion_Major = VersionString[0] - '0';
+	TinyExtender::GLVersion_Minor = VersionString[2] - '0';
+
+	printf("%s \n", VersionString);
+}
+
+GLboolean TinyExtender::IsExtensionSupported(const GLubyte* ExtensionName)
+{
+	GLubyte* Extensions; //all the extensions
+	GLubyte* End; //the last extension name in Extensions 
+	GLint NameLength; //the string length of the given extension
+
+	NameLength = strlen(ExtensionName); // the length of the given extension name string 
+
+	Extensions = glGetString(GL_EXTENSIONS); // get all supported extensions
+
+	//if extensions is not empty
+	if(Extensions) 
+	{
+		End = Extensions + strlen((const char*)Extensions);
+		
+		while (Extensions < End)
+		{
+			GLint Blarg = strcspn((const char*)Extensions, " ");
+			if((NameLength == Blarg) && (strncmp(ExtensionName, Extensions, Blarg) == 0))
+			{
+				return GL_TRUE;
+			}	
+
+			Extensions += (Blarg + 1);
+		}
+		return GL_FALSE;
+	}
+	return GL_FALSE;
+}
+
+GLvoid TinyExtender::PrintErrorMessage(GLuint Version_Major, GLuint Version_Minor)
+{
+	printf("Error: OpenGL version %i.%i not supported\n", Version_Major, Version_Minor);
+}
+
+GLuint TinyExtender::GLVersion_Major = 0;
+GLuint TinyExtender::GLVersion_Minor = 0;
