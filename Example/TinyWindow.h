@@ -1249,7 +1249,7 @@ public:
 					GetWindowByName(WindowName)->CurrentState = WINDOWSTATE_MINIMIZED;
 
 #if defined(CURRENT_OS_WINDOWS)
-					Windows_Minimize(GetWindowByName(WindowName));
+					Windows_Minimize(GetWindowByName(WindowName), NewState);
 #endif
 
 #if defined(CURRENT_OS_LINUX)
@@ -1262,7 +1262,7 @@ public:
 				{
 					GetWindowByName(WindowName)->CurrentState = WINDOWSTATE_NORMAL;
 #if defined(CURRENT_OS_WINDOWS)
-					Windows_Minimize(GetWindowByName(WindowName));
+					Windows_Minimize(GetWindowByName(WindowName), NewState);
 #endif
 
 #if defined(CURRENT_OS_LINUX)
@@ -1290,7 +1290,7 @@ public:
 				{
 					GetWindowByIndex(WindowIndex)->CurrentState = WINDOWSTATE_MINIMIZED;
 #if defined(CURRENT_OS_WINDOWS)
-					Windows_Minimize(GetWindowByIndex(WindowIndex));
+					Windows_Minimize(GetWindowByIndex(WindowIndex), NewState);
 #endif
 
 #if defined(CURRENT_OS_LINUX)
@@ -1303,7 +1303,7 @@ public:
 				{
 					GetWindowByIndex(WindowIndex)->CurrentState = WINDOWSTATE_NORMAL;
 #if defined(CURRENT_OS_WINDOWS)
-					Windows_Minimize(GetWindowByIndex(WindowIndex));
+					Windows_Minimize(GetWindowByIndex(WindowIndex), NewState);
 #endif
 
 #if defined(CURRENT_OS_LINUX)
@@ -1364,7 +1364,7 @@ public:
 				{
 					GetWindowByName(WindowName)->CurrentState = WINDOWSTATE_MAXIMIZED;
 #if defined(CURRENT_OS_WINDOWS)
-					Windows_Maximize(GetWindowByName(WindowName));
+					Windows_Maximize(GetWindowByName(WindowName), NewState);
 #endif
 
 #if defined(CURRENT_OS_LINUX)
@@ -1377,7 +1377,7 @@ public:
 				{
 					GetWindowByName(WindowName)->CurrentState = WINDOWSTATE_NORMAL;
 #if defined(CURRENT_OS_WINDOWS)
-					Windows_Maximize(GetWindowByName(WindowName));
+					Windows_Maximize(GetWindowByName(WindowName), NewState);
 #endif
 
 #if defined(CURRENT_OS_LINUX)
@@ -1401,7 +1401,7 @@ public:
 			if (DoesExist(WindowIndex))
 			{
 #if defined(CURRENT_OS_WINDOWS)
-				Windows_Maximize(GetWindowByIndex(WindowIndex));
+				Windows_Maximize(GetWindowByIndex(WindowIndex), NewState);
 #endif
 
 #if defined(CURRENT_OS_LINUX)
