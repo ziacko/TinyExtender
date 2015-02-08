@@ -1,9 +1,9 @@
 #include <TinyExtender.h>
-#include "TinyWindow.h"
+#include <WindowManager.h>
 int main()
 {
 	WindowManager::Initialize();
-	WindowManager::AddWindow("TinyExtenderTest");
+	WindowManager::AddWindow(new FWindow("TinyExtenderTest"));
 
 	TinyExtender::InitializeExtensions();
 
