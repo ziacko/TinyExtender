@@ -2237,8 +2237,6 @@ private:
 	}
 };
 
-#endif
-
 //OpenGL 1.2 Extensions
 PFNGLDRAWRANGEELEMENTSPROC __teDrawRangeElements = 0;
 PFNGLTEXIMAGE3DPROC __teTexImage3D = 0;
@@ -2854,3 +2852,4 @@ PFNGLBINDVERTEXBUFFERSPROC __teBindVertexBuffers = 0;
 
 GLuint TinyExtender::GLVersion_Major = 0;
 GLuint TinyExtender::GLVersion_Minor = 0;
+#endif
