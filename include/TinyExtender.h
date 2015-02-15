@@ -20,14 +20,11 @@
 #define GLVERSION4_4 1L << 15
 
 #if defined(_WIN32)
-#ifndef WIN32_LEAN_AND_MEAN
-#define WIN32_LEAN_AND_MEAN 1
 #include <Windows.h>
 #include <gl/GL.h>
 
 //this automatically loads the OpenGL library if you are using Visual studio 
 #pragma comment (lib, "opengl32.lib")
-#endif
 #endif
 
 #if defined(__linux__)
@@ -918,7 +915,9 @@ extern PFNGLVERTEXATTRIBPOINTERPROC __teVertexAttribPointer;
 #define glBindAttribLocation GETFUNCTION(__teBindAttribLocation)
 #define glCompileShader GETFUNCTION(__teCompileShader)
 #define glCreateProgram GETFUNCTION(__teCreateProgram)
+#define glCreateShader GETFUNCTION(__teCreateShader)
 #define glDeleteProgram GETFUNCTION(__teDeleteProgram)
+#define glDeleteShader GETFUNCTION(__teDeleteShader)
 #define glDetachShader GETFUNCTION(__teDetachShader)
 #define glDisableVertexAttribArray GETFUNCTION(__teDisableVertexAttribArray)
 #define glEnableVertexAttribArray GETFUNCTION(__teEnableVertexAttribArray)
@@ -928,6 +927,8 @@ extern PFNGLVERTEXATTRIBPOINTERPROC __teVertexAttribPointer;
 #define glGetAttribLocation GETFUNCTION(__teGetAttribLocation)
 #define glGetProgramiv GETFUNCTION(__teGetProgramiv)
 #define glGetProgramInfoLog GETFUNCTION(__teGetProgramInfoLog)
+#define glGetShaderiv GETFUNCTION(__teGetShaderiv)
+#define glGetShaderInfoLog GETFUNCTION(__teGetShaderInfoLog)
 #define glGetShaderSource GETFUNCTION(__teGetShaderSource)
 #define glGetUniformLocation GETFUNCTION(__teGetUniformLocation)
 #define glGetUniformfv GETFUNCTION(__teGetUniformfv)
@@ -3546,7 +3547,9 @@ private:
 		glBindAttribLocation = (PFNGLBINDATTRIBLOCATIONPROC)TinyExtender::GetProcAddress((const GLubyte*)"glBindAttribLocation");
 		glCompileShader = (PFNGLCOMPILESHADERPROC)TinyExtender::GetProcAddress((const GLubyte*)"glCompileShader");
 		glCreateProgram = (PFNGLCREATEPROGRAMPROC)TinyExtender::GetProcAddress((const GLubyte*)"glCreateProgram");
+		glCreateShader = (PFNGLCREATESHADERPROC)TinyExtender::GetProcAddress((const GLubyte*)"glCreateShader");
 		glDeleteProgram = (PFNGLDELETEPROGRAMPROC)TinyExtender::GetProcAddress((const GLubyte*)"glDeleteProgram");
+		glDeleteShader = (PFNGLDELETESHADERPROC)TinyExtender::GetProcAddress((const GLubyte*)"glDeleteShader");
 		glDetachShader = (PFNGLDETACHSHADERPROC)TinyExtender::GetProcAddress((const GLubyte*)"glDetachShader");
 		glDisableVertexAttribArray = (PFNGLDISABLEVERTEXATTRIBARRAYPROC)TinyExtender::GetProcAddress((const GLubyte*)"glDisableVertexAttribArray");
 		glEnableVertexAttribArray = (PFNGLENABLEVERTEXATTRIBARRAYPROC)TinyExtender::GetProcAddress((const GLubyte*)"glEnableVertexAttribArray");
@@ -3556,6 +3559,8 @@ private:
 		glGetAttribLocation = (PFNGLGETATTRIBLOCATIONPROC)TinyExtender::GetProcAddress((const GLubyte*)"glGetAttribLocation");
 		glGetProgramiv = (PFNGLGETPROGRAMIVPROC)TinyExtender::GetProcAddress((const GLubyte*)"glGetProgramiv");
 		glGetProgramInfoLog = (PFNGLGETPROGRAMINFOLOGPROC)TinyExtender::GetProcAddress((const GLubyte*)"glGetProgramInfoLog");
+		glGetShaderiv = (PFNGLGETSHADERIVPROC)TinyExtender::GetProcAddress((const GLubyte*)"glGetShaderiv");
+		glGetShaderInfoLog = (PFNGLGETSHADERINFOLOGPROC)TinyExtender::GetProcAddress((const GLubyte*)"glGetShaderInfoLog");
 		glGetShaderSource = (PFNGLGETSHADERSOURCEPROC)TinyExtender::GetProcAddress((const GLubyte*)"glGetShaderSource");
 		glGetUniformLocation = (PFNGLGETUNIFORMLOCATIONPROC)TinyExtender::GetProcAddress((const GLubyte*)"glGetUniformLocation");
 		glGetUniformfv = (PFNGLGETUNIFORMFVPROC)TinyExtender::GetProcAddress((const GLubyte*)"glGetUniformfv");
@@ -4068,6 +4073,7 @@ private:
 	}
 };
 
+//#if defined(__linux__)
 //OpenGL 1.2 Extensions
 PFNGLDRAWRANGEELEMENTSPROC __teDrawRangeElements = 0;
 PFNGLTEXIMAGE3DPROC __teTexImage3D = 0;
@@ -4682,4 +4688,6 @@ PFNGLBINDVERTEXBUFFERSPROC __teBindVertexBuffers = 0;
 
 GLuint TinyExtender::GLVersion_Major = 0;
 GLuint TinyExtender::GLVersion_Minor = 0;
+//#endif
+
 #endif
