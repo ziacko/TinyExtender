@@ -14,3 +14,5 @@ TinyExtender/Debug/vc120.idb
 TinyExtender/TinyExtender.vcxproj
 TinyExtender/TinyExtender.vcxproj.filters
 *.tlog
+*.vcxproj
+*.filters
