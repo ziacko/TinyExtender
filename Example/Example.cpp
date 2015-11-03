@@ -2,19 +2,21 @@
 #include "TinyWindow.h"
 int main()
 {
-	WindowManager::Initialize();
-	WindowManager::AddWindow("TinyExtenderTest");
+	windowManager* manager = new windowManager();
+	manager->AddWindow("TinyExtender Example");
 
-	TinyExtender::InitializeExtensions();
+	tinyExtender* extender = new tinyExtender();
 
-	GLuint Program = glCreateProgram();
+	extender->InitializeExtensions();
 
-	while(!WindowManager::GetWindowShouldClose("TinyExtenderTest"))
+	GLuint Program = extender->glCreateProgram();
+
+	while(!manager->GetWindowShouldCloseByIndex(0))
 	{
-		WindowManager::PollForEvents();
+		manager->PollForEvents();
 		glClearColor(0.25f, 0.25f, 0.25f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		WindowManager::WindowSwapBuffers("TinyExtenderTest");
+		manager->WindowSwapBuffersByIndex(0);
 	}
 
 	return 0;
