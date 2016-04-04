@@ -6,10 +6,11 @@ int main()
 
 	Manager->Initialize();
 	Manager->AddWindow("TinyExtender Test");
+	TinyExtender::extensionManager extensions = TinyExtender::extensionManager();
 
-	TinyExtender::InitializeExtensions();
+	extensions.InitializeExtentions();
 
-	GLuint Program = glCreateProgram();
+	GLuint Program = extensions.glCreateProgram();
 
 	while(!Manager->GetWindowShouldCloseByIndex(0))
 	{
