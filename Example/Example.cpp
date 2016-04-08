@@ -10,7 +10,10 @@ int main()
 
 	extensions.InitializeExtentions();
 
-	GLuint Program = extensions.glCreateProgram();
+	if (extensions.glCreateProgram != nullptr)
+	{
+		GLuint Program = extensions.glCreateProgram();
+	}
 
 	while(!Manager->GetWindowShouldCloseByIndex(0))
 	{
