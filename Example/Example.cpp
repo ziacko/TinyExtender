@@ -6,7 +6,7 @@ int main()
 
 	Manager->Initialize();
 	Manager->AddWindow("TinyExtender Test");
-	TinyExtender::extensionManager extensions = TinyExtender::extensionManager();
+	TinyExtender::extensionManager extensions = TinyExtender::extensionManager(); //After an OpenGL instance has been created
 
 	extensions.InitializeExtentions();
 
