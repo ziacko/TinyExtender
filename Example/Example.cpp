@@ -1,26 +1,22 @@
 #include <TinyExtender.h>
 #include "TinyWindow.h"
+
+using namespace TinyWindow;
+using namespace TinyExtender;
 int main()
 {
-	windowManager* Manager = new windowManager();
+	windowManager* manager = new windowManager();
+	tWindow* window = manager->AddWindow("TinyExtender example");
 
-	Manager->Initialize();
-	Manager->AddWindow("TinyExtender Test");
-	TinyExtender::extensionManager extensions = TinyExtender::extensionManager(); //After an OpenGL instance has been created
+	InitializeExtentions();
+	GLuint Program = glCreateProgram();
 
-	extensions.InitializeExtentions();
-
-	if (extensions.glCreateProgram != nullptr)
+	while(!window->shouldClose)
 	{
-		GLuint Program = extensions.glCreateProgram();
-	}
-
-	while(!Manager->GetWindowShouldCloseByIndex(0))
-	{
-		Manager->PollForEvents();
+		manager->PollForEvents();
 		glClearColor(0.25f, 0.25f, 0.25f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		Manager->WindowSwapBuffersByIndex(0);
+		window->SwapDrawBuffers();
 	}
 
 	return 0;

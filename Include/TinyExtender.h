@@ -30,8 +30,7 @@
 #include <memory>
 #include <system_error>
 
-namespace TinyExtender
-{
+
 #ifndef GLEXT_64_TYPES_DEFINED
 	/* This code block is duplicated in glxext.h, so must be protected */
 #define GLEXT_64_TYPES_DEFINED
@@ -53,7 +52,13 @@ namespace TinyExtender
 #endif
 #endif
 
+namespace TinyExtender
+{
 	//OpenGL 1.2 Extensions
+	void(*glDrawRangeElements) (GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void *indices);
+	void(*glTexImage3D) (GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void *pixels);
+	void(*glTexSubImage3D) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void *pixels);
+	void(*glCopyTexSubImage3D) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
 	enum openGL1_2
 	{
 		GL_UNSIGNED_BYTE_3_3_2 =				0x8032,
@@ -100,6 +105,52 @@ namespace TinyExtender
 	};
 
 	//OpenGL 1.3 Extensions
+	void(*glActiveTexture) (GLenum texture);
+	void(*glSampleCoverage) (GLfloat value, GLboolean invert);
+	void(*glCompressedTexImage3D) (GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void *data);
+	void(*glCompressedTexImage2D) (GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const void *data);
+	void(*glCompressedTexImage1D) (GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void *data);
+	void(*glCompressedTexSubImage3D) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void *data);
+	void(*glCompressedTexSubImage2D) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void *data);
+	void(*glCompressedTexSubImage1D) (GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void *data);
+	void(*glGetCompressedTexImage) (GLenum target, GLint level, void *img);
+	void(*glClientActiveTexture) (GLenum texture);
+	void(*glMultiTexCoord1d) (GLenum target, GLdouble s);
+	void(*glMultiTexCoord1dv) (GLenum target, const GLdouble *v);
+	void(*glMultiTexCoord1f) (GLenum target, GLfloat s);
+	void(*glMultiTexCoord1fv) (GLenum target, const GLfloat *v);
+	void(*glMultiTexCoord1i) (GLenum target, GLint s);
+	void(*glMultiTexCoord1iv) (GLenum target, const GLint *v);
+	void(*glMultiTexCoord1s) (GLenum target, GLshort s);
+	void(*glMultiTexCoord1sv) (GLenum target, const GLshort *v);
+	void(*glMultiTexCoord2d) (GLenum target, GLdouble s, GLdouble t);
+	void(*glMultiTexCoord2dv) (GLenum target, const GLdouble *v);
+	void(*glMultiTexCoord2f) (GLenum target, GLfloat s, GLfloat t);
+	void(*glMultiTexCoord2fv) (GLenum target, const GLfloat *v);
+	void(*glMultiTexCoord2i) (GLenum target, GLint s, GLint t);
+	void(*glMultiTexCoord2iv) (GLenum target, const GLint *v);
+	void(*glMultiTexCoord2s) (GLenum target, GLshort s, GLshort t);
+	void(*glMultiTexCoord2sv) (GLenum target, const GLshort *v);
+	void(*glMultiTexCoord3d) (GLenum target, GLdouble s, GLdouble t, GLdouble r);
+	void(*glMultiTexCoord3dv) (GLenum target, const GLdouble *v);
+	void(*glMultiTexCoord3f) (GLenum target, GLfloat s, GLfloat t, GLfloat r);
+	void(*glMultiTexCoord3fv) (GLenum target, const GLfloat *v);
+	void(*glMultiTexCoord3i) (GLenum target, GLint s, GLint t, GLint r);
+	void(*glMultiTexCoord3iv) (GLenum target, const GLint *v);
+	void(*glMultiTexCoord3s) (GLenum target, GLshort s, GLshort t, GLshort r);
+	void(*glMultiTexCoord3sv) (GLenum target, const GLshort *v);
+	void(*glMultiTexCoord4d) (GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q);
+	void(*glMultiTexCoord4dv) (GLenum target, const GLdouble *v);
+	void(*glMultiTexCoord4f) (GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q);
+	void(*glMultiTexCoord4fv) (GLenum target, const GLfloat *v);
+	void(*glMultiTexCoord4i) (GLenum target, GLint s, GLint t, GLint r, GLint q);
+	void(*glMultiTexCoord4iv) (GLenum target, const GLint *v);
+	void(*glMultiTexCoord4s) (GLenum target, GLshort s, GLshort t, GLshort r, GLshort q);
+	void(*glMultiTexCoord4sv) (GLenum target, const GLshort *v);
+	void(*glLoadTransposeMatrixf) (const GLfloat *m);
+	void(*glLoadTransposeMatrixd) (const GLdouble *m);
+	void(*glMultTransposeMatrixf) (const GLfloat *m);
+	void(*glMultTransposeMatrixd) (const GLdouble *m);
 	enum openGL1_3
 	{
 		GL_TEXTURE0 =								0x84C0,
@@ -201,6 +252,53 @@ namespace TinyExtender
 	};
 
 	//OpenGL 1.4 Extensions
+	void(*glBlendFuncSeparate) (GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
+	void(*glMultiDrawArrays) (GLenum mode, const GLint *first, const GLsizei *count, GLsizei drawcount);
+	void(*glMultiDrawElements) (GLenum mode, const GLsizei *count, GLenum type, const void *const*indices, GLsizei drawcount);
+	void(*glPointParameterf) (GLenum pname, GLfloat param);
+	void(*glPointParameterfv) (GLenum pname, const GLfloat *params);
+	void(*glPointParameteri) (GLenum pname, GLint param);
+	void(*glPointParameteriv) (GLenum pname, const GLint *params);
+	void(*glFogCoordf) (GLfloat coord);
+	void(*glFogCoordfv) (const GLfloat *coord);
+	void(*glFogCoordd) (GLdouble coord);
+	void(*glFogCoorddv) (const GLdouble *coord);
+	void(*glFogCoordPointer) (GLenum type, GLsizei stride, const void *pointer);
+	void(*glSecondaryColor3b) (GLbyte red, GLbyte green, GLbyte blue);
+	void(*glSecondaryColor3bv) (const GLbyte *v);
+	void(*glSecondaryColor3d) (GLdouble red, GLdouble green, GLdouble blue);
+	void(*glSecondaryColor3dv) (const GLdouble *v);
+	void(*glSecondaryColor3f) (GLfloat red, GLfloat green, GLfloat blue);
+	void(*glSecondaryColor3fv) (const GLfloat *v);
+	void(*glSecondaryColor3i) (GLint red, GLint green, GLint blue);
+	void(*glSecondaryColor3iv) (const GLint *v);
+	void(*glSecondaryColor3s) (GLshort red, GLshort green, GLshort blue);
+	void(*glSecondaryColor3sv) (const GLshort *v);
+	void(*glSecondaryColor3ub) (GLubyte red, GLubyte green, GLubyte blue);
+	void(*glSecondaryColor3ubv) (const GLubyte *v);
+	void(*glSecondaryColor3ui) (GLuint red, GLuint green, GLuint blue);
+	void(*glSecondaryColor3uiv) (const GLuint *v);
+	void(*glSecondaryColor3us) (GLushort red, GLushort green, GLushort blue);
+	void(*glSecondaryColor3usv) (const GLushort *v);
+	void(*glSecondaryColorPointer) (GLint size, GLenum type, GLsizei stride, const void *pointer);
+	void(*glWindowPos2d) (GLdouble x, GLdouble y);
+	void(*glWindowPos2dv) (const GLdouble *v);
+	void(*glWindowPos2f) (GLfloat x, GLfloat y);
+	void(*glWindowPos2fv) (const GLfloat *v);
+	void(*glWindowPos2i) (GLint x, GLint y);
+	void(*glWindowPos2iv) (const GLint *v);
+	void(*glWindowPos2s) (GLshort x, GLshort y);
+	void(*glWindowPos2sv) (const GLshort *v);
+	void(*glWindowPos3d) (GLdouble x, GLdouble y, GLdouble z);
+	void(*glWindowPos3dv) (const GLdouble *v);
+	void(*glWindowPos3f) (GLfloat x, GLfloat y, GLfloat z);
+	void(*glWindowPos3fv) (const GLfloat *v);
+	void(*glWindowPos3i) (GLint x, GLint y, GLint z);
+	void(*glWindowPos3iv) (const GLint *v);
+	void(*glWindowPos3s) (GLshort x, GLshort y, GLshort z);
+	void(*glWindowPos3sv) (const GLshort *v);
+	void(*glBlendColor) (GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
+	void(*glBlendEquation) (GLenum mode);
 	enum openGL1_4
 	{
 		GL_BLEND_DST_RGB =						0x80C8,
@@ -256,6 +354,25 @@ namespace TinyExtender
 	//OpenGL 1.5 Extensions
 	typedef ptrdiff_t GLsizeiptr;
 	typedef ptrdiff_t GLintptr;
+	void(*glGenQueries) (GLsizei n, GLuint *ids);
+	void(*glDeleteQueries) (GLsizei n, const GLuint *ids);
+	GLboolean(*glIsQuery) (GLuint id);
+	void(*glBeginQuery) (GLenum target, GLuint id);
+	void(*glEndQuery) (GLenum target);
+	void(*glGetQueryiv) (GLenum target, GLenum pname, GLint *params);
+	void(*glGetQueryObjectiv) (GLuint id, GLenum pname, GLint *params);
+	void(*glGetQueryObjectuiv) (GLuint id, GLenum pname, GLuint *params);
+	void(*glBindBuffer) (GLenum target, GLuint buffer);
+	void(*glDeleteBuffers) (GLsizei n, const GLuint *buffers);
+	void(*glGenBuffers) (GLsizei n, GLuint *buffers);
+	GLboolean(*glIsBuffer) (GLuint buffer);
+	void(*glBufferData) (GLenum target, GLsizeiptr size, const void *data, GLenum usage);
+	void(*glBufferSubData) (GLenum target, GLintptr offset, GLsizeiptr size, const void *data);
+	void(*glGetBufferSubData) (GLenum target, GLintptr offset, GLsizeiptr size, void *data);
+	void * (*glMapBuffer) (GLenum target, GLenum access);
+	GLboolean(*glUnmapBuffer) (GLenum target);
+	void(*glGetBufferParameteriv) (GLenum target, GLenum pname, GLint *params);
+	void(*glGetBufferPointerv) (GLenum target, GLenum pname, void **params);
 	enum openGL1_5
 	{
 		GL_BUFFER_SIZE =								0x8764,
@@ -312,6 +429,99 @@ namespace TinyExtender
 
 	//2.0 extensions
 	typedef char GLchar;
+	void(*glBlendEquationSeparate) (GLenum modeRGB, GLenum modeAlpha);
+	void(*glDrawBuffers) (GLsizei n, const GLenum *bufs);
+	void(*glStencilOpSeparate) (GLenum face, GLenum sfail, GLenum dpfail, GLenum dppass);
+	void(*glStencilFuncSeparate) (GLenum face, GLenum func, GLint ref, GLuint mask);
+	void(*glStencilMaskSeparate) (GLenum face, GLuint mask);
+	void(*glAttachShader) (GLuint program, GLuint shader);
+	void(*glBindAttribLocation) (GLuint program, GLuint index, const GLchar *name);
+	void(*glCompileShader) (GLuint shader);
+	GLuint(*glCreateProgram) (void);
+	GLuint(*glCreateShader) (GLenum type);
+	void(*glDeleteProgram) (GLuint program);
+	void(*glDeleteShader) (GLuint shader);
+	void(*glDetachShader) (GLuint program, GLuint shader);
+	void(*glDisableVertexAttribArray) (GLuint index);
+	void(*glEnableVertexAttribArray) (GLuint index);
+	void(*glGetActiveAttrib) (GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);
+	void(*glGetActiveUniform) (GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);
+	void(*glGetAttachedShaders) (GLuint program, GLsizei maxCount, GLsizei *count, GLuint *shaders);
+	GLint(*glGetAttribLocation) (GLuint program, const GLchar *name);
+	void(*glGetProgramiv) (GLuint program, GLenum pname, GLint *params);
+	void(*glGetProgramInfoLog) (GLuint program, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
+	void(*glGetShaderiv) (GLuint shader, GLenum pname, GLint *params);
+	void(*glGetShaderInfoLog) (GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
+	void(*glGetShaderSource) (GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *source);
+	GLint(*glGetUniformLocation) (GLuint program, const GLchar *name);
+	void(*glGetUniformfv) (GLuint program, GLint location, GLfloat *params);
+	void(*glGetUniformiv) (GLuint program, GLint location, GLint *params);
+	void(*glGetVertexAttribdv) (GLuint index, GLenum pname, GLdouble *params);
+	void(*glGetVertexAttribfv) (GLuint index, GLenum pname, GLfloat *params);
+	void(*glGetVertexAttribiv) (GLuint index, GLenum pname, GLint *params);
+	void(*glGetVertexAttribPointerv) (GLuint index, GLenum pname, void **pointer);
+	GLboolean(*glIsProgram) (GLuint program);
+	GLboolean(*glIsShader) (GLuint shader);
+	void(*glLinkProgram) (GLuint program);
+	void(*glShaderSource) (GLuint shader, GLsizei count, const GLchar *const*string, const GLint *length);
+	void(*glUseProgram) (GLuint program);
+	void(*glUniform1f) (GLint location, GLfloat v0);
+	void(*glUniform2f) (GLint location, GLfloat v0, GLfloat v1);
+	void(*glUniform3f) (GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
+	void(*glUniform4f) (GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
+	void(*glUniform1i) (GLint location, GLint v0);
+	void(*glUniform2i) (GLint location, GLint v0, GLint v1);
+	void(*glUniform3i) (GLint location, GLint v0, GLint v1, GLint v2);
+	void(*glUniform4i) (GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
+	void(*glUniform1fv) (GLint location, GLsizei count, const GLfloat *value);
+	void(*glUniform2fv) (GLint location, GLsizei count, const GLfloat *value);
+	void(*glUniform3fv) (GLint location, GLsizei count, const GLfloat *value);
+	void(*glUniform4fv) (GLint location, GLsizei count, const GLfloat *value);
+	void(*glUniform1iv) (GLint location, GLsizei count, const GLint *value);
+	void(*glUniform2iv) (GLint location, GLsizei count, const GLint *value);
+	void(*glUniform3iv) (GLint location, GLsizei count, const GLint *value);
+	void(*glUniform4iv) (GLint location, GLsizei count, const GLint *value);
+	void(*glUniformMatrix2fv) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+	void(*glUniformMatrix3fv) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+	void(*glUniformMatrix4fv) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+	void(*glValidateProgram) (GLuint program);
+	void(*glVertexAttrib1d) (GLuint index, GLdouble x);
+	void(*glVertexAttrib1dv) (GLuint index, const GLdouble *v);
+	void(*glVertexAttrib1f) (GLuint index, GLfloat x);
+	void(*glVertexAttrib1fv) (GLuint index, const GLfloat *v);
+	void(*glVertexAttrib1s) (GLuint index, GLshort x);
+	void(*glVertexAttrib1sv) (GLuint index, const GLshort *v);
+	void(*glVertexAttrib2d) (GLuint index, GLdouble x, GLdouble y);
+	void(*glVertexAttrib2dv) (GLuint index, const GLdouble *v);
+	void(*glVertexAttrib2f) (GLuint index, GLfloat x, GLfloat y);
+	void(*glVertexAttrib2fv) (GLuint index, const GLfloat *v);
+	void(*glVertexAttrib2s) (GLuint index, GLshort x, GLshort y);
+	void(*glVertexAttrib2sv) (GLuint index, const GLshort *v);
+	void(*glVertexAttrib3d) (GLuint index, GLdouble x, GLdouble y, GLdouble z);
+	void(*glVertexAttrib3dv) (GLuint index, const GLdouble *v);
+	void(*glVertexAttrib3f) (GLuint index, GLfloat x, GLfloat y, GLfloat z);
+	void(*glVertexAttrib3fv) (GLuint index, const GLfloat *v);
+	void(*glVertexAttrib3s) (GLuint index, GLshort x, GLshort y, GLshort z);
+	void(*glVertexAttrib3sv) (GLuint index, const GLshort *v);
+	void(*glVertexAttrib4Nbv) (GLuint index, const GLbyte *v);
+	void(*glVertexAttrib4Niv) (GLuint index, const GLint *v);
+	void(*glVertexAttrib4Nsv) (GLuint index, const GLshort *v);
+	void(*glVertexAttrib4Nub) (GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w);
+	void(*glVertexAttrib4Nubv) (GLuint index, const GLubyte *v);
+	void(*glVertexAttrib4Nuiv) (GLuint index, const GLuint *v);
+	void(*glVertexAttrib4Nusv) (GLuint index, const GLushort *v);
+	void(*glVertexAttrib4bv) (GLuint index, const GLbyte *v);
+	void(*glVertexAttrib4d) (GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+	void(*glVertexAttrib4dv) (GLuint index, const GLdouble *v);
+	void(*glVertexAttrib4f) (GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+	void(*glVertexAttrib4fv) (GLuint index, const GLfloat *v);
+	void(*glVertexAttrib4iv) (GLuint index, const GLint *v);
+	void(*glVertexAttrib4s) (GLuint index, GLshort x, GLshort y, GLshort z, GLshort w);
+	void(*glVertexAttrib4sv) (GLuint index, const GLshort *v);
+	void(*glVertexAttrib4ubv) (GLuint index, const GLubyte *v);
+	void(*glVertexAttrib4uiv) (GLuint index, const GLuint *v);
+	void(*glVertexAttrib4usv) (GLuint index, const GLushort *v);
+	void(*glVertexAttribPointer) (GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void *pointer);
 	enum openGL2_0
 	{
 		GL_BLEND_EQUATION_RGB =						0x8009,
@@ -401,6 +611,12 @@ namespace TinyExtender
 	};
 
 	//OpenGL 2.1 Extensions
+	void(*glUniformMatrix2x3fv) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+	void(*glUniformMatrix3x2fv) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+	void(*glUniformMatrix2x4fv) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+	void(*glUniformMatrix4x2fv) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+	void(*glUniformMatrix3x4fv) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+	void(*glUniformMatrix4x3fv) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
 	enum openGL2_1
 	{
 		GL_PIXEL_PACK_BUFFER =					0x88EB,
@@ -430,6 +646,90 @@ namespace TinyExtender
 	
 	//3.0 extensions
 	typedef unsigned short GLhalf;
+	void(*glColorMaski) (GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
+	void(*glGetBooleani_v) (GLenum target, GLuint index, GLboolean *data);
+	void(*glGetIntegeri_v) (GLenum target, GLuint index, GLint *data);
+	void(*glEnablei) (GLenum target, GLuint index);
+	void(*glDisablei) (GLenum target, GLuint index);
+	GLboolean(*glIsEnabledi) (GLenum target, GLuint index);
+	void(*glBeginTransformFeedback) (GLenum primitiveMode);
+	void(*glEndTransformFeedback) (void);
+	void(*glBindBufferRange) (GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
+	void(*glBindBufferBase) (GLenum target, GLuint index, GLuint buffer);
+	void(*glTransformFeedbackVaryings) (GLuint program, GLsizei count, const GLchar *const*varyings, GLenum bufferMode);
+	void(*glGetTransformFeedbackVarying) (GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLsizei *size, GLenum *type, GLchar *name);
+	void(*glClampColor) (GLenum target, GLenum clamp);
+	void(*glBeginConditionalRender) (GLuint id, GLenum mode);
+	void(*glEndConditionalRender) (void);
+	void(*glVertexAttribIPointer) (GLuint index, GLint size, GLenum type, GLsizei stride, const void *pointer);
+	void(*glGetVertexAttribIiv) (GLuint index, GLenum pname, GLint *params);
+	void(*glGetVertexAttribIuiv) (GLuint index, GLenum pname, GLuint *params);
+	void(*glVertexAttribI1i) (GLuint index, GLint x);
+	void(*glVertexAttribI2i) (GLuint index, GLint x, GLint y);
+	void(*glVertexAttribI3i) (GLuint index, GLint x, GLint y, GLint z);
+	void(*glVertexAttribI4i) (GLuint index, GLint x, GLint y, GLint z, GLint w);
+	void(*glVertexAttribI1ui) (GLuint index, GLuint x);
+	void(*glVertexAttribI2ui) (GLuint index, GLuint x, GLuint y);
+	void(*glVertexAttribI3ui) (GLuint index, GLuint x, GLuint y, GLuint z);
+	void(*glVertexAttribI4ui) (GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+	void(*glVertexAttribI1iv) (GLuint index, const GLint *v);
+	void(*glVertexAttribI2iv) (GLuint index, const GLint *v);
+	void(*glVertexAttribI3iv) (GLuint index, const GLint *v);
+	void(*glVertexAttribI4iv) (GLuint index, const GLint *v);
+	void(*glVertexAttribI1uiv) (GLuint index, const GLuint *v);
+	void(*glVertexAttribI2uiv) (GLuint index, const GLuint *v);
+	void(*glVertexAttribI3uiv) (GLuint index, const GLuint *v);
+	void(*glVertexAttribI4uiv) (GLuint index, const GLuint *v);
+	void(*glVertexAttribI4bv) (GLuint index, const GLbyte *v);
+	void(*glVertexAttribI4sv) (GLuint index, const GLshort *v);
+	void(*glVertexAttribI4ubv) (GLuint index, const GLubyte *v);
+	void(*glVertexAttribI4usv) (GLuint index, const GLushort *v);
+	void(*glGetUniformuiv) (GLuint program, GLint location, GLuint *params);
+	void(*glBindFragDataLocation) (GLuint program, GLuint color, const GLchar *name);
+	GLint(*glGetFragDataLocation) (GLuint program, const GLchar *name);
+	void(*glUniform1ui) (GLint location, GLuint v0);
+	void(*glUniform2ui) (GLint location, GLuint v0, GLuint v1);
+	void(*glUniform3ui) (GLint location, GLuint v0, GLuint v1, GLuint v2);
+	void(*glUniform4ui) (GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
+	void(*glUniform1uiv) (GLint location, GLsizei count, const GLuint *value);
+	void(*glUniform2uiv) (GLint location, GLsizei count, const GLuint *value);
+	void(*glUniform3uiv) (GLint location, GLsizei count, const GLuint *value);
+	void(*glUniform4uiv) (GLint location, GLsizei count, const GLuint *value);
+	void(*glTexParameterIiv) (GLenum target, GLenum pname, const GLint *params);
+	void(*glTexParameterIuiv) (GLenum target, GLenum pname, const GLuint *params);
+	void(*glGetTexParameterIiv) (GLenum target, GLenum pname, GLint *params);
+	void(*glGetTexParameterIuiv) (GLenum target, GLenum pname, GLuint *params);
+	void(*glClearBufferiv) (GLenum buffer, GLint drawbuffer, const GLint *value);
+	void(*glClearBufferuiv) (GLenum buffer, GLint drawbuffer, const GLuint *value);
+	void(*glClearBufferfv) (GLenum buffer, GLint drawbuffer, const GLfloat *value);
+	void(*glClearBufferfi) (GLenum buffer, GLint drawbuffer, GLfloat depth, GLint stencil);
+	const GLubyte* (*glGetStringi) (GLenum name, GLuint index);
+	GLboolean(*glIsRenderbuffer) (GLuint renderbuffer);
+	void(*glBindRenderbuffer) (GLenum target, GLuint renderbuffer);
+	void(*glDeleteRenderbuffers) (GLsizei n, const GLuint *renderbuffers);
+	void(*glGenRenderbuffers) (GLsizei n, GLuint *renderbuffers);
+	void(*glRenderbufferStorage) (GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
+	void(*glGetRenderbufferParameteriv) (GLenum target, GLenum pname, GLint *params);
+	GLboolean(*glIsFramebuffer) (GLuint framebuffer);
+	void(*glBindFramebuffer) (GLenum target, GLuint framebuffer);
+	void(*glDeleteFramebuffers) (GLsizei n, const GLuint *framebuffers);
+	void(*glGenFramebuffers) (GLsizei n, GLuint *framebuffers);
+	GLenum(*glCheckFramebufferStatus) (GLenum target);
+	void(*glFramebufferTexture1D) (GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+	void(*glFramebufferTexture2D) (GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+	void(*glFramebufferTexture3D) (GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
+	void(*glFramebufferRenderbuffer) (GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+	void(*glGetFramebufferAttachmentParameteriv) (GLenum target, GLenum attachment, GLenum pname, GLint *params);
+	void(*glGenerateMipmap) (GLenum target);
+	void(*glBlitFramebuffer) (GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+	void(*glRenderbufferStorageMultisample) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+	void(*glFramebufferTextureLayer) (GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
+	void *(*glMapBufferRange) (GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access);
+	void(*glFlushMappedBufferRange) (GLenum target, GLintptr offset, GLsizeiptr length);
+	void(*glBindVertexArray) (GLuint array);
+	void(*glDeleteVertexArrays) (GLsizei n, const GLuint *arrays);
+	void(*glGenVertexArrays) (GLsizei n, GLuint *arrays);
+	GLboolean(*glIsVertexArray) (GLuint array);
 	enum openGL3_0
 	{
 		GL_COMPARE_REF_TO_TEXTURE =								0x884E,
@@ -656,6 +956,18 @@ namespace TinyExtender
 	};
 
 	//OpenGL 3.1 Extensions
+	void(*glDrawArraysInstanced) (GLenum mode, GLint first, GLsizei count, GLsizei instancecount);
+	void(*glDrawElementsInstanced) (GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei instancecount);
+	void(*glTexBuffer) (GLenum target, GLenum internalformat, GLuint buffer);
+	void(*glPrimitiveRestartIndex) (GLuint index);
+	void(*glCopyBufferSubData) (GLenum readTarget, GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
+	void(*glGetUniformIndices) (GLuint program, GLsizei uniformCount, const GLchar *const*uniformNames, GLuint *uniformIndices);
+	void(*glGetActiveUniformsiv) (GLuint program, GLsizei uniformCount, const GLuint *uniformIndices, GLenum pname, GLint *params);
+	void(*glGetActiveUniformName) (GLuint program, GLuint uniformIndex, GLsizei bufSize, GLsizei *length, GLchar *uniformName);
+	GLuint(*glGetUniformBlockIndex) (GLuint program, const GLchar *uniformBlockName);
+	void(*glGetActiveUniformBlockiv) (GLuint program, GLuint uniformBlockIndex, GLenum pname, GLint *params);
+	void(*glGetActiveUniformBlockName) (GLuint program, GLuint uniformBlockIndex, GLsizei bufSize, GLsizei *length, GLchar *uniformBlockName);
+	void(*glUniformBlockBinding) (GLuint program, GLuint uniformBlockIndex, GLuint uniformBlockBinding);
 	enum openGL3_1
 	{
 		GL_SAMPLER_2D_RECT =									0x8B63,
@@ -722,6 +1034,25 @@ namespace TinyExtender
 	typedef struct __GLsync* GLsync;
 	typedef uint64_t GLuint64;
 	typedef int64_t GLint64;
+	void(*glDrawElementsBaseVertex) (GLenum mode, GLsizei count, GLenum type, const void *indices, GLint basevertex);
+	void(*glDrawRangeElementsBaseVertex) (GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void *indices, GLint basevertex);
+	void(*glDrawElementsInstancedBaseVertex) (GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei instancecount, GLint basevertex);
+	void(*glMultiDrawElementsBaseVertex) (GLenum mode, const GLsizei *count, GLenum type, const void *const*indices, GLsizei drawcount, const GLint *basevertex);
+	void(*glProvokingVertex) (GLenum mode);
+	GLsync(*glFenceSync) (GLenum condition, GLbitfield flags);
+	GLboolean(*glIsSync) (GLsync sync);
+	void(*glDeleteSync) (GLsync sync);
+	GLenum(*glClientWaitSync) (GLsync sync, GLbitfield flags, GLuint64 timeout);
+	void(*glWaitSync) (GLsync sync, GLbitfield flags, GLuint64 timeout);
+	void(*glGetInteger64v) (GLenum pname, GLint64 *params);
+	void(*glGetSynciv) (GLsync sync, GLenum pname, GLsizei bufSize, GLsizei *length, GLint *values);
+	void(*glGetInteger64i_v) (GLenum target, GLuint index, GLint64 *data);
+	void(*glGetBufferParameteri64v) (GLenum target, GLenum pname, GLint64 *params);
+	void(*glFramebufferTexture) (GLenum target, GLenum attachment, GLuint texture, GLint level);
+	void(*glTexImage2DMultisample) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
+	void(*glTexImage3DMultisample) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+	void(*glGetMultisamplefv) (GLenum pname, GLuint index, GLfloat *val);
+	void(*glSampleMaski) (GLuint index, GLbitfield mask);
 	enum openGL3_2
 	{
 		GL_CONTEXT_CORE_PROFILE_BIT =						0x00000001,
@@ -791,6 +1122,64 @@ namespace TinyExtender
 	};
 
 	//OpenGL 3.3 Extensions
+	void(*glBindFragDataLocationIndexed) (GLuint program, GLuint colorNumber, GLuint index, const GLchar *name);
+	GLint(*glGetFragDataIndex) (GLuint program, const GLchar *name);
+	void(*glGenSamplers) (GLsizei count, GLuint *samplers);
+	void(*glDeleteSamplers) (GLsizei count, const GLuint *samplers);
+	GLboolean(*glIsSampler) (GLuint sampler);
+	void(*glBindSampler) (GLuint unit, GLuint sampler);
+	void(*glSamplerParameteri) (GLuint sampler, GLenum pname, GLint param);
+	void(*glSamplerParameteriv) (GLuint sampler, GLenum pname, const GLint *param);
+	void(*glSamplerParameterf) (GLuint sampler, GLenum pname, GLfloat param);
+	void(*glSamplerParameterfv) (GLuint sampler, GLenum pname, const GLfloat *param);
+	void(*glSamplerParameterIiv) (GLuint sampler, GLenum pname, const GLint *param);
+	void(*glSamplerParameterIuiv) (GLuint sampler, GLenum pname, const GLuint *param);
+	void(*glGetSamplerParameteriv) (GLuint sampler, GLenum pname, GLint *params);
+	void(*glGetSamplerParameterIiv) (GLuint sampler, GLenum pname, GLint *params);
+	void(*glGetSamplerParameterfv) (GLuint sampler, GLenum pname, GLfloat *params);
+	void(*glGetSamplerParameterIuiv) (GLuint sampler, GLenum pname, GLuint *params);
+	void(*glQueryCounter) (GLuint id, GLenum target);
+	void(*glGetQueryObjecti64v) (GLuint id, GLenum pname, GLint64 *params);
+	void(*glGetQueryObjectui64v) (GLuint id, GLenum pname, GLuint64 *params);
+	void(*glVertexAttribDivisor) (GLuint index, GLuint divisor);
+	void(*glVertexAttribP1ui) (GLuint index, GLenum type, GLboolean normalized, GLuint value);
+	void(*glVertexAttribP1uiv) (GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
+	void(*glVertexAttribP2ui) (GLuint index, GLenum type, GLboolean normalized, GLuint value);
+	void(*glVertexAttribP2uiv) (GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
+	void(*glVertexAttribP3ui) (GLuint index, GLenum type, GLboolean normalized, GLuint value);
+	void(*glVertexAttribP3uiv) (GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
+	void(*glVertexAttribP4ui) (GLuint index, GLenum type, GLboolean normalized, GLuint value);
+	void(*glVertexAttribP4uiv) (GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
+	void(*glVertexP2ui) (GLenum type, GLuint value);
+	void(*glVertexP2uiv) (GLenum type, const GLuint *value);
+	void(*glVertexP3ui) (GLenum type, GLuint value);
+	void(*glVertexP3uiv) (GLenum type, const GLuint *value);
+	void(*glVertexP4ui) (GLenum type, GLuint value);
+	void(*glVertexP4uiv) (GLenum type, const GLuint *value);
+	void(*glTexCoordP1ui) (GLenum type, GLuint coords);
+	void(*glTexCoordP1uiv) (GLenum type, const GLuint *coords);
+	void(*glTexCoordP2ui) (GLenum type, GLuint coords);
+	void(*glTexCoordP2uiv) (GLenum type, const GLuint *coords);
+	void(*glTexCoordP3ui) (GLenum type, GLuint coords);
+	void(*glTexCoordP3uiv) (GLenum type, const GLuint *coords);
+	void(*glTexCoordP4ui) (GLenum type, GLuint coords);
+	void(*glTexCoordP4uiv) (GLenum type, const GLuint *coords);
+	void(*glMultiTexCoordP1ui) (GLenum texture, GLenum type, GLuint coords);
+	void(*glMultiTexCoordP1uiv) (GLenum texture, GLenum type, const GLuint *coords);
+	void(*glMultiTexCoordP2ui) (GLenum texture, GLenum type, GLuint coords);
+	void(*glMultiTexCoordP2uiv) (GLenum texture, GLenum type, const GLuint *coords);
+	void(*glMultiTexCoordP3ui) (GLenum texture, GLenum type, GLuint coords);
+	void(*glMultiTexCoordP3uiv) (GLenum texture, GLenum type, const GLuint *coords);
+	void(*glMultiTexCoordP4ui) (GLenum texture, GLenum type, GLuint coords);
+	void(*glMultiTexCoordP4uiv) (GLenum texture, GLenum type, const GLuint *coords);
+	void(*glNormalP3ui) (GLenum type, GLuint coords);
+	void(*glNormalP3uiv) (GLenum type, const GLuint *coords);
+	void(*glColorP3ui) (GLenum type, GLuint color);
+	void(*glColorP3uiv) (GLenum type, const GLuint *color);
+	void(*glColorP4ui) (GLenum type, GLuint color);
+	void(*glColorP4uiv) (GLenum type, const GLuint *color);
+	void(*glSecondaryColorP3ui) (GLenum type, GLuint color);
+	void(*glSecondaryColorP3uiv) (GLenum type, const GLuint *color);
 	enum openGL3_3
 	{
 		GL_VERTEX_ATTRIB_ARRAY_DIVISOR =		0x88FE,
@@ -812,6 +1201,52 @@ namespace TinyExtender
 	};
 
 	//OpenGL 4.0 Extensions
+	void(*glMinSampleShading) (GLfloat value);
+	void(*glBlendEquationi) (GLuint buf, GLenum mode);
+	void(*glBlendEquationSeparatei) (GLuint buf, GLenum modeRGB, GLenum modeAlpha);
+	void(*glBlendFunci) (GLuint buf, GLenum src, GLenum dst);
+	void(*glBlendFuncSeparatei) (GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
+	void(*glDrawArraysIndirect) (GLenum mode, const void *indirect);
+	void(*glDrawElementsIndirect) (GLenum mode, GLenum type, const void *indirect);
+	void(*glUniform1d) (GLint location, GLdouble x);
+	void(*glUniform2d) (GLint location, GLdouble x, GLdouble y);
+	void(*glUniform3d) (GLint location, GLdouble x, GLdouble y, GLdouble z);
+	void(*glUniform4d) (GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+	void(*glUniform1dv) (GLint location, GLsizei count, const GLdouble *value);
+	void(*glUniform2dv) (GLint location, GLsizei count, const GLdouble *value);
+	void(*glUniform3dv) (GLint location, GLsizei count, const GLdouble *value);
+	void(*glUniform4dv) (GLint location, GLsizei count, const GLdouble *value);
+	void(*glUniformMatrix2dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+	void(*glUniformMatrix3dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+	void(*glUniformMatrix4dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+	void(*glUniformMatrix2x3dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+	void(*glUniformMatrix2x4dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+	void(*glUniformMatrix3x2dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+	void(*glUniformMatrix3x4dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+	void(*glUniformMatrix4x2dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+	void(*glUniformMatrix4x3dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+	void(*glGetUniformdv) (GLuint program, GLint location, GLdouble *params);
+	GLint(*glGetSubroutineUniformLocation) (GLuint program, GLenum shadertype, const GLchar *name);
+	GLuint(*glGetSubroutineIndex) (GLuint program, GLenum shadertype, const GLchar *name);
+	void(*glGetActiveSubroutineUniformiv) (GLuint program, GLenum shadertype, GLuint index, GLenum pname, GLint *values);
+	void(*glGetActiveSubroutineUniformName) (GLuint program, GLenum shadertype, GLuint index, GLsizei bufsize, GLsizei *length, GLchar *name);
+	void(*glGetActiveSubroutineName) (GLuint program, GLenum shadertype, GLuint index, GLsizei bufsize, GLsizei *length, GLchar *name);
+	void(*glUniformSubroutinesuiv) (GLenum shadertype, GLsizei count, const GLuint *indices);
+	void(*glGetUniformSubroutineuiv) (GLenum shadertype, GLint location, GLuint *params);
+	void(*glGetProgramStageiv) (GLuint program, GLenum shadertype, GLenum pname, GLint *values);
+	void(*glPatchParameteri) (GLenum pname, GLint value);
+	void(*glPatchParameterfv) (GLenum pname, const GLfloat *values);
+	void(*glBindTransformFeedback) (GLenum target, GLuint id);
+	void(*glDeleteTransformFeedbacks) (GLsizei n, const GLuint *ids);
+	void(*glGenTransformFeedbacks) (GLsizei n, GLuint *ids);
+	GLboolean(*glIsTransformFeedback) (GLuint id);
+	void(*glPauseTransformFeedback) (void);
+	void(*glResumeTransformFeedback) (void);
+	void(*glDrawTransformFeedback) (GLenum mode, GLuint id);
+	void(*glDrawTransformFeedbackStream) (GLenum mode, GLuint id, GLuint stream);
+	void(*glBeginQueryIndexed) (GLenum target, GLuint index, GLuint id);
+	void(*glEndQueryIndexed) (GLenum target, GLuint index);
+	void(*glGetQueryIndexediv) (GLenum target, GLuint index, GLenum pname, GLint *params);
 	enum openGL4_0
 	{
 		GL_SAMPLE_SHADING =												0x8C36,
@@ -894,6 +1329,94 @@ namespace TinyExtender
 	};
 
 	//OpenGL 4.1 Extensions
+	void(*glReleaseShaderCompiler) (void);
+	void(*glShaderBinary) (GLsizei count, const GLuint *shaders, GLenum binaryformat, const void *binary, GLsizei length);
+	void(*glGetShaderPrecisionFormat) (GLenum shadertype, GLenum precisiontype, GLint *range, GLint *precision);
+	void(*glDepthRangef) (GLfloat n, GLfloat f);
+	void(*glClearDepthf) (GLfloat d);
+	void(*glGetProgramBinary) (GLuint program, GLsizei bufSize, GLsizei *length, GLenum *binaryFormat, void *binary);
+	void(*glProgramBinary) (GLuint program, GLenum binaryFormat, const void *binary, GLsizei length);
+	void(*glProgramParameteri) (GLuint program, GLenum pname, GLint value);
+	void(*glUseProgramStages) (GLuint pipeline, GLbitfield stages, GLuint program);
+	void(*glActiveShaderProgram) (GLuint pipeline, GLuint program);
+	GLuint(*glCreateShaderProgramv) (GLenum type, GLsizei count, const GLchar *const*strings);
+	void(*glBindProgramPipeline) (GLuint pipeline);
+	void(*glDeleteProgramPipelines) (GLsizei n, const GLuint *pipelines);
+	void(*glGenProgramPipelines) (GLsizei n, GLuint *pipelines);
+	GLboolean(*glIsProgramPipeline) (GLuint pipeline);
+	void(*glGetProgramPipelineiv) (GLuint pipeline, GLenum pname, GLint *params);
+	void(*glProgramUniform1i) (GLuint program, GLint location, GLint v0);
+	void(*glProgramUniform1iv) (GLuint program, GLint location, GLsizei count, const GLint *value);
+	void(*glProgramUniform1f) (GLuint program, GLint location, GLfloat v0);
+	void(*glProgramUniform1fv) (GLuint program, GLint location, GLsizei count, const GLfloat *value);
+	void(*glProgramUniform1d) (GLuint program, GLint location, GLdouble v0);
+	void(*glProgramUniform1dv) (GLuint program, GLint location, GLsizei count, const GLdouble *value);
+	void(*glProgramUniform1ui) (GLuint program, GLint location, GLuint v0);
+	void(*glProgramUniform1uiv) (GLuint program, GLint location, GLsizei count, const GLuint *value);
+	void(*glProgramUniform2i) (GLuint program, GLint location, GLint v0, GLint v1);
+	void(*glProgramUniform2iv) (GLuint program, GLint location, GLsizei count, const GLint *value);
+	void(*glProgramUniform2f) (GLuint program, GLint location, GLfloat v0, GLfloat v1);
+	void(*glProgramUniform2fv) (GLuint program, GLint location, GLsizei count, const GLfloat *value);
+	void(*glProgramUniform2d) (GLuint program, GLint location, GLdouble v0, GLdouble v1);
+	void(*glProgramUniform2dv) (GLuint program, GLint location, GLsizei count, const GLdouble *value);
+	void(*glProgramUniform2ui) (GLuint program, GLint location, GLuint v0, GLuint v1);
+	void(*glProgramUniform2uiv) (GLuint program, GLint location, GLsizei count, const GLuint *value);
+	void(*glProgramUniform3i) (GLuint program, GLint location, GLint v0, GLint v1, GLint v2);
+	void(*glProgramUniform3iv) (GLuint program, GLint location, GLsizei count, const GLint *value);
+	void(*glProgramUniform3f) (GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
+	void(*glProgramUniform3fv) (GLuint program, GLint location, GLsizei count, const GLfloat *value);
+	void(*glProgramUniform3d) (GLuint program, GLint location, GLdouble v0, GLdouble v1, GLdouble v2);
+	void(*glProgramUniform3dv) (GLuint program, GLint location, GLsizei count, const GLdouble *value);
+	void(*glProgramUniform3ui) (GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2);
+	void(*glProgramUniform3uiv) (GLuint program, GLint location, GLsizei count, const GLuint *value);
+	void(*glProgramUniform4i) (GLuint program, GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
+	void(*glProgramUniform4iv) (GLuint program, GLint location, GLsizei count, const GLint *value);
+	void(*glProgramUniform4f) (GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
+	void(*glProgramUniform4fv) (GLuint program, GLint location, GLsizei count, const GLfloat *value);
+	void(*glProgramUniform4d) (GLuint program, GLint location, GLdouble v0, GLdouble v1, GLdouble v2, GLdouble v3);
+	void(*glProgramUniform4dv) (GLuint program, GLint location, GLsizei count, const GLdouble *value);
+	void(*glProgramUniform4ui) (GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
+	void(*glProgramUniform4uiv) (GLuint program, GLint location, GLsizei count, const GLuint *value);
+	void(*glProgramUniformMatrix2fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+	void(*glProgramUniformMatrix3fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+	void(*glProgramUniformMatrix4fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+	void(*glProgramUniformMatrix2dv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+	void(*glProgramUniformMatrix3dv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+	void(*glProgramUniformMatrix4dv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+	void(*glProgramUniformMatrix2x3fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+	void(*glProgramUniformMatrix3x2fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+	void(*glProgramUniformMatrix2x4fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+	void(*glProgramUniformMatrix4x2fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+	void(*glProgramUniformMatrix3x4fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+	void(*glProgramUniformMatrix4x3fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+	void(*glProgramUniformMatrix2x3dv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+	void(*glProgramUniformMatrix3x2dv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+	void(*glProgramUniformMatrix2x4dv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+	void(*glProgramUniformMatrix4x2dv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+	void(*glProgramUniformMatrix3x4dv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+	void(*glProgramUniformMatrix4x3dv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+	void(*glValidateProgramPipeline) (GLuint pipeline);
+	void(*glGetProgramPipelineInfoLog) (GLuint pipeline, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
+	void(*glVertexAttribL1d) (GLuint index, GLdouble x);
+	void(*glVertexAttribL2d) (GLuint index, GLdouble x, GLdouble y);
+	void(*glVertexAttribL3d) (GLuint index, GLdouble x, GLdouble y, GLdouble z);
+	void(*glVertexAttribL4d) (GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+	void(*glVertexAttribL1dv) (GLuint index, const GLdouble *v);
+	void(*glVertexAttribL2dv) (GLuint index, const GLdouble *v);
+	void(*glVertexAttribL3dv) (GLuint index, const GLdouble *v);
+	void(*glVertexAttribL4dv) (GLuint index, const GLdouble *v);
+	void(*glVertexAttribLPointer) (GLuint index, GLint size, GLenum type, GLsizei stride, const void *pointer);
+	void(*glGetVertexAttribLdv) (GLuint index, GLenum pname, GLdouble *params);
+	void(*glViewportArrayv) (GLuint first, GLsizei count, const GLfloat *v);
+	void(*glViewportIndexedf) (GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h);
+	void(*glViewportIndexedfv) (GLuint index, const GLfloat *v);
+	void(*glScissorArrayv) (GLuint first, GLsizei count, const GLint *v);
+	void(*glScissorIndexed) (GLuint index, GLint left, GLint bottom, GLsizei width, GLsizei height);
+	void(*glScissorIndexedv) (GLuint index, const GLint *v);
+	void(*glDepthRangeIndexed) (GLuint first, GLsizei count, const GLdouble *v);
+	void(*glDepthRangeArrayv) (GLuint index, GLdouble n, GLdouble f);
+	void(*glGetFloati_v) (GLenum target, GLuint index, GLfloat *data);
+	void(*glGetDoublei_v) (GLenum target, GLuint index, GLdouble *data);
 	enum openGL4_1
 	{
 		GL_FIXED =									0x140C,
@@ -934,6 +1457,18 @@ namespace TinyExtender
 	};
 
 	//OpenGL 4.2 Extensions
+	void(*glDrawArraysInstancedBaseInstance) (GLenum mode, GLint first, GLsizei count, GLsizei instancecount, GLuint baseinstance);
+	void(*glDrawElementsInstancedBaseInstance) (GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei instancecount, GLuint baseinstance);
+	void(*glDrawElementsInstancedBaseVertexBaseInstance) (GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei instancecount, GLint basevertex, GLuint baseinstance);
+	void(*glGetInternalformativ) (GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint *params);
+	void(*glGetActiveAtomicCounterBufferiv) (GLuint program, GLuint bufferIndex, GLenum pname, GLint *params);
+	void(*glBindImageTexture) (GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format);
+	void(*glMemoryBarrier) (GLbitfield barriers);
+	void(*glTexStorage1D) (GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
+	void(*glTexStorage2D) (GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
+	void(*glTexStorage3D) (GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
+	void(*glDrawTransformFeedbackInstanced) (GLenum mode, GLuint id, GLsizei instancecount);
+	void(*glDrawTransformFeedbackStreamInstanced) (GLenum mode, GLuint id, GLuint stream, GLsizei instancecount);
 	enum openGL4_2
 	{
 		GL_UNPACK_COMPRESSED_BLOCK_WIDTH =										0x9127,
@@ -1044,6 +1579,49 @@ namespace TinyExtender
 
 	//OpenGL 4.3 Extensions
 	typedef void (*glDebug)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, const void *userParam);
+	void(*glClearBufferData) (GLenum target, GLenum internalformat, GLenum format, GLenum type, const void *data);
+	void(*glClearBufferSubData) (GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const void *data);
+	void(*glDispatchCompute) (GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z);
+	void(*glDispatchComputeIndirect) (GLintptr indirect);
+	void(*glCopyImageSubData) (GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth);
+	void(*glFramebufferParameteri) (GLenum target, GLenum pname, GLint param);
+	void(*glGetFramebufferParameteriv) (GLenum target, GLenum pname, GLint *params);
+	void(*glGetInternalformati64v) (GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 *params);
+	void(*glInvalidateTexSubImage) (GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth);
+	void(*glInvalidateTexImage) (GLuint texture, GLint level);
+	void(*glInvalidateBufferSubData) (GLuint buffer, GLintptr offset, GLsizeiptr length);
+	void(*glInvalidateBufferData) (GLuint buffer);
+	void(*glInvalidateFramebuffer) (GLenum target, GLsizei numAttachments, const GLenum *attachments);
+	void(*glInvalidateSubFramebuffer) (GLenum target, GLsizei numAttachments, const GLenum *attachments, GLint x, GLint y, GLsizei width, GLsizei height);
+	void(*glMultiDrawArraysIndirect) (GLenum mode, const void *indirect, GLsizei drawcount, GLsizei stride);
+	void(*glMultiDrawElementsIndirect) (GLenum mode, GLenum type, const void *indirect, GLsizei drawcount, GLsizei stride);
+	void(*glGetProgramInterfaceiv) (GLuint program, GLenum programInterface, GLenum pname, GLint *params);
+	GLuint(*glGetProgramResourceIndex) (GLuint program, GLenum programInterface, const GLchar *name);
+	void(*glGetProgramResourceName) (GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name);
+	void(*glGetProgramResourceiv) (GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum *props, GLsizei bufSize, GLsizei *length, GLint *params);
+	GLint(*glGetProgramResourceLocation) (GLuint program, GLenum programInterface, const GLchar *name);
+	GLint(*glGetProgramResourceLocationIndex) (GLuint program, GLenum programInterface, const GLchar *name);
+	void(*glShaderStorageBlockBinding) (GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding);
+	void(*glTexBufferRange) (GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
+	void(*glTexStorage2DMultisample) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
+	void(*glTexStorage3DMultisample) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+	void(*glTextureView) (GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers);
+	void(*glBindVertexBuffer) (GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+	void(*glVertexAttribFormat) (GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
+	void(*glVertexAttribIFormat) (GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+	void(*glVertexAttribLFormat) (GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+	void(*glVertexAttribBinding) (GLuint attribindex, GLuint bindingindex);
+	void(*glVertexBindingDivisor) (GLuint bindingindex, GLuint divisor);
+	void(*glDebugMessageControl) (GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
+	void(*glDebugMessageInsert) (GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf);
+	void(*glDebugMessageCallback) (glDebug callback, const void *userParam);
+	GLuint(*glGetDebugMessageLog) (GLuint count, GLsizei bufSize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog);
+	void(*glPushDebugGroup) (GLenum source, GLuint id, GLsizei length, const GLchar *message);
+	void(*glPopDebugGroup) (void);
+	void(*glObjectLabel) (GLenum identifier, GLuint name, GLsizei length, const GLchar *label);
+	void(*glObjectPtrLabel) (const void *ptr, GLsizei length, const GLchar *label);
+	void(*glGetObjectLabel) (GLenum identifier, GLuint name, GLsizei bufSize, GLsizei *length, GLchar *label);
+	void(*glGetObjectPtrLabel) (const void *ptr, GLsizei bufSize, GLsizei *length, GLchar *label);
 	enum openGL4_3
 	{
 		GL_NUM_SHADING_LANGUAGE_VERSIONS =								0x82E9,
@@ -1306,6 +1884,15 @@ namespace TinyExtender
 	};
 
 	//OpenGL 4.4 Extensions
+	void(*glBufferStorage) (GLenum target, GLsizeiptr size, const void *data, GLbitfield flags);
+	void(*glClearTexImage) (GLuint texture, GLint level, GLenum format, GLenum type, const void *data);
+	void(*glClearTexSubImage) (GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void *data);
+	void(*glBindBuffersBase) (GLenum target, GLuint first, GLsizei count, const GLuint *buffers);
+	void(*glBindBuffersRange) (GLenum target, GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizeiptr *sizes);
+	void(*glBindTextures) (GLuint first, GLsizei count, const GLuint *textures);
+	void(*glBindSamplers) (GLuint first, GLsizei count, const GLuint *samplers);
+	void(*glBindImageTextures) (GLuint first, GLsizei count, const GLuint *textures);
+	void(*glBindVertexBuffers) (GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizei *strides);
 	enum openGL4_4
 	{
 		GL_MAX_VERTEX_ATTRIB_STRIDE =						0x82E5,
@@ -1501,996 +2088,19 @@ namespace std
 
 namespace TinyExtender
 {
-class extensionManager
-{
-public:
 
 	GLuint glVersionMajor;
 	GLuint glVersionMinor;
 
-	//1.2 extensions
-	void (*glDrawRangeElements) (GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void *indices);
-	void (*glTexImage3D) (GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void *pixels);
-	void (*glTexSubImage3D) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void *pixels);
-	void (*glCopyTexSubImage3D) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
-
-	//1.3 extensions
-	void (*glActiveTexture) (GLenum texture);
-	void (*glSampleCoverage) (GLfloat value, GLboolean invert);
-	void (*glCompressedTexImage3D) (GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void *data);
-	void (*glCompressedTexImage2D) (GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const void *data);
-	void (*glCompressedTexImage1D) (GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void *data);
-	void (*glCompressedTexSubImage3D) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void *data);
-	void (*glCompressedTexSubImage2D) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void *data);
-	void (*glCompressedTexSubImage1D) (GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void *data);
-	void (*glGetCompressedTexImage) (GLenum target, GLint level, void *img);
-	void (*glClientActiveTexture) (GLenum texture);
-	void (*glMultiTexCoord1d) (GLenum target, GLdouble s);
-	void (*glMultiTexCoord1dv) (GLenum target, const GLdouble *v);
-	void (*glMultiTexCoord1f) (GLenum target, GLfloat s);
-	void (*glMultiTexCoord1fv) (GLenum target, const GLfloat *v);
-	void (*glMultiTexCoord1i) (GLenum target, GLint s);
-	void (*glMultiTexCoord1iv) (GLenum target, const GLint *v);
-	void (*glMultiTexCoord1s) (GLenum target, GLshort s);
-	void (*glMultiTexCoord1sv) (GLenum target, const GLshort *v);
-	void (*glMultiTexCoord2d) (GLenum target, GLdouble s, GLdouble t);
-	void (*glMultiTexCoord2dv) (GLenum target, const GLdouble *v);
-	void (*glMultiTexCoord2f) (GLenum target, GLfloat s, GLfloat t);
-	void (*glMultiTexCoord2fv) (GLenum target, const GLfloat *v);
-	void (*glMultiTexCoord2i) (GLenum target, GLint s, GLint t);
-	void (*glMultiTexCoord2iv) (GLenum target, const GLint *v);
-	void (*glMultiTexCoord2s) (GLenum target, GLshort s, GLshort t);
-	void (*glMultiTexCoord2sv) (GLenum target, const GLshort *v);
-	void (*glMultiTexCoord3d) (GLenum target, GLdouble s, GLdouble t, GLdouble r);
-	void (*glMultiTexCoord3dv) (GLenum target, const GLdouble *v);
-	void (*glMultiTexCoord3f) (GLenum target, GLfloat s, GLfloat t, GLfloat r);
-	void (*glMultiTexCoord3fv) (GLenum target, const GLfloat *v);
-	void (*glMultiTexCoord3i) (GLenum target, GLint s, GLint t, GLint r);
-	void (*glMultiTexCoord3iv) (GLenum target, const GLint *v);
-	void (*glMultiTexCoord3s) (GLenum target, GLshort s, GLshort t, GLshort r);
-	void (*glMultiTexCoord3sv) (GLenum target, const GLshort *v);
-	void (*glMultiTexCoord4d) (GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q);
-	void (*glMultiTexCoord4dv) (GLenum target, const GLdouble *v);
-	void (*glMultiTexCoord4f) (GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q);
-	void (*glMultiTexCoord4fv) (GLenum target, const GLfloat *v);
-	void (*glMultiTexCoord4i) (GLenum target, GLint s, GLint t, GLint r, GLint q);
-	void (*glMultiTexCoord4iv) (GLenum target, const GLint *v);
-	void (*glMultiTexCoord4s) (GLenum target, GLshort s, GLshort t, GLshort r, GLshort q);
-	void (*glMultiTexCoord4sv) (GLenum target, const GLshort *v);
-	void (*glLoadTransposeMatrixf) (const GLfloat *m);
-	void (*glLoadTransposeMatrixd) (const GLdouble *m);
-	void (*glMultTransposeMatrixf) (const GLfloat *m);
-	void (*glMultTransposeMatrixd) (const GLdouble *m);
-
-	//1.4 extensions
-	void (*glBlendFuncSeparate) (GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
-	void (*glMultiDrawArrays) (GLenum mode, const GLint *first, const GLsizei *count, GLsizei drawcount);
-	void (*glMultiDrawElements) (GLenum mode, const GLsizei *count, GLenum type, const void *const*indices, GLsizei drawcount);
-	void (*glPointParameterf) (GLenum pname, GLfloat param);
-	void (*glPointParameterfv) (GLenum pname, const GLfloat *params);
-	void (*glPointParameteri) (GLenum pname, GLint param);
-	void (*glPointParameteriv) (GLenum pname, const GLint *params);
-	void (*glFogCoordf) (GLfloat coord);
-	void (*glFogCoordfv) (const GLfloat *coord);
-	void (*glFogCoordd) (GLdouble coord);
-	void (*glFogCoorddv) (const GLdouble *coord);
-	void (*glFogCoordPointer) (GLenum type, GLsizei stride, const void *pointer);
-	void (*glSecondaryColor3b) (GLbyte red, GLbyte green, GLbyte blue);
-	void (*glSecondaryColor3bv) (const GLbyte *v);
-	void (*glSecondaryColor3d) (GLdouble red, GLdouble green, GLdouble blue);
-	void (*glSecondaryColor3dv) (const GLdouble *v);
-	void (*glSecondaryColor3f) (GLfloat red, GLfloat green, GLfloat blue);
-	void (*glSecondaryColor3fv) (const GLfloat *v);
-	void (*glSecondaryColor3i) (GLint red, GLint green, GLint blue);
-	void (*glSecondaryColor3iv) (const GLint *v);
-	void (*glSecondaryColor3s) (GLshort red, GLshort green, GLshort blue);
-	void (*glSecondaryColor3sv) (const GLshort *v);
-	void (*glSecondaryColor3ub) (GLubyte red, GLubyte green, GLubyte blue);
-	void (*glSecondaryColor3ubv) (const GLubyte *v);
-	void (*glSecondaryColor3ui) (GLuint red, GLuint green, GLuint blue);
-	void (*glSecondaryColor3uiv) (const GLuint *v);
-	void (*glSecondaryColor3us) (GLushort red, GLushort green, GLushort blue);
-	void (*glSecondaryColor3usv) (const GLushort *v);
-	void (*glSecondaryColorPointer) (GLint size, GLenum type, GLsizei stride, const void *pointer);
-	void (*glWindowPos2d) (GLdouble x, GLdouble y);
-	void (*glWindowPos2dv) (const GLdouble *v);
-	void (*glWindowPos2f) (GLfloat x, GLfloat y);
-	void (*glWindowPos2fv) (const GLfloat *v);
-	void (*glWindowPos2i) (GLint x, GLint y);
-	void (*glWindowPos2iv) (const GLint *v);
-	void (*glWindowPos2s) (GLshort x, GLshort y);
-	void (*glWindowPos2sv) (const GLshort *v);
-	void (*glWindowPos3d) (GLdouble x, GLdouble y, GLdouble z);
-	void (*glWindowPos3dv) (const GLdouble *v);
-	void (*glWindowPos3f) (GLfloat x, GLfloat y, GLfloat z);
-	void (*glWindowPos3fv) (const GLfloat *v);
-	void (*glWindowPos3i) (GLint x, GLint y, GLint z);
-	void (*glWindowPos3iv) (const GLint *v);
-	void (*glWindowPos3s) (GLshort x, GLshort y, GLshort z);
-	void (*glWindowPos3sv) (const GLshort *v);
-	void (*glBlendColor) (GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
-	void (*glBlendEquation) (GLenum mode);
-
-	//1.5 extensions
-	void (*glGenQueries) (GLsizei n, GLuint *ids);
-	void (*glDeleteQueries) (GLsizei n, const GLuint *ids);
-	GLboolean (*glIsQuery) (GLuint id);
-	void (*glBeginQuery) (GLenum target, GLuint id);
-	void (*glEndQuery) (GLenum target);
-	void (*glGetQueryiv) (GLenum target, GLenum pname, GLint *params);
-	void (*glGetQueryObjectiv) (GLuint id, GLenum pname, GLint *params);
-	void (*glGetQueryObjectuiv) (GLuint id, GLenum pname, GLuint *params);
-	void (*glBindBuffer) (GLenum target, GLuint buffer);
-	void (*glDeleteBuffers) (GLsizei n, const GLuint *buffers);
-	void (*glGenBuffers) (GLsizei n, GLuint *buffers);
-	GLboolean (*glIsBuffer) (GLuint buffer);
-	void (*glBufferData) (GLenum target, GLsizeiptr size, const void *data, GLenum usage);
-	void (*glBufferSubData) (GLenum target, GLintptr offset, GLsizeiptr size, const void *data);
-	void (*glGetBufferSubData) (GLenum target, GLintptr offset, GLsizeiptr size, void *data);
-	void * (*glMapBuffer) (GLenum target, GLenum access);
-	GLboolean (*glUnmapBuffer) (GLenum target);
-	void (*glGetBufferParameteriv) (GLenum target, GLenum pname, GLint *params);
-	void (*glGetBufferPointerv) (GLenum target, GLenum pname, void **params);
-
-	//2.0 extensions
-	void (*glBlendEquationSeparate) (GLenum modeRGB, GLenum modeAlpha);
-	void (*glDrawBuffers) (GLsizei n, const GLenum *bufs);
-	void (*glStencilOpSeparate) (GLenum face, GLenum sfail, GLenum dpfail, GLenum dppass);
-	void (*glStencilFuncSeparate) (GLenum face, GLenum func, GLint ref, GLuint mask);
-	void (*glStencilMaskSeparate) (GLenum face, GLuint mask);
-	void (*glAttachShader) (GLuint program, GLuint shader);
-	void (*glBindAttribLocation) (GLuint program, GLuint index, const GLchar *name);
-	void (*glCompileShader) (GLuint shader);
-	GLuint (*glCreateProgram) (void);
-	GLuint (*glCreateShader) (GLenum type);
-	void (*glDeleteProgram) (GLuint program);
-	void (*glDeleteShader) (GLuint shader);
-	void (*glDetachShader) (GLuint program, GLuint shader);
-	void (*glDisableVertexAttribArray) (GLuint index);
-	void (*glEnableVertexAttribArray) (GLuint index);
-	void (*glGetActiveAttrib) (GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);
-	void (*glGetActiveUniform) (GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);
-	void (*glGetAttachedShaders) (GLuint program, GLsizei maxCount, GLsizei *count, GLuint *shaders);
-	GLint (*glGetAttribLocation) (GLuint program, const GLchar *name);
-	void (*glGetProgramiv) (GLuint program, GLenum pname, GLint *params);
-	void (*glGetProgramInfoLog) (GLuint program, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
-	void (*glGetShaderiv) (GLuint shader, GLenum pname, GLint *params);
-	void (*glGetShaderInfoLog) (GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
-	void (*glGetShaderSource) (GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *source);
-	GLint (*glGetUniformLocation) (GLuint program, const GLchar *name);
-	void (*glGetUniformfv) (GLuint program, GLint location, GLfloat *params);
-	void (*glGetUniformiv) (GLuint program, GLint location, GLint *params);
-	void (*glGetVertexAttribdv) (GLuint index, GLenum pname, GLdouble *params);
-	void (*glGetVertexAttribfv) (GLuint index, GLenum pname, GLfloat *params);
-	void (*glGetVertexAttribiv) (GLuint index, GLenum pname, GLint *params);
-	void (*glGetVertexAttribPointerv) (GLuint index, GLenum pname, void **pointer);
-	GLboolean (*glIsProgram) (GLuint program);
-	GLboolean (*glIsShader) (GLuint shader);
-	void (*glLinkProgram) (GLuint program);
-	void (*glShaderSource) (GLuint shader, GLsizei count, const GLchar *const*string, const GLint *length);
-	void (*glUseProgram) (GLuint program);
-	void (*glUniform1f) (GLint location, GLfloat v0);
-	void (*glUniform2f) (GLint location, GLfloat v0, GLfloat v1);
-	void (*glUniform3f) (GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
-	void (*glUniform4f) (GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
-	void (*glUniform1i) (GLint location, GLint v0);
-	void (*glUniform2i) (GLint location, GLint v0, GLint v1);
-	void (*glUniform3i) (GLint location, GLint v0, GLint v1, GLint v2);
-	void (*glUniform4i) (GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
-	void (*glUniform1fv) (GLint location, GLsizei count, const GLfloat *value);
-	void (*glUniform2fv) (GLint location, GLsizei count, const GLfloat *value);
-	void (*glUniform3fv) (GLint location, GLsizei count, const GLfloat *value);
-	void (*glUniform4fv) (GLint location, GLsizei count, const GLfloat *value);
-	void (*glUniform1iv) (GLint location, GLsizei count, const GLint *value);
-	void (*glUniform2iv) (GLint location, GLsizei count, const GLint *value);
-	void (*glUniform3iv) (GLint location, GLsizei count, const GLint *value);
-	void (*glUniform4iv) (GLint location, GLsizei count, const GLint *value);
-	void (*glUniformMatrix2fv) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-	void (*glUniformMatrix3fv) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-	void (*glUniformMatrix4fv) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-	void (*glValidateProgram) (GLuint program);
-	void (*glVertexAttrib1d) (GLuint index, GLdouble x);
-	void (*glVertexAttrib1dv) (GLuint index, const GLdouble *v);
-	void (*glVertexAttrib1f) (GLuint index, GLfloat x);
-	void (*glVertexAttrib1fv) (GLuint index, const GLfloat *v);
-	void (*glVertexAttrib1s) (GLuint index, GLshort x);
-	void (*glVertexAttrib1sv) (GLuint index, const GLshort *v);
-	void (*glVertexAttrib2d) (GLuint index, GLdouble x, GLdouble y);
-	void (*glVertexAttrib2dv) (GLuint index, const GLdouble *v);
-	void (*glVertexAttrib2f) (GLuint index, GLfloat x, GLfloat y);
-	void (*glVertexAttrib2fv) (GLuint index, const GLfloat *v);
-	void (*glVertexAttrib2s) (GLuint index, GLshort x, GLshort y);
-	void (*glVertexAttrib2sv) (GLuint index, const GLshort *v);
-	void (*glVertexAttrib3d) (GLuint index, GLdouble x, GLdouble y, GLdouble z);
-	void (*glVertexAttrib3dv) (GLuint index, const GLdouble *v);
-	void (*glVertexAttrib3f) (GLuint index, GLfloat x, GLfloat y, GLfloat z);
-	void (*glVertexAttrib3fv) (GLuint index, const GLfloat *v);
-	void (*glVertexAttrib3s) (GLuint index, GLshort x, GLshort y, GLshort z);
-	void (*glVertexAttrib3sv) (GLuint index, const GLshort *v);
-	void (*glVertexAttrib4Nbv) (GLuint index, const GLbyte *v);
-	void (*glVertexAttrib4Niv) (GLuint index, const GLint *v);
-	void (*glVertexAttrib4Nsv) (GLuint index, const GLshort *v);
-	void (*glVertexAttrib4Nub) (GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w);
-	void (*glVertexAttrib4Nubv) (GLuint index, const GLubyte *v);
-	void (*glVertexAttrib4Nuiv) (GLuint index, const GLuint *v);
-	void (*glVertexAttrib4Nusv) (GLuint index, const GLushort *v);
-	void (*glVertexAttrib4bv) (GLuint index, const GLbyte *v);
-	void (*glVertexAttrib4d) (GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-	void (*glVertexAttrib4dv) (GLuint index, const GLdouble *v);
-	void (*glVertexAttrib4f) (GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
-	void (*glVertexAttrib4fv) (GLuint index, const GLfloat *v);
-	void (*glVertexAttrib4iv) (GLuint index, const GLint *v);
-	void (*glVertexAttrib4s) (GLuint index, GLshort x, GLshort y, GLshort z, GLshort w);
-	void (*glVertexAttrib4sv) (GLuint index, const GLshort *v);
-	void (*glVertexAttrib4ubv) (GLuint index, const GLubyte *v);
-	void (*glVertexAttrib4uiv) (GLuint index, const GLuint *v);
-	void (*glVertexAttrib4usv) (GLuint index, const GLushort *v);
-	void (*glVertexAttribPointer) (GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void *pointer);
-
-	//2.1 extensions
-	void (*glUniformMatrix2x3fv) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-	void (*glUniformMatrix3x2fv) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-	void (*glUniformMatrix2x4fv) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-	void (*glUniformMatrix4x2fv) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-	void (*glUniformMatrix3x4fv) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-	void (*glUniformMatrix4x3fv) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-
-	//3.0 extensions
-	void (*glColorMaski) (GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
-	void (*glGetBooleani_v) (GLenum target, GLuint index, GLboolean *data);
-	void (*glGetIntegeri_v) (GLenum target, GLuint index, GLint *data);
-	void (*glEnablei) (GLenum target, GLuint index);
-	void (*glDisablei) (GLenum target, GLuint index);
-	GLboolean (*glIsEnabledi) (GLenum target, GLuint index);
-	void (*glBeginTransformFeedback) (GLenum primitiveMode);
-	void (*glEndTransformFeedback) (void);
-	void (*glBindBufferRange) (GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
-	void (*glBindBufferBase) (GLenum target, GLuint index, GLuint buffer);
-	void (*glTransformFeedbackVaryings) (GLuint program, GLsizei count, const GLchar *const*varyings, GLenum bufferMode);
-	void (*glGetTransformFeedbackVarying) (GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLsizei *size, GLenum *type, GLchar *name);
-	void (*glClampColor) (GLenum target, GLenum clamp);
-	void (*glBeginConditionalRender) (GLuint id, GLenum mode);
-	void (*glEndConditionalRender) (void);
-	void (*glVertexAttribIPointer) (GLuint index, GLint size, GLenum type, GLsizei stride, const void *pointer);
-	void (*glGetVertexAttribIiv) (GLuint index, GLenum pname, GLint *params);
-	void (*glGetVertexAttribIuiv) (GLuint index, GLenum pname, GLuint *params);
-	void (*glVertexAttribI1i) (GLuint index, GLint x);
-	void (*glVertexAttribI2i) (GLuint index, GLint x, GLint y);
-	void (*glVertexAttribI3i) (GLuint index, GLint x, GLint y, GLint z);
-	void (*glVertexAttribI4i) (GLuint index, GLint x, GLint y, GLint z, GLint w);
-	void (*glVertexAttribI1ui) (GLuint index, GLuint x);
-	void (*glVertexAttribI2ui) (GLuint index, GLuint x, GLuint y);
-	void (*glVertexAttribI3ui) (GLuint index, GLuint x, GLuint y, GLuint z);
-	void (*glVertexAttribI4ui) (GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
-	void (*glVertexAttribI1iv) (GLuint index, const GLint *v);
-	void (*glVertexAttribI2iv) (GLuint index, const GLint *v);
-	void (*glVertexAttribI3iv) (GLuint index, const GLint *v);
-	void (*glVertexAttribI4iv) (GLuint index, const GLint *v);
-	void (*glVertexAttribI1uiv) (GLuint index, const GLuint *v);
-	void (*glVertexAttribI2uiv) (GLuint index, const GLuint *v);
-	void (*glVertexAttribI3uiv) (GLuint index, const GLuint *v);
-	void (*glVertexAttribI4uiv) (GLuint index, const GLuint *v);
-	void (*glVertexAttribI4bv) (GLuint index, const GLbyte *v);
-	void (*glVertexAttribI4sv) (GLuint index, const GLshort *v);
-	void (*glVertexAttribI4ubv) (GLuint index, const GLubyte *v);
-	void (*glVertexAttribI4usv) (GLuint index, const GLushort *v);
-	void (*glGetUniformuiv) (GLuint program, GLint location, GLuint *params);
-	void (*glBindFragDataLocation) (GLuint program, GLuint color, const GLchar *name);
-	GLint (*glGetFragDataLocation) (GLuint program, const GLchar *name);
-	void (*glUniform1ui) (GLint location, GLuint v0);
-	void (*glUniform2ui) (GLint location, GLuint v0, GLuint v1);
-	void (*glUniform3ui) (GLint location, GLuint v0, GLuint v1, GLuint v2);
-	void (*glUniform4ui) (GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
-	void (*glUniform1uiv) (GLint location, GLsizei count, const GLuint *value);
-	void (*glUniform2uiv) (GLint location, GLsizei count, const GLuint *value);
-	void (*glUniform3uiv) (GLint location, GLsizei count, const GLuint *value);
-	void (*glUniform4uiv) (GLint location, GLsizei count, const GLuint *value);
-	void (*glTexParameterIiv) (GLenum target, GLenum pname, const GLint *params);
-	void (*glTexParameterIuiv) (GLenum target, GLenum pname, const GLuint *params);
-	void (*glGetTexParameterIiv) (GLenum target, GLenum pname, GLint *params);
-	void (*glGetTexParameterIuiv) (GLenum target, GLenum pname, GLuint *params);
-	void (*glClearBufferiv) (GLenum buffer, GLint drawbuffer, const GLint *value);
-	void (*glClearBufferuiv) (GLenum buffer, GLint drawbuffer, const GLuint *value);
-	void (*glClearBufferfv) (GLenum buffer, GLint drawbuffer, const GLfloat *value);
-	void (*glClearBufferfi) (GLenum buffer, GLint drawbuffer, GLfloat depth, GLint stencil);
-	const GLubyte* (*glGetStringi) (GLenum name, GLuint index);
-	GLboolean (*glIsRenderbuffer) (GLuint renderbuffer);
-	void (*glBindRenderbuffer) (GLenum target, GLuint renderbuffer);
-	void (*glDeleteRenderbuffers) (GLsizei n, const GLuint *renderbuffers);
-	void (*glGenRenderbuffers) (GLsizei n, GLuint *renderbuffers);
-	void (*glRenderbufferStorage) (GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
-	void (*glGetRenderbufferParameteriv) (GLenum target, GLenum pname, GLint *params);
-	GLboolean (*glIsFramebuffer) (GLuint framebuffer);
-	void (*glBindFramebuffer) (GLenum target, GLuint framebuffer);
-	void (*glDeleteFramebuffers) (GLsizei n, const GLuint *framebuffers);
-	void (*glGenFramebuffers) (GLsizei n, GLuint *framebuffers);
-	GLenum (*glCheckFramebufferStatus) (GLenum target);
-	void (*glFramebufferTexture1D) (GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
-	void (*glFramebufferTexture2D) (GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
-	void (*glFramebufferTexture3D) (GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
-	void (*glFramebufferRenderbuffer) (GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
-	void (*glGetFramebufferAttachmentParameteriv) (GLenum target, GLenum attachment, GLenum pname, GLint *params);
-	void (*glGenerateMipmap) (GLenum target);
-	void (*glBlitFramebuffer) (GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
-	void (*glRenderbufferStorageMultisample) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
-	void (*glFramebufferTextureLayer) (GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
-	void *(*glMapBufferRange) (GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access);
-	void (*glFlushMappedBufferRange) (GLenum target, GLintptr offset, GLsizeiptr length);
-	void (*glBindVertexArray) (GLuint array);
-	void (*glDeleteVertexArrays) (GLsizei n, const GLuint *arrays);
-	void (*glGenVertexArrays) (GLsizei n, GLuint *arrays);
-	GLboolean (*glIsVertexArray) (GLuint array);
-
-	//3.1 extensions
-	void (*glDrawArraysInstanced) (GLenum mode, GLint first, GLsizei count, GLsizei instancecount);
-	void (*glDrawElementsInstanced) (GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei instancecount);
-	void (*glTexBuffer) (GLenum target, GLenum internalformat, GLuint buffer);
-	void (*glPrimitiveRestartIndex) (GLuint index);
-	void (*glCopyBufferSubData) (GLenum readTarget, GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
-	void (*glGetUniformIndices) (GLuint program, GLsizei uniformCount, const GLchar *const*uniformNames, GLuint *uniformIndices);
-	void (*glGetActiveUniformsiv) (GLuint program, GLsizei uniformCount, const GLuint *uniformIndices, GLenum pname, GLint *params);
-	void (*glGetActiveUniformName) (GLuint program, GLuint uniformIndex, GLsizei bufSize, GLsizei *length, GLchar *uniformName);
-	GLuint (*glGetUniformBlockIndex) (GLuint program, const GLchar *uniformBlockName);
-	void (*glGetActiveUniformBlockiv) (GLuint program, GLuint uniformBlockIndex, GLenum pname, GLint *params);
-	void (*glGetActiveUniformBlockName) (GLuint program, GLuint uniformBlockIndex, GLsizei bufSize, GLsizei *length, GLchar *uniformBlockName);
-	void (*glUniformBlockBinding) (GLuint program, GLuint uniformBlockIndex, GLuint uniformBlockBinding);
-
-	//3.2 extensions
-	void (*glDrawElementsBaseVertex) (GLenum mode, GLsizei count, GLenum type, const void *indices, GLint basevertex);
-	void (*glDrawRangeElementsBaseVertex) (GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void *indices, GLint basevertex);
-	void (*glDrawElementsInstancedBaseVertex) (GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei instancecount, GLint basevertex);
-	void (*glMultiDrawElementsBaseVertex) (GLenum mode, const GLsizei *count, GLenum type, const void *const*indices, GLsizei drawcount, const GLint *basevertex);
-	void (*glProvokingVertex) (GLenum mode);
-	GLsync (*glFenceSync) (GLenum condition, GLbitfield flags);
-	GLboolean (*glIsSync) (GLsync sync);
-	void (*glDeleteSync) (GLsync sync);
-	GLenum (*glClientWaitSync) (GLsync sync, GLbitfield flags, GLuint64 timeout);
-	void (*glWaitSync) (GLsync sync, GLbitfield flags, GLuint64 timeout);
-	void (*glGetInteger64v) (GLenum pname, GLint64 *params);
-	void (*glGetSynciv) (GLsync sync, GLenum pname, GLsizei bufSize, GLsizei *length, GLint *values);
-	void (*glGetInteger64i_v) (GLenum target, GLuint index, GLint64 *data);
-	void (*glGetBufferParameteri64v) (GLenum target, GLenum pname, GLint64 *params);
-	void (*glFramebufferTexture) (GLenum target, GLenum attachment, GLuint texture, GLint level);
-	void (*glTexImage2DMultisample) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
-	void (*glTexImage3DMultisample) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
-	void (*glGetMultisamplefv) (GLenum pname, GLuint index, GLfloat *val);
-	void (*glSampleMaski) (GLuint index, GLbitfield mask);
-
-	//3.3 extensions
-	void (*glBindFragDataLocationIndexed) (GLuint program, GLuint colorNumber, GLuint index, const GLchar *name);
-	GLint (*glGetFragDataIndex) (GLuint program, const GLchar *name);
-	void (*glGenSamplers) (GLsizei count, GLuint *samplers);
-	void (*glDeleteSamplers) (GLsizei count, const GLuint *samplers);
-	GLboolean (*glIsSampler) (GLuint sampler);
-	void (*glBindSampler) (GLuint unit, GLuint sampler);
-	void (*glSamplerParameteri) (GLuint sampler, GLenum pname, GLint param);
-	void (*glSamplerParameteriv) (GLuint sampler, GLenum pname, const GLint *param);
-	void (*glSamplerParameterf) (GLuint sampler, GLenum pname, GLfloat param);
-	void (*glSamplerParameterfv) (GLuint sampler, GLenum pname, const GLfloat *param);
-	void (*glSamplerParameterIiv) (GLuint sampler, GLenum pname, const GLint *param);
-	void (*glSamplerParameterIuiv) (GLuint sampler, GLenum pname, const GLuint *param);
-	void (*glGetSamplerParameteriv) (GLuint sampler, GLenum pname, GLint *params);
-	void (*glGetSamplerParameterIiv) (GLuint sampler, GLenum pname, GLint *params);
-	void (*glGetSamplerParameterfv) (GLuint sampler, GLenum pname, GLfloat *params);
-	void (*glGetSamplerParameterIuiv) (GLuint sampler, GLenum pname, GLuint *params);
-	void (*glQueryCounter) (GLuint id, GLenum target);
-	void (*glGetQueryObjecti64v) (GLuint id, GLenum pname, GLint64 *params);
-	void (*glGetQueryObjectui64v) (GLuint id, GLenum pname, GLuint64 *params);
-	void (*glVertexAttribDivisor) (GLuint index, GLuint divisor);
-	void (*glVertexAttribP1ui) (GLuint index, GLenum type, GLboolean normalized, GLuint value);
-	void (*glVertexAttribP1uiv) (GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
-	void (*glVertexAttribP2ui) (GLuint index, GLenum type, GLboolean normalized, GLuint value);
-	void (*glVertexAttribP2uiv) (GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
-	void (*glVertexAttribP3ui) (GLuint index, GLenum type, GLboolean normalized, GLuint value);
-	void (*glVertexAttribP3uiv) (GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
-	void (*glVertexAttribP4ui) (GLuint index, GLenum type, GLboolean normalized, GLuint value);
-	void (*glVertexAttribP4uiv) (GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
-	void (*glVertexP2ui) (GLenum type, GLuint value);
-	void (*glVertexP2uiv) (GLenum type, const GLuint *value);
-	void (*glVertexP3ui) (GLenum type, GLuint value);
-	void (*glVertexP3uiv) (GLenum type, const GLuint *value);
-	void (*glVertexP4ui) (GLenum type, GLuint value);
-	void (*glVertexP4uiv) (GLenum type, const GLuint *value);
-	void (*glTexCoordP1ui) (GLenum type, GLuint coords);
-	void (*glTexCoordP1uiv) (GLenum type, const GLuint *coords);
-	void (*glTexCoordP2ui) (GLenum type, GLuint coords);
-	void (*glTexCoordP2uiv) (GLenum type, const GLuint *coords);
-	void (*glTexCoordP3ui) (GLenum type, GLuint coords);
-	void (*glTexCoordP3uiv) (GLenum type, const GLuint *coords);
-	void (*glTexCoordP4ui) (GLenum type, GLuint coords);
-	void (*glTexCoordP4uiv) (GLenum type, const GLuint *coords);
-	void (*glMultiTexCoordP1ui) (GLenum texture, GLenum type, GLuint coords);
-	void (*glMultiTexCoordP1uiv) (GLenum texture, GLenum type, const GLuint *coords);
-	void (*glMultiTexCoordP2ui) (GLenum texture, GLenum type, GLuint coords);
-	void (*glMultiTexCoordP2uiv) (GLenum texture, GLenum type, const GLuint *coords);
-	void (*glMultiTexCoordP3ui) (GLenum texture, GLenum type, GLuint coords);
-	void (*glMultiTexCoordP3uiv) (GLenum texture, GLenum type, const GLuint *coords);
-	void (*glMultiTexCoordP4ui) (GLenum texture, GLenum type, GLuint coords);
-	void (*glMultiTexCoordP4uiv) (GLenum texture, GLenum type, const GLuint *coords);
-	void (*glNormalP3ui) (GLenum type, GLuint coords);
-	void (*glNormalP3uiv) (GLenum type, const GLuint *coords);
-	void (*glColorP3ui) (GLenum type, GLuint color);
-	void (*glColorP3uiv) (GLenum type, const GLuint *color);
-	void (*glColorP4ui) (GLenum type, GLuint color);
-	void (*glColorP4uiv) (GLenum type, const GLuint *color);
-	void (*glSecondaryColorP3ui) (GLenum type, GLuint color);
-	void (*glSecondaryColorP3uiv) (GLenum type, const GLuint *color);
-
-	//4.0 extensions
-	void (*glMinSampleShading) (GLfloat value);
-	void (*glBlendEquationi) (GLuint buf, GLenum mode);
-	void (*glBlendEquationSeparatei) (GLuint buf, GLenum modeRGB, GLenum modeAlpha);
-	void (*glBlendFunci) (GLuint buf, GLenum src, GLenum dst);
-	void (*glBlendFuncSeparatei) (GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
-	void (*glDrawArraysIndirect) (GLenum mode, const void *indirect);
-	void (*glDrawElementsIndirect) (GLenum mode, GLenum type, const void *indirect);
-	void (*glUniform1d) (GLint location, GLdouble x);
-	void (*glUniform2d) (GLint location, GLdouble x, GLdouble y);
-	void (*glUniform3d) (GLint location, GLdouble x, GLdouble y, GLdouble z);
-	void (*glUniform4d) (GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-	void (*glUniform1dv) (GLint location, GLsizei count, const GLdouble *value);
-	void (*glUniform2dv) (GLint location, GLsizei count, const GLdouble *value);
-	void (*glUniform3dv) (GLint location, GLsizei count, const GLdouble *value);
-	void (*glUniform4dv) (GLint location, GLsizei count, const GLdouble *value);
-	void (*glUniformMatrix2dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-	void (*glUniformMatrix3dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-	void (*glUniformMatrix4dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-	void (*glUniformMatrix2x3dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-	void (*glUniformMatrix2x4dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-	void (*glUniformMatrix3x2dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-	void (*glUniformMatrix3x4dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-	void (*glUniformMatrix4x2dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-	void (*glUniformMatrix4x3dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-	void (*glGetUniformdv) (GLuint program, GLint location, GLdouble *params);
-	GLint (*glGetSubroutineUniformLocation) (GLuint program, GLenum shadertype, const GLchar *name);
-	GLuint (*glGetSubroutineIndex) (GLuint program, GLenum shadertype, const GLchar *name);
-	void (*glGetActiveSubroutineUniformiv) (GLuint program, GLenum shadertype, GLuint index, GLenum pname, GLint *values);
-	void (*glGetActiveSubroutineUniformName) (GLuint program, GLenum shadertype, GLuint index, GLsizei bufsize, GLsizei *length, GLchar *name);
-	void (*glGetActiveSubroutineName) (GLuint program, GLenum shadertype, GLuint index, GLsizei bufsize, GLsizei *length, GLchar *name);
-	void (*glUniformSubroutinesuiv) (GLenum shadertype, GLsizei count, const GLuint *indices);
-	void (*glGetUniformSubroutineuiv) (GLenum shadertype, GLint location, GLuint *params);
-	void (*glGetProgramStageiv) (GLuint program, GLenum shadertype, GLenum pname, GLint *values);
-	void (*glPatchParameteri) (GLenum pname, GLint value);
-	void (*glPatchParameterfv) (GLenum pname, const GLfloat *values);
-	void (*glBindTransformFeedback) (GLenum target, GLuint id);
-	void (*glDeleteTransformFeedbacks) (GLsizei n, const GLuint *ids);
-	void (*glGenTransformFeedbacks) (GLsizei n, GLuint *ids);
-	GLboolean (*glIsTransformFeedback) (GLuint id);
-	void (*glPauseTransformFeedback) (void);
-	void (*glResumeTransformFeedback) (void);
-	void (*glDrawTransformFeedback) (GLenum mode, GLuint id);
-	void (*glDrawTransformFeedbackStream) (GLenum mode, GLuint id, GLuint stream);
-	void (*glBeginQueryIndexed) (GLenum target, GLuint index, GLuint id);
-	void (*glEndQueryIndexed) (GLenum target, GLuint index);
-	void (*glGetQueryIndexediv) (GLenum target, GLuint index, GLenum pname, GLint *params);
-
-	//4.1 extensions
-	void (*glReleaseShaderCompiler) (void);
-	void (*glShaderBinary) (GLsizei count, const GLuint *shaders, GLenum binaryformat, const void *binary, GLsizei length);
-	void (*glGetShaderPrecisionFormat) (GLenum shadertype, GLenum precisiontype, GLint *range, GLint *precision);
-	void (*glDepthRangef) (GLfloat n, GLfloat f);
-	void (*glClearDepthf) (GLfloat d);
-	void (*glGetProgramBinary) (GLuint program, GLsizei bufSize, GLsizei *length, GLenum *binaryFormat, void *binary);
-	void (*glProgramBinary) (GLuint program, GLenum binaryFormat, const void *binary, GLsizei length);
-	void (*glProgramParameteri) (GLuint program, GLenum pname, GLint value);
-	void (*glUseProgramStages) (GLuint pipeline, GLbitfield stages, GLuint program);
-	void (*glActiveShaderProgram) (GLuint pipeline, GLuint program);
-	GLuint (*glCreateShaderProgramv) (GLenum type, GLsizei count, const GLchar *const*strings);
-	void (*glBindProgramPipeline) (GLuint pipeline);
-	void (*glDeleteProgramPipelines) (GLsizei n, const GLuint *pipelines);
-	void (*glGenProgramPipelines) (GLsizei n, GLuint *pipelines);
-	GLboolean (*glIsProgramPipeline) (GLuint pipeline);
-	void (*glGetProgramPipelineiv) (GLuint pipeline, GLenum pname, GLint *params);
-	void (*glProgramUniform1i) (GLuint program, GLint location, GLint v0);
-	void (*glProgramUniform1iv) (GLuint program, GLint location, GLsizei count, const GLint *value);
-	void (*glProgramUniform1f) (GLuint program, GLint location, GLfloat v0);
-	void (*glProgramUniform1fv) (GLuint program, GLint location, GLsizei count, const GLfloat *value);
-	void (*glProgramUniform1d) (GLuint program, GLint location, GLdouble v0);
-	void (*glProgramUniform1dv) (GLuint program, GLint location, GLsizei count, const GLdouble *value);
-	void (*glProgramUniform1ui) (GLuint program, GLint location, GLuint v0);
-	void (*glProgramUniform1uiv) (GLuint program, GLint location, GLsizei count, const GLuint *value);
-	void (*glProgramUniform2i) (GLuint program, GLint location, GLint v0, GLint v1);
-	void (*glProgramUniform2iv) (GLuint program, GLint location, GLsizei count, const GLint *value);
-	void (*glProgramUniform2f) (GLuint program, GLint location, GLfloat v0, GLfloat v1);
-	void (*glProgramUniform2fv) (GLuint program, GLint location, GLsizei count, const GLfloat *value);
-	void (*glProgramUniform2d) (GLuint program, GLint location, GLdouble v0, GLdouble v1);
-	void (*glProgramUniform2dv) (GLuint program, GLint location, GLsizei count, const GLdouble *value);
-	void (*glProgramUniform2ui) (GLuint program, GLint location, GLuint v0, GLuint v1);
-	void (*glProgramUniform2uiv) (GLuint program, GLint location, GLsizei count, const GLuint *value);
-	void (*glProgramUniform3i) (GLuint program, GLint location, GLint v0, GLint v1, GLint v2);
-	void (*glProgramUniform3iv) (GLuint program, GLint location, GLsizei count, const GLint *value);
-	void (*glProgramUniform3f) (GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
-	void (*glProgramUniform3fv) (GLuint program, GLint location, GLsizei count, const GLfloat *value);
-	void (*glProgramUniform3d) (GLuint program, GLint location, GLdouble v0, GLdouble v1, GLdouble v2);
-	void (*glProgramUniform3dv) (GLuint program, GLint location, GLsizei count, const GLdouble *value);
-	void (*glProgramUniform3ui) (GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2);
-	void (*glProgramUniform3uiv) (GLuint program, GLint location, GLsizei count, const GLuint *value);
-	void (*glProgramUniform4i) (GLuint program, GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
-	void (*glProgramUniform4iv) (GLuint program, GLint location, GLsizei count, const GLint *value);
-	void (*glProgramUniform4f) (GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
-	void (*glProgramUniform4fv) (GLuint program, GLint location, GLsizei count, const GLfloat *value);
-	void (*glProgramUniform4d) (GLuint program, GLint location, GLdouble v0, GLdouble v1, GLdouble v2, GLdouble v3);
-	void (*glProgramUniform4dv) (GLuint program, GLint location, GLsizei count, const GLdouble *value);
-	void (*glProgramUniform4ui) (GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
-	void (*glProgramUniform4uiv) (GLuint program, GLint location, GLsizei count, const GLuint *value);
-	void (*glProgramUniformMatrix2fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-	void (*glProgramUniformMatrix3fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-	void (*glProgramUniformMatrix4fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-	void (*glProgramUniformMatrix2dv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-	void (*glProgramUniformMatrix3dv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-	void (*glProgramUniformMatrix4dv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-	void (*glProgramUniformMatrix2x3fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-	void (*glProgramUniformMatrix3x2fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-	void (*glProgramUniformMatrix2x4fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-	void (*glProgramUniformMatrix4x2fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-	void (*glProgramUniformMatrix3x4fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-	void (*glProgramUniformMatrix4x3fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-	void (*glProgramUniformMatrix2x3dv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-	void (*glProgramUniformMatrix3x2dv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-	void (*glProgramUniformMatrix2x4dv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-	void (*glProgramUniformMatrix4x2dv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-	void (*glProgramUniformMatrix3x4dv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-	void (*glProgramUniformMatrix4x3dv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-	void (*glValidateProgramPipeline) (GLuint pipeline);
-	void (*glGetProgramPipelineInfoLog) (GLuint pipeline, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
-	void (*glVertexAttribL1d) (GLuint index, GLdouble x);
-	void (*glVertexAttribL2d) (GLuint index, GLdouble x, GLdouble y);
-	void (*glVertexAttribL3d) (GLuint index, GLdouble x, GLdouble y, GLdouble z);
-	void (*glVertexAttribL4d) (GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-	void (*glVertexAttribL1dv) (GLuint index, const GLdouble *v);
-	void (*glVertexAttribL2dv) (GLuint index, const GLdouble *v);
-	void (*glVertexAttribL3dv) (GLuint index, const GLdouble *v);
-	void (*glVertexAttribL4dv) (GLuint index, const GLdouble *v);
-	void (*glVertexAttribLPointer) (GLuint index, GLint size, GLenum type, GLsizei stride, const void *pointer);
-	void (*glGetVertexAttribLdv) (GLuint index, GLenum pname, GLdouble *params);
-	void (*glViewportArrayv) (GLuint first, GLsizei count, const GLfloat *v);
-	void (*glViewportIndexedf) (GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h);
-	void (*glViewportIndexedfv) (GLuint index, const GLfloat *v);
-	void (*glScissorArrayv) (GLuint first, GLsizei count, const GLint *v);
-	void (*glScissorIndexed) (GLuint index, GLint left, GLint bottom, GLsizei width, GLsizei height);
-	void (*glScissorIndexedv) (GLuint index, const GLint *v);
-	void (*glDepthRangeIndexed) (GLuint first, GLsizei count, const GLdouble *v);
-	void (*glDepthRangeArrayv) (GLuint index, GLdouble n, GLdouble f);
-	void (*glGetFloati_v) (GLenum target, GLuint index, GLfloat *data);
-	void (*glGetDoublei_v) (GLenum target, GLuint index, GLdouble *data);
-
-	//4.2 extensions
-	void (*glDrawArraysInstancedBaseInstance) (GLenum mode, GLint first, GLsizei count, GLsizei instancecount, GLuint baseinstance);
-	void (*glDrawElementsInstancedBaseInstance) (GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei instancecount, GLuint baseinstance);
-	void (*glDrawElementsInstancedBaseVertexBaseInstance) (GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei instancecount, GLint basevertex, GLuint baseinstance);
-	void (*glGetInternalformativ) (GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint *params);
-	void (*glGetActiveAtomicCounterBufferiv) (GLuint program, GLuint bufferIndex, GLenum pname, GLint *params);
-	void (*glBindImageTexture) (GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format);
-	void (*glMemoryBarrier) (GLbitfield barriers);
-	void (*glTexStorage1D) (GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
-	void (*glTexStorage2D) (GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
-	void (*glTexStorage3D) (GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
-	void (*glDrawTransformFeedbackInstanced) (GLenum mode, GLuint id, GLsizei instancecount);
-	void (*glDrawTransformFeedbackStreamInstanced) (GLenum mode, GLuint id, GLuint stream, GLsizei instancecount);
-
-	//4.3 extensions
-	void (*glClearBufferData) (GLenum target, GLenum internalformat, GLenum format, GLenum type, const void *data);
-	void (*glClearBufferSubData) (GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const void *data);
-	void (*glDispatchCompute) (GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z);
-	void (*glDispatchComputeIndirect) (GLintptr indirect);
-	void (*glCopyImageSubData) (GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth);
-	void (*glFramebufferParameteri) (GLenum target, GLenum pname, GLint param);
-	void (*glGetFramebufferParameteriv) (GLenum target, GLenum pname, GLint *params);
-	void (*glGetInternalformati64v) (GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 *params);
-	void (*glInvalidateTexSubImage) (GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth);
-	void (*glInvalidateTexImage) (GLuint texture, GLint level);
-	void (*glInvalidateBufferSubData) (GLuint buffer, GLintptr offset, GLsizeiptr length);
-	void (*glInvalidateBufferData) (GLuint buffer);
-	void (*glInvalidateFramebuffer) (GLenum target, GLsizei numAttachments, const GLenum *attachments);
-	void (*glInvalidateSubFramebuffer) (GLenum target, GLsizei numAttachments, const GLenum *attachments, GLint x, GLint y, GLsizei width, GLsizei height);
-	void (*glMultiDrawArraysIndirect) (GLenum mode, const void *indirect, GLsizei drawcount, GLsizei stride);
-	void (*glMultiDrawElementsIndirect) (GLenum mode, GLenum type, const void *indirect, GLsizei drawcount, GLsizei stride);
-	void (*glGetProgramInterfaceiv) (GLuint program, GLenum programInterface, GLenum pname, GLint *params);
-	GLuint (*glGetProgramResourceIndex) (GLuint program, GLenum programInterface, const GLchar *name);
-	void (*glGetProgramResourceName) (GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name);
-	void (*glGetProgramResourceiv) (GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum *props, GLsizei bufSize, GLsizei *length, GLint *params);
-	GLint (*glGetProgramResourceLocation) (GLuint program, GLenum programInterface, const GLchar *name);
-	GLint (*glGetProgramResourceLocationIndex) (GLuint program, GLenum programInterface, const GLchar *name);
-	void (*glShaderStorageBlockBinding) (GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding);
-	void (*glTexBufferRange) (GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
-	void (*glTexStorage2DMultisample) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
-	void (*glTexStorage3DMultisample) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
-	void (*glTextureView) (GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers);
-	void (*glBindVertexBuffer) (GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
-	void (*glVertexAttribFormat) (GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
-	void (*glVertexAttribIFormat) (GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
-	void (*glVertexAttribLFormat) (GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
-	void (*glVertexAttribBinding) (GLuint attribindex, GLuint bindingindex);
-	void (*glVertexBindingDivisor) (GLuint bindingindex, GLuint divisor);
-	void (*glDebugMessageControl) (GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
-	void (*glDebugMessageInsert) (GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf);
-	void (*glDebugMessageCallback) (glDebug callback, const void *userParam);
-	GLuint (*glGetDebugMessageLog) (GLuint count, GLsizei bufSize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog);
-	void (*glPushDebugGroup) (GLenum source, GLuint id, GLsizei length, const GLchar *message);
-	void (*glPopDebugGroup) (void);
-	void (*glObjectLabel) (GLenum identifier, GLuint name, GLsizei length, const GLchar *label);
-	void (*glObjectPtrLabel) (const void *ptr, GLsizei length, const GLchar *label);
-	void (*glGetObjectLabel) (GLenum identifier, GLuint name, GLsizei bufSize, GLsizei *length, GLchar *label);
-	void (*glGetObjectPtrLabel) (const void *ptr, GLsizei bufSize, GLsizei *length, GLchar *label);
-
-	//4.4 extensions
-	void (*glBufferStorage) (GLenum target, GLsizeiptr size, const void *data, GLbitfield flags);
-	void (*glClearTexImage) (GLuint texture, GLint level, GLenum format, GLenum type, const void *data);
-	void (*glClearTexSubImage) (GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void *data);
-	void (*glBindBuffersBase) (GLenum target, GLuint first, GLsizei count, const GLuint *buffers);
-	void (*glBindBuffersRange) (GLenum target, GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizeiptr *sizes);
-	void (*glBindTextures) (GLuint first, GLsizei count, const GLuint *textures);
-	void (*glBindSamplers) (GLuint first, GLsizei count, const GLuint *samplers);
-	void (*glBindImageTextures) (GLuint first, GLsizei count, const GLuint *textures);
-	void (*glBindVertexBuffers) (GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizei *strides);
-
-	extensionManager(void)
+	template<typename T>
+	void FetchProcAddress(T& funcPointer, const char* procName)
 	{
-		
+#if defined(TE_WINDOWS)
+		funcPointer = (T)wglGetProcAddress(procName);
+#elif defined(TE_LINUX)
+		funcPointer = (T)glXGetProcAddress(procName);
+#endif
 	}
-
-	std::error_code InitializeExtentions(void)
-	{
-		std::error_code errCode = InitializeGLVersion();
-		if (errCode == TinyExtender::error_t::versionLoadFailed)
-		{
-			return 	errCode;
-		}
-
-		if (glVersionMajor > 1 || (glVersionMinor >= 2 && glVersionMajor >= 1))
-		{
-			Load1_2Extensions();
-		}
-
-		else
-		{
-			return TinyExtender::error_t::Unsupported1_2;
-		}
-
-		if (glVersionMajor > 1 || (glVersionMinor >= 3 && glVersionMajor >= 1))
-		{
-			Load1_3Extensions();
-		}
-
-		else
-		{
-			return TinyExtender::error_t::Unsupported1_3;
-		}
-
-		if (glVersionMajor > 1 || (glVersionMinor >= 4 && glVersionMajor >= 1))
-		{
-			Load1_4Extensions();
-		}
-
-		else
-		{
-			return TinyExtender::error_t::Unsupported1_4;
-		}
-
-		if (glVersionMajor > 1 || (glVersionMinor >= 5 && glVersionMajor >= 1))
-		{
-			Load1_5Extensions();
-		}
-
-		else
-		{
-			return TinyExtender::error_t::Unsupported1_5;
-		}
-
-		if (glVersionMajor > 2 || (glVersionMinor >= 0 && glVersionMajor >= 2))
-		{
-			Load2_0Extensions();
-		}
-
-		else
-		{
-			return TinyExtender::error_t::Unsupported2_0;
-		}
-
-		if (glVersionMajor > 2 || (glVersionMinor >= 1 && glVersionMajor >= 2))
-		{
-			Load2_1Extensions();
-		}
-
-		else
-		{
-			return TinyExtender::error_t::Unsupported2_1;
-		}
-
-		if (glVersionMajor > 3 || (glVersionMinor >= 0 && glVersionMajor >= 3))
-		{
-			Load3_0Extensions();
-		}
-
-		else
-		{
-			return TinyExtender::error_t::Unsupported3_0;
-		}
-
-		if (glVersionMajor > 3 || (glVersionMinor >= 1 && glVersionMajor >= 3))
-		{
-			Load3_1Extensions();
-		}
-
-		else
-		{
-			return TinyExtender::error_t::Unsupported3_1;
-		}
-
-		if (glVersionMajor > 3 || (glVersionMinor >= 2 && glVersionMajor >= 3))
-		{
-			Load3_2Extensions();
-		}
-
-		else
-		{
-			return TinyExtender::error_t::Unsupported3_2;
-		}
-
-		if (glVersionMajor > 3 || (glVersionMinor >= 3 && glVersionMajor >= 3))
-		{
-			Load3_3Extensions();
-		}
-
-		else
-		{
-			return TinyExtender::error_t::Unsupported3_3;
-		}
-
-		if (glVersionMajor > 4 || (glVersionMinor >= 0 && glVersionMajor >= 4))
-		{
-			Load4_0Extensions();
-		}
-
-		else
-		{
-			return TinyExtender::error_t::Unsupported4_0;
-		}
-
-		if (glVersionMajor > 4 || (glVersionMinor >= 1 && glVersionMajor >= 4))
-		{
-			Load4_1Extensions();
-		}
-
-		else
-		{
-			return TinyExtender::error_t::Unsupported4_1;
-		}
-
-		if (glVersionMajor > 4 || (glVersionMinor >= 2 && glVersionMajor >= 4))
-		{
-			Load4_2Extensions();
-		}
-
-		else
-		{
-			return TinyExtender::error_t::Unsupported4_2;
-		}
-
-		if (glVersionMajor > 4 || (glVersionMinor >= 3 && glVersionMajor >= 4))
-		{
-			Load4_3Extensions();
-		}
-
-		else
-		{
-			return TinyExtender::error_t::Unsupported4_3;
-		}
-
-		if (glVersionMajor > 4 || (glVersionMinor >= 4 && glVersionMajor >= 4))
-		{
-			Load4_4Extensions();
-		}
-
-		else
-		{
-			return TinyExtender::error_t::Unsupported4_4;
-		}
-
-		return TinyExtender::error_t::success;
-	}
-
-	std::error_code InitializeExtensionsSpecific(unsigned int OpenGLVersions)
-	{
-		if (OpenGLVersions & glVersion_t::version1_2)
-		{
-			if (glVersionMajor > 1 || (glVersionMinor >= 2 && glVersionMajor >= 1))
-			{
-				Load1_2Extensions();
-			}
-
-			else
-			{
-				return TinyExtender::error_t::Unsupported1_2;
-			}
-		}
-
-		if (OpenGLVersions & glVersion_t::version1_3)
-		{
-			if (glVersionMajor > 1 || (glVersionMinor >= 3 && glVersionMajor >= 1))
-			{
-				Load1_3Extensions();
-			}
-
-			else
-			{
-				return TinyExtender::error_t::Unsupported1_3;
-			}
-		}
-
-		if (OpenGLVersions & glVersion_t::version1_4)
-		{
-			if (glVersionMajor > 1 || (glVersionMinor >= 4 && glVersionMajor >= 1))
-			{
-				Load1_4Extensions();
-			}
-
-			else
-			{
-				return TinyExtender::error_t::Unsupported1_4;
-			}
-		}
-
-		if (OpenGLVersions & glVersion_t::version1_5)
-		{
-			if (glVersionMajor > 1 || (glVersionMinor >= 5 && glVersionMajor >= 1))
-			{
-				Load1_5Extensions();
-			}
-
-			else
-			{
-				return TinyExtender::error_t::Unsupported1_5;
-			}
-		}
-
-		if (OpenGLVersions & glVersion_t::version2_0)
-		{
-			if (glVersionMajor > 2 || (glVersionMinor >= 0 && glVersionMajor >= 2))
-			{
-				Load2_0Extensions();
-			}
-			
-			else
-			{
-				return TinyExtender::error_t::Unsupported2_0;
-			}
-		}
-
-		if (OpenGLVersions & glVersion_t::version2_1)
-		{
-			if (glVersionMajor > 2 || (glVersionMinor >= 1 && glVersionMajor >= 2))
-			{
-				Load2_1Extensions();
-			}
-
-			else
-			{
-				return TinyExtender::error_t::Unsupported2_1;
-			}
-		}
-
-		if (OpenGLVersions & glVersion_t::version3_0)
-		{
-			if (glVersionMajor > 3 || (glVersionMinor >= 0 && glVersionMajor >= 3))
-			{
-				Load3_0Extensions();
-			}
-
-			else
-			{
-				return TinyExtender::error_t::Unsupported3_0;
-			}
-		}
-
-		if (OpenGLVersions & glVersion_t::version3_1)
-		{
-			if (glVersionMajor > 3 || (glVersionMinor >= 1 && glVersionMajor >= 3))
-			{
-				Load3_1Extensions();
-			}
-
-			else
-			{
-				return TinyExtender::error_t::Unsupported3_1;
-			}
-		}
-
-		if (OpenGLVersions & glVersion_t::version3_2)
-		{
-			if (glVersionMajor > 3 || (glVersionMinor >= 2 && glVersionMajor >= 3))
-			{
-				Load3_2Extensions();
-			}
-
-			else
-			{
-				return TinyExtender::error_t::Unsupported3_2;
-			}
-		}
-
-		if (OpenGLVersions & glVersion_t::version3_3)
-		{
-			if (glVersionMajor > 3 || (glVersionMinor >= 3 && glVersionMajor >= 3))
-			{
-				Load3_3Extensions();
-			}
-
-			else
-			{
-				return TinyExtender::error_t::Unsupported3_3;
-			}
-		}
-
-		if (OpenGLVersions & glVersion_t::version4_0)
-		{
-			if (glVersionMajor > 4 || (glVersionMinor >= 0 && glVersionMajor >= 4))
-			{
-				Load4_0Extensions();
-			}
-
-			else
-			{
-				return TinyExtender::error_t::Unsupported4_0;
-			}
-		}
-
-		if (OpenGLVersions & glVersion_t::version4_1)
-		{
-			if (glVersionMajor > 4 || (glVersionMinor >= 1 && glVersionMajor >= 4))
-			{
-				Load4_1Extensions();
-			}
-
-			else
-			{
-				return TinyExtender::error_t::Unsupported4_1;
-			}
-		}
-
-		if (OpenGLVersions & glVersion_t::version4_2)
-		{
-			if (glVersionMajor > 4 || (glVersionMinor >= 2 && glVersionMajor >= 4))
-			{
-				Load4_2Extensions();
-			}
-
-			else
-			{
-				return TinyExtender::error_t::Unsupported4_2;
-			}
-		}
-
-		if (OpenGLVersions & glVersion_t::version4_3)
-		{
-			if (glVersionMajor > 4 || (glVersionMinor >= 3 && glVersionMajor >= 4))
-			{
-				Load4_3Extensions();
-			}
-
-			else
-			{
-				return TinyExtender::error_t::Unsupported4_3;
-			}
-		}
-
-		if (OpenGLVersions & glVersion_t::version4_4)
-		{
-			if (glVersionMajor > 4 || (glVersionMinor >= 4 && glVersionMajor >= 4))
-			{
-				Load4_4Extensions();
-			}
-
-			else
-			{
-				return TinyExtender::error_t::Unsupported4_4;
-			}
-		}
-
-		return TinyExtender::error_t::success;
-	}
-
-private:
 
 	std::error_code InitializeGLVersion(void)
 	{
@@ -2507,45 +2117,6 @@ private:
 		{
 			return TinyExtender::error_t::versionLoadFailed;
 		}
-	}
-
-	template<typename T>
-	void FetchProcAddress(T& funcPointer, const char* procName)
-	{
-#if defined(TE_WINDOWS)
-		funcPointer = (T)wglGetProcAddress(procName);
-#elif defined(TE_LINUX)
-		funcPointer = (T)glXGetProcAddress(procName);
-#endif
-	}
-
-	bool IsExtensionSupported(const char* extensionName)
-	{
-		GLubyte* end;//the last extension name in Extensions
-		GLint	nameLength; //the string length of the extension name
-
-		nameLength = strlen((const char*)extensionName);
-
-		GLubyte* allExtensions = (GLubyte*)glGetString(GL_EXTENSIONS); //get all supported extensions
-
-		if (allExtensions != NULL)
-		{
-			end = allExtensions + strlen((const char*)allExtensions);
-
-			while (allExtensions < end)
-			{
-				GLint str = strcspn((const char*)allExtensions, " ");
-
-				if ((nameLength == str) && (strncmp((const char*)extensionName, (const char*)allExtensions, str) == 0))
-				{
-					return true;
-				}
-
-				allExtensions += (str + 1);
-			}
-			return false;
-		}
-		return false;
 	}
 
 	void Load1_2Extensions(void)
@@ -2976,7 +2547,7 @@ private:
 		FetchProcAddress(glSecondaryColorP3ui, "glSecondaryColorP3ui");
 		FetchProcAddress(glSecondaryColorP3uiv, "glSecondaryColorP3uiv");
 	}
-	
+
 	void Load4_0Extensions(void)
 	{
 		FetchProcAddress(glMinSampleShading, "glMinSampleShading");
@@ -3194,6 +2765,397 @@ private:
 		FetchProcAddress(glBindImageTextures, "glBindImageTextures");
 		FetchProcAddress(glBindVertexBuffers, "glBindVertexBuffers");
 	}
-};
+
+	std::error_code InitializeExtentions(void)
+	{
+		std::error_code errCode = InitializeGLVersion();
+		if (errCode == TinyExtender::error_t::versionLoadFailed)
+		{
+			return 	errCode;
+		}
+
+		if (glVersionMajor > 1 || (glVersionMinor >= 2 && glVersionMajor >= 1))
+		{
+			Load1_2Extensions();
+		}
+
+		else
+		{
+			return TinyExtender::error_t::Unsupported1_2;
+		}
+
+		if (glVersionMajor > 1 || (glVersionMinor >= 3 && glVersionMajor >= 1))
+		{
+			Load1_3Extensions();
+		}
+
+		else
+		{
+			return TinyExtender::error_t::Unsupported1_3;
+		}
+
+		if (glVersionMajor > 1 || (glVersionMinor >= 4 && glVersionMajor >= 1))
+		{
+			Load1_4Extensions();
+		}
+
+		else
+		{
+			return TinyExtender::error_t::Unsupported1_4;
+		}
+
+		if (glVersionMajor > 1 || (glVersionMinor >= 5 && glVersionMajor >= 1))
+		{
+			Load1_5Extensions();
+		}
+
+		else
+		{
+			return TinyExtender::error_t::Unsupported1_5;
+		}
+
+		if (glVersionMajor > 2 || (glVersionMinor >= 0 && glVersionMajor >= 2))
+		{
+			Load2_0Extensions();
+		}
+
+		else
+		{
+			return TinyExtender::error_t::Unsupported2_0;
+		}
+
+		if (glVersionMajor > 2 || (glVersionMinor >= 1 && glVersionMajor >= 2))
+		{
+			Load2_1Extensions();
+		}
+
+		else
+		{
+			return TinyExtender::error_t::Unsupported2_1;
+		}
+
+		if (glVersionMajor > 3 || (glVersionMinor >= 0 && glVersionMajor >= 3))
+		{
+			Load3_0Extensions();
+		}
+
+		else
+		{
+			return TinyExtender::error_t::Unsupported3_0;
+		}
+
+		if (glVersionMajor > 3 || (glVersionMinor >= 1 && glVersionMajor >= 3))
+		{
+			Load3_1Extensions();
+		}
+
+		else
+		{
+			return TinyExtender::error_t::Unsupported3_1;
+		}
+
+		if (glVersionMajor > 3 || (glVersionMinor >= 2 && glVersionMajor >= 3))
+		{
+			Load3_2Extensions();
+		}
+
+		else
+		{
+			return TinyExtender::error_t::Unsupported3_2;
+		}
+
+		if (glVersionMajor > 3 || (glVersionMinor >= 3 && glVersionMajor >= 3))
+		{
+			Load3_3Extensions();
+		}
+
+		else
+		{
+			return TinyExtender::error_t::Unsupported3_3;
+		}
+
+		if (glVersionMajor > 4 || (glVersionMinor >= 0 && glVersionMajor >= 4))
+		{
+			Load4_0Extensions();
+		}
+
+		else
+		{
+			return TinyExtender::error_t::Unsupported4_0;
+		}
+
+		if (glVersionMajor > 4 || (glVersionMinor >= 1 && glVersionMajor >= 4))
+		{
+			Load4_1Extensions();
+		}
+
+		else
+		{
+			return TinyExtender::error_t::Unsupported4_1;
+		}
+
+		if (glVersionMajor > 4 || (glVersionMinor >= 2 && glVersionMajor >= 4))
+		{
+			Load4_2Extensions();
+		}
+
+		else
+		{
+			return TinyExtender::error_t::Unsupported4_2;
+		}
+
+		if (glVersionMajor > 4 || (glVersionMinor >= 3 && glVersionMajor >= 4))
+		{
+			Load4_3Extensions();
+		}
+
+		else
+		{
+			return TinyExtender::error_t::Unsupported4_3;
+		}
+
+		if (glVersionMajor > 4 || (glVersionMinor >= 4 && glVersionMajor >= 4))
+		{
+			Load4_4Extensions();
+		}
+
+		else
+		{
+			return TinyExtender::error_t::Unsupported4_4;
+		}
+
+		return TinyExtender::error_t::success;
+	}
+
+	std::error_code InitializeExtensionsSpecific(unsigned int OpenGLVersions)
+	{
+		if (OpenGLVersions & glVersion_t::version1_2)
+		{
+			if (glVersionMajor > 1 || (glVersionMinor >= 2 && glVersionMajor >= 1))
+			{
+				Load1_2Extensions();
+			}
+
+			else
+			{
+				return TinyExtender::error_t::Unsupported1_2;
+			}
+		}
+
+		if (OpenGLVersions & glVersion_t::version1_3)
+		{
+			if (glVersionMajor > 1 || (glVersionMinor >= 3 && glVersionMajor >= 1))
+			{
+				Load1_3Extensions();
+			}
+
+			else
+			{
+				return TinyExtender::error_t::Unsupported1_3;
+			}
+		}
+
+		if (OpenGLVersions & glVersion_t::version1_4)
+		{
+			if (glVersionMajor > 1 || (glVersionMinor >= 4 && glVersionMajor >= 1))
+			{
+				Load1_4Extensions();
+			}
+
+			else
+			{
+				return TinyExtender::error_t::Unsupported1_4;
+			}
+		}
+
+		if (OpenGLVersions & glVersion_t::version1_5)
+		{
+			if (glVersionMajor > 1 || (glVersionMinor >= 5 && glVersionMajor >= 1))
+			{
+				Load1_5Extensions();
+			}
+
+			else
+			{
+				return TinyExtender::error_t::Unsupported1_5;
+			}
+		}
+
+		if (OpenGLVersions & glVersion_t::version2_0)
+		{
+			if (glVersionMajor > 2 || (glVersionMinor >= 0 && glVersionMajor >= 2))
+			{
+				Load2_0Extensions();
+			}
+			
+			else
+			{
+				return TinyExtender::error_t::Unsupported2_0;
+			}
+		}
+
+		if (OpenGLVersions & glVersion_t::version2_1)
+		{
+			if (glVersionMajor > 2 || (glVersionMinor >= 1 && glVersionMajor >= 2))
+			{
+				Load2_1Extensions();
+			}
+
+			else
+			{
+				return TinyExtender::error_t::Unsupported2_1;
+			}
+		}
+
+		if (OpenGLVersions & glVersion_t::version3_0)
+		{
+			if (glVersionMajor > 3 || (glVersionMinor >= 0 && glVersionMajor >= 3))
+			{
+				Load3_0Extensions();
+			}
+
+			else
+			{
+				return TinyExtender::error_t::Unsupported3_0;
+			}
+		}
+
+		if (OpenGLVersions & glVersion_t::version3_1)
+		{
+			if (glVersionMajor > 3 || (glVersionMinor >= 1 && glVersionMajor >= 3))
+			{
+				Load3_1Extensions();
+			}
+
+			else
+			{
+				return TinyExtender::error_t::Unsupported3_1;
+			}
+		}
+
+		if (OpenGLVersions & glVersion_t::version3_2)
+		{
+			if (glVersionMajor > 3 || (glVersionMinor >= 2 && glVersionMajor >= 3))
+			{
+				Load3_2Extensions();
+			}
+
+			else
+			{
+				return TinyExtender::error_t::Unsupported3_2;
+			}
+		}
+
+		if (OpenGLVersions & glVersion_t::version3_3)
+		{
+			if (glVersionMajor > 3 || (glVersionMinor >= 3 && glVersionMajor >= 3))
+			{
+				Load3_3Extensions();
+			}
+
+			else
+			{
+				return TinyExtender::error_t::Unsupported3_3;
+			}
+		}
+
+		if (OpenGLVersions & glVersion_t::version4_0)
+		{
+			if (glVersionMajor > 4 || (glVersionMinor >= 0 && glVersionMajor >= 4))
+			{
+				Load4_0Extensions();
+			}
+
+			else
+			{
+				return TinyExtender::error_t::Unsupported4_0;
+			}
+		}
+
+		if (OpenGLVersions & glVersion_t::version4_1)
+		{
+			if (glVersionMajor > 4 || (glVersionMinor >= 1 && glVersionMajor >= 4))
+			{
+				Load4_1Extensions();
+			}
+
+			else
+			{
+				return TinyExtender::error_t::Unsupported4_1;
+			}
+		}
+
+		if (OpenGLVersions & glVersion_t::version4_2)
+		{
+			if (glVersionMajor > 4 || (glVersionMinor >= 2 && glVersionMajor >= 4))
+			{
+				Load4_2Extensions();
+			}
+
+			else
+			{
+				return TinyExtender::error_t::Unsupported4_2;
+			}
+		}
+
+		if (OpenGLVersions & glVersion_t::version4_3)
+		{
+			if (glVersionMajor > 4 || (glVersionMinor >= 3 && glVersionMajor >= 4))
+			{
+				Load4_3Extensions();
+			}
+
+			else
+			{
+				return TinyExtender::error_t::Unsupported4_3;
+			}
+		}
+
+		if (OpenGLVersions & glVersion_t::version4_4)
+		{
+			if (glVersionMajor > 4 || (glVersionMinor >= 4 && glVersionMajor >= 4))
+			{
+				Load4_4Extensions();
+			}
+
+			else
+			{
+				return TinyExtender::error_t::Unsupported4_4;
+			}
+		}
+
+		return TinyExtender::error_t::success;
+	}
+
+	bool IsExtensionSupported(const char* extensionName)
+	{
+		GLubyte* end;//the last extension name in Extensions
+		GLint	nameLength; //the string length of the extension name
+
+		nameLength = strlen((const char*)extensionName);
+
+		GLubyte* allExtensions = (GLubyte*)glGetString(GL_EXTENSIONS); //get all supported extensions
+
+		if (allExtensions != NULL)
+		{
+			end = allExtensions + strlen((const char*)allExtensions);
+
+			while (allExtensions < end)
+			{
+				GLint str = strcspn((const char*)allExtensions, " ");
+
+				if ((nameLength == str) && (strncmp((const char*)extensionName, (const char*)allExtensions, str) == 0))
+				{
+					return true;
+				}
+
+				allExtensions += (str + 1);
+			}
+			return false;
+		}
+		return false;
+	}
+
+
 }
 #endif
