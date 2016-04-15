@@ -2512,9 +2512,9 @@ private:
 	template<typename T>
 	void FetchProcAddress(T& funcPointer, const char* procName)
 	{
-#if defined(TW_WINDOWS)
-		funcPointer = (T)wglGetProcAddress((LPCSTR)procName);
-#elif defined(TW_LINUX)
+#if defined(TE_WINDOWS)
+		funcPointer = (T)wglGetProcAddress(procName);
+#elif defined(TE_LINUX)
 		funcPointer = (T)glXGetProcAddress(procName);
 #endif
 	}
