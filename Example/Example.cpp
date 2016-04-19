@@ -10,6 +10,7 @@ int main()
 
 	InitializeExtentions();
 	GLuint Program = glCreateProgram();
+	printf("%i \n", Program);
 
 	while(!window->shouldClose)
 	{
