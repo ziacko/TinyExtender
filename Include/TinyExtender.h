@@ -1053,7 +1053,7 @@ namespace TinyExtender
 	extern void(*glTexImage3DMultisample) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
 	extern void(*glGetMultisamplefv) (GLenum pname, GLuint index, GLfloat *val);
 	extern void(*glSampleMaski) (GLuint index, GLbitfield mask);
-	enum class openGL3_2 : unsigned long int
+	enum class openGL3_2 : long int
 	{
 		CONTEXT_CORE_PROFILE_BIT =						0x00000001,
 		CONTEXT_COMPATIBILITY_PROFILE_BIT =				0x00000002,
@@ -1095,7 +1095,7 @@ namespace TinyExtender
 		ALREADY_SIGNALED =								0x911A,
 		TIMEOUT_EXPIRED =								0x911B,
 		CONDITION_SATISFIED =							0x911C,
-		WAIT_FAILED =									0x911D,
+		TE_WAIT_FAILED =								0x911D,
 		TIMEOUT_IGNORED =								0xFFFFFFFFFFFFFFFFull,
 		SYNC_FLUSH_COMMANDS_BIT =						0x00000001,
 		SAMPLE_POSITION =								0x8E50,
