@@ -20,7 +20,7 @@
 #endif //__linux__
 
 #include <system_error>
-
+#include <cstring>
 
 #ifndef GLEXT_64_TYPES_DEFINED
 	/* This code block is duplicated in glxext.h, so must be protected */
