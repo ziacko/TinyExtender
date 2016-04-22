@@ -19,15 +19,6 @@
 #include <GL/glx.h>
 #endif //__linux__
 
-#include <string.h>
-#include <stdio.h>
-#include <stddef.h>
-#include <functional>
-#include <stdlib.h>
-#include <limits.h>
-#include <string.h>
-#include <functional>
-#include <memory>
 #include <system_error>
 
 
@@ -2089,8 +2080,8 @@ namespace TinyExtender
 	extern GLuint glVersionMajor;
 	extern GLuint glVersionMinor;
 
-	template<typename T>
-	void FetchProcAddress(T& funcPointer, const char* procName)
+	/**< returns a proc address to an OpenGL extension */
+	template<typename T> void FetchProcAddress(T& funcPointer, const char* procName)
 	{
 #if defined(TE_WINDOWS)
 		funcPointer = (T)wglGetProcAddress(procName);
@@ -2099,42 +2090,47 @@ namespace TinyExtender
 #endif
 	}
 
+	/**< get OpenGL version */
 	std::error_code InitializeGLVersion(void);
 
+	/**< load OpenGL 1.2 extensions */
 	void Load1_2Extensions(void);
-
+	/**< load OpenGL 1.3 extensions */
 	void Load1_3Extensions(void);
-
+	/**< load OpenGL 1.4 extensions */
 	void Load1_4Extensions(void);
-
+	/**< load OpenGL 1.5 extensions */
 	void Load1_5Extensions(void);
-
+	/**< load OpenGL 2.0 extensions */
 	void Load2_0Extensions(void);
-
+	/**< load OpenGL 2.1 extensions */
 	void Load2_1Extensions(void);
-
+	/**< load OpenGL 3.0 extensions */
 	void Load3_0Extensions(void);
-
+	/**< load OpenGL 3.1 extensions */
 	void Load3_1Extensions(void);
-
+	/**< load OpenGL 3.2 extensions */
 	void Load3_2Extensions(void);
-
+	/**< load OpenGL 3.3 extensions */
 	void Load3_3Extensions(void);
-
+	/**< load OpenGL 4.0 extensions */
 	void Load4_0Extensions(void);
-
+	/**< load OpenGL 4.1 extensions */
 	void Load4_1Extensions(void);
-
+	/**< load OpenGL 4.2 extensions */
 	void Load4_2Extensions(void);
-
+	/**< load OpenGL 4.3 extensions */
 	void Load4_3Extensions(void);
-
+	/**< load OpenGL 4.4 extensions */
 	void Load4_4Extensions(void);
 
+	/**< load all applicable OpenGL extensions */
 	std::error_code InitializeExtentions(void);
 
+	/**< load specific OpenGL extensions via OpenGL versions */
 	std::error_code InitializeExtensionsSpecific(unsigned int OpenGLVersions);
 
+	/**< whether an extension is supported */
 	bool IsExtensionSupported(const char* extensionName);
 
 }
