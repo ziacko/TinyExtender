@@ -42,10 +42,10 @@ GLuint LoadShader(const char* vertexSource, const char* fragmentSource)
 	const char* vertexShaderSource = FileToBuffer(vertexSource);
 	const char* fragmentShaderSource = FileToBuffer(fragmentSource);
 
-	vertexShaderHandle = glCreateShader(TE_VERTEX_SHADER);//create a handle to the vertex shader
+	vertexShaderHandle = glCreateShader(GL_VERTEX_SHADER);//create a handle to the vertex shader
 	glShaderSource(vertexShaderHandle, 1, (const GLchar**)&vertexShaderSource, NULL);//give openGL the vertex shader source code
 	glCompileShader(vertexShaderHandle);//compile the vertex shader
-	glGetShaderiv(vertexShaderHandle, TE_COMPILE_STATUS, &successful);//check if the vertex shader compiled correctly
+	glGetShaderiv(vertexShaderHandle, GL_COMPILE_STATUS, &successful);//check if the vertex shader compiled correctly
 	if (!successful)
 	{
 		//if not successful, get and print the error message
@@ -53,10 +53,10 @@ GLuint LoadShader(const char* vertexSource, const char* fragmentSource)
 		printf("%s \n", errorLog);
 	}
 
-	fragmentShaderHandle = glCreateShader(TE_FRAGMENT_SHADER);// create a handle to the pixel shader
+	fragmentShaderHandle = glCreateShader(GL_FRAGMENT_SHADER);// create a handle to the pixel shader
 	glShaderSource(fragmentShaderHandle, 1, (const GLchar**)&fragmentShaderSource, NULL);// give OpenGL the fragment shader source code
 	glCompileShader(fragmentShaderHandle);//compile the fragment shader
-	glGetShaderiv(fragmentShaderHandle, TE_COMPILE_STATUS, &successful);//check if the fragment shader compiled correctly
+	glGetShaderiv(fragmentShaderHandle, GL_COMPILE_STATUS, &successful);//check if the fragment shader compiled correctly
 	if (!successful)
 	{
 		//if not successful, get and print the error message
@@ -68,7 +68,7 @@ GLuint LoadShader(const char* vertexSource, const char* fragmentSource)
 	glAttachShader(programHandle, vertexShaderHandle);//attach the vertex shader to the shader program
 	glAttachShader(programHandle, fragmentShaderHandle);//attach the fragment shader to the shader program
 	glLinkProgram(programHandle);//link the attached shaders together
-	glGetProgramiv(programHandle, TE_LINK_STATUS, &successful);//check if the shaders linked successfully
+	glGetProgramiv(programHandle, GL_LINK_STATUS, &successful);//check if the shaders linked successfully
 	if (!successful)
 	{
 		//if not successful, get and print the error message
