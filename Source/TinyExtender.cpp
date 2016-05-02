@@ -4,7 +4,7 @@ namespace TinyExtender
 {
 	std::error_code make_error_code(error_t errorCode)
 	{
-		return std::error_code(static_cast<int>(errorCode), errorCategory_t::get());
+		return std::error_code(static_cast<int>(errorCode), error_category::get());
 	}
 
 	GLuint glVersionMajor = 0;
@@ -626,7 +626,7 @@ namespace TinyExtender
 	void(*glBindImageTextures) (GLuint first, GLsizei count, const GLuint *textures) = nullptr;
 	void(*glBindVertexBuffers) (GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizei *strides) = nullptr;
 
-	std::error_code InitializeGLVersion(void)
+	std::error_code InitializeGLVersion()
 	{
 		const GLubyte* versionString = glGetString(GL_VERSION);
 
@@ -643,7 +643,7 @@ namespace TinyExtender
 		}
 	}
 
-	void Load1_2Extensions(void)
+	void Load1_2Extensions()
 	{
 		FetchProcAddress(glDrawRangeElements, "glDrawRangeElements");
 		FetchProcAddress(glTexImage3D, "glTexImage3D");
@@ -651,7 +651,7 @@ namespace TinyExtender
 		FetchProcAddress(glCopyTexSubImage3D, "glCopyTexSubImage3D");
 	}
 
-	void Load1_3Extensions(void)
+	void Load1_3Extensions()
 	{
 		FetchProcAddress(glActiveTexture, "glActiveTexture");
 		FetchProcAddress(glSampleCoverage, "glSampleCoverage");
@@ -701,7 +701,7 @@ namespace TinyExtender
 		FetchProcAddress(glMultTransposeMatrixd, "glMultTransposeMatrixd");
 	}
 
-	void Load1_4Extensions(void)
+	void Load1_4Extensions()
 	{
 		FetchProcAddress(glBlendFuncSeparate, "glBlendFuncSeparate");
 		FetchProcAddress(glMultiDrawArrays, "glMultiDrawArrays");
@@ -752,7 +752,7 @@ namespace TinyExtender
 		FetchProcAddress(glBlendEquation, "glBlendEquation");
 	}
 
-	void Load1_5Extensions(void)
+	void Load1_5Extensions()
 	{
 		FetchProcAddress(glGenQueries, "glGenQueries");
 		FetchProcAddress(glDeleteQueries, "glDeleteQueries");
@@ -775,7 +775,7 @@ namespace TinyExtender
 		FetchProcAddress(glGetBufferPointerv, "glGetBufferPointerv");
 	}
 
-	void Load2_0Extensions(void)
+	void Load2_0Extensions()
 	{
 		FetchProcAddress(glBlendEquationSeparate, "glBlendEquationSeparate");
 		FetchProcAddress(glDrawBuffers, "glDrawBuffers");
@@ -872,7 +872,7 @@ namespace TinyExtender
 		FetchProcAddress(glVertexAttribPointer, "glVertexAttribPointer");
 	}
 
-	void Load2_1Extensions(void)
+	void Load2_1Extensions()
 	{
 		FetchProcAddress(glUniformMatrix2x3fv, "glUniformMatrix2x3fv");
 		FetchProcAddress(glUniformMatrix3x2fv, "glUniformMatrix3x2fv");
@@ -882,7 +882,7 @@ namespace TinyExtender
 		FetchProcAddress(glUniformMatrix4x3fv, "glUniformMatrix4x3fv");
 	}
 
-	void Load3_0Extensions(void)
+	void Load3_0Extensions()
 	{
 		FetchProcAddress(glColorMaski, "glColorMaski");
 		FetchProcAddress(glGetBooleani_v, "glGetBooleani_v");
@@ -970,7 +970,7 @@ namespace TinyExtender
 		FetchProcAddress(glIsVertexArray, "glIsVertexArray");
 	}
 
-	void Load3_1Extensions(void)
+	void Load3_1Extensions()
 	{
 		FetchProcAddress(glDrawArraysInstanced, "glDrawArraysInstanced");
 		FetchProcAddress(glDrawElementsInstanced, "glDrawElementsInstanced");
@@ -986,7 +986,7 @@ namespace TinyExtender
 		FetchProcAddress(glUniformBlockBinding, "glUniformBlockBinding");
 	}
 
-	void Load3_2Extensions(void)
+	void Load3_2Extensions()
 	{
 		FetchProcAddress(glDrawElementsBaseVertex, "glDrawElementsBaseVertex");
 		FetchProcAddress(glDrawRangeElementsBaseVertex, "glDrawRangeElementsBaseVertex");
@@ -1009,7 +1009,7 @@ namespace TinyExtender
 		FetchProcAddress(glSampleMaski, "glSampleMaski");
 	}
 
-	void Load3_3Extensions(void)
+	void Load3_3Extensions()
 	{
 		FetchProcAddress(glBindFragDataLocationIndexed, "glBindFragDataLocationIndexed");
 		FetchProcAddress(glGetFragDataIndex, "glGetFragDataIndex");
@@ -1072,7 +1072,7 @@ namespace TinyExtender
 		FetchProcAddress(glSecondaryColorP3uiv, "glSecondaryColorP3uiv");
 	}
 
-	void Load4_0Extensions(void)
+	void Load4_0Extensions()
 	{
 		FetchProcAddress(glMinSampleShading, "glMinSampleShading");
 		FetchProcAddress(glBlendEquationi, "glBlendEquationi");
@@ -1122,7 +1122,7 @@ namespace TinyExtender
 		FetchProcAddress(glGetQueryIndexediv, "glGetQueryIndexediv");
 	}
 
-	void Load4_1Extensions(void)
+	void Load4_1Extensions()
 	{
 		FetchProcAddress(glReleaseShaderCompiler, "glReleaseShaderCompiler");
 		FetchProcAddress(glShaderBinary, "glShaderBinary");
@@ -1214,7 +1214,7 @@ namespace TinyExtender
 		FetchProcAddress(glGetDoublei_v, "glGetDoublei_v");
 	}
 
-	void Load4_2Extensions(void)
+	void Load4_2Extensions()
 	{
 		FetchProcAddress(glDrawArraysInstancedBaseInstance, "glDrawArraysInstancedBaseInstance");
 		FetchProcAddress(glDrawElementsInstancedBaseInstance, "glDrawElementsInstancedBaseInstance");
@@ -1230,7 +1230,7 @@ namespace TinyExtender
 		FetchProcAddress(glDrawTransformFeedbackStreamInstanced, "glDrawTransformFeedbackStreamInstanced");
 	}
 
-	void Load4_3Extensions(void)
+	void Load4_3Extensions()
 	{
 		FetchProcAddress(glClearBufferData, "glClearBufferData");
 		FetchProcAddress(glClearBufferSubData, "glClearBufferSubData");
@@ -1277,7 +1277,7 @@ namespace TinyExtender
 		FetchProcAddress(glGetObjectPtrLabel, "glGetObjectPtrLabel");
 	}
 
-	void Load4_4Extensions(void)
+	void Load4_4Extensions()
 	{
 		FetchProcAddress(glBufferStorage, "glBufferStorage");
 		FetchProcAddress(glClearTexImage, "glClearTexImage");
@@ -1290,7 +1290,7 @@ namespace TinyExtender
 		FetchProcAddress(glBindVertexBuffers, "glBindVertexBuffers");
 	}
 
-	std::error_code InitializeExtentions(void)
+	std::error_code InitializeExtentions()
 	{
 		std::error_code errCode = InitializeGLVersion();
 		if (errCode == TinyExtender::error_t::versionLoadFailed)
