@@ -61,5 +61,5 @@ link_libraries (${LIBS})
 SET ( SOURCE ${TINYEXTENDER_SOURCE_DIR}/TinyExtender.cpp Example.cpp)
 SET ( HEADER_FILES ${TINYEXTENDER_INCLUDE_DIR}/TinyExtender.h)
 
-add_executable(Example ${SOURCE} ${HEADER_FILES})
-set_property(TARGET Example PROPERTY OUTPUT_NAME "Example")
+add_executable(Example_TinyExtender ${SOURCE} ${HEADER_FILES})
+set_property(TARGET Example_TinyExtender PROPERTY OUTPUT_NAME "TinyExtender_Example")
