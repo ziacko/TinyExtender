@@ -9,7 +9,7 @@ for info on future updates you can see the project trello <a href = "https://tre
 
 feel free to check out the TinyExtender SubReddit <a href = "https://www.reddit.com/r/TinyExtender/"> here </a>
 
-My name is Ziyad Barakat and I am a software engineer with over 3 years of programming experience. my core languages are C, C++, C#, Javascript, HTML, CSS and GLSL.
+My name is Ziyad Barakat and I am a software engineer. My core languages are C, C++, C#, Javascript, HTML, CSS and GLSL.
 
 I can be reached at ziyadbarakat@gmail.com
 

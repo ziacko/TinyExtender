@@ -1948,7 +1948,7 @@ namespace TinyExtender
 		Unsupported4_4,
 	};
 
-	class errorCategory_t : public std::error_category
+	class error_category : public std::error_category
 	{
 	public:
 
@@ -2057,11 +2057,11 @@ namespace TinyExtender
 			}
 		}
 
-		errorCategory_t() {};
+		error_category() {};
 
-		const static errorCategory_t& get()
+		const static error_category& get()
 		{
-			const static errorCategory_t category;
+			const static error_category category;
 			return category;
 		}
 	};
@@ -2091,41 +2091,41 @@ namespace TinyExtender
 	}
 
 	/**< get OpenGL version */
-	std::error_code InitializeGLVersion(void);
+	std::error_code InitializeGLVersion();
 
 	/**< load OpenGL 1.2 extensions */
-	void Load1_2Extensions(void);
+	void Load1_2Extensions();
 	/**< load OpenGL 1.3 extensions */
-	void Load1_3Extensions(void);
+	void Load1_3Extensions();
 	/**< load OpenGL 1.4 extensions */
-	void Load1_4Extensions(void);
+	void Load1_4Extensions();
 	/**< load OpenGL 1.5 extensions */
-	void Load1_5Extensions(void);
+	void Load1_5Extensions();
 	/**< load OpenGL 2.0 extensions */
-	void Load2_0Extensions(void);
+	void Load2_0Extensions();
 	/**< load OpenGL 2.1 extensions */
-	void Load2_1Extensions(void);
+	void Load2_1Extensions();
 	/**< load OpenGL 3.0 extensions */
-	void Load3_0Extensions(void);
+	void Load3_0Extensions();
 	/**< load OpenGL 3.1 extensions */
-	void Load3_1Extensions(void);
+	void Load3_1Extensions();
 	/**< load OpenGL 3.2 extensions */
-	void Load3_2Extensions(void);
+	void Load3_2Extensions();
 	/**< load OpenGL 3.3 extensions */
-	void Load3_3Extensions(void);
+	void Load3_3Extensions();
 	/**< load OpenGL 4.0 extensions */
-	void Load4_0Extensions(void);
+	void Load4_0Extensions();
 	/**< load OpenGL 4.1 extensions */
-	void Load4_1Extensions(void);
+	void Load4_1Extensions();
 	/**< load OpenGL 4.2 extensions */
-	void Load4_2Extensions(void);
+	void Load4_2Extensions();
 	/**< load OpenGL 4.3 extensions */
-	void Load4_3Extensions(void);
+	void Load4_3Extensions();
 	/**< load OpenGL 4.4 extensions */
-	void Load4_4Extensions(void);
+	void Load4_4Extensions();
 
 	/**< load all applicable OpenGL extensions */
-	std::error_code InitializeExtentions(void);
+	std::error_code InitializeExtentions();
 
 	/**< load specific OpenGL extensions via OpenGL versions */
 	std::error_code InitializeExtensionsSpecific(unsigned int OpenGLVersions);
