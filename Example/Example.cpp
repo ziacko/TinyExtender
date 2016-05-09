@@ -1,6 +1,8 @@
 #include <TinyExtender.h>
 #include "TinyWindow.h"
 
+#define NO_STDIO_REDIRECT
+
 using namespace TinyWindow;
 using namespace TinyExtender;
 
@@ -49,18 +51,24 @@ GLuint LoadShader(const char* vertexSource, const char* fragmentSource)
 	if (!successful)
 	{
 		//if not successful, get and print the error message
-		glGetShaderInfoLog(programHandle, sizeof(errorLog), 0, errorLog);
+		glGetShaderInfoLog(vertexShaderHandle, sizeof(errorLog), 0, errorLog);
 		printf("%s \n", errorLog);
 	}
 
 	fragmentShaderHandle = glCreateShader(gl_fragment_shader);// create a handle to the pixel shader
 	glShaderSource(fragmentShaderHandle, 1, (const GLchar**)&fragmentShaderSource, NULL);// give OpenGL the fragment shader source code
 	glCompileShader(fragmentShaderHandle);//compile the fragment shader
-	glGetShaderiv(fragmentShaderHandle, gl_compile_status, &successful);//check if the fragment shader compiled correctly
+	
+
+	if (glGetShaderiv)
+	{
+		glGetShaderiv(fragmentShaderHandle, gl_compile_status, &successful);//check if the fragment shader compiled correctly
+	}
+
 	if (!successful)
 	{
 		//if not successful, get and print the error message
-		glGetShaderInfoLog(programHandle, sizeof(errorLog), 0, errorLog);
+		glGetShaderInfoLog(vertexShaderHandle, sizeof(errorLog), 0, errorLog);
 		printf("%s \n", errorLog);
 	}
 
@@ -68,7 +76,7 @@ GLuint LoadShader(const char* vertexSource, const char* fragmentSource)
 	glAttachShader(programHandle, vertexShaderHandle);//attach the vertex shader to the shader program
 	glAttachShader(programHandle, fragmentShaderHandle);//attach the fragment shader to the shader program
 	glLinkProgram(programHandle);//link the attached shaders together
-	glGetProgramiv(programHandle, openGL2_0::gl_link_status, &successful);//check if the shaders linked successfully
+	glGetProgramiv(programHandle, gl_link_status, &successful);//check if the shaders linked successfully
 	if (!successful)
 	{
 		//if not successful, get and print the error message
@@ -83,6 +91,8 @@ int main()
 {
 	windowManager* manager = new windowManager();
 	tWindow* window = manager->AddWindow("TinyExtender example");
+
+	printf("poop \n");
 
 	InitializeExtentions();
 
