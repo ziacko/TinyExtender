@@ -515,7 +515,7 @@ namespace TinyExtender
 	extern void(*glVertexAttribPointer) (GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void *pointer);
 	enum openGL2_0
 	{
-		blend_equation_rgb =						0x8009,
+		gl_blend_equation_rgb =						0x8009,
 		gl_vertex_attrib_array_enabled =			0x8622,
 		gl_vertex_attrib_array_size =				0x8623,
 		gl_vertex_attrib_array_stride =				0x8624,
