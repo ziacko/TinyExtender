@@ -2823,7 +2823,7 @@ namespace TinyExtender
 			return TinyExtender::error_t::Unsupported1_5;
 		}
 
-		if (glVersionMajor > 2)
+		if (glVersionMajor >= 2)
 		{
 			Load2_0Extensions();
 		}
@@ -2843,7 +2843,7 @@ namespace TinyExtender
 			return TinyExtender::error_t::Unsupported2_1;
 		}
 
-		if (glVersionMajor > 3)
+		if (glVersionMajor >= 3)
 		{
 			Load3_0Extensions();
 		}
@@ -2883,7 +2883,7 @@ namespace TinyExtender
 			return TinyExtender::error_t::Unsupported3_3;
 		}
 
-		if (glVersionMajor > 4)
+		if (glVersionMajor >= 4)
 		{
 			Load4_0Extensions();
 		}
