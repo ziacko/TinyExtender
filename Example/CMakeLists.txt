@@ -58,7 +58,7 @@ include_directories ("${EXAMPLE_INCLUDE_DIR}")
 include_directories ("${PROJECT_BINARY_DIR}")
 link_directories (${LINK_DIRECTORY})
 link_libraries (${LIBS})
-SET ( SOURCE ${TINYEXTENDER_SOURCE_DIR}/TinyExtender.cpp Example.cpp)
+SET ( SOURCE Example.cpp)
 SET ( HEADER_FILES ${TINYEXTENDER_INCLUDE_DIR}/TinyExtender.h)
 
 add_executable(Example_TinyExtender ${SOURCE} ${HEADER_FILES})

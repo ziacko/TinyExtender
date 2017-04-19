@@ -19,7 +19,7 @@ GLchar* FileToBuffer(const GLchar* path)
 
 	//get total byte in given file
 	fseek(file, 0, SEEK_END); //set the position indicator to the end of the file
-	GLuint FileLength = ftell(file);//get the current value of the position indicator in bytes
+	size_t FileLength = ftell(file);//get the current value of the position indicator in bytes
 	fseek(file, 0, SEEK_SET); //set the position indicator back to the beginning of the file
 
 	//allocate a file buffer and read the contents of the file
@@ -38,16 +38,16 @@ GLuint LoadShader(const char* vertexSource, const char* fragmentSource)
 	GLuint fragmentShaderHandle = 0;
 	GLuint programHandle = 0;
 
-	GLint successful = false;
+	GLint successful = 0;
 	GLchar errorLog[512];
 
 	const char* vertexShaderSource = FileToBuffer(vertexSource);
 	const char* fragmentShaderSource = FileToBuffer(fragmentSource);
 
-	vertexShaderHandle = glCreateShader(gl_vertex_shader);//create a handle to the vertex shader
+	vertexShaderHandle = glCreateShader(GL_VERTEX_SHADER);//create a handle to the vertex shader
 	glShaderSource(vertexShaderHandle, 1, (const GLchar**)&vertexShaderSource, NULL);//give openGL the vertex shader source code
 	glCompileShader(vertexShaderHandle);//compile the vertex shader
-	glGetShaderiv(vertexShaderHandle, gl_compile_status, &successful);//check if the vertex shader compiled correctly
+	glGetShaderiv(vertexShaderHandle, GL_COMPILE_STATUS, &successful);//check if the vertex shader compiled correctly
 	if (!successful)
 	{
 		//if not successful, get and print the error message
@@ -55,14 +55,14 @@ GLuint LoadShader(const char* vertexSource, const char* fragmentSource)
 		printf("%s \n", errorLog);
 	}
 
-	fragmentShaderHandle = glCreateShader(gl_fragment_shader);// create a handle to the pixel shader
+	fragmentShaderHandle = glCreateShader(GL_FRAGMENT_SHADER);// create a handle to the pixel shader
 	glShaderSource(fragmentShaderHandle, 1, (const GLchar**)&fragmentShaderSource, NULL);// give OpenGL the fragment shader source code
 	glCompileShader(fragmentShaderHandle);//compile the fragment shader
 	
 
 	if (glGetShaderiv)
 	{
-		glGetShaderiv(fragmentShaderHandle, gl_compile_status, &successful);//check if the fragment shader compiled correctly
+		glGetShaderiv(fragmentShaderHandle, GL_COMPILE_STATUS, &successful);//check if the fragment shader compiled correctly
 	}
 
 	if (!successful)
@@ -76,7 +76,7 @@ GLuint LoadShader(const char* vertexSource, const char* fragmentSource)
 	glAttachShader(programHandle, vertexShaderHandle);//attach the vertex shader to the shader program
 	glAttachShader(programHandle, fragmentShaderHandle);//attach the fragment shader to the shader program
 	glLinkProgram(programHandle);//link the attached shaders together
-	glGetProgramiv(programHandle, gl_link_status, &successful);//check if the shaders linked successfully
+	glGetProgramiv(programHandle, GL_LINK_STATUS, &successful);//check if the shaders linked successfully
 	if (!successful)
 	{
 		//if not successful, get and print the error message
