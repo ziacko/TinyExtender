@@ -1838,6 +1838,7 @@ namespace TinyWindow
 		void ShutdownWindow(tWindow* window)
 		{
 	#if defined(TW_WINDOWS)
+			DragAcceptFiles(window->windowHandle, false);
 			window->shouldClose = true;
 			if (window->glRenderingContextHandle)
 			{
