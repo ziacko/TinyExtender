@@ -1,3 +1,5 @@
+#define TW_NO_CONSOLE
+
 #include <TinyExtender.h>
 #include "TinyWindow.h"
 
@@ -45,18 +47,18 @@ GLuint LoadShader(const char* vertexSource, const char* fragmentSource)
 	const char* fragmentShaderSource = FileToBuffer(fragmentSource);
 
 	vertexShaderHandle = glCreateShader(gl_vertex_shader);//create a handle to the vertex shader
-	glShaderSource(vertexShaderHandle, 1, (const GLchar**)&vertexShaderSource, NULL);//give openGL the vertex shader source code
+	glShaderSource(vertexShaderHandle, 1, (const GLchar**)&vertexShaderSource, nullptr);//give openGL the vertex shader source code
 	glCompileShader(vertexShaderHandle);//compile the vertex shader
 	glGetShaderiv(vertexShaderHandle, gl_compile_status, &successful);//check if the vertex shader compiled correctly
 	if (!successful)
 	{
 		//if not successful, get and print the error message
-		glGetShaderInfoLog(vertexShaderHandle, sizeof(errorLog), 0, errorLog);
+		glGetShaderInfoLog(vertexShaderHandle, sizeof(errorLog), nullptr, errorLog);
 		printf("%s \n", errorLog);
 	}
 
 	fragmentShaderHandle = glCreateShader(gl_fragment_shader);// create a handle to the pixel shader
-	glShaderSource(fragmentShaderHandle, 1, (const GLchar**)&fragmentShaderSource, NULL);// give OpenGL the fragment shader source code
+	glShaderSource(fragmentShaderHandle, 1, (const GLchar**)&fragmentShaderSource, nullptr);// give OpenGL the fragment shader source code
 	glCompileShader(fragmentShaderHandle);//compile the fragment shader
 	
 
@@ -68,7 +70,7 @@ GLuint LoadShader(const char* vertexSource, const char* fragmentSource)
 	if (!successful)
 	{
 		//if not successful, get and print the error message
-		glGetShaderInfoLog(vertexShaderHandle, sizeof(errorLog), 0, errorLog);
+		glGetShaderInfoLog(vertexShaderHandle, sizeof(errorLog), nullptr, errorLog);
 		printf("%s \n", errorLog);
 	}
 
@@ -80,7 +82,7 @@ GLuint LoadShader(const char* vertexSource, const char* fragmentSource)
 	if (!successful)
 	{
 		//if not successful, get and print the error message
-		glGetProgramInfoLog(programHandle, sizeof(errorLog), 0, errorLog);
+		glGetProgramInfoLog(programHandle, sizeof(errorLog), nullptr, errorLog);
 		printf("%s \n", errorLog);
 	}
 
@@ -91,8 +93,6 @@ int main()
 {
 	windowManager* manager = new windowManager();
 	tWindow* window = manager->AddWindow("TinyExtender example");
-
-	printf("poop \n");
 
 	InitializeExtentions();
 
