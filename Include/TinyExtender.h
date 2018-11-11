@@ -28,15 +28,15 @@
 #if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
 #include <inttypes.h>
 #if defined(__STDC__)
-	typedef long long int int64_t;
-	typedef unsigned long long int uint64_t;
+	using int64_t = long long int;
+	using uint64_t = unsigned long long int;
 #endif /* __STDC__ */
 #elif defined(_WIN32) && defined(__GNUC__)
 #include <stdint.h>
 #elif defined(_WIN32)
-	typedef __int32 int32_t;
-	typedef __int64 int64_t;
-	typedef unsigned __int64 uint64_t;
+	using int32_t = __int32;
+	using int64_t = __int64;
+	using uint64_t = unsigned __int64;
 #else
 	/* fall back if nothing above works */
 #include <inttypes.h>
@@ -343,8 +343,8 @@ namespace TinyExtender
 	};
 
 	//OpenGL 1.5 Extensions
-	typedef ptrdiff_t GLsizeiptr;
-	typedef ptrdiff_t GLintptr;
+	using GLsizeiptr = ptrdiff_t;
+	using GLintptr = ptrdiff_t;
 	void(*glGenQueries) (GLsizei n, GLuint *ids);
 	void(*glDeleteQueries) (GLsizei n, const GLuint *ids);
 	GLboolean(*glIsQuery) (GLuint id);
@@ -419,7 +419,7 @@ namespace TinyExtender
 	};
 
 	//2.0 extensions
-	typedef char GLchar;
+	using GLchar = char;
 	void(*glBlendEquationSeparate) (GLenum modeRGB, GLenum modeAlpha) = nullptr;
 	void(*glDrawBuffers) (GLsizei n, const GLenum *bufs) = nullptr;
 	void(*glStencilOpSeparate) (GLenum face, GLenum sfail, GLenum dpfail, GLenum dppass) = nullptr;
@@ -636,7 +636,7 @@ namespace TinyExtender
 	};
 	
 	//3.0 extensions
-	typedef unsigned short GLhalf;
+	using GLhalf = unsigned short;
 	void(*glColorMaski) (GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a) = nullptr;
 	void(*glGetBooleani_v) (GLenum target, GLuint index, GLboolean *data) = nullptr;
 	void(*glGetIntegeri_v) (GLenum target, GLuint index, GLint *data) = nullptr;
@@ -1023,8 +1023,8 @@ namespace TinyExtender
 
 	//OpenGL 3.2 Extensions
 	typedef struct __GLsync* GLsync;
-	typedef uint64_t GLuint64;
-	typedef int64_t GLint64;
+	using GLuint64 = uint64_t;
+	using GLint64 = int64_t;
 	void(*glDrawElementsBaseVertex) (GLenum mode, GLsizei count, GLenum type, const void *indices, GLint basevertex) = nullptr;
 	void(*glDrawRangeElementsBaseVertex) (GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void *indices, GLint basevertex) = nullptr;
 	void(*glDrawElementsInstancedBaseVertex) (GLenum mode, GLsizei count, GLenum type, const void *indices, GLsizei instancecount, GLint basevertex) = nullptr;
@@ -1569,7 +1569,7 @@ namespace TinyExtender
 	};
 
 	//OpenGL 4.3 Extensions
-	typedef void (*glDebug)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, const void *userParam);
+	using glDebug = void (*)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, const void *userParam);
 	void(*glClearBufferData) (GLenum target, GLenum internalformat, GLenum format, GLenum type, const void *data) = nullptr;
 	void(*glClearBufferSubData) (GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const void *data) = nullptr;
 	void(*glDispatchCompute) (GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z) = nullptr;
@@ -3147,7 +3147,7 @@ namespace TinyExtender
 
 		GLubyte* allExtensions = (GLubyte*)glGetString(GL_EXTENSIONS); //get all supported extensions
 
-		if (allExtensions != NULL)
+		if (allExtensions != nullptr)
 		{
 			end = allExtensions + strlen((const char*)allExtensions);
 
