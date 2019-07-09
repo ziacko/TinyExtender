@@ -31,7 +31,7 @@
 #include <Windows.h>
 #if !defined(TW_USE_VULKAN)
 #include <gl/GL.h>
-#include <gl/wglext.h>
+#include <wglext.h>
 #else
 #include <vulkan.h>
 #endif
