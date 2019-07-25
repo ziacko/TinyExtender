@@ -1485,27 +1485,20 @@ namespace TinyExtender
 	};
 
 	//multisample
-	bool multisample_3DFX = false;
+	#define multisample_3DFX 1
 
 	//tbuffer
-	bool tbuffer_3DFX = false;
+	#define tbuffer_3DFX 1
 	void (*glTbufferMask3DFX) (GLuint mask) = nullptr;
 
 	//texture compression FXT1
-	bool texture_compression_FXT1_3DFX = false;
+	#define texture_compression_FXT1_3DFX 1
 
 	//*< load OpenGL 3DFX Extensions
 	void Load3DFXExtensions()
 	{
-		//multisample
-		FetchProcAddress(multisample_3DFX, "multisample_3DFX");
-
 		//tbuffer
-		FetchProcAddress(tbuffer_3DFX, "tbuffer_3DFX");
 		FetchProcAddress(glTbufferMask3DFX, "glTbufferMask3DFX");
-
-		//texture compression FXT1
-		FetchProcAddress(texture_compression_FXT1_3DFX, "texture_compression_FXT1_3DFX");
 	}
 
 #pragma endregion 3DFX Extensions
@@ -1649,19 +1642,19 @@ namespace TinyExtender
 	};
 
 	//blend minmax factor
-	bool AMD_blend_minmax_factor = false;
+	#define AMD_blend_minmax_factor 1
 
 	//compressed 3DC texture
-	bool AMD_compressed_3DC_texture = false;
+	#define AMD_compressed_3DC_texture 1
 
 	//compressed ATC texture
-	bool AMD_compressed_ATC_texture = false;
+	#define AMD_compressed_ATC_texture 1
 	
 	//conservative depth
-	bool AMD_conservative_depth = false;
+	#define AMD_conservative_depth 1
 
 	//debug output
-	bool AMD_debug_output = false;
+	#define AMD_debug_output 1
 	typedef void (*GLDEBUGPROCAMD)(GLuint id, GLenum category, GLenum severity, GLsizei length, const GLchar* message, void* userParam);
 	void (*glDebugMessageCallbackAMD) (GLDEBUGPROCAMD callback, void* userParam) = nullptr;
 	void (*glDebugMessageEnableAMD) (GLenum category, GLenum severity, GLsizei count, const GLuint* ids, GLboolean enabled) = nullptr;
@@ -1669,55 +1662,55 @@ namespace TinyExtender
 	GLuint (*glGetDebugMessageLogAMD) (GLuint count, GLsizei bufsize, GLenum* categories, GLuint* severities, GLuint* ids, GLsizei* lengths, GLchar* message) = nullptr;
 
 	//depth clamp separate
-	bool AMD_depth_clamp_separate = false;
+	#define AMD_depth_clamp_separate 1
 
 	//draw buffers blend
-	bool AMD_draw_buffers_blend = false;
+	#define AMD_draw_buffers_blend 1
 	void (*glBlendEquationIndexedAMD) (GLuint buf, GLenum mode) = nullptr;
 	void (*glBlendEquationSeparateIndexedAMD) (GLuint buf, GLenum modeRGB, GLenum modeAlpha) = nullptr;
 	void (*glBlendFuncIndexedAMD) (GLuint buf, GLenum src, GLenum dst) = nullptr;
 	void (*glBlendFuncSeparateIndexedAMD) (GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha) = nullptr;
 
 	//framebuffer sample positions
-	bool AMD_framebuffer_sample_positions = false;
+	#define AMD_framebuffer_sample_positions 1
 	void (*glFramebufferSamplePositionsfvAMD) (GLenum target, GLuint numsamples, GLuint pixelindex, const GLfloat* values) = nullptr;
 	void (*glGetFramebufferParameterfvAMD) (GLenum target, GLenum pname, GLuint numsamples, GLuint pixelindex, GLsizei size, GLfloat* values) = nullptr;
 	void (*glGetNamedFramebufferParameterfvAMD) (GLuint framebuffer, GLenum pname, GLuint numsamples, GLuint pixelindex, GLsizei size, GLfloat* values) = nullptr;
 	void (*glNamedFramebufferSamplePositionsfvAMD) (GLuint framebuffer, GLuint numsamples, GLuint pixelindex, const GLfloat* values) = nullptr;
 
 	//gcn shader
-	bool AMD_gcn_shader = false;
+	#define AMD_gcn_shader 1
 
 	//gpu shader half float
-	bool AMD_gpu_shader_half_float = false;
+	#define AMD_gpu_shader_half_float 1
 
 	//gpu shader int16
-	bool AMD_gpu_shader_int16 = false;
+	#define AMD_gpu_shader_int16 1
 
 	//gpu shader int64
-	bool AMD_gpu_shader_int64 = false;
+	#define AMD_gpu_shader_int64 1
 
 	//interleaved elements
-	bool AMD_interleaved_elements = false;
+	#define AMD_interleaved_elements 1
 	void (*glVertexAttribParameteriAMD) (GLuint index, GLenum pname, GLint param) = nullptr;
 
 	//multi draw indirect
-	bool AMD_multi_draw_indirect = false;
+	#define AMD_multi_draw_indirect 1
 	void (*glMultiDrawArraysIndirectAMD) (GLenum mode, const void* indirect, GLsizei primcount, GLsizei stride) = nullptr;
 	void (*glMultiDrawElementsIndirectAMD) (GLenum mode, GLenum type, const void* indirect, GLsizei primcount, GLsizei stride) = nullptr;
 
 	//name gen delete
-	bool AMD_name_gen_delete = false;
+	#define AMD_name_gen_delete 1
 	void (*glDeleteNamesAMD) (GLenum identifier, GLuint num, const GLuint* names) = nullptr;
 	void (*glGenNamesAMD) (GLenum identifier, GLuint num, GLuint* names) = nullptr;
 	GLboolean(*glIsNameAMD) (GLenum identifier, GLuint name) = nullptr;
 
 	//occlusion query event
-	bool AMD_occlusion_query_event = false;
+	#define AMD_occlusion_query_event 1
 	void (*glQueryObjectParameteruiAMD) (GLenum target, GLuint id, GLenum pname, GLuint param) = nullptr;
 
 	//performance monitor
-	bool AMD_performance_monitor = false;
+	#define AMD_performance_monitor 1
 	void (*glBeginPerfMonitorAMD) (GLuint monitor) = nullptr;
 	void (*glDeletePerfMonitorsAMD) (GLsizei n, GLuint* monitors) = nullptr;
 	void (*glEndPerfMonitorAMD) (GLuint monitor) = nullptr;
@@ -1731,143 +1724,108 @@ namespace TinyExtender
 	void (*glSelectPerfMonitorCountersAMD) (GLuint monitor, GLboolean enable, GLuint group, GLint numCounters, GLuint* counterList) = nullptr;
 
 	//pinned memory
-	bool AMD_pinned_memory = false;
+	#define AMD_pinned_memory 1
 
 	//program binary Z400
-	bool AMD_program_binary_Z400 = false;
+	#define AMD_program_binary_Z400 1
 
 	//query buffer object
-	bool AMD_query_buffer_object = false;
+	#define AMD_query_buffer_object 1
 
 	//sample positions
-	bool AMD_sample_positions = false;
+	#define AMD_sample_positions 1
 	void (*glSetMultisamplefvAMD) (GLenum pname, GLuint index, const GLfloat* val) = nullptr;
 
 	//seamless cubemap per texture
-	bool AMD_seamless_cubemap_per_texture = false;
+	#define AMD_seamless_cubemap_per_texture 1
 
 	//shader atomic counter ops
-	bool AMD_shader_atomic_counter_ops = false;
+	#define AMD_shader_atomic_counter_ops 1
 
 	//shader ballot
-	bool AMD_shader_ballot = false;
+	#define AMD_shader_ballot 1
 
 	//shader explicit vertex parameter
-	bool AMD_shader_explicit_vertex_parameter = false;
+	#define AMD_shader_explicit_vertex_parameter 1
 
 	//shader stencil export
-	bool AMD_shader_stencil_export = false;
+	#define AMD_shader_stencil_export 1
 
 	//shader stencil value export
-	bool AMD_shader_stencil_value_export = false;
+	#define AMD_shader_stencil_value_export 1
 
 	//shader trinary minmax
-	bool AMD_shader_trinary_minmax = false;
+	#define AMD_shader_trinary_minmax 1
 
 	//sparse texture
-	bool AMD_sparse_texture = false;
+	#define AMD_sparse_texture 1
 	void (*glTexStorageSparseAMD) (GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags) = nullptr;
 	void (*glTextureStorageSparseAMD) (GLuint texture, GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags) = nullptr;
 
 	//stencil operation extended
-	bool AMD_stencil_operation_extended = false;
+	#define AMD_stencil_operation_extended 1
 	void (*glStencilOpValueAMD) (GLenum face, GLuint value) = nullptr;
 
 	//texture gather bias lod
-	bool AMD_texture_gather_bias_lod = false;
+	#define AMD_texture_gather_bias_lod 1
 
 	//texture texture4
-	bool AMD_texture_texture4 = false;
+	#define AMD_texture_texture4 1
 
 	//transform feedback3 lines triangles
-	bool AMD_transform_feedback3_lines_triangles = false;
+	#define AMD_transform_feedback3_lines_triangles 1
 
 	//transform feedback4 
-	bool AMD_transform_feedback4 = false;
+	#define AMD_transform_feedback4 1
 
 	//vertex shader layer
-	bool AMD_vertex_shader_layer = false;
+	#define AMD_vertex_shader_layer 1
 
 	//vertex shader tessellator
-	bool AMD_vertex_shader_tessellator = false;
+	#define AMD_vertex_shader_tessellator 1
 	void (*glTessellationFactorAMD) (GLfloat factor) = nullptr;
 	void (*glTessellationModeAMD) (GLenum mode) = nullptr;
 
 	//vertex shader viewport index
-	bool AMD_vertex_shader_viewport_index = false;
+	#define AMD_vertex_shader_viewport_index 1
 
 	//*< load OpenGL AMD Extensions
 	void LoadAMDExtensions()
 	{
-		//blend minmax factor
-		FetchProcAddress(AMD_blend_minmax_factor, "AMD_blend_minmax_factor");
-
-		//compressed 3DC texture
-		FetchProcAddress(AMD_compressed_3DC_texture, "AMD_compressed_3DC_texture");
-
-		//compressed ATC texture
-		FetchProcAddress(AMD_compressed_ATC_texture, "AMD_compressed_ATC_texture");
-
-		//conservative depth
-		FetchProcAddress(AMD_conservative_depth, "AMD_conservative_depth");
-
-		//debug output
-		FetchProcAddress(AMD_debug_output, "AMD_debug_output");
+		//debug output		
 		FetchProcAddress(glDebugMessageCallbackAMD, "glDebugMessageCallbackAMD");
 		FetchProcAddress(glDebugMessageEnableAMD, "glDebugMessageEnableAMD");
 		FetchProcAddress(glDebugMessageInsertAMD, "glDebugMessageInsertAMD");
 		FetchProcAddress(glGetDebugMessageLogAMD, "glGetDebugMessageLogAMD");
 
-		//depth clamp separate
-		FetchProcAddress(AMD_depth_clamp_separate, "AMD_depth_clamp_separate");
-
 		//draw buffers blend
-		FetchProcAddress(AMD_draw_buffers_blend, "AMD_draw_buffers_blend");
 		FetchProcAddress(glBlendEquationIndexedAMD, "glBlendEquationIndexedAMD");
 		FetchProcAddress(glBlendEquationSeparateIndexedAMD, "glBlendEquationSeparateIndexedAMD");
 		FetchProcAddress(glBlendFuncIndexedAMD, "glBlendFuncIndexedAMD");
 		FetchProcAddress(glBlendFuncSeparateIndexedAMD, "glBlendFuncSeparateIndexedAMD");
 
 		//framebuffer sample positions
-		FetchProcAddress(AMD_framebuffer_sample_positions, "AMD_framebuffer_sample_positions");
 		FetchProcAddress(glFramebufferSamplePositionsfvAMD, "glFramebufferSamplePositionsfvAMD");
 		FetchProcAddress(glGetFramebufferParameterfvAMD, "glGetFramebufferParameterfvAMD");
 		FetchProcAddress(glGetNamedFramebufferParameterfvAMD, "glGetNamedFramebufferParameterfvAMD");
 		FetchProcAddress(glNamedFramebufferSamplePositionsfvAMD, "glNamedFramebufferSamplePositionsfvAMD");
 
-		//gcn shader
-		FetchProcAddress(AMD_gcn_shader, "AMD_gcn_shader");
-
-		//gpu shader half float
-		FetchProcAddress(AMD_gpu_shader_half_float, "AMD_gpu_shader_half_float");
-
-		//gpu shader int16
-		FetchProcAddress(AMD_gpu_shader_int16, "AMD_gpu_shader_int16");
-
-		//gpu shader int64
-		FetchProcAddress(AMD_gpu_shader_int64, "AMD_gpu_shader_int64");
-
 		//interleaved elements
-		FetchProcAddress(AMD_interleaved_elements, "AMD_interleaved_elements");
 		FetchProcAddress(glVertexAttribParameteriAMD, "glVertexAttribParameteriAMD");
 
 		//multi draw indirect
-		FetchProcAddress(AMD_multi_draw_indirect, "AMD_multi_draw_indirect");
 		FetchProcAddress(glMultiDrawArraysIndirectAMD, "glMultiDrawArraysIndirectAMD");
 		FetchProcAddress(glMultiDrawElementsIndirectAMD, "glMultiDrawElementsIndirectAMD");
 
-		//name gen delete
-		FetchProcAddress(AMD_name_gen_delete, "AMD_name_gen_delete");
+		//name gen delete		
 		FetchProcAddress(glDeleteNamesAMD, "glDeleteNamesAMD");
 		FetchProcAddress(glGenNamesAMD, "glGenNamesAMD");
 		FetchProcAddress(glIsNameAMD, "glIsNameAMD");
 
-		//occlusion query event
-		FetchProcAddress(AMD_occlusion_query_event, "AMD_occlusion_query_event");
+		//occlusion query event		
 		FetchProcAddress(glQueryObjectParameteruiAMD, "glQueryObjectParameteruiAMD");
 
-		//performance monitor
-		FetchProcAddress(AMD_performance_monitor, "AMD_performance_monitor");
+		//performance monitor		
 		FetchProcAddress(glBeginPerfMonitorAMD, "glBeginPerfMonitorAMD");
 		FetchProcAddress(glDeletePerfMonitorsAMD, "glDeletePerfMonitorsAMD");
 		FetchProcAddress(glEndPerfMonitorAMD, "glEndPerfMonitorAMD");
@@ -1880,71 +1838,19 @@ namespace TinyExtender
 		FetchProcAddress(glGetPerfMonitorGroupsAMD, "glGetPerfMonitorGroupsAMD");
 		FetchProcAddress(glSelectPerfMonitorCountersAMD, "glSelectPerfMonitorCountersAMD");
 
-		//pinned memory
-		FetchProcAddress(AMD_pinned_memory, "AMD_pinned_memory");
-
-		//program binary Z400
-		FetchProcAddress(AMD_program_binary_Z400, "AMD_program_binary_Z400");
-
-		//query buffer object
-		FetchProcAddress(AMD_query_buffer_object, "AMD_query_buffer_object");
-
-		//sample positions
-		FetchProcAddress(AMD_sample_positions, "AMD_sample_positions");
-		FetchProcAddress(glSetMultisamplefvAMD, "glSetMultisamplefvAMD");
-
-		//seamless cubemap per texture
-		FetchProcAddress(AMD_seamless_cubemap_per_texture, "AMD_seamless_cubemap_per_texture");
-
-		//shader atomic counter ops
-		FetchProcAddress(AMD_shader_atomic_counter_ops, "AMD_shader_atomic_counter_ops");
-
-		//shader ballot
-		FetchProcAddress(AMD_shader_ballot, "AMD_shader_ballot");
-
-		//shader explicit vertex parameter
-		FetchProcAddress(AMD_shader_explicit_vertex_parameter, "AMD_shader_explicit_vertex_parameter");
-
-		//shader stencil export
-		FetchProcAddress(AMD_shader_stencil_export, "AMD_shader_stencil_export");
-
-		//shader stencil value export
-		FetchProcAddress(AMD_shader_stencil_value_export, "AMD_shader_stencil_value_export");
-
-		//shader trinary minmax
-		FetchProcAddress(AMD_shader_trinary_minmax, "AMD_shader_trinary_minmax");
+		//sample positions		
+		FetchProcAddress(glSetMultisamplefvAMD, "glSetMultisamplefvAMD");		
 
 		//sparse texture
-		FetchProcAddress(AMD_sparse_texture, "AMD_sparse_texture");
 		FetchProcAddress(glTexStorageSparseAMD, "glTexStorageSparseAMD");
 		FetchProcAddress(glTextureStorageSparseAMD, "glTextureStorageSparseAMD");
 
-		//stencil operation extended
-		FetchProcAddress(AMD_stencil_operation_extended, "AMD_stencil_operation_extended");
-		FetchProcAddress(glStencilOpValueAMD, "glStencilOpValueAMD");
+		//stencil operation extended		
+		FetchProcAddress(glStencilOpValueAMD, "glStencilOpValueAMD");		
 
-		//texture gather bias lod
-		FetchProcAddress(AMD_texture_gather_bias_lod, "AMD_texture_gather_bias_lod");
-
-		//texture texture4
-		FetchProcAddress(AMD_texture_texture4, "AMD_texture_texture4");
-
-		//transform feedback3 lines triangles
-		FetchProcAddress(AMD_transform_feedback3_lines_triangles, "AMD_transform_feedback3_lines_triangles");
-
-		//transform feedback4 
-		FetchProcAddress(AMD_transform_feedback4, "AMD_transform_feedback4");
-
-		//vertex shader layer
-		FetchProcAddress(AMD_vertex_shader_layer, "AMD_vertex_shader_layer");
-
-		//vertex shader tessellator
-		FetchProcAddress(AMD_vertex_shader_tessellator, "AMD_vertex_shader_tessellator");
+		//vertex shader tessellator		
 		FetchProcAddress(glTessellationFactorAMD, "glTessellationFactorAMD");
-		FetchProcAddress(glTessellationModeAMD, "glTessellationModeAMD");
-
-		//vertex shader viewport index
-		FetchProcAddress(AMD_vertex_shader_viewport_index, "AMD_vertex_shader_viewport_index");
+		FetchProcAddress(glTessellationModeAMD, "glTessellationModeAMD");		
 	}
 
 #pragma endregion AMD Extensions
@@ -1952,12 +1858,12 @@ namespace TinyExtender
 	//OpenGL Android Extensions
 #pragma region Android
 	//ANDROID_extension_pack_es31a
-	bool ANDROID_extension_pack_es31a = false;
+	#define ANDROID_extension_pack_es31a 1
 
 	//*< load Android Extensions
 	void LoadAndroidExtensions()
 	{
-		FetchProcAddress(ANDROID_extension_pack_es31a, "ANDROID_extension_pack_es31a");
+
 	}
 #pragma endregion Android Extensions
 
@@ -2009,42 +1915,42 @@ namespace TinyExtender
 	};
 
 	//depth texture
-	bool ANGLE_depth_texture = false;
+	#define ANGLE_depth_texture 1
 
 	//framebuffer blit
-	bool ANGLE_framebuffer_blit = false;
+	#define ANGLE_framebuffer_blit 1
 	void (*glBlitFramebufferANGLE) (GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter) = nullptr;
 
 	//framebuffer multisample
-	bool ANGLE_framebuffer_multisample = false;
+	#define ANGLE_framebuffer_multisample 1
 	void (*glRenderbufferStorageMultisampleANGLE) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height) = nullptr;
 
 	//instanced arrays
-	bool ANGLE_instanced_arrays = false;
+	#define ANGLE_instanced_arrays 1
 	void (*glDrawArraysInstancedANGLE) (GLenum mode, GLint first, GLsizei count, GLsizei primcount) = nullptr;
 	void (*glDrawElementsInstancedANGLE) (GLenum mode, GLsizei count, GLenum type, const void* indices, GLsizei primcount) = nullptr;
 	void (*glVertexAttribDivisorANGLE) (GLuint index, GLuint divisor) = nullptr;
 
 	//pack reverse row order
-	bool ANGLE_pack_reverse_row_order = false;
+	#define ANGLE_pack_reverse_row_order 1
 
 	//program binary
-	bool ANGLE_program_binary = false;
+	#define ANGLE_program_binary 1
 
 	//texture compression dxt1
-	bool ANGLE_texture_compression_dxt1 = false;
+	#define ANGLE_texture_compression_dxt1 1
 
 	//texture compression dxt3
-	bool ANGLE_texture_compression_dxt3 = false;
+	#define ANGLE_texture_compression_dxt3 1
 
 	//texture compression dxt5
-	bool ANGLE_texture_compression_dxt5 = false;
+	#define ANGLE_texture_compression_dxt5 1
 
 	//texture usage
-	bool ANGLE_texture_usage = false;
+	#define ANGLE_texture_usage 1
 
 	//timer query
-	bool ANGLE_timer_query = false;
+	#define ANGLE_timer_query 1
 	void (*glBeginQueryANGLE) (GLenum target, GLuint id) = nullptr;
 	void (*glDeleteQueriesANGLE) (GLsizei n, const GLuint* ids) = nullptr;
 	void (*glEndQueryANGLE) (GLenum target) = nullptr;
@@ -2058,49 +1964,24 @@ namespace TinyExtender
 	void (*glQueryCounterANGLE) (GLuint id, GLenum target) = nullptr;
 
 	//translated shader source
-	bool ANGLE_translated_shader_source = false;
+	#define ANGLE_translated_shader_source 1
 	void (*glGetTranslatedShaderSourceANGLE) (GLuint shader, GLsizei bufsize, GLsizei* length, GLchar* source) = nullptr;
 
 	//*< load Angle Extensions
 	void LoadAngleExtensions()
-	{
-		//depth texture
-		FetchProcAddress(ANGLE_depth_texture, "ANGLE_depth_texture");
-
-		//framebuffer blit
-		FetchProcAddress(ANGLE_framebuffer_blit, "ANGLE_framebuffer_blit");
+	{		
+		//framebuffer blit		
 		FetchProcAddress(glBlitFramebufferANGLE, "glBlitFramebufferANGLE");
 
-		//framebuffer multisample
-		FetchProcAddress(ANGLE_framebuffer_multisample, "ANGLE_framebuffer_multisample");
+		//framebuffer multisample		
 		FetchProcAddress(glRenderbufferStorageMultisampleANGLE, "glRenderbufferStorageMultisampleANGLE");
 
-		//instanced arrays
-		FetchProcAddress(ANGLE_instanced_arrays, "ANGLE_instanced_arrays");		
+		//instanced arrays		
 		FetchProcAddress(glDrawArraysInstancedANGLE, "glDrawArraysInstancedANGLE");
 		FetchProcAddress(glDrawElementsInstancedANGLE, "glDrawElementsInstancedANGLE");
-		FetchProcAddress(glVertexAttribDivisorANGLE, "glVertexAttribDivisorANGLE");
+		FetchProcAddress(glVertexAttribDivisorANGLE, "glVertexAttribDivisorANGLE");		
 
-		//pack reverse row order
-		FetchProcAddress(ANGLE_pack_reverse_row_order, "ANGLE_pack_reverse_row_order");
-
-		//program binary
-		FetchProcAddress(ANGLE_program_binary, "ANGLE_program_binary");
-
-		//texture compression dxt1
-		FetchProcAddress(ANGLE_texture_compression_dxt1, "ANGLE_texture_compression_dxt1");
-
-		//texture compression dxt3
-		FetchProcAddress(ANGLE_texture_compression_dxt3, "ANGLE_texture_compression_dxt3");
-
-		//texture compression dxt5
-		FetchProcAddress(ANGLE_texture_compression_dxt5, "ANGLE_texture_compression_dxt5");
-
-		//texture usage
-		FetchProcAddress(ANGLE_texture_usage, "ANGLE_texture_usage");
-
-		//timer query
-		FetchProcAddress(ANGLE_timer_query, "ANGLE_timer_query");
+		//timer query		
 		FetchProcAddress(glBeginQueryANGLE, "glBeginQueryANGLE");
 		FetchProcAddress(glDeleteQueriesANGLE, "glDeleteQueriesANGLE");
 		FetchProcAddress(glEndQueryANGLE, "glEndQueryANGLE");
@@ -2113,8 +1994,7 @@ namespace TinyExtender
 		FetchProcAddress(glIsQueryANGLE, "glIsQueryANGLE");
 		FetchProcAddress(glQueryCounterANGLE, "glQueryCounterANGLE");
 
-		//translated shader source
-		FetchProcAddress(ANGLE_translated_shader_source, "ANGLE_translated_shader_source");
+		//translated shader source		
 		FetchProcAddress(glGetTranslatedShaderSourceANGLE, "glGetTranslatedShaderSourceANGLE");
 	}
 
@@ -2273,23 +2153,23 @@ namespace TinyExtender
 	};
 
 	//aux depth stencil
-	bool APPLE_aux_depth_stencil = false;
+	#define APPLE_aux_depth_stencil 1
 
 	//client storage
-	bool APPLE_client_storage = false;
+	#define APPLE_client_storage 1
 
 	//clip distance
-	bool APPLE_clip_distance = false;
+	#define APPLE_clip_distance 1
 
 	//color buffer packed float
-	bool APPLE_color_buffer_packed_float = false;
+	#define APPLE_color_buffer_packed_float 1
 
 	//copy texture levels
-	bool APPLE_copy_texture_levels = false;
+	#define APPLE_copy_texture_levels 1
 	void (*glCopyTextureLevelsAPPLE) (GLuint destinationTexture, GLuint sourceTexture, GLint sourceBaseLevel, GLsizei sourceLevelCount) = nullptr;
 
 	//element array
-	bool APPLE_element_array = false;
+	#define APPLE_element_array 1
 	void (*glDrawElementArrayAPPLE) (GLenum mode, GLint first, GLsizei count) = nullptr;
 	void (*glDrawRangeElementArrayAPPLE) (GLenum mode, GLuint start, GLuint end, GLint first, GLsizei count) = nullptr;
 	void (*glElementPointerAPPLE) (GLenum type, const void* pointer) = nullptr;
@@ -2297,7 +2177,7 @@ namespace TinyExtender
 	void (*glMultiDrawRangeElementArrayAPPLE) (GLenum mode, GLuint start, GLuint end, const GLint* first, const GLsizei* count, GLsizei primcount) = nullptr;
 
 	//fence
-	bool APPLE_fence = false;
+	#define APPLE_fence 1
 	void (*glDeleteFencesAPPLE) (GLsizei n, const GLuint* fences) = nullptr;
 	void (*glFinishFenceAPPLE) (GLuint fence) = nullptr;
 	void (*glFinishObjectAPPLE) (GLenum object, GLint name) = nullptr;
@@ -2308,38 +2188,38 @@ namespace TinyExtender
 	GLboolean(*glTestObjectAPPLE) (GLenum object, GLuint name) = nullptr;
 
 	//float pixels
-	bool APPLE_float_pixels = false;
+	#define APPLE_float_pixels 1
 
 	//flush buffer range
-	bool APPLE_flush_buffer_range = false;
+	#define APPLE_flush_buffer_range 1
 	void (*glBufferParameteriAPPLE) (GLenum target, GLenum pname, GLint param) = nullptr;
 	void (*glFlushMappedBufferRangeAPPLE) (GLenum target, GLintptr offset, GLsizeiptr size) = nullptr;
 
 	//framebuffer multisample
-	bool APPLE_framebuffer_multisample = false;
+	#define APPLE_framebuffer_multisample 1
 	void (*glRenderbufferStorageMultisampleAPPLE) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height) = nullptr;
 	void (*glResolveMultisampleFramebufferAPPLE) (void) = nullptr;
 
 	//object purgeable
-	bool APPLE_object_purgeable = false;
+	#define APPLE_object_purgeable 1
 	void (*glGetObjectParameterivAPPLE) (GLenum objectType, GLuint name, GLenum pname, GLint* params) = nullptr;
 	GLenum(*glObjectPurgeableAPPLE) (GLenum objectType, GLuint name, GLenum option) = nullptr;
 	GLenum(*glObjectUnpurgeableAPPLE) (GLenum objectType, GLuint name, GLenum option) = nullptr;
 
 	//pixel buffer
-	bool APPLE_pixel_buffer = false;
+	#define APPLE_pixel_buffer 1
 
 	//rgb 422
-	bool APPLE_rgb_422 = false;
+	#define APPLE_rgb_422 1
 
 	//row bytes
-	bool APPLE_row_bytes = false;
+	#define APPLE_row_bytes 1
 
 	//specular vector
-	bool APPLE_specular_vector = false;
+	#define APPLE_specular_vector 1
 
 	//sync
-	bool APPLE_sync = false;
+	#define APPLE_sync 1
 	GLenum(*glClientWaitSyncAPPLE) (GLsync GLsync, GLbitfield flags, GLuint64 timeout) = nullptr;
 	void (*glDeleteSyncAPPLE) (GLsync GLsync) = nullptr;
 	GLsync(*glFenceSyncAPPLE) (GLenum condition, GLbitfield flags) = nullptr;
@@ -2349,40 +2229,40 @@ namespace TinyExtender
 	void (*glWaitSyncAPPLE) (GLsync GLsync, GLbitfield flags, GLuint64 timeout) = nullptr;
 
 	//texture 2D limited npot
-	bool APPLE_texture_2D_limited_npot = false;
+	#define APPLE_texture_2D_limited_npot 1
 
 	//texture format BGRA8888
-	bool APPLE_texture_format_BGRA8888 = false;
+	#define APPLE_texture_format_BGRA8888 1
 
 	//texture max level
-	bool APPLE_texture_max_level = false;
+	#define APPLE_texture_max_level 1
 
 	//texture packed float
-	bool APPLE_texture_packed_float = false;
+	#define APPLE_texture_packed_float 1
 
 	//texture range
-	bool APPLE_texture_range = false;
+	#define APPLE_texture_range 1
 	void (*glGetTexParameterPointervAPPLE) (GLenum target, GLenum pname, void** params) = nullptr;
 	void (*glTextureRangeAPPLE) (GLenum target, GLsizei length, void* pointer) = nullptr;
 
 	//transform hint
-	bool APPLE_transform_hint = false;
+	#define APPLE_transform_hint 1
 
 	//vertex array object
-	bool APPLE_vertex_array_object = false;
+	#define APPLE_vertex_array_object 1
 	void (*glBindVertexArrayAPPLE) (GLuint array) = nullptr;
 	void (*glDeleteVertexArraysAPPLE) (GLsizei n, const GLuint* arrays) = nullptr;
 	void (*glGenVertexArraysAPPLE) (GLsizei n, const GLuint* arrays) = nullptr;
 	GLboolean(*glIsVertexArrayAPPLE) (GLuint array) = nullptr;
 
 	//vertex array range
-	bool APPLE_vertex_array_range = false;
+	#define APPLE_vertex_array_range 1
 	void (*glFlushVertexArrayRangeAPPLE) (GLsizei length, void* pointer) = nullptr;
 	void (*glVertexArrayParameteriAPPLE) (GLenum pname, GLint param) = nullptr;
 	void (*glVertexArrayRangeAPPLE) (GLsizei length, void* pointer) = nullptr;
 
 	//vertex program evaluators
-	bool APPLE_vertex_program_evaluators = false;
+	#define APPLE_vertex_program_evaluators 1
 	void (*glDisableVertexAttribAPPLE) (GLuint index, GLenum pname) = nullptr;
 	void (*glEnableVertexAttribAPPLE) (GLuint index, GLenum pname) = nullptr;
 	GLboolean(*glIsVertexAttribEnabledAPPLE) (GLuint index, GLenum pname) = nullptr;
@@ -2392,37 +2272,22 @@ namespace TinyExtender
 	void (*glMapVertexAttrib2fAPPLE) (GLuint index, GLuint size, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat* points) = nullptr;
 
 	//ycbcr 422
-	bool APPLE_ycbcr_422 = false;
+	#define APPLE_ycbcr_422 1
 
 	//*< load Apple Extensions
 	void LoadAppleExtensions()
 	{
-		//aux depth stencil
-		FetchProcAddress(APPLE_aux_depth_stencil, "APPLE_aux_depth_stencil");
-
-		//client storage
-		FetchProcAddress(APPLE_client_storage, "APPLE_client_storage");
-
-		//clip distance
-		FetchProcAddress(APPLE_clip_distance, "APPLE_clip_distance");
-
-		//color buffer packed float
-		FetchProcAddress(APPLE_color_buffer_packed_float, "APPLE_color_buffer_packed_float");
-
-		//copy texture levels
-		FetchProcAddress(APPLE_copy_texture_levels, "APPLE_copy_texture_levels");
+		//copy texture levels		
 		FetchProcAddress(glCopyTextureLevelsAPPLE, "glCopyTextureLevelsAPPLE");
 
-		//element array
-		FetchProcAddress(APPLE_element_array, "APPLE_element_array");		
+		//element array		
 		FetchProcAddress(glDrawElementArrayAPPLE, "glDrawElementArrayAPPLE");
 		FetchProcAddress(glDrawRangeElementArrayAPPLE, "glDrawRangeElementArrayAPPLE");
 		FetchProcAddress(glElementPointerAPPLE, "glElementPointerAPPLE");
 		FetchProcAddress(glMultiDrawElementArrayAPPLE, "glMultiDrawElementArrayAPPLE");
 		FetchProcAddress(glMultiDrawRangeElementArrayAPPLE, "glMultiDrawRangeElementArrayAPPLE");
 
-		//fence
-		FetchProcAddress(APPLE_fence, "APPLE_fence");
+		//fence		
 		FetchProcAddress(glDeleteFencesAPPLE, "glDeleteFencesAPPLE");
 		FetchProcAddress(glFinishFenceAPPLE, "glFinishFenceAPPLE");
 		FetchProcAddress(glFinishObjectAPPLE, "glFinishObjectAPPLE");
@@ -2432,92 +2297,51 @@ namespace TinyExtender
 		FetchProcAddress(glTestFenceAPPLE, "glTestFenceAPPLE");
 		FetchProcAddress(glTestObjectAPPLE, "glTestObjectAPPLE");
 
-		//float pixels
-		FetchProcAddress(APPLE_float_pixels, "APPLE_float_pixels");
-
-		//flush buffer range
-		FetchProcAddress(APPLE_flush_buffer_range, "APPLE_flush_buffer_range");
+		//flush buffer range		
 		FetchProcAddress(glBufferParameteriAPPLE, "glBufferParameteriAPPLE");
 		FetchProcAddress(glFlushMappedBufferRangeAPPLE, "glFlushMappedBufferRangeAPPLE");
 
-		//framebuffer multisample
-		FetchProcAddress(APPLE_framebuffer_multisample, "APPLE_framebuffer_multisample");
+		//framebuffer multisample		
 		FetchProcAddress(glRenderbufferStorageMultisampleAPPLE, "glRenderbufferStorageMultisampleAPPLE");
 		FetchProcAddress(glResolveMultisampleFramebufferAPPLE, "glResolveMultisampleFramebufferAPPLE");
 
-		//object purgeable
-		FetchProcAddress(APPLE_object_purgeable, "APPLE_object_purgeable");
+		//object purgeable		
 		FetchProcAddress(glGetObjectParameterivAPPLE, "glGetObjectParameterivAPPLE");
 		FetchProcAddress(glObjectPurgeableAPPLE, "glObjectPurgeableAPPLE");
-		FetchProcAddress(glObjectUnpurgeableAPPLE, "glObjectUnpurgeableAPPLE");
+		FetchProcAddress(glObjectUnpurgeableAPPLE, "glObjectUnpurgeableAPPLE");		
 
-		//pixel buffer
-		FetchProcAddress(APPLE_pixel_buffer, "APPLE_pixel_buffer");
-
-		//rgb 422
-		FetchProcAddress(APPLE_rgb_422, "APPLE_rgb_422");
-
-		//row bytes
-		FetchProcAddress(APPLE_row_bytes, "APPLE_row_bytes");
-
-		//specular vector
-		FetchProcAddress(APPLE_specular_vector, "APPLE_specular_vector");
-
-		//sync
-		FetchProcAddress(APPLE_sync, "APPLE_sync");
+		//sync		
 		FetchProcAddress(glClientWaitSyncAPPLE, "glClientWaitSyncAPPLE");
 		FetchProcAddress(glDeleteSyncAPPLE, "glDeleteSyncAPPLE");
 		FetchProcAddress(glFenceSyncAPPLE, "glFenceSyncAPPLE");
 		FetchProcAddress(glGetInteger64vAPPLE, "glGetInteger64vAPPLE");
 		FetchProcAddress(glGetSyncivAPPLE, "glGetSyncivAPPLE");
 		FetchProcAddress(glIsSyncAPPLE, "glIsSyncAPPLE");
-		FetchProcAddress(glWaitSyncAPPLE, "glWaitSyncAPPLE");
+		FetchProcAddress(glWaitSyncAPPLE, "glWaitSyncAPPLE");		
 
-		//texture 2D limited npot
-		FetchProcAddress(APPLE_texture_2D_limited_npot, "APPLE_texture_2D_limited_npot");
-
-		//texture format BGRA8888
-		FetchProcAddress(APPLE_texture_format_BGRA8888, "APPLE_texture_format_BGRA8888");
-
-		//texture max level
-		FetchProcAddress(APPLE_texture_max_level, "APPLE_texture_max_level");
-
-		//texture packed float
-		FetchProcAddress(APPLE_texture_packed_float, "APPLE_texture_packed_float");
-
-		//texture range
-		FetchProcAddress(APPLE_texture_range, "APPLE_texture_range");
+		//texture range		
 		FetchProcAddress(glGetTexParameterPointervAPPLE, "glGetTexParameterPointervAPPLE");
-		FetchProcAddress(glTextureRangeAPPLE, "glTextureRangeAPPLE");
+		FetchProcAddress(glTextureRangeAPPLE, "glTextureRangeAPPLE");		
 
-		//transform hint
-		FetchProcAddress(APPLE_transform_hint, "APPLE_transform_hint");
-
-		//vertex array object
-		FetchProcAddress(APPLE_vertex_array_object, "APPLE_vertex_array_object");
+		//vertex array object		
 		FetchProcAddress(glBindVertexArrayAPPLE, "glBindVertexArrayAPPLE");
 		FetchProcAddress(glDeleteVertexArraysAPPLE, "glDeleteVertexArraysAPPLE");
 		FetchProcAddress(glGenVertexArraysAPPLE, "glGenVertexArraysAPPLE");
 		FetchProcAddress(glIsVertexArrayAPPLE, "glIsVertexArrayAPPLE");
 
-		//vertex array range
-		FetchProcAddress(APPLE_vertex_array_range, "APPLE_vertex_array_range");
+		//vertex array range		
 		FetchProcAddress(glFlushVertexArrayRangeAPPLE, "glFlushVertexArrayRangeAPPLE");
 		FetchProcAddress(glVertexArrayParameteriAPPLE, "glVertexArrayParameteriAPPLE");
 		FetchProcAddress(glVertexArrayRangeAPPLE, "glVertexArrayRangeAPPLE");
 
-		//vertex program evaluators
-		FetchProcAddress(APPLE_vertex_program_evaluators, "APPLE_vertex_program_evaluators");
+		//vertex program evaluators		
 		FetchProcAddress(glDisableVertexAttribAPPLE, "glDisableVertexAttribAPPLE");
 		FetchProcAddress(glEnableVertexAttribAPPLE, "glEnableVertexAttribAPPLE");
 		FetchProcAddress(glIsVertexAttribEnabledAPPLE, "glIsVertexAttribEnabledAPPLE");
 		FetchProcAddress(glMapVertexAttrib1dAPPLE, "glMapVertexAttrib1dAPPLE");
 		FetchProcAddress(glMapVertexAttrib1fAPPLE, "glMapVertexAttrib1fAPPLE");
 		FetchProcAddress(glMapVertexAttrib2dAPPLE, "glMapVertexAttrib2dAPPLE");
-		FetchProcAddress(glMapVertexAttrib2fAPPLE, "glMapVertexAttrib2fAPPLE");
-
-		//ycbcr 422
-		FetchProcAddress(APPLE_ycbcr_422, "APPLE_ycbcr_422");
+		FetchProcAddress(glMapVertexAttrib2fAPPLE, "glMapVertexAttrib2fAPPLE");		
 	}
 
 #pragma endregion Apple Extensions
@@ -4069,27 +3893,27 @@ namespace TinyExtender
 	void (*glReleaseShaderCompiler) (void) = nullptr;
 	void (*glShaderBinary) (GLsizei count, const GLuint* shaders, GLenum binaryformat, const void* binary, GLsizei length) = nullptr;
 
-	bool ARB_ES2_compatibility = false;
+	#define ARB_ES2_compatibility 1
 
 	//ES3 1 compatibility
 	void (*glMemoryBarrierByRegion) (GLbitfield barriers) = nullptr;
-	bool ARB_ES3_1_compatibility = false;
+	#define ARB_ES3_1_compatibility 1
 
 	//ES3 2 compatibility
 	void (*glPrimitiveBoundingBoxARB) (GLfloat minX, GLfloat minY, GLfloat minZ, GLfloat minW, GLfloat maxX, GLfloat maxY, GLfloat maxZ, GLfloat maxW) = nullptr;
-	bool ARB_ES3_2_compatibility = false;
+	#define ARB_ES3_2_compatibility 1
 
 	//ES3 compatibility
-	bool ARB_ES3_compatibility = false;
+	#define ARB_ES3_compatibility 1
 
 	//arrays of arrays
-	bool ARB_arrays_of_arrays = false;
+	#define ARB_arrays_of_arrays 1
 
 	//base instance
 	void (*glDrawArraysInstancedBaseInstance) (GLenum mode, GLint first, GLsizei count, GLsizei primcount, GLuint baseinstance) = nullptr;
 	void (*glDrawElementsInstancedBaseInstance) (GLenum mode, GLsizei count, GLenum type, const void* indices, GLsizei primcount, GLuint baseinstance) = nullptr;
 	void (*glDrawElementsInstancedBaseVertexBaseInstance) (GLenum mode, GLsizei count, GLenum type, const void* indices, GLsizei primcount, GLint basevertex, GLuint baseinstance) = nullptr;
-	bool ARB_base_instance = false;
+	#define ARB_base_instance 1
 
 	//bindless texture
 	GLuint64(*glGetImageHandleARB) (GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format) = nullptr;
@@ -4108,72 +3932,72 @@ namespace TinyExtender
 	void (*glUniformHandleui64vARB) (GLint location, GLsizei count, const GLuint64* value) = nullptr;
 	void (*glVertexAttribL1ui64ARB) (GLuint index, GLuint64EXT x) = nullptr;
 	void (*glVertexAttribL1ui64vARB) (GLuint index, const GLuint64EXT* v) = nullptr;
-	bool ARB_bindless_texture = false;
+	#define ARB_bindless_texture 1
 
 	//blend func extended
 	void (*glBindFragDataLocationIndexed) (GLuint program, GLuint colorNumber, GLuint index, const GLchar * name) = nullptr;
 	GLint(*glGetFragDataIndex) (GLuint program, const GLchar* name) = nullptr;
-	bool ARB_blend_func_extended = false;
+	#define ARB_blend_func_extended 1
 
 	//buffer storage
 	void (*glBufferStorage) (GLenum target, GLsizeiptr size, const void* data, GLbitfield flags) = nullptr;
-	bool ARB_buffer_storage = false;
+	#define ARB_buffer_storage 1
 
 	//cl event
 	GLsync(*glCreateSyncFromCLeventARB) (cl_context context, cl_event event, GLbitfield flags) = nullptr;
-	bool ARB_cl_event = false;
+	#define ARB_cl_event 1
 
 	//clear buffer object
 	void (*glClearBufferData) (GLenum target, GLenum internalformat, GLenum format, GLenum type, const void* data) = nullptr;
 	void (*glClearBufferSubData) (GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const void* data) = nullptr;
 	void (*glClearNamedBufferDataEXT) (GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const void* data) = nullptr;
 	void (*glClearNamedBufferSubDataEXT) (GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const void* data) = nullptr;
-	bool ARB_clear_buffer_object = false;
+	#define ARB_clear_buffer_object 1
 
 	//clear texture
 	void (*glClearTexImage) (GLuint texture, GLint level, GLenum format, GLenum type, const void* data) = nullptr;
 	void (*glClearTexSubImage) (GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void* data) = nullptr;
-	bool ARB_clear_texture = false;
+	#define ARB_clear_texture 1
 
 	//clip control
 	void (*glClipControl) (GLenum origin, GLenum depth) = nullptr;
-	bool ARB_clip_control = false;
+	#define ARB_clip_control 1
 
 	//color buffer float
 	void (*glClampColorARB) (GLenum target, GLenum clamp) = nullptr;
-	bool ARB_color_buffer_float = false;
+	#define ARB_color_buffer_float 1
 
 	//compatibility
-	bool ARB_compatibility = false;
+	#define ARB_compatibility 1
 
 	//compressed texture pixel storage
-	bool ARB_compressed_texture_pixel_storage = false;
+	#define ARB_compressed_texture_pixel_storage 1
 
 	//compute shader
 	void (*glDispatchCompute) (GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z) = nullptr;
 	void (*glDispatchComputeIndirect) (GLintptr indirect) = nullptr;
-	bool ARB_compute_shader = false;
+	#define ARB_compute_shader 1
 
 	//compute variable group size
 	void (*glDispatchComputeGroupSizeARB) (GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z, GLuint group_size_x, GLuint group_size_y, GLuint group_size_z) = nullptr;
-	bool ARB_compute_variable_group_size = false;
+	#define ARB_compute_variable_group_size 1
 	
 	 //conditional render inverted
-	bool ARB_conditional_render_inverted = false;
+	#define ARB_conditional_render_inverted 1
 
 	//conservative depth
-	bool ARB_conservative_depth = false;
+	#define ARB_conservative_depth 1
 
 	//copy buffer
 	void (*glCopyBufferSubData) (GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size) = nullptr;
-	bool ARB_copy_buffer = false;
+	#define ARB_copy_buffer 1
 
 	//copy image
 	void (*glCopyImageSubData) (GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth) = nullptr;
-	bool ARB_copy_image = false;
+	#define ARB_copy_image 1
 	
 	//cull distance
-	bool ARB_cull_distance = false;
+	#define ARB_cull_distance 1
 
 	//debug output
 	typedef void (*GLDEBUGPROC)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar * message, const void* userParam);
@@ -4183,19 +4007,19 @@ namespace TinyExtender
 	void (*glDebugMessageInsertARB) (GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* buf) = nullptr;
 	GLuint(*glGetDebugMessageLogARB) (GLuint count, GLsizei bufSize, GLenum* sources, GLenum* types, GLuint* ids, GLenum* severities, GLsizei* lengths, GLchar* messageLog) = nullptr;
 
-	bool ARB_debug_output = false;
+	#define ARB_debug_output 1
 
 	//depth buffer float
-	bool ARB_depth_buffer_float = false;
+	#define ARB_depth_buffer_float 1
 
 	//depth clamp
-	bool ARB_depth_clamp = false;
+	#define ARB_depth_clamp 1
 
 	//depth texture
-	bool ARB_depth_texture = false;
+	#define ARB_depth_texture 1
 
 	//derivative control
-	bool ARB_derivative_control = false;
+	#define ARB_derivative_control 1
 
 	//direct state access
 	void (*glBindTextureUnit) (GLuint unit, GLuint texture) = nullptr;
@@ -4295,67 +4119,67 @@ namespace TinyExtender
 	void (*glVertexArrayElementBuffer) (GLuint vaobj, GLuint buffer) = nullptr;
 	void (*glVertexArrayVertexBuffer) (GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride) = nullptr;
 	void (*glVertexArrayVertexBuffers) (GLuint vaobj, GLuint first, GLsizei count, const GLuint* buffers, const GLintptr* offsets, const GLsizei* strides) = nullptr;
-	bool ARB_direct_state_access = false;
+	#define ARB_direct_state_access 1
 
 	//draw buffers
 	void (*glDrawBuffersARB) (GLsizei n, const GLenum * bufs) = nullptr;
-	bool ARB_draw_buffers = false;
+	#define ARB_draw_buffers 1
 
 	//draw buffers blend
 	void (*glBlendEquationSeparateiARB) (GLuint buf, GLenum modeRGB, GLenum modeAlpha) = nullptr;
 	void (*glBlendEquationiARB) (GLuint buf, GLenum mode) = nullptr;
 	void (*glBlendFuncSeparateiARB) (GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha) = nullptr;
 	void (*glBlendFunciARB) (GLuint buf, GLenum src, GLenum dst) = nullptr;
-	bool ARB_draw_buffers_blend = false;
+	#define ARB_draw_buffers_blend 1
 
 	//draw elements base vertex
 	void (*glDrawElementsBaseVertex) (GLenum mode, GLsizei count, GLenum type, void* indices, GLint basevertex) = nullptr;
 	void (*glDrawElementsInstancedBaseVertex) (GLenum mode, GLsizei count, GLenum type, const void* indices, GLsizei primcount, GLint basevertex) = nullptr;
 	void (*glDrawRangeElementsBaseVertex) (GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, void* indices, GLint basevertex) = nullptr;
 	void (*glMultiDrawElementsBaseVertex) (GLenum mode, GLsizei* count, GLenum type, void** indices, GLsizei primcount, GLint* basevertex) = nullptr;
-	bool ARB_draw_elements_base_vertex = false;
+	#define ARB_draw_elements_base_vertex 1
 
 	//draw indirect
 	void (*glDrawArraysIndirect) (GLenum mode, const void* indirect) = nullptr;
 	void (*glDrawElementsIndirect) (GLenum mode, GLenum type, const void* indirect) = nullptr;
-	bool ARB_draw_indirect = false;
+	#define ARB_draw_indirect 1
 
 	//draw instanced
-	bool ARB_draw_instanced = false;
+	#define ARB_draw_instanced 1
 	
 	//enhanced layouts
-	bool ARB_enhanced_layouts = false;
+	#define ARB_enhanced_layouts 1
 
 	//explicit attrib location
-	bool ARB_explicit_attrib_location = false;
+	#define ARB_explicit_attrib_location 1
 
 	//explicit uniform location
-	bool ARB_explicit_uniform_location = false;
+	#define ARB_explicit_uniform_location 1
 
 	//fragment coord conventions
-	bool ARB_fragment_coord_conventions = false;
+	#define ARB_fragment_coord_conventions 1
 
 	//fragment layer viewport
-	bool ARB_fragment_layer_viewport = false;
+	#define ARB_fragment_layer_viewport 1
 
 	//fragment program
-	bool ARB_fragment_program = false;
+	#define ARB_fragment_program 1
 
 	//fragment program shadow
-	bool ARB_fragment_program_shadow = false;
+	#define ARB_fragment_program_shadow 1
 
 	//fragment shader
-	bool ARB_fragment_shader = false;
+	#define ARB_fragment_shader 1
 
 	//fragment shader interlock
-	bool ARB_fragment_shader_interlock = false;
+	#define ARB_fragment_shader_interlock 1
 
 	//framebuffer no attachments
 	void (*glFramebufferParameteri) (GLenum target, GLenum pname, GLint param) = nullptr;
 	void (*glGetFramebufferParameteriv) (GLenum target, GLenum pname, GLint* params) = nullptr;
 	void (*glGetNamedFramebufferParameterivEXT) (GLuint framebuffer, GLenum pname, GLint* params) = nullptr;
 	void (*glNamedFramebufferParameteriEXT) (GLuint framebuffer, GLenum pname, GLint param) = nullptr;
-	bool ARB_framebuffer_no_attachments = false;
+	#define ARB_framebuffer_no_attachments 1
 
 	//framebuffer_object
 	void (*glBindFramebuffer) (GLenum target, GLuint framebuffer) = nullptr;
@@ -4378,35 +4202,35 @@ namespace TinyExtender
 	GLboolean(*glIsRenderbuffer) (GLuint renderbuffer) = nullptr;
 	void (*glRenderbufferStorage) (GLenum target, GLenum internalformat, GLsizei width, GLsizei height) = nullptr;
 	void (*glRenderbufferStorageMultisample) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height) = nullptr;
-	bool ARB_framebuffer_object = false;
+	#define ARB_framebuffer_object 1
 
 	//framebuffer sRGB
-	bool ARB_framebuffer_sRGB = false;
+	#define ARB_framebuffer_sRGB 1
 
 	//geometry shader4
 	void (*glFramebufferTextureARB) (GLenum target, GLenum attachment, GLuint texture, GLint level) = nullptr;
 	void (*glFramebufferTextureFaceARB) (GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face) = nullptr;
 	void (*glFramebufferTextureLayerARB) (GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer) = nullptr;
 	void (*glProgramParameteriARB) (GLuint program, GLenum pname, GLint value) = nullptr;
-	bool ARB_geometry_shader4 = false;
+	#define ARB_geometry_shader4 1
 
 	//get program binary
 	void (*glGetProgramBinary) (GLuint program, GLsizei bufSize, GLsizei * length, GLenum * binaryFormat, void* binary) = nullptr;
 	void (*glProgramBinary) (GLuint program, GLenum binaryFormat, const void* binary, GLsizei length) = nullptr;
 	void (*glProgramParameteri) (GLuint program, GLenum pname, GLint value) = nullptr;
-	bool ARB_get_program_binary = false;
+	#define ARB_get_program_binary 1
 
 	//get texture sub image
 	void (*glGetCompressedTextureSubImage) (GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLsizei bufSize, void* pixels) = nullptr;
 	void (*glGetTextureSubImage) (GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, GLsizei bufSize, void* pixels) = nullptr;
-	bool ARB_get_texture_sub_image = false;
+	#define ARB_get_texture_sub_image 1
 
 	//gl spirv
 	void (*glSpecializeShaderARB) (GLuint shader, const GLchar * pEntryPoint, GLuint numSpecializationConstants, const GLuint * pConstantIndex, const GLuint * pConstantValue) = nullptr;
-	bool ARB_gl_spirv = false;
+	#define ARB_gl_spirv 1
 
 	//gpu shader5
-	bool ARB_gpu_shader5 = false;
+	#define ARB_gpu_shader5 1
 
 	//gpu shader fp64
 	void (*glGetUniformdv) (GLuint program, GLint location, GLdouble * params) = nullptr;
@@ -4427,7 +4251,7 @@ namespace TinyExtender
 	void (*glUniformMatrix4dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble* value) = nullptr;
 	void (*glUniformMatrix4x2dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble* value) = nullptr;
 	void (*glUniformMatrix4x3dv) (GLint location, GLsizei count, GLboolean transpose, const GLdouble* value) = nullptr;
-	bool ARB_gpu_shader_fp64 = false;
+	#define ARB_gpu_shader_fp64 1
 
 	//gpu shader int64
 	void (*glGetUniformi64vARB) (GLuint program, GLint location, GLint64 * params) = nullptr;
@@ -4466,13 +4290,13 @@ namespace TinyExtender
 	void (*glUniform4i64vARB) (GLint location, GLsizei count, const GLint64* value) = nullptr;
 	void (*glUniform4ui64ARB) (GLint location, GLuint64 x, GLuint64 y, GLuint64 z, GLuint64 w) = nullptr;
 	void (*glUniform4ui64vARB) (GLint location, GLsizei count, const GLuint64* value) = nullptr;
-	bool ARB_gpu_shader_int64 = false;
+	#define ARB_gpu_shader_int64 1
 
 	//half float pixel
-	bool ARB_half_float_pixel = false;
+	#define ARB_half_float_pixel 1
 
 	//half float vertex
-	bool ARB_half_float_vertex = false;
+	#define ARB_half_float_vertex 1
 
 	//imaging
 	void (*glColorSubTable) (GLenum target, GLsizei start, GLsizei count, GLenum format, GLenum type, const void* data) = nullptr;
@@ -4507,26 +4331,26 @@ namespace TinyExtender
 	void (*glResetHistogram) (GLenum target) = nullptr;
 	void (*glResetMinmax) (GLenum target) = nullptr;
 	void (*glSeparableFilter2D) (GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const void* row, const void* column) = nullptr;
-	bool ARB_imaging = false;
+	#define ARB_imaging 1
 
 	//indirect parameters
 	void (*glMultiDrawArraysIndirectCountARB) (GLenum mode, const void* indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride) = nullptr;
 	void (*glMultiDrawElementsIndirectCountARB) (GLenum mode, GLenum type, const void* indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride) = nullptr;
-	bool ARB_indirect_parameters = false;
+	#define ARB_indirect_parameters 1
 
 	//instanced arrays
 	void (*glDrawArraysInstancedARB) (GLenum mode, GLint first, GLsizei count, GLsizei primcount) = nullptr;
 	void (*glDrawElementsInstancedARB) (GLenum mode, GLsizei count, GLenum type, const void* indices, GLsizei primcount) = nullptr;
 	void (*glVertexAttribDivisorARB) (GLuint index, GLuint divisor) = nullptr;
-	bool ARB_instanced_arrays = false;
+	#define ARB_instanced_arrays 1
 
 	//internalformat query
 	void (*glGetInternalformativ) (GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint * params) = nullptr;
-	bool ARB_internalformat_query = false;
+	#define ARB_internalformat_query 1
 
 	//internalformat query2
 	void (*glGetInternalformati64v) (GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 * params) = nullptr;
-	bool ARB_internalformat_query2 = false;
+	#define ARB_internalformat_query2 1
 
 	//invalidate subdata
 	void (*glInvalidateBufferData) (GLuint buffer) = nullptr;
@@ -4535,15 +4359,15 @@ namespace TinyExtender
 	void (*glInvalidateSubFramebuffer) (GLenum target, GLsizei numAttachments, const GLenum* attachments, GLint x, GLint y, GLsizei width, GLsizei height) = nullptr;
 	void (*glInvalidateTexImage) (GLuint texture, GLint level) = nullptr;
 	void (*glInvalidateTexSubImage) (GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth) = nullptr;
-	bool ARB_invalidate_subdata = false;
+	#define ARB_invalidate_subdata 1
 
 	//map buffer alignment
-	bool ARB_map_buffer_alignment = false;
+	#define ARB_map_buffer_alignment 1
 
 	//map buffer range
 	void (*glFlushMappedBufferRange) (GLenum target, GLintptr offset, GLsizeiptr length) = nullptr;
 	void* (*glMapBufferRange) (GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access) = nullptr;
-	bool ARB_map_buffer_range = false;
+	#define ARB_map_buffer_range 1
 
 	//matrix palette
 	void (*glCurrentPaletteMatrixARB) (GLint index) = nullptr;
@@ -4551,7 +4375,7 @@ namespace TinyExtender
 	void (*glMatrixIndexubvARB) (GLint size, GLubyte* indices) = nullptr;
 	void (*glMatrixIndexuivARB) (GLint size, GLuint* indices) = nullptr;
 	void (*glMatrixIndexusvARB) (GLint size, GLushort* indices) = nullptr;
-	bool ARB_matrix_palette = false;
+	#define ARB_matrix_palette 1
 
 	//multi bind
 	void (*glBindBuffersBase) (GLenum target, GLuint first, GLsizei count, const GLuint * buffers) = nullptr;
@@ -4560,16 +4384,16 @@ namespace TinyExtender
 	void (*glBindSamplers) (GLuint first, GLsizei count, const GLuint* samplers) = nullptr;
 	void (*glBindTextures) (GLuint first, GLsizei count, const GLuint* textures) = nullptr;
 	void (*glBindVertexBuffers) (GLuint first, GLsizei count, const GLuint* buffers, const GLintptr* offsets, const GLsizei* strides) = nullptr;
-	bool ARB_multi_bind = false;
+	#define ARB_multi_bind 1
 
 	//multi draw indirect
 	void (*glMultiDrawArraysIndirect) (GLenum mode, const void* indirect, GLsizei primcount, GLsizei stride) = nullptr;
 	void (*glMultiDrawElementsIndirect) (GLenum mode, GLenum type, const void* indirect, GLsizei primcount, GLsizei stride) = nullptr;
-	bool ARB_multi_draw_indirect = false;
+	#define ARB_multi_draw_indirect 1
 
 	//multisample
 	void (*glSampleCoverageARB) (GLclampf value, GLboolean invert) = nullptr;
-	bool ARB_multisample = false;
+	#define ARB_multisample 1
 
 	//multitexture
 	void (*glActiveTextureARB) (GLenum texture) = nullptr;
@@ -4606,7 +4430,7 @@ namespace TinyExtender
 	void (*glMultiTexCoord4ivARB) (GLenum target, const GLint* v) = nullptr;
 	void (*glMultiTexCoord4sARB) (GLenum target, GLshort s, GLshort t, GLshort r, GLshort q) = nullptr;
 	void (*glMultiTexCoord4svARB) (GLenum target, const GLshort* v) = nullptr;
-	bool ARB_multitexture = false;
+	#define ARB_multitexture 1
 
 	//occlusion query
 	void (*glBeginQueryARB) (GLenum target, GLuint id) = nullptr;
@@ -4617,35 +4441,35 @@ namespace TinyExtender
 	void (*glGetQueryObjectuivARB) (GLuint id, GLenum pname, GLuint* params) = nullptr;
 	void (*glGetQueryivARB) (GLenum target, GLenum pname, GLint* params) = nullptr;
 	GLboolean(*glIsQueryARB) (GLuint id) = nullptr;
-	bool ARB_occlusion_query = false;
+	#define ARB_occlusion_query 1
 
 	//occlusion query2
-	bool ARB_occlusion_query2 = false;
+	#define ARB_occlusion_query2 1
 
 	//parallel shader compile
 	void (*glMaxShaderCompilerThreadsARB) (GLuint count) = nullptr;
-	bool ARB_parallel_shader_compile = false;
+	#define ARB_parallel_shader_compile 1
 
 	//pipeline statistics query
-	bool ARB_pipeline_statistics_query = false;
+	#define ARB_pipeline_statistics_query 1
 
 	//pixel buffer object
-	bool ARB_pixel_buffer_object = false;
+	#define ARB_pixel_buffer_object 1
 
 	//point parameters
 	void (*glPointParameterfARB) (GLenum pname, GLfloat param) = nullptr;
 	void (*glPointParameterfvARB) (GLenum pname, const GLfloat* params) = nullptr;
-	bool ARB_point_parameters = false;
+	#define ARB_point_parameters 1
 
 	//point sprite
-	bool ARB_point_sprite = false;
+	#define ARB_point_sprite 1
 	
 	//polygon offset clamp
 	void (*glPolygonOffsetClamp) (GLfloat factor, GLfloat units, GLfloat clamp) = nullptr;
-	bool ARB_polygon_offset_clamp = false;
+	#define ARB_polygon_offset_clamp 1
 
 	//post depth coverage
-	bool ARB_post_depth_coverage = false;
+	#define ARB_post_depth_coverage 1
 
 	//program interface query
 	void (*glGetProgramInterfaceiv) (GLuint program, GLenum programInterface, GLenum pname, GLint * params) = nullptr;
@@ -4654,17 +4478,17 @@ namespace TinyExtender
 	GLint(*glGetProgramResourceLocationIndex) (GLuint program, GLenum programInterface, const GLchar* name) = nullptr;
 	void (*glGetProgramResourceName) (GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei* length, GLchar* name) = nullptr;
 	void (*glGetProgramResourceiv) (GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum* props, GLsizei bufSize, GLsizei* length, GLint* params) = nullptr;
-	bool ARB_program_interface_query = false;
+	#define ARB_program_interface_query 1
 
 	//provoking vertex
 	void (*glProvokingVertex) (GLenum mode) = nullptr;
-	bool ARB_provoking_vertex = false;
+	#define ARB_provoking_vertex 1
 
 	// query buffer object
-	bool ARB_query_buffer_object = false;
+	#define ARB_query_buffer_object 1
 
 	//robust buffer access behavior
-	bool ARB_robust_buffer_access_behavior = false;
+	#define ARB_robust_buffer_access_behavior 1
 
 	//robustness
 	GLenum(*glGetGraphicsResetStatusARB) (void) = nullptr;
@@ -4687,22 +4511,22 @@ namespace TinyExtender
 	void (*glGetnUniformivARB) (GLuint program, GLint location, GLsizei bufSize, GLint* params) = nullptr;
 	void (*glGetnUniformuivARB) (GLuint program, GLint location, GLsizei bufSize, GLuint* params) = nullptr;
 	void (*glReadnPixelsARB) (GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, void* data) = nullptr;
-	bool ARB_robustness = false;
+	#define ARB_robustness 1
 
 	//robustness application isolation
-	bool ARB_robustness_application_isolation = false;
+	#define ARB_robustness_application_isolation 1
 
 	//robustness share group isolation
-	bool ARB_robustness_share_group_isolation = false;
+	#define ARB_robustness_share_group_isolation 1
 
 	//sample locations
 	void (*glFramebufferSampleLocationsfvARB) (GLenum target, GLuint start, GLsizei count, const GLfloat * v) = nullptr;
 	void (*glNamedFramebufferSampleLocationsfvARB) (GLuint framebuffer, GLuint start, GLsizei count, const GLfloat* v) = nullptr;
-	bool ARB_sample_locations = false;
+	#define ARB_sample_locations 1
 
 	//sample shading
 	void (*glMinSampleShadingARB) (GLclampf value) = nullptr;
-	bool ARB_sample_shading = false;
+	#define ARB_sample_shading 1
 
 	//sampler objects
 	void (*glBindSampler) (GLuint unit, GLuint sampler) = nullptr;
@@ -4719,13 +4543,13 @@ namespace TinyExtender
 	void (*glSamplerParameterfv) (GLuint sampler, GLenum pname, const GLfloat* params) = nullptr;
 	void (*glSamplerParameteri) (GLuint sampler, GLenum pname, GLint param) = nullptr;
 	void (*glSamplerParameteriv) (GLuint sampler, GLenum pname, const GLint* params) = nullptr;
-	bool ARB_sampler_objects = false;
+	#define ARB_sampler_objects 1
 
 	//seamless cube map
-	bool ARB_seamless_cube_map = false;
+	#define ARB_seamless_cube_map 1
 
 	//seamless cubemap per texture
-	bool ARB_seamless_cubemap_per_texture = false;
+	#define ARB_seamless_cubemap_per_texture 1
 
 	//separate shader objects
 	void (*glActiveShaderProgram) (GLuint pipeline, GLuint program) = nullptr;
@@ -4788,37 +4612,37 @@ namespace TinyExtender
 	void (*glProgramUniformMatrix4x3fv) (GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat* value) = nullptr;
 	void (*glUseProgramStages) (GLuint pipeline, GLbitfield stages, GLuint program) = nullptr;
 	void (*glValidateProgramPipeline) (GLuint pipeline) = nullptr;
-	bool ARB_separate_shader_objects = false;
+	#define ARB_separate_shader_objects 1
 
 	//shader atomic counter ops
-	bool ARB_shader_atomic_counter_ops = false;
+	#define ARB_shader_atomic_counter_ops 1
 
 	//shader atomic counters
 	void (*glGetActiveAtomicCounterBufferiv) (GLuint program, GLuint bufferIndex, GLenum pname, GLint * params) = nullptr;
-	bool ARB_shader_atomic_counters = false;
+	#define ARB_shader_atomic_counters 1
 	
 	//shader ballot
-	bool ARB_shader_ballot = false;
+	#define ARB_shader_ballot 1
 
 	//shader bit encoding
-	bool ARB_shader_bit_encoding = false;
+	#define ARB_shader_bit_encoding 1
 
 	//shader clock
-	bool ARB_shader_clock = false;
+	#define ARB_shader_clock 1
 
 	//shader draw parameters
-	bool ARB_shader_draw_parameters = false;
+	#define ARB_shader_draw_parameters 1
 
 	//shader group vote
-	bool ARB_shader_group_vote = false;
+	#define ARB_shader_group_vote 1
 
 	//shader image load store
 	void (*glBindImageTexture) (GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format) = nullptr;
 	void (*glMemoryBarrier) (GLbitfield barriers) = nullptr;
-	bool ARB_shader_image_load_store = false;
+	#define ARB_shader_image_load_store 1
 
 	//shader image size
-	bool ARB_shader_image_size = false;
+	#define ARB_shader_image_size 1
 
 	//shader objects
 	void (*glAttachObjectARB) (GLhandleARB containerObj, GLhandleARB obj) = nullptr;
@@ -4861,17 +4685,17 @@ namespace TinyExtender
 	void (*glUseProgramObjectARB) (GLhandleARB programObj) = nullptr;
 	void (*glValidateProgramARB) (GLhandleARB programObj) = nullptr;
 
-	bool ARB_shader_objects = false;
+	#define ARB_shader_objects 1
 
 	//shader precision
-	bool ARB_shader_precision = false;
+	#define ARB_shader_precision 1
 
 	//shader stencil export
-	bool ARB_shader_stencil_export = false;
+	#define ARB_shader_stencil_export 1
 
 	//shader storage buffer object
 	void (*glShaderStorageBlockBinding) (GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding) = nullptr;
-	bool ARB_shader_storage_buffer_object = false;
+	#define ARB_shader_storage_buffer_object 1
 
 	//shader subroutine
 	void (*glGetActiveSubroutineName) (GLuint program, GLenum shadertype, GLuint index, GLsizei bufsize, GLsizei * length, GLchar * name) = nullptr;
@@ -4882,22 +4706,22 @@ namespace TinyExtender
 	GLint(*glGetSubroutineUniformLocation) (GLuint program, GLenum shadertype, const GLchar* name) = nullptr;
 	void (*glGetUniformSubroutineuiv) (GLenum shadertype, GLint location, GLuint* params) = nullptr;
 	void (*glUniformSubroutinesuiv) (GLenum shadertype, GLsizei count, const GLuint* indices) = nullptr;
-	bool ARB_shader_subroutine = false;
+	#define ARB_shader_subroutine 1
 
 	//shader texture image samples
-	bool ARB_shader_texture_image_samples = false;
+	#define ARB_shader_texture_image_samples 1
 
 	//shader texture lod
-	bool ARB_shader_texture_lod = false;
+	#define ARB_shader_texture_lod 1
 
 	//shader viewport layer array
-	bool ARB_shader_viewport_layer_array = false;
+	#define ARB_shader_viewport_layer_array 1
 
 	//shading language 100
-	bool ARB_shading_language_100 = false;
+	#define ARB_shading_language_100 1
 
 	//shading language 420pack
-	bool ARB_shading_language_420pack = false;
+	#define ARB_shading_language_420pack 1
 
 	//shading language include
 	void (*glCompileShaderIncludeARB) (GLuint shader, GLsizei count, const GLchar * const* path, const GLint * length) = nullptr;
@@ -4906,36 +4730,36 @@ namespace TinyExtender
 	void (*glGetNamedStringivARB) (GLint namelen, const GLchar* name, GLenum pname, GLint* params) = nullptr;
 	GLboolean(*glIsNamedStringARB) (GLint namelen, const GLchar* name) = nullptr;
 	void (*glNamedStringARB) (GLenum type, GLint namelen, const GLchar* name, GLint stringlen, const GLchar* string) = nullptr;
-	bool ARB_shading_language_include = false;
+	#define ARB_shading_language_include 1
 
 	//shading language packing
-	bool ARB_shading_language_packing = false;
+	#define ARB_shading_language_packing 1
 
 	//shadow
-	bool ARB_shadow = false;
+	#define ARB_shadow 1
 
 	//shadow ambient
-	bool ARB_shadow_ambient = false;
+	#define ARB_shadow_ambient 1
 
 	//sparse buffer
 	void (*glBufferPageCommitmentARB) (GLenum target, GLintptr offset, GLsizeiptr size, GLboolean commit) = nullptr;
-	bool ARB_sparse_buffer = false;
+	#define ARB_sparse_buffer 1
 
 //sparse texture
 	void (*glTexPageCommitmentARB) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit) = nullptr;
-	bool ARB_sparse_texture = false;
+	#define ARB_sparse_texture 1
 
 	//sparse texture2
-	bool ARB_sparse_texture2 = false;
+	#define ARB_sparse_texture2 1
 
 	//sparse texture clamp
-	bool ARB_sparse_texture_clamp = false;
+	#define ARB_sparse_texture_clamp 1
 
 	//spirv extensions
-	bool ARB_spirv_extensions = false;
+	#define ARB_spirv_extensions 1
 
 	//stencil texturing
-	bool ARB_stencil_texturing = false;
+	#define ARB_stencil_texturing 1
 
 	//sync
 	GLenum(*glClientWaitSync) (GLsync GLsync, GLbitfield flags, GLuint64 timeout) = nullptr;
@@ -4945,31 +4769,31 @@ namespace TinyExtender
 	void (*glGetSynciv) (GLsync GLsync, GLenum pname, GLsizei bufSize, GLsizei* length, GLint* values) = nullptr;
 	GLboolean(*glIsSync) (GLsync GLsync) = nullptr;
 	void (*glWaitSync) (GLsync GLsync, GLbitfield flags, GLuint64 timeout) = nullptr;
-	bool ARB_sync = false;
+	#define ARB_sync 1
 
 	//tessellation shader
 	void (*glPatchParameterfv) (GLenum pname, const GLfloat * values) = nullptr;
 	void (*glPatchParameteri) (GLenum pname, GLint value) = nullptr;
-	bool ARB_tessellation_shader = false;
+	#define ARB_tessellation_shader 1
 
 	//texture barrier
 	void (*glTextureBarrier) (void) = nullptr;
-	bool ARB_texture_barrier = false;
+	#define ARB_texture_barrier 1
 
 	//texture border clamp
-	bool ARB_texture_border_clamp = false;
+	#define ARB_texture_border_clamp 1
 
 	//texture buffer object
 	void (*glTexBufferARB) (GLenum target, GLenum internalformat, GLuint buffer) = nullptr;
-	bool ARB_texture_buffer_object = false;
+	#define ARB_texture_buffer_object 1
 
 	// texture buffer object rgb32
-	bool ARB_texture_buffer_object_rgb32 = false;
+	#define ARB_texture_buffer_object_rgb32 1
 
 	//texture buffer range
 	void (*glTexBufferRange) (GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size) = nullptr;
 	void (*glTextureBufferRangeEXT) (GLuint texture, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size) = nullptr;
-	bool ARB_texture_buffer_range = false;
+	#define ARB_texture_buffer_range 1
 
 	//texture compression
 	void (*glCompressedTexImage1DARB) (GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void* data) = nullptr;
@@ -4979,103 +4803,103 @@ namespace TinyExtender
 	void (*glCompressedTexSubImage2DARB) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void* data) = nullptr;
 	void (*glCompressedTexSubImage3DARB) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void* data) = nullptr;
 	void (*glGetCompressedTexImageARB) (GLenum target, GLint lod, void* img) = nullptr;
-	bool ARB_texture_compression = false;
+	#define ARB_texture_compression 1
 
 	//texture compression bptc
-	bool ARB_texture_compression_bptc = false;
+	#define ARB_texture_compression_bptc 1
 
 	//texture compression rgtc
-	bool ARB_texture_compression_rgtc = false;
+	#define ARB_texture_compression_rgtc 1
 
 	//texture cube map
-	bool ARB_texture_cube_map = false;
+	#define ARB_texture_cube_map 1
 
 	//texture cube map array
-	bool ARB_texture_cube_map_array = false;
+	#define ARB_texture_cube_map_array 1
 
 	//texture env add
-	bool ARB_texture_env_add = false;
+	#define ARB_texture_env_add 1
 
 	//texture env combine
-	bool ARB_texture_env_combine = false;
+	#define ARB_texture_env_combine 1
 
 	//texture env crossbar
-	bool ARB_texture_env_crossbar = false;
+	#define ARB_texture_env_crossbar 1
 
 	//texture env dot3
-	bool ARB_texture_env_dot3 = false;
+	#define ARB_texture_env_dot3 1
 
 	//texture filter anisotropic
-	bool ARB_texture_filter_anisotropic = false;
+	#define ARB_texture_filter_anisotropic 1
 
 	//texture filter minmax
-	bool ARB_texture_filter_minmax = false;
+	#define ARB_texture_filter_minmax 1
 	
 	//texture float
-	bool ARB_texture_float = false;
+	#define ARB_texture_float 1
 
 	//texture gather
-	bool ARB_texture_gather = false;
+	#define ARB_texture_gather 1
 
 	//texture mirror clamp to edge
-	bool ARB_texture_mirror_clamp_to_edge = false;
+	#define ARB_texture_mirror_clamp_to_edge 1
 
 	//texture mirrored repeat
-	bool ARB_texture_mirrored_repeat = false;
+	#define ARB_texture_mirrored_repeat 1
 
 	//texture multisample
 	void (*glGetMultisamplefv) (GLenum pname, GLuint index, GLfloat * val) = nullptr;
 	void (*glSampleMaski) (GLuint index, GLbitfield mask) = nullptr;
 	void (*glTexImage2DMultisample) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations) = nullptr;
 	void (*glTexImage3DMultisample) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations) = nullptr;
-	bool ARB_texture_multisample = false;
+	#define ARB_texture_multisample 1
 
 	//texture non power of two
-	bool ARB_texture_non_power_of_two = false;
+	#define ARB_texture_non_power_of_two 1
 
 	//texture query levels
-	bool ARB_texture_query_levels = false;
+	#define ARB_texture_query_levels 1
 
 	//texture query lod
-	bool ARB_texture_query_lod = false;
+	#define ARB_texture_query_lod 1
 
 	//texture rectangle
-	bool ARB_texture_rectangle = false;
+	#define ARB_texture_rectangle 1
 
 	//texture rg
-	bool ARB_texture_rg = false;
+	#define ARB_texture_rg 1
 
 	//texturergb10 a2ui
-	bool ARB_texture_rgb10_a2ui = false;
+	#define ARB_texture_rgb10_a2ui 1
 	
 	//texture stencil8
-	bool ARB_texture_stencil8 = false;
+	#define ARB_texture_stencil8 1
 
 	//texture storage
 	void (*glTexStorage1D) (GLenum target, GLsizei levels, GLenum internalformat, GLsizei width) = nullptr;
 	void (*glTexStorage2D) (GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height) = nullptr;
 	void (*glTexStorage3D) (GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth) = nullptr;
-	bool ARB_texture_storage = false;
+	#define ARB_texture_storage 1
 
 	//texture storage multisample
 	void (*glTexStorage2DMultisample) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations) = nullptr;
 	void (*glTexStorage3DMultisample) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations) = nullptr;
 	void (*glTextureStorage2DMultisampleEXT) (GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations) = nullptr;
 	void (*glTextureStorage3DMultisampleEXT) (GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations) = nullptr;
-	bool ARB_texture_storage_multisample = false;
+	#define ARB_texture_storage_multisample 1
 
 	//texture swizzle
-	bool ARB_texture_swizzle = false;
+	#define ARB_texture_swizzle 1
 
 	//texture view
 	void (*glTextureView) (GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers) = nullptr;
-	bool ARB_texture_view = false;
+	#define ARB_texture_view 1
 
 	//timer query
 	void (*glGetQueryObjecti64v) (GLuint id, GLenum pname, GLint64 * params) = nullptr;
 	void (*glGetQueryObjectui64v) (GLuint id, GLenum pname, GLuint64* params) = nullptr;
 	void (*glQueryCounter) (GLuint id, GLenum target) = nullptr;
-	bool ARB_timer_query = false;
+	#define ARB_timer_query 1
 
 	//transform feedback2
 	void (*glBindTransformFeedback) (GLenum target, GLuint id) = nullptr;
@@ -5085,31 +4909,31 @@ namespace TinyExtender
 	GLboolean(*glIsTransformFeedback) (GLuint id) = nullptr;
 	void (*glPauseTransformFeedback) (void) = nullptr;
 	void (*glResumeTransformFeedback) (void) = nullptr;
-	bool ARB_transform_feedback2 = false;
+	#define ARB_transform_feedback2 1
 
 	//transform feedback3
 	void (*glBeginQueryIndexed) (GLenum target, GLuint index, GLuint id) = nullptr;
 	void (*glDrawTransformFeedbackStream) (GLenum mode, GLuint id, GLuint stream) = nullptr;
 	void (*glEndQueryIndexed) (GLenum target, GLuint index) = nullptr;
 	void (*glGetQueryIndexediv) (GLenum target, GLuint index, GLenum pname, GLint* params) = nullptr;
-	bool ARB_transform_feedback3 = false;
+	#define ARB_transform_feedback3 1
 
 	//transform feedback instanced
 	void (*glDrawTransformFeedbackInstanced) (GLenum mode, GLuint id, GLsizei primcount) = nullptr;
 	void (*glDrawTransformFeedbackStreamInstanced) (GLenum mode, GLuint id, GLuint stream, GLsizei primcount) = nullptr;
 
 	//transform feedback instanced
-	bool ARB_transform_feedback_instanced = false;
+	#define ARB_transform_feedback_instanced 1
 
 	//transform feedback overflow query
-	bool ARB_transform_feedback_overflow_query = false;
+	#define ARB_transform_feedback_overflow_query 1
 
 	//transpose matrix
 	void (*glLoadTransposeMatrixdARB) (GLdouble m[16]) = nullptr;
 	void (*glLoadTransposeMatrixfARB) (GLfloat m[16]) = nullptr;
 	void (*glMultTransposeMatrixdARB) (GLdouble m[16]) = nullptr;
 	void (*glMultTransposeMatrixfARB) (GLfloat m[16]) = nullptr;
-	bool ARB_transpose_matrix = false;
+	#define ARB_transpose_matrix 1
 
 	//uniform buffer object
 	void (*glBindBufferBase) (GLenum target, GLuint index, GLuint buffer) = nullptr;
@@ -5122,17 +4946,17 @@ namespace TinyExtender
 	GLuint(*glGetUniformBlockIndex) (GLuint program, const GLchar* uniformBlockName) = nullptr;
 	void (*glGetUniformIndices) (GLuint program, GLsizei uniformCount, const GLchar* const* uniformNames, GLuint* uniformIndices) = nullptr;
 	void (*glUniformBlockBinding) (GLuint program, GLuint uniformBlockIndex, GLuint uniformBlockBinding) = nullptr;
-	bool ARB_uniform_buffer_object = false;
+	#define ARB_uniform_buffer_object 1
 
 	//vertex array bgra
-	bool ARB_vertex_array_bgra = false;
+	#define ARB_vertex_array_bgra 1
 
 	//vertex array object
 	void (*glBindVertexArray) (GLuint array) = nullptr;
 	void (*glDeleteVertexArrays) (GLsizei n, const GLuint* arrays) = nullptr;
 	void (*glGenVertexArrays) (GLsizei n, GLuint* arrays) = nullptr;
 	GLboolean(*glIsVertexArray) (GLuint array) = nullptr;
-	bool ARB_vertex_array_object = false;
+	#define ARB_vertex_array_object 1
 
 	//vertex attrib 64bit
 	void (*glGetVertexAttribLdv) (GLuint index, GLenum pname, GLdouble * params) = nullptr;
@@ -5145,7 +4969,7 @@ namespace TinyExtender
 	void (*glVertexAttribL4d) (GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w) = nullptr;
 	void (*glVertexAttribL4dv) (GLuint index, const GLdouble* v) = nullptr;
 	void (*glVertexAttribLPointer) (GLuint index, GLint size, GLenum type, GLsizei stride, const void* pointer) = nullptr;
-	bool ARB_vertex_attrib_64bit = false;
+	#define ARB_vertex_attrib_64bit 1
 
 	//vertex attrib binding
 	void (*glBindVertexBuffer) (GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride) = nullptr;
@@ -5160,7 +4984,7 @@ namespace TinyExtender
 	void (*glVertexAttribIFormat) (GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset) = nullptr;
 	void (*glVertexAttribLFormat) (GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset) = nullptr;
 	void (*glVertexBindingDivisor) (GLuint bindingindex, GLuint divisor) = nullptr;
-	bool ARB_vertex_attrib_binding = false;
+	#define ARB_vertex_attrib_binding 1
 
 	//vertex blend
 	void (*glVertexBlendARB) (GLint count) = nullptr;
@@ -5173,7 +4997,7 @@ namespace TinyExtender
 	void (*glWeightubvARB) (GLint size, GLubyte* weights) = nullptr;
 	void (*glWeightuivARB) (GLint size, GLuint* weights) = nullptr;
 	void (*glWeightusvARB) (GLint size, GLushort* weights) = nullptr;
-	bool ARB_vertex_blend = false;
+	#define ARB_vertex_blend 1
 
 	//vertex buffer object 
 	void (*glBindBufferARB) (GLenum target, GLuint buffer) = nullptr;
@@ -5187,7 +5011,7 @@ namespace TinyExtender
 	GLboolean(*glIsBufferARB) (GLuint buffer) = nullptr;
 	void* (*glMapBufferARB) (GLenum target, GLenum access) = nullptr;
 	GLboolean(*glUnmapBufferARB) (GLenum target) = nullptr;
-	bool ARB_vertex_buffer_object = false;
+	#define ARB_vertex_buffer_object 1
 
 	//vertex program
 	void (*glBindProgramARB) (GLenum target, GLuint program) = nullptr;
@@ -5252,16 +5076,16 @@ namespace TinyExtender
 	void (*glVertexAttrib4uivARB) (GLuint index, const GLuint* v) = nullptr;
 	void (*glVertexAttrib4usvARB) (GLuint index, const GLushort* v) = nullptr;
 	void (*glVertexAttribPointerARB) (GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void* pointer) = nullptr;
-	bool ARB_vertex_program = false;
+	#define ARB_vertex_program 1
 
 	//vertex shader
 	void (*glBindAttribLocationARB) (GLhandleARB programObj, GLuint index, const GLcharARB * name) = nullptr;
 	void (*glGetActiveAttribARB) (GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei* length, GLint* size, GLenum* type, GLcharARB* name) = nullptr;
 	GLint(*glGetAttribLocationARB) (GLhandleARB programObj, const GLcharARB* name) = nullptr;
-	bool ARB_vertex_shader = false;
+	#define ARB_vertex_shader 1
 
 	//vertex type 10f_11f_11f rev
-	bool ARB_vertex_type_10f_11f_11f_rev = false;
+	#define ARB_vertex_type_10f_11f_11f_rev 1
 
 	//vertex type 2_10_10_10 rev
 	void (*glColorP3ui) (GLenum type, GLuint color) = nullptr;
@@ -5302,7 +5126,7 @@ namespace TinyExtender
 	void (*glVertexP3uiv) (GLenum type, const GLuint* value) = nullptr;
 	void (*glVertexP4ui) (GLenum type, GLuint value) = nullptr;
 	void (*glVertexP4uiv) (GLenum type, const GLuint* value) = nullptr;
-	bool vertex_type_2_10_10_10_rev = false;
+	#define ARB_vertex_type_2_10_10_10_rev 1
 
 	//viewport array
 	void (*glDepthRangeArrayv) (GLuint first, GLsizei count, const GLclampd * v) = nullptr;
@@ -5315,7 +5139,7 @@ namespace TinyExtender
 	void (*glViewportArrayv) (GLuint first, GLsizei count, const GLfloat* v) = nullptr;
 	void (*glViewportIndexedf) (GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h) = nullptr;
 	void (*glViewportIndexedfv) (GLuint index, const GLfloat* v) = nullptr;
-	bool viewport_array  = false;
+	#define ARB_viewport_array  1
 
 	//window pos
 	void (*glWindowPos2dARB) (GLdouble x, GLdouble y) = nullptr;
@@ -5334,2200 +5158,936 @@ namespace TinyExtender
 	void (*glWindowPos3ivARB) (const GLint* p) = nullptr;
 	void (*glWindowPos3sARB) (GLshort x, GLshort y, GLshort z) = nullptr;
 	void (*glWindowPos3svARB) (const GLshort* p) = nullptr;
-	bool ARB_window_pos = false;
+	#define ARB_window_pos 1
 
 	//*< load ARB Extensions
 	void LoadARBExtensions()
 	{
 		//ES2 compatibility
 		FetchProcAddress(glClearDepthf, "glClearDepthf");
-
 		FetchProcAddress(glDepthRangef, "glDepthRangef");
-
 		FetchProcAddress(glGetShaderPrecisionFormat, "glGetShaderPrecisionFormat");
-
 		FetchProcAddress(glReleaseShaderCompiler, "glReleaseShaderCompiler");
-
 		FetchProcAddress(glShaderBinary, "glShaderBinary");
-
-		FetchProcAddress(ARB_ES2_compatibility, "GL_ARB_ES2_compatibility");
-
 
 		//ES3 1 compatibility
 		FetchProcAddress(glMemoryBarrierByRegion, "glMemoryBarrierByRegion");
 
-		FetchProcAddress(ARB_ES3_1_compatibility, "ARB_ES3_1_compatibility");
-
-
 		//ES3 2 compatibility
 		FetchProcAddress(glPrimitiveBoundingBoxARB, "glPrimitiveBoundingBoxARB");
 
-		FetchProcAddress(ARB_ES3_2_compatibility, "ARB_ES3_2_compatibility");
-
-
-		//ES3 compatibility
-		FetchProcAddress(ARB_ES3_compatibility, "ARB_ES3_compatibility");
-
-
-		//arrays of arrays
-		FetchProcAddress(ARB_arrays_of_arrays, "ARB_arrays_of_arrays");
-
-
 		//base instance
 		FetchProcAddress(glDrawArraysInstancedBaseInstance, "glDrawArraysInstancedBaseInstance");
-
 		FetchProcAddress(glDrawElementsInstancedBaseInstance, "glDrawElementsInstancedBaseInstance");
-
 		FetchProcAddress(glDrawElementsInstancedBaseVertexBaseInstance, "glDrawElementsInstancedBaseVertexBaseInstance");
-
-		FetchProcAddress(ARB_base_instance, "GL_ARB_base_instance");
-
 
 		//bindless texture
 		FetchProcAddress(glGetImageHandleARB, "glGetImageHandleARB");
-
 		FetchProcAddress(glGetTextureHandleARB, "glGetTextureHandleARB");
-
 		FetchProcAddress(glGetTextureSamplerHandleARB, "glGetTextureSamplerHandleARB");
-
 		FetchProcAddress(glGetVertexAttribLui64vARB, "glGetVertexAttribLui64vARB");
-
 		FetchProcAddress(glIsImageHandleResidentARB, "glIsImageHandleResidentARB");
-
 		FetchProcAddress(glIsTextureHandleResidentARB, "glIsTextureHandleResidentARB");
-
 		FetchProcAddress(glMakeImageHandleNonResidentARB, "glMakeImageHandleNonResidentARB");
-
 		FetchProcAddress(glMakeImageHandleResidentARB, "glMakeImageHandleResidentARB");
-
 		FetchProcAddress(glMakeTextureHandleNonResidentARB, "glMakeTextureHandleNonResidentARB");
-
 		FetchProcAddress(glMakeTextureHandleResidentARB, "glMakeTextureHandleResidentARB");
-
 		FetchProcAddress(glProgramUniformHandleui64ARB, "glProgramUniformHandleui64ARB");
-
 		FetchProcAddress(glProgramUniformHandleui64vARB, "glProgramUniformHandleui64vARB");
-
 		FetchProcAddress(glUniformHandleui64ARB, "glUniformHandleui64ARB");
-
 		FetchProcAddress(glUniformHandleui64vARB, "glUniformHandleui64vARB");
-
 		FetchProcAddress(glVertexAttribL1ui64ARB, "glVertexAttribL1ui64ARB");
-
 		FetchProcAddress(glVertexAttribL1ui64vARB, "glVertexAttribL1ui64vARB");
-
-		FetchProcAddress(ARB_bindless_texture, "GL_ARB_bindless_texture");
-
 
 		//blend func extended
 		FetchProcAddress(glBindFragDataLocationIndexed, "glBindFragDataLocationIndexed");
-
 		FetchProcAddress(glGetFragDataIndex, "glGetFragDataIndex");
-
-		FetchProcAddress(ARB_blend_func_extended, "ARB_blend_func_extended");
-
 
 		//buffer storage
 		FetchProcAddress(glBufferStorage, "glBufferStorage");
 
-		FetchProcAddress(ARB_buffer_storage, "ARB_buffer_storage");
-
-
 		//cl event
 		FetchProcAddress(glCreateSyncFromCLeventARB, "glCreateSyncFromCLeventARB");
 
-		FetchProcAddress(ARB_cl_event, "ARB_cl_event");
-
-
 		//clear buffer object
 		FetchProcAddress(glClearBufferData, "glClearBufferData");
-
 		FetchProcAddress(glClearBufferSubData, "glClearBufferSubData");
-
 		FetchProcAddress(glClearNamedBufferDataEXT, "glClearNamedBufferDataEXT");
-
 		FetchProcAddress(glClearNamedBufferSubDataEXT, "glClearNamedBufferSubDataEXT");
-
-		FetchProcAddress(ARB_clear_buffer_object, "ARB_clear_buffer_object");
-
 
 		//clear texture
 		FetchProcAddress(glClearTexImage, "glClearTexImage");
-
 		FetchProcAddress(glClearTexSubImage, "glClearTexSubImage");
-
-		FetchProcAddress(ARB_clear_texture, "ARB_clear_texture");
-
 
 		//clip control
 		FetchProcAddress(glClipControl, "glClipControl");
 
-		FetchProcAddress(ARB_clip_control, "ARB_clip_control");
-
-
 		//color buffer float
 		FetchProcAddress(glClampColorARB, "glClampColorARB");
 
-		FetchProcAddress(ARB_color_buffer_float, "ARB_color_buffer_float");
-
-
-		//compatibility
-		FetchProcAddress(ARB_compatibility, "ARB_compatibility");
-
-
-		//compressed texture pixel storage
-		FetchProcAddress(ARB_compressed_texture_pixel_storage, "ARB_compressed_texture_pixel_storage");
-
-
 		//compute shader
 		FetchProcAddress(glDispatchCompute, "glDispatchCompute");
-
 		FetchProcAddress(glDispatchComputeIndirect, "glDispatchComputeIndirect");
-
-		FetchProcAddress(ARB_compute_shader, "ARB_compute_shader");
-
 
 		//compute variable group size
 		FetchProcAddress(glDispatchComputeGroupSizeARB, "glDispatchComputeGroupSizeARB");
 
-		FetchProcAddress(ARB_compute_variable_group_size, "ARB_compute_variable_group_size");
-
-
-		//conditional render inverted
-		FetchProcAddress(ARB_conditional_render_inverted, "ARB_conditional_render_inverted");
-
-
-		//conservative depth
-		FetchProcAddress(ARB_conservative_depth, "ARB_conservative_depth");
-
-
 		//copy buffer
 		FetchProcAddress(glCopyBufferSubData, "glCopyBufferSubData");
 
-		FetchProcAddress(ARB_copy_buffer, "ARB_copy_buffer");
-
-
 		//copy image
-		FetchProcAddress(glCopyImageSubData, "glCopyImageSubData");
-
-		FetchProcAddress(ARB_copy_image, "ARB_copy_image");
-
-
-		//cull distance
-		FetchProcAddress(ARB_cull_distance, "ARB_cull_distance");
-
+		FetchProcAddress(glCopyImageSubData, "glCopyImageSubData");		
 
 		//debug output
 		FetchProcAddress(glDebugMessageCallbackARB, "glDebugMessageCallbackARB");
-
 		FetchProcAddress(glDebugMessageControlARB, "glDebugMessageControlARB");
-
 		FetchProcAddress(glDebugMessageInsertARB, "glDebugMessageInsertARB");
-
 		FetchProcAddress(glGetDebugMessageLogARB, "glGetDebugMessageLogARB");
-
-		FetchProcAddress(ARB_debug_output, "ARB_debug_output");
-
-
-		//depth buffer float
-		FetchProcAddress(ARB_depth_buffer_float, "ARB_depth_buffer_float");
-
-
-		//depth clamp
-		FetchProcAddress(ARB_depth_clamp, "ARB_depth_clamp");
-
-
-		//depth texture
-		FetchProcAddress(ARB_depth_texture, "ARB_depth_texture");
-
-
-		//derivative control
-		FetchProcAddress(ARB_derivative_control, "ARB_derivative_control");
-
 
 		//direct state access
 		FetchProcAddress(glBindTextureUnit, "glBindTextureUnit");
-
 		FetchProcAddress(glBlitNamedFramebuffer, "glBlitNamedFramebuffer");
-
 		FetchProcAddress(glCheckNamedFramebufferStatus, "glCheckNamedFramebufferStatus");
-
 		FetchProcAddress(glClearNamedBufferData, "glClearNamedBufferData");
-
 		FetchProcAddress(glClearNamedBufferSubData, "glClearNamedBufferSubData");
-
 		FetchProcAddress(glClearNamedFramebufferfi, "glClearNamedFramebufferfi");
-
 		FetchProcAddress(glClearNamedFramebufferfv, "glClearNamedFramebufferfv");
-
 		FetchProcAddress(glClearNamedFramebufferiv, "glClearNamedFramebufferiv");
-
 		FetchProcAddress(glClearNamedFramebufferuiv, "glClearNamedFramebufferuiv");
-
 		FetchProcAddress(glCompressedTextureSubImage1D, "glCompressedTextureSubImage1D");
-
 		FetchProcAddress(glCompressedTextureSubImage2D, "glCompressedTextureSubImage2D");
-
 		FetchProcAddress(glCompressedTextureSubImage3D, "glCompressedTextureSubImage3D");
-
 		FetchProcAddress(glCopyNamedBufferSubData, "glCopyNamedBufferSubData");
-
 		FetchProcAddress(glCopyTextureSubImage1D, "glCopyTextureSubImage1D");
-
 		FetchProcAddress(glCopyTextureSubImage2D, "glCopyTextureSubImage2D");
-
 		FetchProcAddress(glCopyTextureSubImage3D, "glCopyTextureSubImage3D");
-
 		FetchProcAddress(glCreateBuffers, "glCreateBuffers");
-
 		FetchProcAddress(glCreateFramebuffers, "glCreateFramebuffers");
-
 		FetchProcAddress(glCreateProgramPipelines, "glCreateProgramPipelines");
-
 		FetchProcAddress(glCreateQueries, "glCreateQueries");
-
 		FetchProcAddress(glCreateRenderbuffers, "glCreateRenderbuffers");
-
 		FetchProcAddress(glCreateSamplers, "glCreateSamplers");
-
 		FetchProcAddress(glCreateTextures, "glCreateTextures");
-
 		FetchProcAddress(glCreateTransformFeedbacks, "glCreateTransformFeedbacks");
-
 		FetchProcAddress(glCreateVertexArrays, "glCreateVertexArrays");
-
 		FetchProcAddress(glDisableVertexArrayAttrib, "glDisableVertexArrayAttrib");
-
 		FetchProcAddress(glEnableVertexArrayAttrib, "glEnableVertexArrayAttrib");
-
 		FetchProcAddress(glFlushMappedNamedBufferRange, "glFlushMappedNamedBufferRange");
-
 		FetchProcAddress(glGenerateTextureMipmap, "glGenerateTextureMipmap");
-
 		FetchProcAddress(glGetCompressedTextureImage, "glGetCompressedTextureImage");
-
 		FetchProcAddress(glGetNamedBufferParameteri64v, "glGetNamedBufferParameteri64v");
-
 		FetchProcAddress(glGetNamedBufferParameteriv, "glGetNamedBufferParameteriv");
-
 		FetchProcAddress(glGetNamedBufferPointerv, "glGetNamedBufferPointerv");
-
 		FetchProcAddress(glGetNamedBufferSubData, "glGetNamedBufferSubData");
-
 		FetchProcAddress(glGetNamedFramebufferAttachmentParameteriv, "glGetNamedFramebufferAttachmentParameteriv");
-
 		FetchProcAddress(glGetNamedFramebufferParameteriv, "glGetNamedFramebufferParameteriv");
-
 		FetchProcAddress(glGetNamedRenderbufferParameteriv, "glGetNamedRenderbufferParameteriv");
-
 		FetchProcAddress(glGetQueryBufferObjecti64v, "glGetQueryBufferObjecti64v");
-
 		FetchProcAddress(glGetQueryBufferObjectiv, "glGetQueryBufferObjectiv");
-
 		FetchProcAddress(glGetQueryBufferObjectui64v, "glGetQueryBufferObjectui64v");
-
 		FetchProcAddress(glGetQueryBufferObjectuiv, "glGetQueryBufferObjectuiv");
-
 		FetchProcAddress(glGetTextureImage, "glGetTextureImage");
-
 		FetchProcAddress(glGetTextureLevelParameterfv, "glGetTextureLevelParameterfv");
-
 		FetchProcAddress(glGetTextureLevelParameteriv, "glGetTextureLevelParameteriv");
-
 		FetchProcAddress(glGetTextureParameterIiv, "glGetTextureParameterIiv");
-
 		FetchProcAddress(glGetTextureParameterIuiv, "glGetTextureParameterIuiv");
-
 		FetchProcAddress(glGetTextureParameterfv, "glGetTextureParameterfv");
-
 		FetchProcAddress(glGetTextureParameteriv, "glGetTextureParameteriv");
-
 		FetchProcAddress(glGetTransformFeedbacki64_v, "glGetTransformFeedbacki64_v");
-
 		FetchProcAddress(glGetTransformFeedbacki_v, "glGetTransformFeedbacki_v");
-
 		FetchProcAddress(glGetTransformFeedbackiv, "glGetTransformFeedbackiv");
-
 		FetchProcAddress(glGetVertexArrayIndexed64iv, "glGetVertexArrayIndexed64iv");
-
 		FetchProcAddress(glGetVertexArrayIndexediv, "glGetVertexArrayIndexediv");
-
 		FetchProcAddress(glGetVertexArrayiv, "glGetVertexArrayiv");
-
 		FetchProcAddress(glInvalidateNamedFramebufferData, "glInvalidateNamedFramebufferData");
-
 		FetchProcAddress(glInvalidateNamedFramebufferSubData, "glInvalidateNamedFramebufferSubData");
-
 		FetchProcAddress(glMapNamedBuffer, "glMapNamedBuffer");
-
 		FetchProcAddress(glMapNamedBufferRange, "glMapNamedBufferRange");
-
 		FetchProcAddress(glNamedBufferData, "glNamedBufferData");
-
 		FetchProcAddress(glNamedBufferStorage, "glNamedBufferStorage");
-
 		FetchProcAddress(glNamedBufferSubData, "glNamedBufferSubData");
-
 		FetchProcAddress(glNamedFramebufferDrawBuffer, "glNamedFramebufferDrawBuffer");
-
 		FetchProcAddress(glNamedFramebufferDrawBuffers, "glNamedFramebufferDrawBuffers");
-
 		FetchProcAddress(glNamedFramebufferParameteri, "glNamedFramebufferParameteri");
-
 		FetchProcAddress(glNamedFramebufferReadBuffer, "glNamedFramebufferReadBuffer");
-
 		FetchProcAddress(glNamedFramebufferRenderbuffer, "glNamedFramebufferRenderbuffer");
-
 		FetchProcAddress(glNamedFramebufferTexture, "glNamedFramebufferTexture");
-
 		FetchProcAddress(glNamedFramebufferTextureLayer, "glNamedFramebufferTextureLayer");
-
 		FetchProcAddress(glNamedRenderbufferStorage, "glNamedRenderbufferStorage");
-
 		FetchProcAddress(glNamedRenderbufferStorageMultisample, "glNamedRenderbufferStorageMultisample");
-
 		FetchProcAddress(glTextureBuffer, "glTextureBuffer");
-
 		FetchProcAddress(glTextureBufferRange, "glTextureBufferRange");
-
 		FetchProcAddress(glTextureParameterIiv, "glTextureParameterIiv");
-
 		FetchProcAddress(glTextureParameterIuiv, "glTextureParameterIuiv");
-
 		FetchProcAddress(glTextureParameterf, "glTextureParameterf");
-
 		FetchProcAddress(glTextureParameterfv, "glTextureParameterfv");
-
 		FetchProcAddress(glTextureParameteri, "glTextureParameteri");
-
 		FetchProcAddress(glTextureParameteriv, "glTextureParameteriv");
-
 		FetchProcAddress(glTextureStorage1D, "glTextureStorage1D");
-
 		FetchProcAddress(glTextureStorage2D, "glTextureStorage2D");
-
 		FetchProcAddress(glTextureStorage2DMultisample, "glTextureStorage2DMultisample");
-
 		FetchProcAddress(glTextureStorage3D, "glTextureStorage3D");
-
 		FetchProcAddress(glTextureStorage3DMultisample, "glTextureStorage3DMultisample");
-
 		FetchProcAddress(glTextureSubImage1D, "glTextureSubImage1D");
-
 		FetchProcAddress(glTextureSubImage2D, "glTextureSubImage2D");
-
 		FetchProcAddress(glTextureSubImage3D, "glTextureSubImage3D");
-
 		FetchProcAddress(glTransformFeedbackBufferBase, "glTransformFeedbackBufferBase");
-
 		FetchProcAddress(glTransformFeedbackBufferRange, "glTransformFeedbackBufferRange");
-
 		FetchProcAddress(glUnmapNamedBuffer, "glUnmapNamedBuffer");
-
 		FetchProcAddress(glVertexArrayAttribBinding, "glVertexArrayAttribBinding");
-
 		FetchProcAddress(glVertexArrayAttribFormat, "glVertexArrayAttribFormat");
-
 		FetchProcAddress(glVertexArrayAttribIFormat, "glVertexArrayAttribIFormat");
-
 		FetchProcAddress(glVertexArrayAttribLFormat, "glVertexArrayAttribLFormat");
-
 		FetchProcAddress(glVertexArrayBindingDivisor, "glVertexArrayBindingDivisor");
-
 		FetchProcAddress(glVertexArrayElementBuffer, "glVertexArrayElementBuffer");
-
 		FetchProcAddress(glVertexArrayVertexBuffer, "glVertexArrayVertexBuffer");
-
 		FetchProcAddress(glVertexArrayVertexBuffers, "glVertexArrayVertexBuffers");
-
-		FetchProcAddress(ARB_direct_state_access, "ARB_direct_state_access");
-
 
 		//draw buffers
 		FetchProcAddress(glDrawBuffersARB, "glDrawBuffersARB");
 
-		FetchProcAddress(ARB_draw_buffers, "ARB_draw_buffers");
-
-
 		//draw buffers blend
 		FetchProcAddress(glBlendEquationSeparateiARB, "glBlendEquationSeparateiARB");
-
 		FetchProcAddress(glBlendEquationiARB, "glBlendEquationiARB");
-
 		FetchProcAddress(glBlendFuncSeparateiARB, "glBlendFuncSeparateiARB");
-
 		FetchProcAddress(glBlendFunciARB, "glBlendFunciARB");
-
-		FetchProcAddress(ARB_draw_buffers_blend, "ARB_draw_buffers_blend");
-
 
 		//draw elements base vertex
 		FetchProcAddress(glDrawElementsBaseVertex, "glDrawElementsBaseVertex");
-
 		FetchProcAddress(glDrawElementsInstancedBaseVertex, "glDrawElementsInstancedBaseVertex");
-
 		FetchProcAddress(glDrawRangeElementsBaseVertex, "glDrawRangeElementsBaseVertex");
-
 		FetchProcAddress(glMultiDrawElementsBaseVertex, "glMultiDrawElementsBaseVertex");
-
-		FetchProcAddress(ARB_draw_elements_base_vertex, "ARB_draw_elements_base_vertex");
-
 
 		//draw indirect
 		FetchProcAddress(glDrawArraysIndirect, "glDrawArraysIndirect");
-
 		FetchProcAddress(glDrawElementsIndirect, "glDrawElementsIndirect");
-
-		FetchProcAddress(ARB_draw_indirect, "ARB_draw_indirect");
-
-
-		//draw instanced
-		FetchProcAddress(ARB_draw_instanced, "ARB_draw_instanced");
-
-
-		//enhanced layouts
-		FetchProcAddress(ARB_enhanced_layouts, "ARB_enhanced_layouts");
-
-
-		//explicit attrib location
-		FetchProcAddress(ARB_explicit_attrib_location, "ARB_explicit_attrib_location");
-
-
-		//explicit uniform location
-		FetchProcAddress(ARB_explicit_uniform_location, "ARB_explicit_uniform_location");
-
-
-		//fragment coord conventions
-		FetchProcAddress(ARB_fragment_coord_conventions, "ARB_fragment_coord_conventions");
-
-
-		//fragment layer viewport
-		FetchProcAddress(ARB_fragment_layer_viewport, "ARB_fragment_layer_viewport");
-
-
-		//fragment program
-		FetchProcAddress(ARB_fragment_program, "ARB_fragment_program");
-
-
-		//fragment program shadow
-		FetchProcAddress(ARB_fragment_program_shadow, "ARB_fragment_program_shadow");
-
-
-		//fragment shader
-		FetchProcAddress(ARB_fragment_shader, "ARB_fragment_shader");
-
-
-		//fragment shader interlock
-		FetchProcAddress(ARB_fragment_shader_interlock, "ARB_fragment_shader_interlock");
-
 
 		//framebuffer no attachments
 		FetchProcAddress(glFramebufferParameteri, "glFramebufferParameteri");
-
 		FetchProcAddress(glGetFramebufferParameteriv, "glGetFramebufferParameteriv");
-
 		FetchProcAddress(glGetNamedFramebufferParameterivEXT, "glGetNamedFramebufferParameterivEXT");
-
 		FetchProcAddress(glNamedFramebufferParameteriEXT, "glNamedFramebufferParameteriEXT");
-
-		FetchProcAddress(ARB_framebuffer_no_attachments, "ARB_framebuffer_no_attachments");
-
 
 		//framebuffer_object
 		FetchProcAddress(glBindFramebuffer, "glBindFramebuffer");
-
 		FetchProcAddress(glBindRenderbuffer, "glBindRenderbuffer");
-
 		FetchProcAddress(glBlitFramebuffer, "glBlitFramebuffer");
-
 		FetchProcAddress(glCheckFramebufferStatus, "glCheckFramebufferStatus");
-
 		FetchProcAddress(glDeleteFramebuffers, "glDeleteFramebuffers");
-
 		FetchProcAddress(glDeleteRenderbuffers, "glDeleteRenderbuffers");
-
 		FetchProcAddress(glFramebufferRenderbuffer, "glFramebufferRenderbuffer");
-
 		FetchProcAddress(glFramebufferTexture1D, "glFramebufferTexture1D");
-
 		FetchProcAddress(glFramebufferTexture2D, "glFramebufferTexture2D");
-
 		FetchProcAddress(glFramebufferTexture3D, "glFramebufferTexture3D");
-
 		FetchProcAddress(glFramebufferTextureLayer, "glFramebufferTextureLayer");
-
 		FetchProcAddress(glGenFramebuffers, "glGenFramebuffers");
-
 		FetchProcAddress(glGenRenderbuffers, "glGenRenderbuffers");
-
 		FetchProcAddress(glGenerateMipmap, "glGenerateMipmap");
-
 		FetchProcAddress(glGetFramebufferAttachmentParameteriv, "glGetFramebufferAttachmentParameteriv");
-
 		FetchProcAddress(glGetRenderbufferParameteriv, "glGetRenderbufferParameteriv");
-
 		FetchProcAddress(glIsFramebuffer, "glIsFramebuffer");
-
 		FetchProcAddress(glIsRenderbuffer, "glIsRenderbuffer");
-
 		FetchProcAddress(glRenderbufferStorage, "glRenderbufferStorage");
-
 		FetchProcAddress(glRenderbufferStorageMultisample, "glRenderbufferStorageMultisample");
-
-		FetchProcAddress(ARB_framebuffer_object, "ARB_framebuffer_object");
-
-
-		//framebuffer sRGB
-		FetchProcAddress(ARB_framebuffer_sRGB, "ARB_framebuffer_sRGB");
-
 
 		//geometry shader4
 		FetchProcAddress(glFramebufferTextureARB, "glFramebufferTextureARB");
-
 		FetchProcAddress(glFramebufferTextureFaceARB, "glFramebufferTextureFaceARB");
-
 		FetchProcAddress(glFramebufferTextureLayerARB, "glFramebufferTextureLayerARB");
-
 		FetchProcAddress(glProgramParameteriARB, "glProgramParameteriARB");
-
-		FetchProcAddress(ARB_geometry_shader4, "ARB_geometry_shader4");
-
 
 		//get program binary
 		FetchProcAddress(glGetProgramBinary, "glGetProgramBinary");
-
 		FetchProcAddress(glProgramBinary, "glProgramBinary");
-
 		FetchProcAddress(glProgramParameteri, "glProgramParameteri");
-
-		FetchProcAddress(ARB_get_program_binary, "ARB_get_program_binary");
-
 
 		//get texture sub image
 		FetchProcAddress(glGetCompressedTextureSubImage, "glGetCompressedTextureSubImage");
-
 		FetchProcAddress(glGetTextureSubImage, "glGetTextureSubImage");
-
-		FetchProcAddress(ARB_get_texture_sub_image, "ARB_get_texture_sub_image");
-
 
 		//gl spirv
 		FetchProcAddress(glSpecializeShaderARB, "glSpecializeShaderARB");
 
-		FetchProcAddress(ARB_gl_spirv, "ARB_gl_spirv");
-
-
-		//gpu shader5
-		FetchProcAddress(ARB_gpu_shader5, "ARB_gpu_shader5");
-
-
 		//gpu shader fp64
 		FetchProcAddress(glGetUniformdv, "glGetUniformdv");
-
 		FetchProcAddress(glUniform1d, "glUniform1d");
-
 		FetchProcAddress(glUniform1dv, "glUniform1dv");
-
 		FetchProcAddress(glUniform2d, "glUniform2d");
-
 		FetchProcAddress(glUniform2dv, "glUniform2dv");
-
 		FetchProcAddress(glUniform3d, "glUniform3d");
-
 		FetchProcAddress(glUniform3dv, "glUniform3dv");
-
 		FetchProcAddress(glUniform4d, "glUniform4d");
-
 		FetchProcAddress(glUniform4dv, "glUniform4dv");
-
 		FetchProcAddress(glUniformMatrix2dv, "glUniformMatrix2dv");
-
 		FetchProcAddress(glUniformMatrix2x3dv, "glUniformMatrix2x3dv");
-
 		FetchProcAddress(glUniformMatrix2x4dv, "glUniformMatrix2x4dv");
-
 		FetchProcAddress(glUniformMatrix3dv, "glUniformMatrix3dv");
-
 		FetchProcAddress(glUniformMatrix3x2dv, "glUniformMatrix3x2dv");
-
 		FetchProcAddress(glUniformMatrix3x4dv, "glUniformMatrix3x4dv");
-
 		FetchProcAddress(glUniformMatrix4dv, "glUniformMatrix4dv");
-
 		FetchProcAddress(glUniformMatrix4x2dv, "glUniformMatrix4x2dv");
-
 		FetchProcAddress(glUniformMatrix4x3dv, "glUniformMatrix4x3dv");
-
-		FetchProcAddress(ARB_gpu_shader_fp64, "ARB_gpu_shader_fp64");
-
 
 		//gpu shader int64
 		FetchProcAddress(glGetUniformi64vARB, "glGetUniformi64vARB");
-
 		FetchProcAddress(glGetUniformui64vARB, "glGetUniformui64vARB");
-
 		FetchProcAddress(glGetnUniformi64vARB, "glGetnUniformi64vARB");
-
 		FetchProcAddress(glGetnUniformui64vARB, "glGetnUniformui64vARB");
-
 		FetchProcAddress(glProgramUniform1i64ARB, "glProgramUniform1i64ARB");
-
 		FetchProcAddress(glProgramUniform1i64vARB, "glProgramUniform1i64vARB");
-
 		FetchProcAddress(glProgramUniform1ui64ARB, "glProgramUniform1ui64ARB");
-
 		FetchProcAddress(glProgramUniform1ui64vARB, "glProgramUniform1ui64vARB");
-
 		FetchProcAddress(glProgramUniform2i64ARB, "glProgramUniform2i64ARB");
-
 		FetchProcAddress(glProgramUniform2i64vARB, "glProgramUniform2i64vARB");
-
 		FetchProcAddress(glProgramUniform2ui64ARB, "glProgramUniform2ui64ARB");
-
 		FetchProcAddress(glProgramUniform2ui64vARB, "glProgramUniform2ui64vARB");
-
 		FetchProcAddress(glProgramUniform3i64ARB, "glProgramUniform3i64ARB");
-
 		FetchProcAddress(glProgramUniform3i64vARB, "glProgramUniform3i64vARB");
-
 		FetchProcAddress(glProgramUniform3ui64ARB, "glProgramUniform3ui64ARB");
-
 		FetchProcAddress(glProgramUniform3ui64vARB, "glProgramUniform3ui64vARB");
-
 		FetchProcAddress(glProgramUniform4i64ARB, "glProgramUniform4i64ARB");
-
 		FetchProcAddress(glProgramUniform4i64vARB, "glProgramUniform4i64vARB");
-
 		FetchProcAddress(glProgramUniform4ui64ARB, "glProgramUniform4ui64ARB");
-
 		FetchProcAddress(glProgramUniform4ui64vARB, "glProgramUniform4ui64vARB");
-
 		FetchProcAddress(glUniform1i64ARB, "glUniform1i64ARB");
-
 		FetchProcAddress(glUniform1i64vARB, "glUniform1i64vARB");
-
 		FetchProcAddress(glUniform1ui64ARB, "glUniform1ui64ARB");
-
 		FetchProcAddress(glUniform1ui64vARB, "glUniform1ui64vARB");
-
 		FetchProcAddress(glUniform2i64ARB, "glUniform2i64ARB");
-
 		FetchProcAddress(glUniform2i64vARB, "glUniform2i64vARB");
-
 		FetchProcAddress(glUniform2ui64ARB, "glUniform2ui64ARB");
-
 		FetchProcAddress(glUniform2ui64vARB, "glUniform2ui64vARB");
-
 		FetchProcAddress(glUniform3i64ARB, "glUniform3i64ARB");
-
 		FetchProcAddress(glUniform3i64vARB, "glUniform3i64vARB");
-
 		FetchProcAddress(glUniform3ui64ARB, "glUniform3ui64ARB");
-
 		FetchProcAddress(glUniform3ui64vARB, "glUniform3ui64vARB");
-
 		FetchProcAddress(glUniform4i64ARB, "glUniform4i64ARB");
-
 		FetchProcAddress(glUniform4i64vARB, "glUniform4i64vARB");
-
 		FetchProcAddress(glUniform4ui64ARB, "glUniform4ui64ARB");
-
 		FetchProcAddress(glUniform4ui64vARB, "glUniform4ui64vARB");
-
-		FetchProcAddress(ARB_gpu_shader_int64, "ARB_gpu_shader_int64");
-
-
-		//half float pixel
-		FetchProcAddress(ARB_half_float_pixel, "ARB_half_float_pixel");
-
-
-		//half float vertex
-		FetchProcAddress(ARB_half_float_vertex, "ARB_half_float_vertex");
-
 
 		//imaging
 		FetchProcAddress(glColorSubTable, "glColorSubTable");
-
 		FetchProcAddress(glColorTable, "glColorTable");
-
 		FetchProcAddress(glColorTableParameterfv, "glColorTableParameterfv");
-
 		FetchProcAddress(glColorTableParameteriv, "glColorTableParameteriv");
-
 		FetchProcAddress(glConvolutionFilter1D, "glConvolutionFilter1D");
-
 		FetchProcAddress(glConvolutionFilter2D, "glConvolutionFilter2D");
-
 		FetchProcAddress(glConvolutionParameterf, "glConvolutionParameterf");
-
 		FetchProcAddress(glConvolutionParameterfv, "glConvolutionParameterfv");
-
 		FetchProcAddress(glConvolutionParameteri, "glConvolutionParameteri");
-
 		FetchProcAddress(glConvolutionParameteriv, "glConvolutionParameteriv");
-
 		FetchProcAddress(glCopyColorSubTable, "glCopyColorSubTable");
-
 		FetchProcAddress(glCopyColorTable, "glCopyColorTable");
-
 		FetchProcAddress(glCopyConvolutionFilter1D, "glCopyConvolutionFilter1D");
-
 		FetchProcAddress(glCopyConvolutionFilter2D, "glCopyConvolutionFilter2D");
-
 		FetchProcAddress(glGetColorTable, "glGetColorTable");
-
 		FetchProcAddress(glGetColorTableParameterfv, "glGetColorTableParameterfv");
-
 		FetchProcAddress(glGetColorTableParameteriv, "glGetColorTableParameteriv");
-
 		FetchProcAddress(glGetConvolutionFilter, "glGetConvolutionFilter");
-
 		FetchProcAddress(glGetConvolutionParameterfv, "glGetConvolutionParameterfv");
-
 		FetchProcAddress(glGetConvolutionParameteriv, "glGetConvolutionParameteriv");
-
 		FetchProcAddress(glGetHistogram, "glGetHistogram");
-
 		FetchProcAddress(glGetHistogramParameterfv, "glGetHistogramParameterfv");
-
 		FetchProcAddress(glGetHistogramParameteriv, "glGetHistogramParameteriv");
-
 		FetchProcAddress(glGetMinmax, "glGetMinmax");
-
 		FetchProcAddress(glGetMinmaxParameterfv, "glGetMinmaxParameterfv");
-
 		FetchProcAddress(glGetMinmaxParameteriv, "glGetMinmaxParameteriv");
-
 		FetchProcAddress(glGetSeparableFilter, "glGetSeparableFilter");
-
 		FetchProcAddress(glHistogram, "glHistogram");
-
 		FetchProcAddress(glMinmax, "glMinmax");
-
 		FetchProcAddress(glResetHistogram, "glResetHistogram");
-
 		FetchProcAddress(glResetMinmax, "glResetMinmax");
-
 		FetchProcAddress(glSeparableFilter2D, "glSeparableFilter2D");
-
-		FetchProcAddress(ARB_imaging, "ARB_imaging");
-
 
 		//indirect parameters
 		FetchProcAddress(glMultiDrawArraysIndirectCountARB, "glMultiDrawArraysIndirectCountARB");
-
 		FetchProcAddress(glMultiDrawElementsIndirectCountARB, "glMultiDrawElementsIndirectCountARB");
-
-		FetchProcAddress(ARB_indirect_parameters, "ARB_indirect_parameters");
-
 
 		//instanced arrays
 		FetchProcAddress(glDrawArraysInstancedARB, "glDrawArraysInstancedARB");
-
 		FetchProcAddress(glDrawElementsInstancedARB, "glDrawElementsInstancedARB");
-
 		FetchProcAddress(glVertexAttribDivisorARB, "glVertexAttribDivisorARB");
-
-		FetchProcAddress(ARB_instanced_arrays, "ARB_instanced_arrays");
-
 
 		//internalformat query
 		FetchProcAddress(glGetInternalformativ, "glGetInternalformativ");
 
-		FetchProcAddress(ARB_internalformat_query, "ARB_internalformat_query");
-
-
 		//internalformat query2
 		FetchProcAddress(glGetInternalformati64v, "glGetInternalformati64v");
 
-		FetchProcAddress(ARB_internalformat_query2, "ARB_internalformat_query2");
-
-
 		//invalidate subdata
 		FetchProcAddress(glInvalidateBufferData, "glInvalidateBufferData");
-
 		FetchProcAddress(glInvalidateBufferSubData, "glInvalidateBufferSubData");
-
 		FetchProcAddress(glInvalidateFramebuffer, "glInvalidateFramebuffer");
-
 		FetchProcAddress(glInvalidateSubFramebuffer, "glInvalidateSubFramebuffer");
-
 		FetchProcAddress(glInvalidateTexImage, "glInvalidateTexImage");
-
 		FetchProcAddress(glInvalidateTexSubImage, "glInvalidateTexSubImage");
-
-		FetchProcAddress(ARB_invalidate_subdata, "ARB_invalidate_subdata");
-
-
-		//map buffer alignment
-		FetchProcAddress(ARB_map_buffer_alignment, "ARB_map_buffer_alignment");
-
 
 		//map buffer range
 		FetchProcAddress(glFlushMappedBufferRange, "glFlushMappedBufferRange");
-
 		FetchProcAddress(glMapBufferRange, "glMapBufferRange");
-
-		FetchProcAddress(ARB_map_buffer_range, "ARB_map_buffer_range");
-
 
 		//matrix palette
 		FetchProcAddress(glCurrentPaletteMatrixARB, "glCurrentPaletteMatrixARB");
-
 		FetchProcAddress(glMatrixIndexPointerARB, "glMatrixIndexPointerARB");
-
 		FetchProcAddress(glMatrixIndexubvARB, "glMatrixIndexubvARB");
-
 		FetchProcAddress(glMatrixIndexuivARB, "glMatrixIndexuivARB");
-
 		FetchProcAddress(glMatrixIndexusvARB, "glMatrixIndexusvARB");
-
-		FetchProcAddress(ARB_matrix_palette, "ARB_matrix_palette");
-
 
 		//multi bind
 		FetchProcAddress(glBindBuffersBase, "glBindBuffersBase");
-
 		FetchProcAddress(glBindBuffersRange, "glBindBuffersRange");
-
 		FetchProcAddress(glBindImageTextures, "glBindImageTextures");
-
 		FetchProcAddress(glBindSamplers, "glBindSamplers");
-
 		FetchProcAddress(glBindTextures, "glBindTextures");
-
 		FetchProcAddress(glBindVertexBuffers, "glBindVertexBuffers");
-
-		FetchProcAddress(ARB_multi_bind, "ARB_multi_bind");
-
 
 		//multi draw indirect
 		FetchProcAddress(glMultiDrawArraysIndirect, "glMultiDrawArraysIndirect");
-
 		FetchProcAddress(glMultiDrawElementsIndirect, "glMultiDrawElementsIndirect");
-
-		FetchProcAddress(ARB_multi_draw_indirect, "ARB_multi_draw_indirect");
-
 
 		//multisample
 		FetchProcAddress(glSampleCoverageARB, "glSampleCoverageARB");
 
-		FetchProcAddress(ARB_multisample, "ARB_multisample");
-
-
 		//multitexture
 		FetchProcAddress(glActiveTextureARB, "glActiveTextureARB");
-
 		FetchProcAddress(glClientActiveTextureARB, "glClientActiveTextureARB");
-
 		FetchProcAddress(glMultiTexCoord1dARB, "glMultiTexCoord1dARB");
-
 		FetchProcAddress(glMultiTexCoord1dvARB, "glMultiTexCoord1dvARB");
-
 		FetchProcAddress(glMultiTexCoord1fARB, "glMultiTexCoord1fARB");
-
 		FetchProcAddress(glMultiTexCoord1fvARB, "glMultiTexCoord1fvARB");
-
 		FetchProcAddress(glMultiTexCoord1iARB, "glMultiTexCoord1iARB");
-
 		FetchProcAddress(glMultiTexCoord1ivARB, "glMultiTexCoord1ivARB");
-
 		FetchProcAddress(glMultiTexCoord1sARB, "glMultiTexCoord1sARB");
-
 		FetchProcAddress(glMultiTexCoord1svARB, "glMultiTexCoord1svARB");
-
 		FetchProcAddress(glMultiTexCoord2dARB, "glMultiTexCoord2dARB");
-
 		FetchProcAddress(glMultiTexCoord2dvARB, "glMultiTexCoord2dvARB");
-
 		FetchProcAddress(glMultiTexCoord2fARB, "glMultiTexCoord2fARB");
-
 		FetchProcAddress(glMultiTexCoord2fvARB, "glMultiTexCoord2fvARB");
-
 		FetchProcAddress(glMultiTexCoord2iARB, "glMultiTexCoord2iARB");
-
 		FetchProcAddress(glMultiTexCoord2ivARB, "glMultiTexCoord2ivARB");
-
 		FetchProcAddress(glMultiTexCoord2sARB, "glMultiTexCoord2sARB");
-
 		FetchProcAddress(glMultiTexCoord2svARB, "glMultiTexCoord2svARB");
-
 		FetchProcAddress(glMultiTexCoord3dARB, "glMultiTexCoord3dARB");
-
 		FetchProcAddress(glMultiTexCoord3dvARB, "glMultiTexCoord3dvARB");
-
 		FetchProcAddress(glMultiTexCoord3fARB, "glMultiTexCoord3fARB");
-
 		FetchProcAddress(glMultiTexCoord3fvARB, "glMultiTexCoord3fvARB");
-
 		FetchProcAddress(glMultiTexCoord3iARB, "glMultiTexCoord3iARB");
-
 		FetchProcAddress(glMultiTexCoord3ivARB, "glMultiTexCoord3ivARB");
-
 		FetchProcAddress(glMultiTexCoord3sARB, "glMultiTexCoord3sARB");
-
 		FetchProcAddress(glMultiTexCoord3svARB, "glMultiTexCoord3svARB");
-
 		FetchProcAddress(glMultiTexCoord4dARB, "glMultiTexCoord4dARB");
-
 		FetchProcAddress(glMultiTexCoord4dvARB, "glMultiTexCoord4dvARB");
-
 		FetchProcAddress(glMultiTexCoord4fARB, "glMultiTexCoord4fARB");
-
 		FetchProcAddress(glMultiTexCoord4fvARB, "glMultiTexCoord4fvARB");
-
 		FetchProcAddress(glMultiTexCoord4iARB, "glMultiTexCoord4iARB");
-
 		FetchProcAddress(glMultiTexCoord4ivARB, "glMultiTexCoord4ivARB");
-
 		FetchProcAddress(glMultiTexCoord4sARB, "glMultiTexCoord4sARB");
-
 		FetchProcAddress(glMultiTexCoord4svARB, "glMultiTexCoord4svARB");
-
-		FetchProcAddress(ARB_multitexture, "ARB_multitexture");
-
 
 		//occlusion query
 		FetchProcAddress(glBeginQueryARB, "glBeginQueryARB");
-
 		FetchProcAddress(glDeleteQueriesARB, "glDeleteQueriesARB");
-
 		FetchProcAddress(glEndQueryARB, "glEndQueryARB");
-
 		FetchProcAddress(glGenQueriesARB, "glGenQueriesARB");
-
 		FetchProcAddress(glGetQueryObjectivARB, "glGetQueryObjectivARB");
-
 		FetchProcAddress(glGetQueryObjectuivARB, "glGetQueryObjectuivARB");
-
 		FetchProcAddress(glGetQueryivARB, "glGetQueryivARB");
-
 		FetchProcAddress(glIsQueryARB, "glIsQueryARB");
-
-		FetchProcAddress(ARB_occlusion_query, "ARB_occlusion_query");
-
-
-		//occlusion query2
-		FetchProcAddress(ARB_occlusion_query2, "ARB_occlusion_query2");
-
 
 		//parallel shader compile
 		FetchProcAddress(glMaxShaderCompilerThreadsARB, "glMaxShaderCompilerThreadsARB");
 
-		FetchProcAddress(ARB_parallel_shader_compile, "ARB_parallel_shader_compile");
-
-
-		//pipeline statistics query
-		FetchProcAddress(ARB_pipeline_statistics_query, "ARB_pipeline_statistics_query");
-
-
-		//pixel buffer object
-		FetchProcAddress(ARB_pixel_buffer_object, "ARB_pixel_buffer_object");
-
-
 		//point parameters
 		FetchProcAddress(glPointParameterfARB, "glPointParameterfARB");
-
 		FetchProcAddress(glPointParameterfvARB, "glPointParameterfvARB");
-
-		FetchProcAddress(ARB_point_parameters, "ARB_point_parameters");
-
-
-		//point sprite
-		FetchProcAddress(ARB_point_sprite, "ARB_point_sprite");
-
 
 		//polygon offset clamp
 		FetchProcAddress(glPolygonOffsetClamp, "glPolygonOffsetClamp");
 
-		FetchProcAddress(ARB_polygon_offset_clamp, "ARB_polygon_offset_clamp");
-
-
-		//post depth coverage
-		FetchProcAddress(ARB_post_depth_coverage, "ARB_post_depth_coverage");
-
-
 		//program interface query
 		FetchProcAddress(glGetProgramInterfaceiv, "glGetProgramInterfaceiv");
-
 		FetchProcAddress(glGetProgramResourceIndex, "glGetProgramResourceIndex");
-
 		FetchProcAddress(glGetProgramResourceLocation, "glGetProgramResourceLocation");
-
 		FetchProcAddress(glGetProgramResourceLocationIndex, "glGetProgramResourceLocationIndex");
-
 		FetchProcAddress(glGetProgramResourceName, "glGetProgramResourceName");
-
 		FetchProcAddress(glGetProgramResourceiv, "glGetProgramResourceiv");
 
-		FetchProcAddress(ARB_program_interface_query, "ARB_program_interface_query");
-
-
 		//provoking vertex
-		FetchProcAddress(glProvokingVertex, "glProvokingVertex");
-
-		FetchProcAddress(ARB_provoking_vertex, "ARB_provoking_vertex");
-
-
-		// query buffer object
-		FetchProcAddress(ARB_query_buffer_object, "ARB_query_buffer_object");
-
-
-		//robust buffer access behavior
-		FetchProcAddress(ARB_robust_buffer_access_behavior, "ARB_robust_buffer_access_behavior");
-
+		FetchProcAddress(glProvokingVertex, "glProvokingVertex");	
 
 		//robustness
 		FetchProcAddress(glGetGraphicsResetStatusARB, "glGetGraphicsResetStatusARB");
-
 		FetchProcAddress(glGetnColorTableARB, "glGetnColorTableARB");
-
 		FetchProcAddress(glGetnCompressedTexImageARB, "glGetnCompressedTexImageARB");
-
 		FetchProcAddress(glGetnConvolutionFilterARB, "glGetnConvolutionFilterARB");
-
 		FetchProcAddress(glGetnHistogramARB, "glGetnHistogramARB");
-
 		FetchProcAddress(glGetnMapdvARB, "glGetnMapdvARB");
-
 		FetchProcAddress(glGetnMapfvARB, "glGetnMapfvARB");
-
 		FetchProcAddress(glGetnMapivARB, "glGetnMapivARB");
-
 		FetchProcAddress(glGetnMinmaxARB, "glGetnMinmaxARB");
-
 		FetchProcAddress(glGetnPixelMapfvARB, "glGetnPixelMapfvARB");
-
 		FetchProcAddress(glGetnPixelMapuivARB, "glGetnPixelMapuivARB");
-
 		FetchProcAddress(glGetnPixelMapusvARB, "glGetnPixelMapusvARB");
-
 		FetchProcAddress(glGetnPolygonStippleARB, "glGetnPolygonStippleARB");
-
 		FetchProcAddress(glGetnSeparableFilterARB, "glGetnSeparableFilterARB");
-
 		FetchProcAddress(glGetnTexImageARB, "glGetnTexImageARB");
-
 		FetchProcAddress(glGetnUniformdvARB, "glGetnUniformdvARB");
-
 		FetchProcAddress(glGetnUniformfvARB, "glGetnUniformfvARB");
-
 		FetchProcAddress(glGetnUniformivARB, "glGetnUniformivARB");
-
 		FetchProcAddress(glGetnUniformuivARB, "glGetnUniformuivARB");
-
 		FetchProcAddress(glReadnPixelsARB, "glReadnPixelsARB");
-
-		FetchProcAddress(ARB_robustness, "ARB_robustness");
-
-
-		//robustness application isolation
-		FetchProcAddress(ARB_robustness_application_isolation, "ARB_robustness_application_isolation");
-
-
-		//robustness share group isolation
-		FetchProcAddress(ARB_robustness_share_group_isolation, "ARB_robustness_share_group_isolation");
-
 
 		//sample locations
 		FetchProcAddress(glFramebufferSampleLocationsfvARB, "glFramebufferSampleLocationsfvARB");
-
 		FetchProcAddress(glNamedFramebufferSampleLocationsfvARB, "glNamedFramebufferSampleLocationsfvARB");
-
-		FetchProcAddress(ARB_sample_locations, "ARB_sample_locations");
-
 
 		//sample shading
 		FetchProcAddress(glMinSampleShadingARB, "glMinSampleShadingARB");
 
-		FetchProcAddress(ARB_sample_shading, "ARB_sample_shading");
-
-
 		//sampler objects
 		FetchProcAddress(glBindSampler, "glBindSampler");
-
 		FetchProcAddress(glDeleteSamplers, "glDeleteSamplers");
-
 		FetchProcAddress(glGenSamplers, "glGenSamplers");
-
 		FetchProcAddress(glGetSamplerParameterIiv, "glGetSamplerParameterIiv");
-
 		FetchProcAddress(glGetSamplerParameterIuiv, "glGetSamplerParameterIuiv");
-
 		FetchProcAddress(glGetSamplerParameterfv, "glGetSamplerParameterfv");
-
 		FetchProcAddress(glGetSamplerParameteriv, "glGetSamplerParameteriv");
-
 		FetchProcAddress(glIsSampler, "glIsSampler");
-
 		FetchProcAddress(glSamplerParameterIiv, "glSamplerParameterIiv");
-
 		FetchProcAddress(glSamplerParameterIuiv, "glSamplerParameterIuiv");
-
 		FetchProcAddress(glSamplerParameterf, "glSamplerParameterf");
-
 		FetchProcAddress(glSamplerParameterfv, "glSamplerParameterfv");
-
 		FetchProcAddress(glSamplerParameteri, "glSamplerParameteri");
-
 		FetchProcAddress(glSamplerParameteriv, "glSamplerParameteriv");
-
-		FetchProcAddress(ARB_sampler_objects, "ARB_sampler_objects");
-
-
-		//seamless cube map
-		FetchProcAddress(ARB_seamless_cube_map, "ARB_seamless_cube_map");
-
-
-		//seamless cubemap per texture
-		FetchProcAddress(ARB_seamless_cubemap_per_texture, "ARB_seamless_cubemap_per_texture");
-
 
 		//separate shader objects
 		FetchProcAddress(glActiveShaderProgram, "glActiveShaderProgram");
-
 		FetchProcAddress(glBindProgramPipeline, "glBindProgramPipeline");
-
 		FetchProcAddress(glCreateShaderProgramv, "glCreateShaderProgramv");
-
 		FetchProcAddress(glDeleteProgramPipelines, "glDeleteProgramPipelines");
-
 		FetchProcAddress(glGenProgramPipelines, "glGenProgramPipelines");
-
 		FetchProcAddress(glGetProgramPipelineInfoLog, "glGetProgramPipelineInfoLog");
-
 		FetchProcAddress(glGetProgramPipelineiv, "glGetProgramPipelineiv");
-
 		FetchProcAddress(glIsProgramPipeline, "glIsProgramPipeline");
-
 		FetchProcAddress(glProgramUniform1d, "glProgramUniform1d");
-
 		FetchProcAddress(glProgramUniform1dv, "glProgramUniform1dv");
-
 		FetchProcAddress(glProgramUniform1f, "glProgramUniform1f");
-
 		FetchProcAddress(glProgramUniform1fv, "glProgramUniform1fv");
-
 		FetchProcAddress(glProgramUniform1i, "glProgramUniform1i");
-
 		FetchProcAddress(glProgramUniform1iv, "glProgramUniform1iv");
-
 		FetchProcAddress(glProgramUniform1ui, "glProgramUniform1ui");
-
 		FetchProcAddress(glProgramUniform1uiv, "glProgramUniform1uiv");
-
 		FetchProcAddress(glProgramUniform2d, "glProgramUniform2d");
-
 		FetchProcAddress(glProgramUniform2dv, "glProgramUniform2dv");
-
 		FetchProcAddress(glProgramUniform2f, "glProgramUniform2f");
-
 		FetchProcAddress(glProgramUniform2fv, "glProgramUniform2fv");
-
 		FetchProcAddress(glProgramUniform2i, "glProgramUniform2i");
-
 		FetchProcAddress(glProgramUniform2iv, "glProgramUniform2iv");
-
 		FetchProcAddress(glProgramUniform2ui, "glProgramUniform2ui");
-
 		FetchProcAddress(glProgramUniform2uiv, "glProgramUniform2uiv");
-
 		FetchProcAddress(glProgramUniform3d, "glProgramUniform3d");
-
 		FetchProcAddress(glProgramUniform3dv, "glProgramUniform3dv");
-
 		FetchProcAddress(glProgramUniform3f, "glProgramUniform3f");
-
 		FetchProcAddress(glProgramUniform3fv, "glProgramUniform3fv");
-
 		FetchProcAddress(glProgramUniform3i, "glProgramUniform3i");
-
 		FetchProcAddress(glProgramUniform3iv, "glProgramUniform3iv");
-
 		FetchProcAddress(glProgramUniform3ui, "glProgramUniform3ui");
-
 		FetchProcAddress(glProgramUniform3uiv, "glProgramUniform3uiv");
-
 		FetchProcAddress(glProgramUniform4d, "glProgramUniform4d");
-
 		FetchProcAddress(glProgramUniform4dv, "glProgramUniform4dv");
-
 		FetchProcAddress(glProgramUniform4f, "glProgramUniform4f");
-
 		FetchProcAddress(glProgramUniform4fv, "glProgramUniform4fv");
-
 		FetchProcAddress(glProgramUniform4i, "glProgramUniform4i");
-
 		FetchProcAddress(glProgramUniform4iv, "glProgramUniform4iv");
-
 		FetchProcAddress(glProgramUniform4ui, "glProgramUniform4ui");
-
 		FetchProcAddress(glProgramUniform4uiv, "glProgramUniform4uiv");
-
 		FetchProcAddress(glProgramUniformMatrix2dv, "glProgramUniformMatrix2dv");
-
 		FetchProcAddress(glProgramUniformMatrix2fv, "glProgramUniformMatrix2fv");
-
 		FetchProcAddress(glProgramUniformMatrix2x3dv, "glProgramUniformMatrix2x3dv");
-
 		FetchProcAddress(glProgramUniformMatrix2x3fv, "glProgramUniformMatrix2x3fv");
-
 		FetchProcAddress(glProgramUniformMatrix2x4dv, "glProgramUniformMatrix2x4dv");
-
 		FetchProcAddress(glProgramUniformMatrix2x4fv, "glProgramUniformMatrix2x4fv");
-
 		FetchProcAddress(glProgramUniformMatrix3dv, "glProgramUniformMatrix3dv");
-
 		FetchProcAddress(glProgramUniformMatrix3fv, "glProgramUniformMatrix3fv");
-
 		FetchProcAddress(glProgramUniformMatrix3x2dv, "glProgramUniformMatrix3x2dv");
-
 		FetchProcAddress(glProgramUniformMatrix3x2fv, "glProgramUniformMatrix3x2fv");
-
 		FetchProcAddress(glProgramUniformMatrix3x4dv, "glProgramUniformMatrix3x4dv");
-
 		FetchProcAddress(glProgramUniformMatrix3x4fv, "glProgramUniformMatrix3x4fv");
-
 		FetchProcAddress(glProgramUniformMatrix4dv, "glProgramUniformMatrix4dv");
-
 		FetchProcAddress(glProgramUniformMatrix4fv, "glProgramUniformMatrix4fv");
-
 		FetchProcAddress(glProgramUniformMatrix4x2dv, "glProgramUniformMatrix4x2dv");
-
 		FetchProcAddress(glProgramUniformMatrix4x2fv, "glProgramUniformMatrix4x2fv");
-
 		FetchProcAddress(glProgramUniformMatrix4x3dv, "glProgramUniformMatrix4x3dv");
-
 		FetchProcAddress(glProgramUniformMatrix4x3fv, "glProgramUniformMatrix4x3fv");
-
 		FetchProcAddress(glUseProgramStages, "glUseProgramStages");
-
 		FetchProcAddress(glValidateProgramPipeline, "glValidateProgramPipeline");
-
-		FetchProcAddress(ARB_separate_shader_objects, "ARB_separate_shader_objects");
-
-
-		//shader atomic counter ops
-		FetchProcAddress(ARB_shader_atomic_counter_ops, "ARB_shader_atomic_counter_ops");
-
 
 		//shader atomic counters
 		FetchProcAddress(glGetActiveAtomicCounterBufferiv, "glGetActiveAtomicCounterBufferiv");
 
-		FetchProcAddress(ARB_shader_atomic_counters, "ARB_shader_atomic_counters");
-
-
-		//shader ballot
-		FetchProcAddress(ARB_shader_ballot, "ARB_shader_ballot");
-
-
-		//shader bit encoding
-		FetchProcAddress(ARB_shader_bit_encoding, "ARB_shader_bit_encoding");
-
-
-		//shader clock
-		FetchProcAddress(ARB_shader_clock, "ARB_shader_clock");
-
-
-		//shader draw parameters
-		FetchProcAddress(ARB_shader_draw_parameters, "ARB_shader_draw_parameters");
-
-
-		//shader group vote
-		FetchProcAddress(ARB_shader_group_vote, "ARB_shader_group_vote");
-
-
 		//shader image load store
 		FetchProcAddress(glBindImageTexture, "glBindImageTexture");
-
 		FetchProcAddress(glMemoryBarrier, "glMemoryBarrier");
-
-		FetchProcAddress(ARB_shader_image_load_store, "ARB_shader_image_load_store");
-
-
-		//shader image size
-		FetchProcAddress(ARB_shader_image_size, "ARB_shader_image_size");
 
 
 		//shader objects
 		FetchProcAddress(glAttachObjectARB, "glAttachObjectARB");
-
 		FetchProcAddress(glCompileShaderARB, "glCompileShaderARB");
-
 		FetchProcAddress(glCreateProgramObjectARB, "glCreateProgramObjectARB");
-
 		FetchProcAddress(glCreateShaderObjectARB, "glCreateShaderObjectARB");
-
 		FetchProcAddress(glDeleteObjectARB, "glDeleteObjectARB");
-
 		FetchProcAddress(glDetachObjectARB, "glDetachObjectARB");
-
 		FetchProcAddress(glGetActiveUniformARB, "glGetActiveUniformARB");
-
 		FetchProcAddress(glGetAttachedObjectsARB, "glGetAttachedObjectsARB");
-
 		FetchProcAddress(glGetHandleARB, "glGetHandleARB");
-
 		FetchProcAddress(glGetInfoLogARB, "glGetInfoLogARB");
-
 		FetchProcAddress(glGetObjectParameterfvARB, "glGetObjectParameterfvARB");
-
 		FetchProcAddress(glGetObjectParameterivARB, "glGetObjectParameterivARB");
-
 		FetchProcAddress(glGetShaderSourceARB, "glGetShaderSourceARB");
-
 		FetchProcAddress(glGetUniformLocationARB, "glGetUniformLocationARB");
-
 		FetchProcAddress(glGetUniformfvARB, "glGetUniformfvARB");
-
 		FetchProcAddress(glGetUniformivARB, "glGetUniformivARB");
-
 		FetchProcAddress(glLinkProgramARB, "glLinkProgramARB");
-
 		FetchProcAddress(glShaderSourceARB, "glShaderSourceARB");
-
 		FetchProcAddress(glUniform1fARB, "glUniform1fARB");
-
 		FetchProcAddress(glUniform1fvARB, "glUniform1fvARB");
-
 		FetchProcAddress(glUniform1iARB, "glUniform1iARB");
-
 		FetchProcAddress(glUniform1ivARB, "glUniform1ivARB");
-
 		FetchProcAddress(glUniform2fARB, "glUniform2fARB");
-
 		FetchProcAddress(glUniform2fvARB, "glUniform2fvARB");
-
 		FetchProcAddress(glUniform2iARB, "glUniform2iARB");
-
 		FetchProcAddress(glUniform2ivARB, "glUniform2ivARB");
-
 		FetchProcAddress(glUniform3fARB, "glUniform3fARB");
-
 		FetchProcAddress(glUniform3fvARB, "glUniform3fvARB");
-
 		FetchProcAddress(glUniform3iARB, "glUniform3iARB");
-
 		FetchProcAddress(glUniform3ivARB, "glUniform3ivARB");
-
 		FetchProcAddress(glUniform4fARB, "glUniform4fARB");
-
 		FetchProcAddress(glUniform4fvARB, "glUniform4fvARB");
-
 		FetchProcAddress(glUniform4iARB, "glUniform4iARB");
-
 		FetchProcAddress(glUniform4ivARB, "glUniform4ivARB");
-
 		FetchProcAddress(glUniformMatrix2fvARB, "glUniformMatrix2fvARB");
-
 		FetchProcAddress(glUniformMatrix3fvARB, "glUniformMatrix3fvARB");
-
 		FetchProcAddress(glUniformMatrix4fvARB, "glUniformMatrix4fvARB");
-
 		FetchProcAddress(glUseProgramObjectARB, "glUseProgramObjectARB");
-
 		FetchProcAddress(glValidateProgramARB, "glValidateProgramARB");
-
-		FetchProcAddress(ARB_shader_objects, "ARB_shader_objects");
-
-
-		//shader precision
-		FetchProcAddress(ARB_shader_precision, "ARB_shader_precision");
-
-
-		//shader stencil export
-		FetchProcAddress(ARB_shader_stencil_export, "ARB_shader_stencil_export");
-
 
 		//shader storage buffer object
 		FetchProcAddress(glShaderStorageBlockBinding, "glShaderStorageBlockBinding");
 
-		FetchProcAddress(ARB_shader_storage_buffer_object, "ARB_shader_storage_buffer_object");
-
-
 		//shader subroutine
 		FetchProcAddress(glGetActiveSubroutineName, "glGetActiveSubroutineName");
-
 		FetchProcAddress(glGetActiveSubroutineUniformName, "glGetActiveSubroutineUniformName");
-
 		FetchProcAddress(glGetActiveSubroutineUniformiv, "glGetActiveSubroutineUniformiv");
-
 		FetchProcAddress(glGetProgramStageiv, "glGetProgramStageiv");
-
 		FetchProcAddress(glGetSubroutineIndex, "glGetSubroutineIndex");
-
 		FetchProcAddress(glGetSubroutineUniformLocation, "glGetSubroutineUniformLocation");
-
 		FetchProcAddress(glGetUniformSubroutineuiv, "glGetUniformSubroutineuiv");
-
 		FetchProcAddress(glUniformSubroutinesuiv, "glUniformSubroutinesuiv");
-
-		FetchProcAddress(ARB_shader_subroutine, "ARB_shader_subroutine");
-
-
-		//shader texture image samples
-		FetchProcAddress(ARB_shader_texture_image_samples, "ARB_shader_texture_image_samples");
-
-
-		//shader texture lod
-		FetchProcAddress(ARB_shader_texture_lod, "ARB_shader_texture_lod");
-
-
-		//shader viewport layer array
-		FetchProcAddress(ARB_shader_viewport_layer_array, "ARB_shader_viewport_layer_array");
-
-
-		//shading language 100
-		FetchProcAddress(ARB_shading_language_100, "ARB_shading_language_100");
-
-
-		//shading language 420pack
-		FetchProcAddress(ARB_shading_language_420pack, "ARB_shading_language_420pack");
-
 
 		//shading language include
 		FetchProcAddress(glCompileShaderIncludeARB, "glCompileShaderIncludeARB");
-
 		FetchProcAddress(glDeleteNamedStringARB, "glDeleteNamedStringARB");
-
 		FetchProcAddress(glGetNamedStringARB, "glGetNamedStringARB");
-
 		FetchProcAddress(glGetNamedStringivARB, "glGetNamedStringivARB");
-
 		FetchProcAddress(glIsNamedStringARB, "glIsNamedStringARB");
-
 		FetchProcAddress(glNamedStringARB, "glNamedStringARB");
-
-		FetchProcAddress(ARB_shading_language_include, "ARB_shading_language_include");
-
-
-		//shading language packing
-		FetchProcAddress(ARB_shading_language_packing, "ARB_shading_language_packing");
-
-
-		//shadow
-		FetchProcAddress(ARB_shadow, "ARB_shadow");
-
-
-		//shadow ambient
-		FetchProcAddress(ARB_shadow_ambient, "ARB_shadow_ambient");
-
 
 		//sparse buffer
 		FetchProcAddress(glBufferPageCommitmentARB, "glBufferPageCommitmentARB");
 
-		FetchProcAddress(ARB_sparse_buffer, "ARB_sparse_buffer");
-
-
 		//sparse texture
 		FetchProcAddress(glTexPageCommitmentARB, "glTexPageCommitmentARB");
 
-		FetchProcAddress(ARB_sparse_texture, "ARB_sparse_texture");
-
-
-		//sparse texture2
-		FetchProcAddress(ARB_sparse_texture2, "ARB_sparse_texture2");
-
-
-		//sparse texture clamp
-		FetchProcAddress(ARB_sparse_texture_clamp, "ARB_sparse_texture_clamp");
-
-
-		//spirv extensions
-		FetchProcAddress(ARB_spirv_extensions, "ARB_spirv_extensions");
-
-
-		//stencil texturing
-		FetchProcAddress(ARB_stencil_texturing, "ARB_stencil_texturing");
-
-
 		//sync
 		FetchProcAddress(glClientWaitSync, "glClientWaitSync");
-
 		FetchProcAddress(glDeleteSync, "glDeleteSync");
-
 		FetchProcAddress(glFenceSync, "glFenceSync");
-
 		FetchProcAddress(glGetInteger64v, "glGetInteger64v");
-
 		FetchProcAddress(glGetSynciv, "glGetSynciv");
-
 		FetchProcAddress(glIsSync, "glIsSync");
-
 		FetchProcAddress(glWaitSync, "glWaitSync");
-
-		FetchProcAddress(ARB_sync, "ARB_sync");
-
 
 		//tessellation shader
 		FetchProcAddress(glPatchParameterfv, "glPatchParameterfv");
-
 		FetchProcAddress(glPatchParameteri, "glPatchParameteri");
 
-		FetchProcAddress(ARB_tessellation_shader, "ARB_tessellation_shader");
-
-
 		//texture barrier
-		FetchProcAddress(glTextureBarrier, "glTextureBarrier");
-
-		FetchProcAddress(ARB_texture_barrier, "ARB_texture_barrier");
-
-
-		//texture border clamp
-		FetchProcAddress(ARB_texture_border_clamp, "ARB_texture_border_clamp");
-
+		FetchProcAddress(glTextureBarrier, "glTextureBarrier");	
 
 		//texture buffer object
 		FetchProcAddress(glTexBufferARB, "glTexBufferARB");
 
-		FetchProcAddress(ARB_texture_buffer_object, "ARB_texture_buffer_object");
-
-
-		// texture buffer object rgb32
-		FetchProcAddress(ARB_texture_buffer_object_rgb32, "ARB_texture_buffer_object_rgb32");
-
-
 		//texture buffer range
 		FetchProcAddress(glTexBufferRange, "glTexBufferRange");
-
 		FetchProcAddress(glTextureBufferRangeEXT, "glTextureBufferRangeEXT");
-
-		FetchProcAddress(ARB_texture_buffer_range, "ARB_texture_buffer_range");
-
 
 		//texture compression
 		FetchProcAddress(glCompressedTexImage1DARB, "glCompressedTexImage1DARB");
-
 		FetchProcAddress(glCompressedTexImage2DARB, "glCompressedTexImage2DARB");
-
 		FetchProcAddress(glCompressedTexImage3DARB, "glCompressedTexImage3DARB");
-
 		FetchProcAddress(glCompressedTexSubImage1DARB, "glCompressedTexSubImage1DARB");
-
 		FetchProcAddress(glCompressedTexSubImage2DARB, "glCompressedTexSubImage2DARB");
-
 		FetchProcAddress(glCompressedTexSubImage3DARB, "glCompressedTexSubImage3DARB");
-
 		FetchProcAddress(glGetCompressedTexImageARB, "glGetCompressedTexImageARB");
-
-		FetchProcAddress(ARB_texture_compression, "ARB_texture_compression");
-
-
-		//texture compression bptc
-		FetchProcAddress(ARB_texture_compression_bptc, "ARB_texture_compression_bptc");
-
-
-		//texture compression rgtc
-		FetchProcAddress(ARB_texture_compression_rgtc, "ARB_texture_compression_rgtc");
-
-
-		//texture cube map
-		FetchProcAddress(ARB_texture_cube_map, "ARB_texture_cube_map");
-
-
-		//texture cube map array
-		FetchProcAddress(ARB_texture_cube_map_array, "ARB_texture_cube_map_array");
-
-
-		//texture env add
-		FetchProcAddress(ARB_texture_env_add, "ARB_texture_env_add");
-
-
-		//texture env combine
-		FetchProcAddress(ARB_texture_env_combine, "ARB_texture_env_combine");
-
-
-		//texture env crossbar
-		FetchProcAddress(ARB_texture_env_crossbar, "ARB_texture_env_crossbar");
-
-
-		//texture env dot3
-		FetchProcAddress(ARB_texture_env_dot3, "ARB_texture_env_dot3");
-
-
-		//texture filter anisotropic
-		FetchProcAddress(ARB_texture_filter_anisotropic, "ARB_texture_filter_anisotropic");
-
-
-		//texture filter minmax
-		FetchProcAddress(ARB_texture_filter_minmax, "ARB_texture_filter_minmax");
-
-
-		//texture float
-		FetchProcAddress(ARB_texture_float, "ARB_texture_float");
-
-
-		//texture gather
-		FetchProcAddress(ARB_texture_gather, "ARB_texture_gather");
-
-
-		//texture mirror clamp to edge
-		FetchProcAddress(ARB_texture_mirror_clamp_to_edge, "ARB_texture_mirror_clamp_to_edge");
-
-
-		//texture mirrored repeat
-		FetchProcAddress(ARB_texture_mirrored_repeat, "ARB_texture_mirrored_repeat");
-
 
 		//texture multisample
 		FetchProcAddress(glGetMultisamplefv, "glGetMultisamplefv");
-
 		FetchProcAddress(glSampleMaski, "glSampleMaski");
-
 		FetchProcAddress(glTexImage2DMultisample, "glTexImage2DMultisample");
-
 		FetchProcAddress(glTexImage3DMultisample, "glTexImage3DMultisample");
-
-		FetchProcAddress(ARB_texture_multisample, "ARB_texture_multisample");
-
-
-		//texture non power of two
-		FetchProcAddress(ARB_texture_non_power_of_two, "ARB_texture_non_power_of_two");
-
-
-		//texture query levels
-		FetchProcAddress(ARB_texture_query_levels, "ARB_texture_query_levels");
-
-
-		//texture query lod
-		FetchProcAddress(ARB_texture_query_lod, "ARB_texture_query_lod");
-
-
-		//texture rectangle
-		FetchProcAddress(ARB_texture_rectangle, "ARB_texture_rectangle");
-
-
-		//texture rg
-		FetchProcAddress(ARB_texture_rg, "ARB_texture_rg");
-
-
-		//texturergb10 a2ui
-		FetchProcAddress(ARB_texture_rgb10_a2ui, "ARB_texture_rgb10_a2ui");
-
-
-		//texture stencil8
-		FetchProcAddress(ARB_texture_stencil8, "ARB_texture_stencil8");
-
 
 		//texture storage
 		FetchProcAddress(glTexStorage1D, "glTexStorage1D");
-
 		FetchProcAddress(glTexStorage2D, "glTexStorage2D");
-
 		FetchProcAddress(glTexStorage3D, "glTexStorage3D");
-
-		FetchProcAddress(ARB_texture_storage, "ARB_texture_storage");
-
 
 		//texture storage multisample
 		FetchProcAddress(glTexStorage2DMultisample, "glTexStorage2DMultisample");
-
 		FetchProcAddress(glTexStorage3DMultisample, "glTexStorage3DMultisample");
-
 		FetchProcAddress(glTextureStorage2DMultisampleEXT, "glTextureStorage2DMultisampleEXT");
-
-		FetchProcAddress(glTextureStorage3DMultisampleEXT, "glTextureStorage3DMultisampleEXT");
-
-		FetchProcAddress(ARB_texture_storage_multisample, "ARB_texture_storage_multisample");
-
-
-		//texture swizzle
-		FetchProcAddress(ARB_texture_swizzle, "ARB_texture_swizzle");
-
+		FetchProcAddress(glTextureStorage3DMultisampleEXT, "glTextureStorage3DMultisampleEXT");		
 
 		//texture view
-		FetchProcAddress(glTextureView, "glTextureView");
-		FetchProcAddress(ARB_texture_view, "ARB_texture_view");
+		FetchProcAddress(glTextureView, "glTextureView");		
 
 		//timer query
 		FetchProcAddress(glGetQueryObjecti64v, "glGetQueryObjecti64v");
-
 		FetchProcAddress(glGetQueryObjectui64v, "glGetQueryObjectui64v");
-
 		FetchProcAddress(glQueryCounter, "glQueryCounter");
-
-		FetchProcAddress(ARB_timer_query, "ARB_timer_query");
-
 
 		//transform feedback2
 		FetchProcAddress(glBindTransformFeedback, "glBindTransformFeedback");
-
 		FetchProcAddress(glDeleteTransformFeedbacks, "glDeleteTransformFeedbacks");
-
 		FetchProcAddress(glDrawTransformFeedback, "glDrawTransformFeedback");
-
 		FetchProcAddress(glGenTransformFeedbacks, "glGenTransformFeedbacks");
-
 		FetchProcAddress(glIsTransformFeedback, "glIsTransformFeedback");
-
 		FetchProcAddress(glPauseTransformFeedback, "glPauseTransformFeedback");
-
 		FetchProcAddress(glResumeTransformFeedback, "glResumeTransformFeedback");
-
-		FetchProcAddress(ARB_transform_feedback2, "ARB_transform_feedback2");
-
 
 		//transform feedback3
 		FetchProcAddress(glBeginQueryIndexed, "glBeginQueryIndexed");
-
 		FetchProcAddress(glDrawTransformFeedbackStream, "glDrawTransformFeedbackStream");
-
 		FetchProcAddress(glEndQueryIndexed, "glEndQueryIndexed");
-
 		FetchProcAddress(glGetQueryIndexediv, "glGetQueryIndexediv");
-
-		FetchProcAddress(ARB_transform_feedback3, "ARB_transform_feedback3");
-
 
 		//transform feedback instanced
 		FetchProcAddress(glDrawTransformFeedbackInstanced, "glDrawTransformFeedbackInstanced");
-
 		FetchProcAddress(glDrawTransformFeedbackStreamInstanced, "glDrawTransformFeedbackStreamInstanced");
-
-
-		//transform feedback instanced
-		FetchProcAddress(ARB_transform_feedback_instanced, "ARB_transform_feedback_instanced");
-
-
-		//transform feedback overflow query
-		FetchProcAddress(ARB_transform_feedback_overflow_query, "ARB_transform_feedback_overflow_query");
-
 
 		//transpose matrix
 		FetchProcAddress(glLoadTransposeMatrixdARB, "glLoadTransposeMatrixdARB");
-
 		FetchProcAddress(glLoadTransposeMatrixfARB, "glLoadTransposeMatrixfARB");
-
 		FetchProcAddress(glMultTransposeMatrixdARB, "glMultTransposeMatrixdARB");
-
 		FetchProcAddress(glMultTransposeMatrixfARB, "glMultTransposeMatrixfARB");
-
-		FetchProcAddress(ARB_transpose_matrix, "ARB_transpose_matrix");
-
 
 		//uniform buffer object
 		FetchProcAddress(glBindBufferBase, "glBindBufferBase");
-
 		FetchProcAddress(glBindBufferRange, "glBindBufferRange");
-
 		FetchProcAddress(glGetActiveUniformBlockName, "glGetActiveUniformBlockName");
-
 		FetchProcAddress(glGetActiveUniformBlockiv, "glGetActiveUniformBlockiv");
-
 		FetchProcAddress(glGetActiveUniformName, "glGetActiveUniformName");
-
 		FetchProcAddress(glGetActiveUniformsiv, "glGetActiveUniformsiv");
-
 		FetchProcAddress(glGetIntegeri_v, "glGetIntegeri_v");
-
 		FetchProcAddress(glGetUniformBlockIndex, "glGetUniformBlockIndex");
-
 		FetchProcAddress(glGetUniformIndices, "glGetUniformIndices");
-
 		FetchProcAddress(glUniformBlockBinding, "glUniformBlockBinding");
-
-		FetchProcAddress(ARB_uniform_buffer_object, "ARB_uniform_buffer_object");
-
-
-		//vertex array bgra
-		FetchProcAddress(ARB_vertex_array_bgra, "ARB_vertex_array_bgra");
-
 
 		//vertex array object
 		FetchProcAddress(glBindVertexArray, "glBindVertexArray");
-
 		FetchProcAddress(glDeleteVertexArrays, "glDeleteVertexArrays");
-
 		FetchProcAddress(glGenVertexArrays, "glGenVertexArrays");
-
 		FetchProcAddress(glIsVertexArray, "glIsVertexArray");
-
-		FetchProcAddress(ARB_vertex_array_object, "ARB_vertex_array_object");
-
 
 		//vertex attrib 64bit
 		FetchProcAddress(glGetVertexAttribLdv, "glGetVertexAttribLdv");
-
 		FetchProcAddress(glVertexAttribL1d, "glVertexAttribL1d");
-
 		FetchProcAddress(glVertexAttribL1dv, "glVertexAttribL1dv");
-
 		FetchProcAddress(glVertexAttribL2d, "glVertexAttribL2d");
-
 		FetchProcAddress(glVertexAttribL2dv, "glVertexAttribL2dv");
-
 		FetchProcAddress(glVertexAttribL3d, "glVertexAttribL3d");
-
 		FetchProcAddress(glVertexAttribL3dv, "glVertexAttribL3dv");
-
 		FetchProcAddress(glVertexAttribL4d, "glVertexAttribL4d");
-
 		FetchProcAddress(glVertexAttribL4dv, "glVertexAttribL4dv");
-
 		FetchProcAddress(glVertexAttribLPointer, "glVertexAttribLPointer");
-
-		FetchProcAddress(ARB_vertex_attrib_64bit, "ARB_vertex_attrib_64bit");
-
 
 		//vertex attrib binding
 		FetchProcAddress(glBindVertexBuffer, "glBindVertexBuffer");
-
 		FetchProcAddress(glVertexArrayBindVertexBufferEXT, "glVertexArrayBindVertexBufferEXT");
-
 		FetchProcAddress(glVertexArrayVertexAttribBindingEXT, "glVertexArrayVertexAttribBindingEXT");
-
 		FetchProcAddress(glVertexArrayVertexAttribFormatEXT, "glVertexArrayVertexAttribFormatEXT");
-
 		FetchProcAddress(glVertexArrayVertexAttribIFormatEXT, "glVertexArrayVertexAttribIFormatEXT");
-
 		FetchProcAddress(glVertexArrayVertexAttribLFormatEXT, "glVertexArrayVertexAttribLFormatEXT");
-
 		FetchProcAddress(glVertexArrayVertexBindingDivisorEXT, "glVertexArrayVertexBindingDivisorEXT");
-
 		FetchProcAddress(glVertexAttribBinding, "glVertexAttribBinding");
-
 		FetchProcAddress(glVertexAttribFormat, "glVertexAttribFormat");
-
 		FetchProcAddress(glVertexAttribIFormat, "glVertexAttribIFormat");
-
 		FetchProcAddress(glVertexAttribLFormat, "glVertexAttribLFormat");
-
 		FetchProcAddress(glVertexBindingDivisor, "glVertexBindingDivisor");
-
-		FetchProcAddress(ARB_vertex_attrib_binding, "ARB_vertex_attrib_binding");
-
 
 		//vertex blend
 		FetchProcAddress(glVertexBlendARB, "glVertexBlendARB");
-
 		FetchProcAddress(glWeightPointerARB, "glWeightPointerARB");
-
 		FetchProcAddress(glWeightbvARB, "glWeightbvARB");
-
 		FetchProcAddress(glWeightdvARB, "glWeightdvARB");
-
 		FetchProcAddress(glWeightfvARB, "glWeightfvARB");
-
 		FetchProcAddress(glWeightivARB, "glWeightivARB");
-
 		FetchProcAddress(glWeightsvARB, "glWeightsvARB");
-
 		FetchProcAddress(glWeightubvARB, "glWeightubvARB");
-
 		FetchProcAddress(glWeightuivARB, "glWeightuivARB");
-
 		FetchProcAddress(glWeightusvARB, "glWeightusvARB");
-
-		FetchProcAddress(ARB_vertex_blend, "ARB_vertex_blend");
-
 
 		//vertex buffer object 
 		FetchProcAddress(glBindBufferARB, "glBindBufferARB");
-
 		FetchProcAddress(glBufferDataARB, "glBufferDataARB");
-
 		FetchProcAddress(glBufferSubDataARB, "glBufferSubDataARB");
-
 		FetchProcAddress(glDeleteBuffersARB, "glDeleteBuffersARB");
-
 		FetchProcAddress(glGenBuffersARB, "glGenBuffersARB");
-
 		FetchProcAddress(glGetBufferParameterivARB, "glGetBufferParameterivARB");
-
 		FetchProcAddress(glGetBufferPointervARB, "glGetBufferPointervARB");
-
 		FetchProcAddress(glGetBufferSubDataARB, "glGetBufferSubDataARB");
-
 		FetchProcAddress(glIsBufferARB, "glIsBufferARB");
-
 		FetchProcAddress(glMapBufferARB, "glMapBufferARB");
-
 		FetchProcAddress(glUnmapBufferARB, "glUnmapBufferARB");
-
-		FetchProcAddress(ARB_vertex_buffer_object, "ARB_vertex_buffer_object");
-
 
 		//vertex program
 		FetchProcAddress(glBindProgramARB, "glBindProgramARB");
-
 		FetchProcAddress(glDeleteProgramsARB, "glDeleteProgramsARB");
-
 		FetchProcAddress(glDisableVertexAttribArrayARB, "glDisableVertexAttribArrayARB");
-
 		FetchProcAddress(glEnableVertexAttribArrayARB, "glEnableVertexAttribArrayARB");
-
 		FetchProcAddress(glGenProgramsARB, "glGenProgramsARB");
-
 		FetchProcAddress(glGetProgramEnvParameterdvARB, "glGetProgramEnvParameterdvARB");
-
 		FetchProcAddress(glGetProgramEnvParameterfvARB, "glGetProgramEnvParameterfvARB");
-
 		FetchProcAddress(glGetProgramLocalParameterdvARB, "glGetProgramLocalParameterdvARB");
-
 		FetchProcAddress(glGetProgramLocalParameterfvARB, "glGetProgramLocalParameterfvARB");
-
 		FetchProcAddress(glGetProgramStringARB, "glGetProgramStringARB");
-
 		FetchProcAddress(glGetProgramivARB, "glGetProgramivARB");
-
 		FetchProcAddress(glGetVertexAttribPointervARB, "glGetVertexAttribPointervARB");
-
 		FetchProcAddress(glGetVertexAttribdvARB, "glGetVertexAttribdvARB");
-
 		FetchProcAddress(glGetVertexAttribfvARB, "glGetVertexAttribfvARB");
-
 		FetchProcAddress(glGetVertexAttribivARB, "glGetVertexAttribivARB");
-
 		FetchProcAddress(glIsProgramARB, "glIsProgramARB");
-
 		FetchProcAddress(glProgramEnvParameter4dARB, "glProgramEnvParameter4dARB");
-
 		FetchProcAddress(glProgramEnvParameter4dvARB, "glProgramEnvParameter4dvARB");
-
 		FetchProcAddress(glProgramEnvParameter4fARB, "glProgramEnvParameter4fARB");
-
 		FetchProcAddress(glProgramEnvParameter4fvARB, "glProgramEnvParameter4fvARB");
-
 		FetchProcAddress(glProgramLocalParameter4dARB, "glProgramLocalParameter4dARB");
-
 		FetchProcAddress(glProgramLocalParameter4dvARB, "glProgramLocalParameter4dvARB");
-
 		FetchProcAddress(glProgramLocalParameter4fARB, "glProgramLocalParameter4fARB");
-
 		FetchProcAddress(glProgramLocalParameter4fvARB, "glProgramLocalParameter4fvARB");
-
 		FetchProcAddress(glProgramStringARB, "glProgramStringARB");
-
 		FetchProcAddress(glVertexAttrib1dARB, "glVertexAttrib1dARB");
-
 		FetchProcAddress(glVertexAttrib1dvARB, "glVertexAttrib1dvARB");
-
 		FetchProcAddress(glVertexAttrib1fARB, "glVertexAttrib1fARB");
-
 		FetchProcAddress(glVertexAttrib1fvARB, "glVertexAttrib1fvARB");
-
 		FetchProcAddress(glVertexAttrib1sARB, "glVertexAttrib1sARB");
-
 		FetchProcAddress(glVertexAttrib1svARB, "glVertexAttrib1svARB");
-
 		FetchProcAddress(glVertexAttrib2dARB, "glVertexAttrib2dARB");
-
 		FetchProcAddress(glVertexAttrib2dvARB, "glVertexAttrib2dvARB");
-
 		FetchProcAddress(glVertexAttrib2fARB, "glVertexAttrib2fARB");
-
 		FetchProcAddress(glVertexAttrib2fvARB, "glVertexAttrib2fvARB");
-
 		FetchProcAddress(glVertexAttrib2sARB, "glVertexAttrib2sARB");
-
 		FetchProcAddress(glVertexAttrib2svARB, "glVertexAttrib2svARB");
-
 		FetchProcAddress(glVertexAttrib3dARB, "glVertexAttrib3dARB");
-
 		FetchProcAddress(glVertexAttrib3dvARB, "glVertexAttrib3dvARB");
-
 		FetchProcAddress(glVertexAttrib3fARB, "glVertexAttrib3fARB");
-
 		FetchProcAddress(glVertexAttrib3fvARB, "glVertexAttrib3fvARB");
-
 		FetchProcAddress(glVertexAttrib3sARB, "glVertexAttrib3sARB");
-
 		FetchProcAddress(glVertexAttrib3svARB, "glVertexAttrib3svARB");
-
 		FetchProcAddress(glVertexAttrib4NbvARB, "glVertexAttrib4NbvARB");
-
 		FetchProcAddress(glVertexAttrib4NivARB, "glVertexAttrib4NivARB");
-
 		FetchProcAddress(glVertexAttrib4NsvARB, "glVertexAttrib4NsvARB");
-
 		FetchProcAddress(glVertexAttrib4NubARB, "glVertexAttrib4NubARB");
-
 		FetchProcAddress(glVertexAttrib4NubvARB, "glVertexAttrib4NubvARB");
-
 		FetchProcAddress(glVertexAttrib4NuivARB, "glVertexAttrib4NuivARB");
-
 		FetchProcAddress(glVertexAttrib4NusvARB, "glVertexAttrib4NusvARB");
-
 		FetchProcAddress(glVertexAttrib4bvARB, "glVertexAttrib4bvARB");
-
 		FetchProcAddress(glVertexAttrib4dARB, "glVertexAttrib4dARB");
-
 		FetchProcAddress(glVertexAttrib4dvARB, "glVertexAttrib4dvARB");
-
 		FetchProcAddress(glVertexAttrib4fARB, "glVertexAttrib4fARB");
-
 		FetchProcAddress(glVertexAttrib4fvARB, "glVertexAttrib4fvARB");
-
 		FetchProcAddress(glVertexAttrib4ivARB, "glVertexAttrib4ivARB");
-
 		FetchProcAddress(glVertexAttrib4sARB, "glVertexAttrib4sARB");
-
 		FetchProcAddress(glVertexAttrib4svARB, "glVertexAttrib4svARB");
-
 		FetchProcAddress(glVertexAttrib4ubvARB, "glVertexAttrib4ubvARB");
-
 		FetchProcAddress(glVertexAttrib4uivARB, "glVertexAttrib4uivARB");
-
 		FetchProcAddress(glVertexAttrib4usvARB, "glVertexAttrib4usvARB");
-
 		FetchProcAddress(glVertexAttribPointerARB, "glVertexAttribPointerARB");
-
-		FetchProcAddress(ARB_vertex_program, "ARB_vertex_program");
-
 
 		//vertex shader
 		FetchProcAddress(glBindAttribLocationARB, "glBindAttribLocationARB");
-
 		FetchProcAddress(glGetActiveAttribARB, "glGetActiveAttribARB");
-
 		FetchProcAddress(glGetAttribLocationARB, "glGetAttribLocationARB");
-
-		FetchProcAddress(ARB_vertex_shader, "ARB_vertex_shader");
-
-
-		//vertex type 10f_11f_11f rev
-		FetchProcAddress(ARB_vertex_type_10f_11f_11f_rev, "ARB_vertex_type_10f_11f_11f_rev");
-
 
 		//vertex type 2_10_10_10 rev
 		FetchProcAddress(glColorP3ui, "glColorP3ui");
-
 		FetchProcAddress(glColorP3uiv, "glColorP3uiv");
-
 		FetchProcAddress(glColorP4ui, "glColorP4ui");
-
 		FetchProcAddress(glColorP4uiv, "glColorP4uiv");
-
 		FetchProcAddress(glMultiTexCoordP1ui, "glMultiTexCoordP1ui");
-
 		FetchProcAddress(glMultiTexCoordP1uiv, "glMultiTexCoordP1uiv");
-
 		FetchProcAddress(glMultiTexCoordP2ui, "glMultiTexCoordP2ui");
-
 		FetchProcAddress(glMultiTexCoordP2uiv, "glMultiTexCoordP2uiv");
-
 		FetchProcAddress(glMultiTexCoordP3ui, "glMultiTexCoordP3ui");
-
 		FetchProcAddress(glMultiTexCoordP3uiv, "glMultiTexCoordP3uiv");
-
 		FetchProcAddress(glMultiTexCoordP4ui, "glMultiTexCoordP4ui");
-
 		FetchProcAddress(glMultiTexCoordP4uiv, "glMultiTexCoordP4uiv");
-
 		FetchProcAddress(glNormalP3ui, "glNormalP3ui");
-
 		FetchProcAddress(glNormalP3uiv, "glNormalP3uiv");
-
 		FetchProcAddress(glSecondaryColorP3ui, "glSecondaryColorP3ui");
-
 		FetchProcAddress(glSecondaryColorP3uiv, "glSecondaryColorP3uiv");
-
 		FetchProcAddress(glTexCoordP1ui, "glTexCoordP1ui");
-
 		FetchProcAddress(glTexCoordP1uiv, "glTexCoordP1uiv");
-
 		FetchProcAddress(glTexCoordP2ui, "glTexCoordP2ui");
-
 		FetchProcAddress(glTexCoordP2uiv, "glTexCoordP2uiv");
-
 		FetchProcAddress(glTexCoordP3ui, "glTexCoordP3ui");
-
 		FetchProcAddress(glTexCoordP3uiv, "glTexCoordP3uiv");
-
 		FetchProcAddress(glTexCoordP4ui, "glTexCoordP4ui");
-
 		FetchProcAddress(glTexCoordP4uiv, "glTexCoordP4uiv");
-
 		FetchProcAddress(glVertexAttribP1ui, "glVertexAttribP1ui");
-
 		FetchProcAddress(glVertexAttribP1uiv, "glVertexAttribP1uiv");
-
 		FetchProcAddress(glVertexAttribP2ui, "glVertexAttribP2ui");
-
 		FetchProcAddress(glVertexAttribP2uiv, "glVertexAttribP2uiv");
-
 		FetchProcAddress(glVertexAttribP3ui, "glVertexAttribP3ui");
-
 		FetchProcAddress(glVertexAttribP3uiv, "glVertexAttribP3uiv");
-
 		FetchProcAddress(glVertexAttribP4ui, "glVertexAttribP4ui");
-
 		FetchProcAddress(glVertexAttribP4uiv, "glVertexAttribP4uiv");
-
 		FetchProcAddress(glVertexP2ui, "glVertexP2ui");
-
 		FetchProcAddress(glVertexP2uiv, "glVertexP2uiv");
-
 		FetchProcAddress(glVertexP3ui, "glVertexP3ui");
-
 		FetchProcAddress(glVertexP3uiv, "glVertexP3uiv");
-
 		FetchProcAddress(glVertexP4ui, "glVertexP4ui");
-
 		FetchProcAddress(glVertexP4uiv, "glVertexP4uiv");
-
-		FetchProcAddress(vertex_type_2_10_10_10_rev, "vertex_type_2_10_10_10_rev");
-
 
 		//viewport array
 		FetchProcAddress(glDepthRangeArrayv, "glDepthRangeArrayv");
-
 		FetchProcAddress(glDepthRangeIndexed, "glDepthRangeIndexed");
-
 		FetchProcAddress(glGetDoublei_v, "glGetDoublei_v");
-
 		FetchProcAddress(glGetFloati_v, "glGetFloati_v");
-
 		FetchProcAddress(glScissorArrayv, "glScissorArrayv");
-
 		FetchProcAddress(glScissorIndexed, "glScissorIndexed");
-
 		FetchProcAddress(glScissorIndexedv, "glScissorIndexedv");
-
 		FetchProcAddress(glViewportArrayv, "glViewportArrayv");
-
 		FetchProcAddress(glViewportIndexedf, "glViewportIndexedf");
-
 		FetchProcAddress(glViewportIndexedfv, "glViewportIndexedfv");
-
-		FetchProcAddress(viewport_array, "viewport_array");
-
 
 		//window pos
 		FetchProcAddress(glWindowPos2dARB, "glWindowPos2dARB");
-
 		FetchProcAddress(glWindowPos2dvARB, "glWindowPos2dvARB");
-
 		FetchProcAddress(glWindowPos2fARB, "glWindowPos2fARB");
-
 		FetchProcAddress(glWindowPos2fvARB, "glWindowPos2fvARB");
-
 		FetchProcAddress(glWindowPos2iARB, "glWindowPos2iARB");
-
 		FetchProcAddress(glWindowPos2ivARB, "glWindowPos2ivARB");
-
 		FetchProcAddress(glWindowPos2sARB, "glWindowPos2sARB");
-
 		FetchProcAddress(glWindowPos2svARB, "glWindowPos2svARB");
-
 		FetchProcAddress(glWindowPos3dARB, "glWindowPos3dARB");
-
 		FetchProcAddress(glWindowPos3dvARB, "glWindowPos3dvARB");
-
 		FetchProcAddress(glWindowPos3fARB, "glWindowPos3fARB");
-
 		FetchProcAddress(glWindowPos3fvARB, "glWindowPos3fvARB");
-
 		FetchProcAddress(glWindowPos3iARB, "glWindowPos3iARB");
-
 		FetchProcAddress(glWindowPos3ivARB, "glWindowPos3ivARB");
-
 		FetchProcAddress(glWindowPos3sARB, "glWindowPos3sARB");
-
 		FetchProcAddress(glWindowPos3svARB, "glWindowPos3svARB");
-
-		FetchProcAddress(ARB_window_pos, "ARB_window_pos");
-
 	}	
 
 #pragma endregion ARB Extensions
@@ -7549,33 +6109,20 @@ namespace TinyExtender
 	};
 
 	//mali program binary 
-	bool ARM_mali_program_binary = false;
+	#define ARM_mali_program_binary 1
 	//mali shader binary 
-	bool ARM_mali_shader_binary = false;
+	#define ARM_mali_shader_binary 1
 	//rgba8 
-	bool ARM_rgba8 = false;
+	#define ARM_rgba8 1
 	//shader framebuffer fetch 
-	bool ARM_shader_framebuffer_fetch = false;
+	#define ARM_shader_framebuffer_fetch 1
 	//shader framebuffer fetch depth stencil 
-	bool ARM_shader_framebuffer_fetch_depth_stencil = false;
+	#define ARM_shader_framebuffer_fetch_depth_stencil 1
 
 	//*< load ARM Extensions
 	void LoadARMExtensions()
 	{
-		//mali program binary 
-		FetchProcAddress(ARM_mali_program_binary, "ARM_mali_program_binary");
 
-		//mali shader binary 
-		FetchProcAddress(ARM_mali_shader_binary, "ARM_mali_shader_binary");
-
-		//rgba8 
-		FetchProcAddress(ARM_rgba8, "ARM_rgba8");
-
-		//shader framebuffer fetch 
-		FetchProcAddress(ARM_shader_framebuffer_fetch, "ARM_shader_framebuffer_fetch");
-
-		//shader framebuffer fetch depth stencil 
-		FetchProcAddress(ARM_shader_framebuffer_fetch_depth_stencil, "ARM_shader_framebuffer_fetch_depth_stencil");
 	}
 
 #pragma endregion ARM Extensions
@@ -7608,34 +6155,20 @@ namespace TinyExtender
 	};
 
 	//point sprites
-	bool atix_point_sprites = false;
+	#define atix_point_sprites 1
 
 	//texture env combine3
-	bool atix_texture_env_combine3 = false;
+	#define atix_texture_env_combine3 1
 
 	//texture env route
-	bool atix_texture_env_route = false;
+	#define atix_texture_env_route 1
 
 	//vertex shader output point size
-	bool atix_vertex_shader_output_point_size = false;
+	#define atix_vertex_shader_output_point_size 1
 
 	//*< load ATIX Extensions
 	void LoadATIXExtensions()
 	{
-		//mali program binary 
-		FetchProcAddress(ARM_mali_program_binary, "ARM_mali_program_binary");
-
-		//mali shader binary 
-		FetchProcAddress(ARM_mali_shader_binary, "ARM_mali_shader_binary");
-
-		//rgba8 
-		FetchProcAddress(ARM_rgba8, "ARM_rgba8");
-
-		//shader framebuffer fetch 
-		FetchProcAddress(ARM_shader_framebuffer_fetch, "ARM_shader_framebuffer_fetch");
-
-		//shader framebuffer fetch depth stencil 
-		FetchProcAddress(ARM_shader_framebuffer_fetch_depth_stencil, "ARM_shader_framebuffer_fetch_depth_stencil");
 
 	}
 
@@ -7813,14 +6346,14 @@ namespace TinyExtender
 	//draw_buffers
 	void (*glDrawBuffersATI) (GLsizei n, const GLenum * bufs) = nullptr;
 
-	bool ATI_draw_buffers = false;
+	#define ATI_draw_buffers 1
 
 	//element_array
 	void (*glDrawElementArrayATI) (GLenum mode, GLsizei count) = nullptr;
 	void (*glDrawRangeElementArrayATI) (GLenum mode, GLuint start, GLuint end, GLsizei count) = nullptr;
 	void (*glElementPointerATI) (GLenum type, const void* pointer) = nullptr;
 
-	bool ATI_element_array = false;
+	#define ATI_element_array 1
 
 	//envmap_bumpmap
 	void (*glGetTexBumpParameterfvATI) (GLenum pname, GLfloat * param) = nullptr;
@@ -7828,7 +6361,7 @@ namespace TinyExtender
 	void (*glTexBumpParameterfvATI) (GLenum pname, GLfloat* param) = nullptr;
 	void (*glTexBumpParameterivATI) (GLenum pname, GLint* param) = nullptr;
 
-	bool ATI_envmap_bumpmap = false;
+	#define ATI_envmap_bumpmap 1
 
 	//fragment_shader
 	void (*glAlphaFragmentOp1ATI) (GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod) = nullptr;
@@ -7846,46 +6379,46 @@ namespace TinyExtender
 	void (*glSampleMapATI) (GLuint dst, GLuint interp, GLenum swizzle) = nullptr;
 	void (*glSetFragmentShaderConstantATI) (GLuint dst, const GLfloat* value) = nullptr;
 
-	bool ATI_fragment_shader = false;
+	#define ATI_fragment_shader 1
 
 	//map_object_buffer
 	void* (*glMapObjectBufferATI) (GLuint buffer) = nullptr;
 	void (*glUnmapObjectBufferATI) (GLuint buffer) = nullptr;
 
-	bool ATI_map_object_buffer = false;
+	#define ATI_map_object_buffer 1
 
 	//meminfo
-	bool ATI_meminfo = false;
+	#define ATI_meminfo 1
 
 	//pn_triangles
 	void (*glPNTrianglesfATI) (GLenum pname, GLfloat param) = nullptr;
 	void (*glPNTrianglesiATI) (GLenum pname, GLint param) = nullptr;
 
-	bool GLEW_ATI_pn_triangles = false;
+	#define ATI_pn_triangles 1
 
 	//separate_stencil
 	void (*glStencilFuncSeparateATI) (GLenum frontfunc, GLenum backfunc, GLint ref, GLuint mask) = nullptr;
 	void (*glStencilOpSeparateATI) (GLenum face, GLenum sfail, GLenum dpfail, GLenum dppass) = nullptr;
 
-	bool ATI_separate_stencil = false;
+	#define ATI_separate_stencil 1
 
 	//shader_texture_lod
-	bool ATI_shader_texture_lod = false;
+	#define ATI_shader_texture_lod 1
 
 	//text_fragment_shader
-	bool ATI_text_fragment_shader = false;
+	#define ATI_text_fragment_shader 1
 
 	//texture_compression_3dc
-	bool ATI_texture_compression_3dc = false;
+	#define ATI_texture_compression_3dc 1
 
 	//texture_env_combine3
-	bool ATI_texture_env_combine3 = false;
+	#define ATI_texture_env_combine3 1
 
 	//texture_float
-	bool ATI_texture_float = false;
+	#define ATI_texture_float 1
 
 	//texture_mirror_once
-	bool ATI_texture_mirror_once = false;
+	#define ATI_texture_mirror_once 1
 
 	//vertex_array_object
 	void (*glArrayObjectATI) (GLenum array, GLint size, GLenum type, GLsizei stride, GLuint buffer, GLuint offset) = nullptr;
@@ -7901,14 +6434,14 @@ namespace TinyExtender
 	void (*glUpdateObjectBufferATI) (GLuint buffer, GLuint offset, GLsizei size, const void* pointer, GLenum preserve) = nullptr;
 	void (*glVariantArrayObjectATI) (GLuint id, GLenum type, GLsizei stride, GLuint buffer, GLuint offset) = nullptr;
 
-	bool ATI_vertex_array_object = false;
+	#define ATI_vertex_array_object 1
 
 	//vertex_attrib_array_object
 	void (*glGetVertexAttribArrayObjectfvATI) (GLuint index, GLenum pname, GLfloat * params) = nullptr;
 	void (*glGetVertexAttribArrayObjectivATI) (GLuint index, GLenum pname, GLint* params) = nullptr;
 	void (*glVertexAttribArrayObjectATI) (GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, GLuint buffer, GLuint offset) = nullptr;
 
-	bool ATI_vertex_attrib_array_object = false;
+	#define ATI_vertex_attrib_array_object 1
 
 	//vertex_streams
 	void (*glClientActiveVertexStreamATI) (GLenum stream) = nullptr;
@@ -7957,7 +6490,7 @@ namespace TinyExtender
 	void (*glVertexStream4sATI) (GLenum stream, GLshort x, GLshort y, GLshort z, GLshort w) = nullptr;
 	void (*glVertexStream4svATI) (GLenum stream, const GLshort* coords) = nullptr;
 
-	bool ATI_vertex_streams = false;
+	#define ATI_vertex_streams 1
 
 	//*< load ATI Extensions
 	void LoadATIExtensions()
@@ -7965,110 +6498,44 @@ namespace TinyExtender
 		//draw_buffers
 		FetchProcAddress(glDrawBuffersATI, "glDrawBuffersATI");
 
-		FetchProcAddress(ATI_draw_buffers, "ATI_draw_buffers");
-
-
 		//element_array
 		FetchProcAddress(glDrawElementArrayATI, "glDrawElementArrayATI");
-
 		FetchProcAddress(glDrawRangeElementArrayATI, "glDrawRangeElementArrayATI");
-
 		FetchProcAddress(glElementPointerATI, "glElementPointerATI");
-
-		FetchProcAddress(ATI_element_array, "ATI_element_array");
-
 
 		//envmap_bumpmap
 		FetchProcAddress(glGetTexBumpParameterfvATI, "glGetTexBumpParameterfvATI");
-
 		FetchProcAddress(glGetTexBumpParameterivATI, "glGetTexBumpParameterivATI");
-
 		FetchProcAddress(glTexBumpParameterfvATI, "glTexBumpParameterfvATI");
-
 		FetchProcAddress(glTexBumpParameterivATI, "glTexBumpParameterivATI");
-
-		FetchProcAddress(ATI_envmap_bumpmap, "ATI_envmap_bumpmap");
-
 
 		//fragment_shader
 		FetchProcAddress(glAlphaFragmentOp1ATI, "glAlphaFragmentOp1ATI");
-
 		FetchProcAddress(glAlphaFragmentOp2ATI, "glAlphaFragmentOp2ATI");
-
 		FetchProcAddress(glAlphaFragmentOp3ATI, "glAlphaFragmentOp3ATI");
-
 		FetchProcAddress(glBeginFragmentShaderATI, "glBeginFragmentShaderATI");
-
 		FetchProcAddress(glBindFragmentShaderATI, "glBindFragmentShaderATI");
-
 		FetchProcAddress(glColorFragmentOp1ATI, "glColorFragmentOp1ATI");
-
 		FetchProcAddress(glColorFragmentOp2ATI, "glColorFragmentOp2ATI");
-
 		FetchProcAddress(glColorFragmentOp3ATI, "glColorFragmentOp3ATI");
-
 		FetchProcAddress(glDeleteFragmentShaderATI, "glDeleteFragmentShaderATI");
-
 		FetchProcAddress(glEndFragmentShaderATI, "glEndFragmentShaderATI");
-
 		FetchProcAddress(glGenFragmentShadersATI, "glGenFragmentShadersATI");
-
 		FetchProcAddress(glPassTexCoordATI, "glPassTexCoordATI");
-
 		FetchProcAddress(glSampleMapATI, "glSampleMapATI");
-
 		FetchProcAddress(glSetFragmentShaderConstantATI, "glSetFragmentShaderConstantATI");
-
-		FetchProcAddress(ATI_fragment_shader, "ATI_fragment_shader");
-
 
 		//map_object_buffer
 		FetchProcAddress(glMapObjectBufferATI, "glMapObjectBufferATI");
-
 		FetchProcAddress(glUnmapObjectBufferATI, "glUnmapObjectBufferATI");
-
-		FetchProcAddress(ATI_map_object_buffer, "ATI_map_object_buffer");
-
-
-		//meminfo
-		FetchProcAddress(ATI_meminfo, "ATI_meminfo");
-
 
 		//pn_triangles
 		FetchProcAddress(glPNTrianglesfATI, "glPNTrianglesfATI");
-
 		FetchProcAddress(glPNTrianglesiATI, "glPNTrianglesiATI");
-
-		FetchProcAddress(GLEW_ATI_pn_triangles, "GLEW_ATI_pn_triangles");
-
 
 		//separate_stencil
 		FetchProcAddress(glStencilFuncSeparateATI, "glStencilFuncSeparateATI");
-
-		FetchProcAddress(glStencilOpSeparateATI, "glStencilOpSeparateATI");
-
-		FetchProcAddress(ATI_separate_stencil, "ATI_separate_stencil");
-
-
-		//shader_texture_lod
-		FetchProcAddress(ATI_shader_texture_lod, "ATI_shader_texture_lod");
-
-
-		//text_fragment_shader
-		FetchProcAddress(ATI_text_fragment_shader, "ATI_text_fragment_shader");
-
-
-		//texture_compression_3dc
-		FetchProcAddress(ATI_texture_compression_3dc, "ATI_texture_compression_3dc");
-
-		//texture_env_combine3
-		FetchProcAddress(ATI_texture_env_combine3, "ATI_texture_env_combine3");
-
-		//texture_float
-		FetchProcAddress(ATI_texture_float, "ATI_texture_float");
-
-		//texture_mirror_once
-		FetchProcAddress(ATI_texture_mirror_once, "ATI_texture_mirror_once");
+		FetchProcAddress(glStencilOpSeparateATI, "glStencilOpSeparateATI");	
 
 		//vertex_array_object
 		FetchProcAddress(glArrayObjectATI, "glArrayObjectATI");
@@ -8082,14 +6549,12 @@ namespace TinyExtender
 		FetchProcAddress(glIsObjectBufferATI, "glIsObjectBufferATI");
 		FetchProcAddress(glNewObjectBufferATI, "glNewObjectBufferATI");
 		FetchProcAddress(glUpdateObjectBufferATI, "glUpdateObjectBufferATI");
-		FetchProcAddress(glVariantArrayObjectATI, "glVariantArrayObjectATI");
-		FetchProcAddress(ATI_vertex_array_object, "ATI_vertex_array_object");
+		FetchProcAddress(glVariantArrayObjectATI, "glVariantArrayObjectATI");		
 
 		//vertex_attrib_array_object
 		FetchProcAddress(glGetVertexAttribArrayObjectfvATI, "glGetVertexAttribArrayObjectfvATI");
 		FetchProcAddress(glGetVertexAttribArrayObjectivATI, "glGetVertexAttribArrayObjectivATI");
-		FetchProcAddress(glVertexAttribArrayObjectATI, "glVertexAttribArrayObjectATI");
-		FetchProcAddress(ATI_vertex_attrib_array_object, "ATI_vertex_attrib_array_object");
+		FetchProcAddress(glVertexAttribArrayObjectATI, "glVertexAttribArrayObjectATI");		
 
 		//vertex_streams
 		FetchProcAddress(glClientActiveVertexStreamATI, "glClientActiveVertexStreamATI");
@@ -8136,8 +6601,7 @@ namespace TinyExtender
 		FetchProcAddress(glVertexStream4iATI, "glVertexStream4iATI");
 		FetchProcAddress(glVertexStream4ivATI, "glVertexStream4ivATI");
 		FetchProcAddress(glVertexStream4sATI, "glVertexStream4sATI");
-		FetchProcAddress(glVertexStream4svATI, "glVertexStream4svATI");
-		FetchProcAddress(ATI_vertex_streams, "ATI_vertex_streams");
+		FetchProcAddress(glVertexStream4svATI, "glVertexStream4svATI");		
 	}
 
 #pragma endregion ATI Extensions
@@ -8146,12 +6610,12 @@ namespace TinyExtender
 #pragma region EGL_KHR
 
 	//context  flush control 
-	bool EGL_KHR_context_flush_control = false;
+	#define EGL_KHR_context_flush_control 1
 
 	//*< load EGL_KHR Extensions
 	void LoadEGLKHRExtensions()
 	{
-		FetchProcAddress(EGL_KHR_context_flush_control, "EGL_KHR_context_flush_control");
+
 	}
 
 #pragma endregion EGL_KHR Extensions
@@ -8167,13 +6631,12 @@ namespace TinyExtender
 	};
 
 	//robustness video memory purge
-	bool EGL_NV_robustness_video_memory_purge = false;
+	#define EGL_NV_robustness_video_memory_purge 1
 
 	//*< load EGL_NV Extensions
 	void LoadEGLNVExtensions()
 	{
-		//robustness video memory purge
-		FetchProcAddress(EGL_NV_robustness_video_memory_purge, "EGL_NV_robustness_video_memory_purge");
+
 	}
 
 #pragma endregion EGL_NV Extensions
@@ -9558,103 +8021,103 @@ namespace TinyExtender
 		};
 
 		//422 pixels
-		bool EXT_422_pixels = false;		
+		#define EXT_422_pixels 1		
 
 		//Cg shader
-		bool EXT_Cg_shader = false;
+		#define EXT_Cg_shader 1
 
 		//EGL image array
-		bool EXT_EGL_image_array = false;		
+		#define EXT_EGL_image_array 1		
 
 		//YUV target
-		bool EXT_YUV_target = false;
+		#define EXT_YUV_target 1
 
 		//abgr
-		bool EXT_abgr = false;
+		#define EXT_abgr 1
 
 		//base instance
 		void (*glDrawArraysInstancedBaseInstanceEXT) (GLenum mode, GLint first, GLsizei count, GLsizei instancecount, GLuint baseinstance) = nullptr;
 		void (*glDrawElementsInstancedBaseInstanceEXT) (GLenum mode, GLsizei count, GLenum type, const void* indices, GLsizei instancecount, GLuint baseinstance) = nullptr;
 		void (*glDrawElementsInstancedBaseVertexBaseInstanceEXT) (GLenum mode, GLsizei count, GLenum type, const void* indices, GLsizei instancecount, GLint basevertex, GLuint baseinstance) = nullptr;
-		bool EXT_base_instance = false;		
+		#define EXT_base_instance 1		
 
 		//bgra
-		bool EXT_bgra = false;
+		#define EXT_bgra 1
 
 		//bindable uniform
 		GLint(*glGetUniformBufferSizeEXT) (GLuint program, GLint location) = nullptr;
 		GLintptr(*glGetUniformOffsetEXT) (GLuint program, GLint location) = nullptr;
 		void (*glUniformBufferEXT) (GLuint program, GLint location, GLuint buffer) = nullptr;
-		bool EXT_bindable_uniform = false;		
+		#define EXT_bindable_uniform 1		
 
 		//blend color
 		void (*glBlendColorEXT) (GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha) = nullptr;
-		bool EXT_blend_color = false;		
+		#define EXT_blend_color 1		
 
 		//blend equation separate
 		void (*glBlendEquationSeparateEXT) (GLenum modeRGB, GLenum modeAlpha) = nullptr;
-		bool EXT_blend_equation_separate = false;		
+		#define EXT_blend_equation_separate 1		
 
 		//blend func extended
 		void (*glBindFragDataLocationIndexedEXT) (GLuint program, GLuint colorNumber, GLuint index, const GLchar * name) = nullptr;
 		GLint(*glGetFragDataIndexEXT) (GLuint program, const GLchar* name) = nullptr;
 		GLint(*glGetProgramResourceLocationIndexEXT) (GLuint program, GLenum programInterface, const GLchar* name) = nullptr;
-		bool EXT_blend_func_extended = false;		
+		#define EXT_blend_func_extended 1		
 
 		//blend func separate
 		void (*glBlendFuncSeparateEXT) (GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha) = nullptr;
-		bool EXT_blend_func_separate = false;
+		#define EXT_blend_func_separate 1
 
 		//blend logic op
-		bool EXT_blend_logic_op = false;		
+		#define EXT_blend_logic_op 1		
 
 		//blend minmax
 		void (*glBlendEquationEXT) (GLenum mode) = nullptr;
-		bool EXT_blend_minmax = false;		
+		#define EXT_blend_minmax 1		
 
 		//blend subtract
-		bool EXT_blend_subtract = false;		
+		#define EXT_blend_subtract 1		
 
 		//buffer storage
 		void (*glBufferStorageEXT) (GLenum target, GLsizeiptr size, const void* data, GLbitfield flags) = nullptr;
 		void (*glNamedBufferStorageEXT) (GLuint buffer, GLsizeiptr size, const void* data, GLbitfield flags) = nullptr;
-		bool EXT_buffer_storage = false;
+		#define EXT_buffer_storage 1
 
 		//clear texture
 		void (*glClearTexImageEXT) (GLuint texture, GLint level, GLenum format, GLenum type, const void* data) = nullptr;
 		void (*glClearTexSubImageEXT) (GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void* data) = nullptr;
-		bool EXT_clear_texture = false;		
+		#define EXT_clear_texture 1		
 
 		//clip cull distance
-		bool EXT_clip_cull_distance = false;
+		#define EXT_clip_cull_distance 1
 
 		//clip volume hint
-		bool EXT_clip_volume_hint = false;		
+		#define EXT_clip_volume_hint 1		
 
 		//cmyka
-		bool EXT_cmyka = false;
+		#define EXT_cmyka 1
 
 		//color buffer float
-		bool EXT_color_buffer_float = false;		
+		#define EXT_color_buffer_float 1		
 
 		//color buffer half float
-		bool EXT_color_buffer_half_float = false;
+		#define EXT_color_buffer_half_float 1
 
 		//color subtable
 		void (*glColorSubTableEXT) (GLenum target, GLsizei start, GLsizei count, GLenum format, GLenum type, const void* data) = nullptr;
 		void (*glCopyColorSubTableEXT) (GLenum target, GLsizei start, GLint x, GLint y, GLsizei width) = nullptr;
-		bool EXT_color_subtable = false;		
+		#define EXT_color_subtable 1		
 
 		//compiled vertex array
 		void (*glLockArraysEXT) (GLint first, GLsizei count) = nullptr;
 		void (*glUnlockArraysEXT) (void) = nullptr;
-		bool EXT_compiled_vertex_array = false;
+		#define EXT_compiled_vertex_array 1
 
 		//compressed ETC1 RGB8 sub texture
-		bool EXT_compressed_ETC1_RGB8_sub_texture = false;
+		#define EXT_compressed_ETC1_RGB8_sub_texture 1
 
 		//conservative depth
-		bool EXT_conservative_depth = false;		
+		#define EXT_conservative_depth 1		
 
 		//convolution
 		void (*glConvolutionFilter1DEXT) (GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const void* image) = nullptr;
@@ -9670,16 +8133,16 @@ namespace TinyExtender
 		void (*glGetConvolutionParameterivEXT) (GLenum target, GLenum pname, GLint* params) = nullptr;
 		void (*glGetSeparableFilterEXT) (GLenum target, GLenum format, GLenum type, void* row, void* column, void* span) = nullptr;
 		void (*glSeparableFilter2DEXT) (GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const void* row, const void* column) = nullptr;
-		bool EXT_convolution = false;		
+		#define EXT_convolution 1		
 
 		//coordinate frame
 		void (*glBinormalPointerEXT) (GLenum type, GLsizei stride, void* pointer) = nullptr;
 		void (*glTangentPointerEXT) (GLenum type, GLsizei stride, void* pointer) = nullptr;
-		bool EXT_coordinate_frame = false;
+		#define EXT_coordinate_frame 1
 
 		//copy image
 		void (*glCopyImageSubDataEXT) (GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth) = nullptr;
-		bool EXT_copy_image = false;
+		#define EXT_copy_image 1
 
 		//copy texture
 		void (*glCopyTexImage1DEXT) (GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border) = nullptr;
@@ -9687,27 +8150,27 @@ namespace TinyExtender
 		void (*glCopyTexSubImage1DEXT) (GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width) = nullptr;
 		void (*glCopyTexSubImage2DEXT) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height) = nullptr;
 		void (*glCopyTexSubImage3DEXT) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height) = nullptr;
-		bool EXT_copy_texture = false;		
+		#define EXT_copy_texture 1		
 
 		//cull vertex
 		void (*glCullParameterdvEXT) (GLenum pname, GLdouble * params) = nullptr;
 		void (*glCullParameterfvEXT) (GLenum pname, GLfloat* params) = nullptr;
-		bool EXT_cull_vertex = false;
+		#define EXT_cull_vertex 1
 
 		//debug label
 		void (*glGetObjectLabelEXT) (GLenum type, GLuint object, GLsizei bufSize, GLsizei * length, GLchar * label) = nullptr;
 		void (*glLabelObjectEXT) (GLenum type, GLuint object, GLsizei length, const GLchar* label) = nullptr;
-		bool EXT_debug_label = false;
+		#define EXT_debug_label 1
 
 		//debug marker
 		void (*glInsertEventMarkerEXT) (GLsizei length, const GLchar * marker) = nullptr;
 		void (*glPopGroupMarkerEXT) (void) = nullptr;
 		void (*glPushGroupMarkerEXT) (GLsizei length, const GLchar* marker) = nullptr;
-		bool EXT_debug_marker = false;
+		#define EXT_debug_marker 1
 
 		//depth bounds test
 		void (*glDepthBoundsEXT) (GLclampd zmin, GLclampd zmax) = nullptr;
-		bool EXT_depth_bounds_test = false;		
+		#define EXT_depth_bounds_test 1		
 
 		//direct state access
 		void (*glBindMultiTextureEXT) (GLenum texunit, GLenum target, GLuint texture) = nullptr;
@@ -9924,15 +8387,15 @@ namespace TinyExtender
 		void (*glVertexArrayVertexAttribIOffsetEXT) (GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, GLintptr offset) = nullptr;
 		void (*glVertexArrayVertexAttribOffsetEXT) (GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, GLintptr offset) = nullptr;
 		void (*glVertexArrayVertexOffsetEXT) (GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset) = nullptr;
-		bool EXT_direct_state_access = false;		
+		#define EXT_direct_state_access 1		
 
 		//discard framebuffer
 		void (*glDiscardFramebufferEXT) (GLenum target, GLsizei numAttachments, const GLenum * attachments) = nullptr;
-		bool EXT_discard_framebuffer = false;		
+		#define EXT_discard_framebuffer 1		
 
 		//draw buffers
 		void (*glDrawBuffersEXT) (GLsizei n, const GLenum * bufs) = nullptr;
-		bool EXT_draw_buffers = false;
+		#define EXT_draw_buffers 1
 
 		//draw buffers2
 		void (*glColorMaskIndexedEXT) (GLuint buf, GLboolean r, GLboolean g, GLboolean b, GLboolean a) = nullptr;
@@ -9941,7 +8404,7 @@ namespace TinyExtender
 		void (*glGetBooleanIndexedvEXT) (GLenum value, GLuint index, GLboolean* data) = nullptr;
 		void (*glGetIntegerIndexedvEXT) (GLenum value, GLuint index, GLint* data) = nullptr;
 		GLboolean(*glIsEnabledIndexedEXT) (GLenum target, GLuint index) = nullptr;
-		bool EXT_draw_buffers2 = false;
+		#define EXT_draw_buffers2 1
 
 		//draw buffers indexed
 		void (*glBlendEquationSeparateiEXT) (GLuint buf, GLenum modeRGB, GLenum modeAlpha) = nullptr;
@@ -9952,31 +8415,31 @@ namespace TinyExtender
 		void (*glDisableiEXT) (GLenum target, GLuint index) = nullptr;
 		void (*glEnableiEXT) (GLenum target, GLuint index) = nullptr;
 		GLboolean(*glIsEnablediEXT) (GLenum target, GLuint index) = nullptr;
-		bool EXT_draw_buffers_indexed = false;
+		#define EXT_draw_buffers_indexed 1
 
 		//draw elements base vertex
 		void (*glDrawElementsBaseVertexEXT) (GLenum mode, GLsizei count, GLenum type, const void* indices, GLint basevertex) = nullptr;
 		void (*glDrawElementsInstancedBaseVertexEXT) (GLenum mode, GLsizei count, GLenum type, const void* indices, GLsizei instancecount, GLint basevertex) = nullptr;
 		void (*glDrawRangeElementsBaseVertexEXT) (GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void* indices, GLint basevertex) = nullptr;
 		void (*glMultiDrawElementsBaseVertexEXT) (GLenum mode, const GLsizei* count, GLenum type, const void* const* indices, GLsizei primcount, const GLint* basevertex) = nullptr;
-		bool EXT_draw_elements_base_vertex = false;
+		#define EXT_draw_elements_base_vertex 1
 
 		//draw instanced
 		void (*glDrawArraysInstancedEXT) (GLenum mode, GLint start, GLsizei count, GLsizei primcount) = nullptr;
 		void (*glDrawElementsInstancedEXT) (GLenum mode, GLsizei count, GLenum type, const void* indices, GLsizei primcount) = nullptr;
-		bool EXT_draw_instanced = false;		
+		#define EXT_draw_instanced 1		
 
 		//draw range elements
 		void (*glDrawRangeElementsEXT) (GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void* indices) = nullptr;
-		bool EXT_draw_range_elements = false;
+		#define EXT_draw_range_elements 1
 
 		//external buffer
 		void (*glBufferStorageExternalEXT) (GLenum target, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, GLbitfield flags) = nullptr;
 		void (*glNamedBufferStorageExternalEXT) (GLuint buffer, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, GLbitfield flags) = nullptr;
-		bool EXT_external_buffer = false;
+		#define EXT_external_buffer 1
 
 		//float blend
-		bool EXT_float_blend = false;		
+		#define EXT_float_blend 1		
 
 		//fog coord
 		void (*glFogCoordPointerEXT) (GLenum type, GLsizei stride, const void* pointer) = nullptr;
@@ -9984,10 +8447,10 @@ namespace TinyExtender
 		void (*glFogCoorddvEXT) (const GLdouble* coord) = nullptr;
 		void (*glFogCoordfEXT) (GLfloat coord) = nullptr;
 		void (*glFogCoordfvEXT) (const GLfloat* coord) = nullptr;
-		bool EXT_fog_coord = false;
+		#define EXT_fog_coord 1
 
 		//frag depth
-		bool EXT_frag_depth = false;		
+		#define EXT_frag_depth 1		
 
 		//fragment lighting
 		void (*glFragmentColorMaterialEXT) (GLenum face, GLenum mode) = nullptr;
@@ -10008,18 +8471,18 @@ namespace TinyExtender
 		void (*glGetFragmentMaterialfvEXT) (GLenum face, GLenum pname, const GLfloat* params) = nullptr;
 		void (*glGetFragmentMaterialivEXT) (GLenum face, GLenum pname, const GLint* params) = nullptr;
 		void (*glLightEnviEXT) (GLenum pname, GLint param) = nullptr;
-		bool EXT_fragment_lighting = false;		
+		#define EXT_fragment_lighting 1		
 
 		//framebuffer blit
 		void (*glBlitFramebufferEXT) (GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter) = nullptr;
-		bool EXT_framebuffer_blit = false;
+		#define EXT_framebuffer_blit 1
 
 		//framebuffer multisample
 		void (*glRenderbufferStorageMultisampleEXT) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height) = nullptr;
-		bool EXT_framebuffer_multisample = false;		
+		#define EXT_framebuffer_multisample 1		
 
 		//framebuffer multisample blit scaled
-		bool EXT_framebuffer_multisample_blit_scaled = false;		
+		#define EXT_framebuffer_multisample_blit_scaled 1		
 
 		//framebuffer object
 		void (*glBindFramebufferEXT) (GLenum target, GLuint framebuffer) = nullptr;
@@ -10039,27 +8502,27 @@ namespace TinyExtender
 		GLboolean(*glIsFramebufferEXT) (GLuint framebuffer) = nullptr;
 		GLboolean(*glIsRenderbufferEXT) (GLuint renderbuffer) = nullptr;
 		void (*glRenderbufferStorageEXT) (GLenum target, GLenum internalformat, GLsizei width, GLsizei height) = nullptr;
-		bool EXT_framebuffer_object = false;		
+		#define EXT_framebuffer_object 1		
 
 		//framebuffer sRGB
-		bool EXT_framebuffer_sRGB = false;
+		#define EXT_framebuffer_sRGB 1
 
 		//geometry point size
-		bool EXT_geometry_point_size = false;
+		#define EXT_geometry_point_size 1
 
 		//geometry shader
-		bool EXT_geometry_shader = false;	
+		#define EXT_geometry_shader 1	
 
 		//geometry shader4
 		void (*glFramebufferTextureEXT) (GLenum target, GLenum attachment, GLuint texture, GLint level) = nullptr;
 		void (*glFramebufferTextureFaceEXT) (GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face) = nullptr;
 		void (*glProgramParameteriEXT) (GLuint program, GLenum pname, GLint value) = nullptr;
-		bool EXT_geometry_shader4 = false;
+		#define EXT_geometry_shader4 1
 
 		//gpu program parameters
 		void (*glProgramEnvParameters4fvEXT) (GLenum target, GLuint index, GLsizei count, const GLfloat * params) = nullptr;
 		void (*glProgramLocalParameters4fvEXT) (GLenum target, GLuint index, GLsizei count, const GLfloat* params) = nullptr;
-		bool EXT_gpu_program_parameters = false;		
+		#define EXT_gpu_program_parameters 1		
 
 		//gpu shader4
 		void (*glBindFragDataLocationEXT) (GLuint program, GLuint color, const GLchar * name) = nullptr;
@@ -10096,10 +8559,10 @@ namespace TinyExtender
 		void (*glVertexAttribI4uivEXT) (GLuint index, const GLuint* v) = nullptr;
 		void (*glVertexAttribI4usvEXT) (GLuint index, const GLushort* v) = nullptr;
 		void (*glVertexAttribIPointerEXT) (GLuint index, GLint size, GLenum type, GLsizei stride, const void* pointer) = nullptr;
-		bool EXT_gpu_shader4 = false;
+		#define EXT_gpu_shader4 1
 
 		//gpu shader5
-		bool EXT_gpu_shader5 = false;		
+		#define EXT_gpu_shader5 1		
 
 		//histogram
 		void (*glGetHistogramEXT) (GLenum target, GLboolean reset, GLenum format, GLenum type, void* values) = nullptr;
@@ -10112,36 +8575,36 @@ namespace TinyExtender
 		void (*glMinmaxEXT) (GLenum target, GLenum internalformat, GLboolean sink) = nullptr;
 		void (*glResetHistogramEXT) (GLenum target) = nullptr;
 		void (*glResetMinmaxEXT) (GLenum target) = nullptr;
-		bool EXT_histogram = false;
+		#define EXT_histogram 1
 		
 		//index array formats
-		bool EXT_index_array_formats = false;
+		#define EXT_index_array_formats 1
 
 		//index func
 		void (*glIndexFuncEXT) (GLenum func, GLfloat ref) = nullptr;
-		bool EXT_index_func = false;
+		#define EXT_index_func 1
 
 		//index material
 		void (*glIndexMaterialEXT) (GLenum face, GLenum mode) = nullptr;
-		bool EXT_index_material = false;
+		#define EXT_index_material 1
 
 		//index texture
-		bool EXT_index_texture = false;		
+		#define EXT_index_texture 1		
 
 		//instanced arrays
 		void (*glVertexAttribDivisorEXT) (GLuint index, GLuint divisor) = nullptr;
-		bool EXT_instanced_arrays = false;		
+		#define EXT_instanced_arrays 1		
 
 		//light texture
 		void (*glApplyTextureEXT) (GLenum mode) = nullptr;
 		void (*glTextureLightEXT) (GLenum pname) = nullptr;
 		void (*glTextureMaterialEXT) (GLenum face, GLenum mode) = nullptr;
-		bool EXT_light_texture = false;
+		#define EXT_light_texture 1
 
 		//map buffer range
 		void (*glFlushMappedBufferRangeEXT) (GLenum target, GLintptr offset, GLsizeiptr length) = nullptr;
 		void* (*glMapBufferRangeEXT) (GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access) = nullptr;
-		bool EXT_map_buffer_range = false;		
+		#define EXT_map_buffer_range 1		
 
 		//memory object
 		void (*glBufferStorageMemEXT) (GLenum target, GLsizeiptr size, GLuint memory, GLuint64 offset) = nullptr;
@@ -10163,72 +8626,72 @@ namespace TinyExtender
 		void (*glTextureStorageMem2DMultisampleEXT) (GLuint texture, GLsizei samples, GLenum internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations, GLuint memory, GLuint64 offset) = nullptr;
 		void (*glTextureStorageMem3DEXT) (GLuint texture, GLsizei levels, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLuint memory, GLuint64 offset) = nullptr;
 		void (*glTextureStorageMem3DMultisampleEXT) (GLuint texture, GLsizei samples, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations, GLuint memory, GLuint64 offset) = nullptr;
-		bool EXT_memory_object = false;
+		#define EXT_memory_object 1
 
 		//memory object fd
 		void (*glImportMemoryFdEXT) (GLuint memory, GLuint64 size, GLenum handleType, GLint fd) = nullptr;
-		bool EXT_memory_object_fd = false;
+		#define EXT_memory_object_fd 1
 
 		//memory object win32
 		void (*glImportMemoryWin32HandleEXT) (GLuint memory, GLuint64 size, GLenum handleType, void* handle) = nullptr;
 		void (*glImportMemoryWin32NameEXT) (GLuint memory, GLuint64 size, GLenum handleType, const void* name) = nullptr;
-		bool EXT_memory_object_win32 = false;
+		#define EXT_memory_object_win32 1
 
 		//misc attribute
-		bool EXT_misc_attribute = false;
+		#define EXT_misc_attribute 1
 
 		//multi draw arrays
 		void (*glMultiDrawArraysEXT) (GLenum mode, const GLint * first, const GLsizei * count, GLsizei primcount) = nullptr;
 		void (*glMultiDrawElementsEXT) (GLenum mode, GLsizei* count, GLenum type, const void* const* indices, GLsizei primcount) = nullptr;
-		bool EXT_multi_draw_arrays = false;
+		#define EXT_multi_draw_arrays 1
 
 		//multi draw indirect
 		void (*glMultiDrawArraysIndirectEXT) (GLenum mode, const void* indirect, GLsizei drawcount, GLsizei stride) = nullptr;
 		void (*glMultiDrawElementsIndirectEXT) (GLenum mode, GLenum type, const void* indirect, GLsizei drawcount, GLsizei stride) = nullptr;
-		bool EXT_multi_draw_indirect = false;
+		#define EXT_multi_draw_indirect 1
 
 		//multiple textures
-		bool EXT_multiple_textures = false;
+		#define EXT_multiple_textures 1
 
 		//multisample
 		void (*glSampleMaskEXT) (GLclampf value, GLboolean invert) = nullptr;
 		void (*glSamplePatternEXT) (GLenum pattern) = nullptr;
-		bool EXT_multisample = false;		
+		#define EXT_multisample 1		
 
 		//multisample compatibility
-		bool EXT_multisample_compatibility = false;
+		#define EXT_multisample_compatibility 1
 
 		//multisampled render to texture
 		void (*glFramebufferTexture2DMultisampleEXT) (GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples) = nullptr;
-		bool EXT_multisampled_render_to_texture = false;
+		#define EXT_multisampled_render_to_texture 1
 
 		//multisampled render to texture2
-		bool EXT_multisampled_render_to_texture2 = false;		
+		#define EXT_multisampled_render_to_texture2 1		
 
 		//multiview draw buffers
 		void (*glDrawBuffersIndexedEXT) (GLint n, const GLenum * location, const GLint * indices) = nullptr;
 		void (*glGetIntegeri_vEXT) (GLenum target, GLuint index, GLint* data) = nullptr;
 		void (*glReadBufferIndexedEXT) (GLenum src, GLint index) = nullptr;
-		bool EXT_multiview_draw_buffers = false;
+		#define EXT_multiview_draw_buffers 1
 
 		//packed depth stencil
-		bool EXT_packed_depth_stencil = false;
+		#define EXT_packed_depth_stencil 1
 
 		//packed float
-		bool EXT_packed_float = false;
+		#define EXT_packed_float 1
 
 		//packed pixels
-		bool EXT_packed_pixels = false;		
+		#define EXT_packed_pixels 1		
 
 		//paletted texture
 		void (*glColorTableEXT) (GLenum target, GLenum internalFormat, GLsizei width, GLenum format, GLenum type, const void* data) = nullptr;
 		void (*glGetColorTableEXT) (GLenum target, GLenum format, GLenum type, void* data) = nullptr;
 		void (*glGetColorTableParameterfvEXT) (GLenum target, GLenum pname, GLfloat* params) = nullptr;
 		void (*glGetColorTableParameterivEXT) (GLenum target, GLenum pname, GLint* params) = nullptr;
-		bool EXT_paletted_texture = false;		
+		#define EXT_paletted_texture 1		
 
 		//pixel buffer object
-		bool EXT_pixel_buffer_object = false;		
+		#define EXT_pixel_buffer_object 1		
 
 		//pixel transform
 		void (*glGetPixelTransformParameterfvEXT) (GLenum target, GLenum pname, const GLfloat * params) = nullptr;
@@ -10237,60 +8700,60 @@ namespace TinyExtender
 		void (*glPixelTransformParameterfvEXT) (GLenum target, GLenum pname, const GLfloat* params) = nullptr;
 		void (*glPixelTransformParameteriEXT) (GLenum target, GLenum pname, const GLint param) = nullptr;
 		void (*glPixelTransformParameterivEXT) (GLenum target, GLenum pname, const GLint* params) = nullptr;
-		bool EXT_pixel_transform = false;
+		#define EXT_pixel_transform 1
 
 		//pixel transform color table
-		bool EXT_pixel_transform_color_table = false;		
+		#define EXT_pixel_transform_color_table 1		
 
 		//point parameters
 		void (*glPointParameterfEXT) (GLenum pname, GLfloat param) = nullptr;
 		void (*glPointParameterfvEXT) (GLenum pname, const GLfloat* params) = nullptr;
-		bool EXT_point_parameters = false;		
+		#define EXT_point_parameters 1		
 
 		//polygon offset
 		void (*glPolygonOffsetEXT) (GLfloat factor, GLfloat bias) = nullptr;
-		bool EXT_polygon_offset = false;		
+		#define EXT_polygon_offset 1		
 
 		//polygon offset clamp
 		void (*glPolygonOffsetClampEXT) (GLfloat factor, GLfloat units, GLfloat clamp) = nullptr;
-		bool EXT_polygon_offset_clamp = false;
+		#define EXT_polygon_offset_clamp 1
 
 		//post depth coverage
-		bool EXT_post_depth_coverage = false;		
+		#define EXT_post_depth_coverage 1		
 
 		//provoking vertex
 		void (*glProvokingVertexEXT) (GLenum mode) = nullptr;
-		bool EXT_provoking_vertex = false;		
+		#define EXT_provoking_vertex 1		
 
 		//pvrtc sRGB
-		bool EXT_pvrtc_sRGB = false;
+		#define EXT_pvrtc_sRGB 1
 
 		//raster multisample
 		void (*glCoverageModulationNV) (GLenum components) = nullptr;
 		void (*glCoverageModulationTableNV) (GLsizei n, const GLfloat* v) = nullptr;
 		void (*glGetCoverageModulationTableNV) (GLsizei bufsize, GLfloat* v) = nullptr;
 		void (*glRasterSamplesEXT) (GLuint samples, GLboolean fixedsamplelocations) = nullptr;
-		bool EXT_raster_multisample = false;		
+		#define EXT_raster_multisample 1		
 
 		//read format bgra
-		bool EXT_read_format_bgra = false;
+		#define EXT_read_format_bgra 1
 
 		//render snorm
-		bool EXT_render_snorm = false;
+		#define EXT_render_snorm 1
 
 		//rescale normal
-		bool EXT_rescale_normal = false;		
+		#define EXT_rescale_normal 1		
 
 		//sRGB
-		bool EXT_sRGB = false;		
+		#define EXT_sRGB 1		
 
 		//sRGB write control
-		bool EXT_sRGB_write_control = false;
+		#define EXT_sRGB_write_control 1
 
 		//scene marker
 		void (*glBeginSceneEXT) (void) = nullptr;
 		void (*glEndSceneEXT) (void) = nullptr;
-		bool EXT_scene_marker = false;		
+		#define EXT_scene_marker 1		
 
 		//secondary color
 		void (*glSecondaryColor3bEXT) (GLbyte red, GLbyte green, GLbyte blue) = nullptr;
@@ -10310,7 +8773,7 @@ namespace TinyExtender
 		void (*glSecondaryColor3usEXT) (GLushort red, GLushort green, GLushort blue) = nullptr;
 		void (*glSecondaryColor3usvEXT) (const GLushort* v) = nullptr;
 		void (*glSecondaryColorPointerEXT) (GLint size, GLenum type, GLsizei stride, const void* pointer) = nullptr;
-		bool EXT_secondary_color = false;
+		#define EXT_secondary_color 1
 
 		//semaphore
 		void (*glDeleteSemaphoresEXT) (GLsizei n, const GLuint * semaphores) = nullptr;
@@ -10320,162 +8783,162 @@ namespace TinyExtender
 		void (*glSemaphoreParameterui64vEXT) (GLuint semaphore, GLenum pname, const GLuint64* params) = nullptr;
 		void (*glSignalSemaphoreEXT) (GLuint semaphore, GLuint numBufferBarriers, const GLuint* buffers, GLuint numTextureBarriers, const GLuint* textures, const GLenum* dstLayouts) = nullptr;
 		void (*glWaitSemaphoreEXT) (GLuint semaphore, GLuint numBufferBarriers, const GLuint* buffers, GLuint numTextureBarriers, const GLuint* textures, const GLenum* srcLayouts) = nullptr;
-		bool EXT_semaphore = false;
+		#define EXT_semaphore 1
 
 		//semaphore fd
 		void (*glImportSemaphoreFdEXT) (GLuint semaphore, GLenum handleType, GLint fd) = nullptr;
-		bool EXT_semaphore_fd = false;
+		#define EXT_semaphore_fd 1
 
 		//semaphore win32
 		void (*glImportSemaphoreWin32HandleEXT) (GLuint semaphore, GLenum handleType, void* handle) = nullptr;
 		void (*glImportSemaphoreWin32NameEXT) (GLuint semaphore, GLenum handleType, const void* name) = nullptr;
-		bool EXT_semaphore_win32 = false;
+		#define EXT_semaphore_win32 1
 
 		//separate shader objects
 		void (*glActiveProgramEXT) (GLuint program) = nullptr;
 		GLuint(*glCreateShaderProgramEXT) (GLenum type, const GLchar* string) = nullptr;
 		void (*glUseShaderProgramEXT) (GLenum type, GLuint program) = nullptr;
-		bool EXT_separate_shader_objects = false;		
+		#define EXT_separate_shader_objects 1		
 
 		//separate specular color
-		bool EXT_separate_specular_color = false;		
+		#define EXT_separate_specular_color 1		
 
 		//shader framebuffer fetch
-		bool EXT_shader_framebuffer_fetch = false;
+		#define EXT_shader_framebuffer_fetch 1
 
 		//shader group vote
-		bool EXT_shader_group_vote = false;
+		#define EXT_shader_group_vote 1
 
 		//shader image load formatted
-		bool EXT_shader_image_load_formatted = false;
+		#define EXT_shader_image_load_formatted 1
 
 		//shader image load store
 		void (*glBindImageTextureEXT) (GLuint index, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLint format) = nullptr;
 		void (*glMemoryBarrierEXT) (GLbitfield barriers) = nullptr;
-		bool EXT_shader_image_load_store = false;
+		#define EXT_shader_image_load_store 1
 
 		//shader implicit conversions
-		bool EXT_shader_implicit_conversions = false;
+		#define EXT_shader_implicit_conversions 1
 
 		//shader integer mix
-		bool EXT_shader_integer_mix = false;
+		#define EXT_shader_integer_mix 1
 
 		//shader io blocks
-		bool EXT_shader_io_blocks = false;
+		#define EXT_shader_io_blocks 1
 
 		//shader non constant global initializers
-		bool EXT_shader_non_constant_global_initializers = false;		
+		#define EXT_shader_non_constant_global_initializers 1		
 
 		//shader pixel local storage
-		bool EXT_shader_pixel_local_storage = false;
+		#define EXT_shader_pixel_local_storage 1
 
 		//shader pixel local storage2
 		void (*glClearPixelLocalStorageuiEXT) (GLsizei offset, GLsizei n, const GLuint * values) = nullptr;
 		void (*glFramebufferPixelLocalStorageSizeEXT) (GLuint target, GLsizei size) = nullptr;
 		GLsizei(*glGetFramebufferPixelLocalStorageSizeEXT) (GLuint target) = nullptr;
-		bool EXT_shader_pixel_local_storage2 = false;
+		#define EXT_shader_pixel_local_storage2 1
 
 		//shader texture lod
-		bool EXT_shader_texture_lod = false;
+		#define EXT_shader_texture_lod 1
 
 		//shadow funcs
-		bool EXT_shadow_funcs = false;
+		#define EXT_shadow_funcs 1
 
 		//shadow samplers
-		bool EXT_shadow_samplers = false;
+		#define EXT_shadow_samplers 1
 
 		//shared texture palette
-		bool EXT_shared_texture_palette = false;
+		#define EXT_shared_texture_palette 1
 
 		//sparse texture
 		void (*glTexPageCommitmentEXT) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit) = nullptr;
 		void (*glTexturePageCommitmentEXT) (GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit) = nullptr;
-		bool EXT_sparse_texture = false;
+		#define EXT_sparse_texture 1
 
 		//sparse texture2
-		bool EXT_sparse_texture2 = false;		
+		#define EXT_sparse_texture2 1		
 
 		//stencil clear tag
-		bool EXT_stencil_clear_tag = false;		
+		#define EXT_stencil_clear_tag 1		
 
 		//stencil two side
 		void (*glActiveStencilFaceEXT) (GLenum face) = nullptr;
-		bool EXT_stencil_two_side = false;
+		#define EXT_stencil_two_side 1
 
 		//stencil wrap
-		bool EXT_stencil_wrap = false;
+		#define EXT_stencil_wrap 1
 
 		//subtexture
 		void (*glTexSubImage1DEXT) (GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void* pixels) = nullptr;
 		void (*glTexSubImage2DEXT) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void* pixels) = nullptr;
 		void (*glTexSubImage3DEXT) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void* pixels) = nullptr;
-		bool EXT_subtexture = false;
+		#define EXT_subtexture 1
 
 		//texture
-		bool EXT_texture = false;		
+		#define EXT_texture 1		
 
 		//texture3D
 		void (*glTexImage3DEXT) (GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void* pixels) = nullptr;
-		bool EXT_texture3D = false;		
+		#define EXT_texture3D 1		
 
 		//texture array
 		void (*glFramebufferTextureLayerEXT) (GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer) = nullptr;
-		bool EXT_texture_array = false;		
+		#define EXT_texture_array 1		
 
 		//texture buffer object
 		void (*glTexBufferEXT) (GLenum target, GLenum internalformat, GLuint buffer) = nullptr;
-		bool EXT_texture_buffer_object = false;
+		#define EXT_texture_buffer_object 1
 
 		//texture compression astc decode mode
-		bool EXT_texture_compression_astc_decode_mode = false;
+		#define EXT_texture_compression_astc_decode_mode 1
 
 		//texture compression astc decode mode rgb9e5
-		bool EXT_texture_compression_astc_decode_mode_rgb9e5 = false;
+		#define EXT_texture_compression_astc_decode_mode_rgb9e5 1
 
 		//texture compression bptc
-		bool EXT_texture_compression_bptc = false;
+		#define EXT_texture_compression_bptc 1
 
 		//texture compression dxt1
-		bool EXT_texture_compression_dxt1 = false;
+		#define EXT_texture_compression_dxt1 1
 
 		//texture compression latc
-		bool EXT_texture_compression_latc = false;
+		#define EXT_texture_compression_latc 1
 
 		//texture compression rgtc
-		bool EXT_texture_compression_rgtc = false;
+		#define EXT_texture_compression_rgtc 1
 
 		//texture compression s3tc
-		bool EXT_texture_compression_s3tc = false;
+		#define EXT_texture_compression_s3tc 1
 
 		//texture cube map
-		bool EXT_texture_cube_map = false;
+		#define EXT_texture_cube_map 1
 
 		//texture cube map array
-		bool EXT_texture_cube_map_array = false;
+		#define EXT_texture_cube_map_array 1
 
 		//texture_edge_clamp
-		bool EXT_texture_edge_clamp = false;
+		#define EXT_texture_edge_clamp 1
 
 		//texture_env
-		bool EXT_texture_env = false;
+		#define EXT_texture_env 1
 
 		//texture_env_add
-		bool EXT_texture_env_add = false;
+		#define EXT_texture_env_add 1
 
 		//texture_env_combine
-		bool EXT_texture_env_combine = false;
+		#define EXT_texture_env_combine 1
 
 		//texture_env_dot3
-		bool EXT_texture_env_dot3 = false;
+		#define EXT_texture_env_dot3 1
 
 		//texture_filter_anisotropic
-		bool EXT_texture_filter_anisotropic = false;
+		#define EXT_texture_filter_anisotropic 1
 
 		//texture_filter_minmax
-		bool EXT_texture_filter_minmax = false;
+		#define EXT_texture_filter_minmax 1
 
 		//texture_format_BGRA8888
-		bool EXT_texture_format_BGRA8888 = false;
+		#define EXT_texture_format_BGRA8888 1
 
 		//texture_integer
 		void (*glClearColorIiEXT) (GLint red, GLint green, GLint blue, GLint alpha) = nullptr;
@@ -10484,16 +8947,16 @@ namespace TinyExtender
 		void (*glGetTexParameterIuivEXT) (GLenum target, GLenum pname, GLuint* params) = nullptr;
 		void (*glTexParameterIivEXT) (GLenum target, GLenum pname, const GLint* params) = nullptr;
 		void (*glTexParameterIuivEXT) (GLenum target, GLenum pname, const GLuint* params) = nullptr;
-		bool EXT_texture_integer = false;		
+		#define EXT_texture_integer 1		
 
 		//texture_lod_bias
-		bool EXT_texture_lod_bias = false;
+		#define EXT_texture_lod_bias 1
 
 		//texture_mirror_clamp
-		bool EXT_texture_mirror_clamp = false;
+		#define EXT_texture_mirror_clamp 1
 
 		//texture_norm16
-		bool EXT_texture_norm16 = false;
+		#define EXT_texture_norm16 1
 
 		//texture_object
 		GLboolean(*glAreTexturesResidentEXT) (GLsizei n, const GLuint * textures, GLboolean * residences) = nullptr;
@@ -10502,35 +8965,35 @@ namespace TinyExtender
 		void (*glGenTexturesEXT) (GLsizei n, GLuint* textures) = nullptr;
 		GLboolean(*glIsTextureEXT) (GLuint texture) = nullptr;
 		void (*glPrioritizeTexturesEXT) (GLsizei n, const GLuint* textures, const GLclampf* priorities) = nullptr;
-		bool EXT_texture_object = false;
+		#define EXT_texture_object 1
 
 		//texture_perturb_normal
 		void (*glTextureNormalEXT) (GLenum mode) = nullptr;
-		bool EXT_texture_perturb_normal = false;
+		#define EXT_texture_perturb_normal 1
 
 		//texture_rectangle
-		bool EXT_texture_rectangle = false;
+		#define EXT_texture_rectangle 1
 
 		//texture_rg
-		bool EXT_texture_rg = false;
+		#define EXT_texture_rg 1
 
 		//texture_sRGB
-		bool EXT_texture_sRGB = false;
+		#define EXT_texture_sRGB 1
 
 		//texture_sRGB_R8
-		bool EXT_texture_sRGB_R8 = false;
+		#define EXT_texture_sRGB_R8 1
 
 		//texture_sRGB_RG8
-		bool EXT_texture_sRGB_RG8 = false;
+		#define EXT_texture_sRGB_RG8 1
 		
 		//texture_sRGB_decode
-		bool EXT_texture_sRGB_decode = false;
+		#define EXT_texture_sRGB_decode 1
 
 		//texture_shared_exponent
-		bool EXT_texture_shared_exponent = false;
+		#define EXT_texture_shared_exponent 1
 
 		//texture_snorm
-		bool EXT_texture_snorm = false;
+		#define EXT_texture_snorm 1
 
 		//texture_storage
 		void (*glTexStorage1DEXT) (GLenum target, GLsizei levels, GLenum internalformat, GLsizei width) = nullptr;
@@ -10539,22 +9002,22 @@ namespace TinyExtender
 		void (*glTextureStorage1DEXT) (GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width) = nullptr;
 		void (*glTextureStorage2DEXT) (GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height) = nullptr;
 		void (*glTextureStorage3DEXT) (GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth) = nullptr;
-		bool EXT_texture_storage = false;
+		#define EXT_texture_storage 1
 
 		//texture_swizzle
-		bool EXT_texture_swizzle = false;
+		#define EXT_texture_swizzle 1
 
 		//texture_type_2_10_10_10_REV
-		bool EXT_texture_type_2_10_10_10_REV = false;
+		#define EXT_texture_type_2_10_10_10_REV 1
 
 		//texture_view
 		void (*glTextureViewEXT) (GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers) = nullptr;
-		bool EXT_texture_view = false;
+		#define EXT_texture_view 1
 
 		//timer_query
 		void (*glGetQueryObjecti64vEXT) (GLuint id, GLenum pname, GLint64EXT * params) = nullptr;
 		void (*glGetQueryObjectui64vEXT) (GLuint id, GLenum pname, GLuint64EXT* params) = nullptr;
-		bool EXT_timer_query = false;
+		#define EXT_timer_query 1
 
 		//transform_feedback
 		void (*glBeginTransformFeedbackEXT) (GLenum primitiveMode) = nullptr;
@@ -10564,10 +9027,10 @@ namespace TinyExtender
 		void (*glEndTransformFeedbackEXT) (void) = nullptr;
 		void (*glGetTransformFeedbackVaryingEXT) (GLuint program, GLuint index, GLsizei bufSize, GLsizei* length, GLsizei* size, GLenum* type, GLchar* name) = nullptr;
 		void (*glTransformFeedbackVaryingsEXT) (GLuint program, GLsizei count, const GLchar* const* varyings, GLenum bufferMode) = nullptr;
-		bool EXT_transform_feedback = false;
+		#define EXT_transform_feedback 1
 
 		//unpack_subimage
-		bool EXT_unpack_subimage = false;
+		#define EXT_unpack_subimage 1
 
 		//vertex_array
 		void (*glArrayElementEXT) (GLint i) = nullptr;
@@ -10578,16 +9041,16 @@ namespace TinyExtender
 		void (*glNormalPointerEXT) (GLenum type, GLsizei stride, GLsizei count, const void* pointer) = nullptr;
 		void (*glTexCoordPointerEXT) (GLint size, GLenum type, GLsizei stride, GLsizei count, const void* pointer) = nullptr;
 		void (*glVertexPointerEXT) (GLint size, GLenum type, GLsizei stride, GLsizei count, const void* pointer) = nullptr;
-		bool EXT_vertex_array = false;
+		#define EXT_vertex_array 1
 
 		//vertex_array_bgra
-		bool EXT_vertex_array_bgra = false;
+		#define EXT_vertex_array_bgra 1
 
 		//vertex_array_setXXX
 		void (*glBindArraySetEXT) (const void* arrayset) = nullptr;
 		const void* (*glCreateArraySetExt) (void) = nullptr;
 		void (*glDeleteArraySetsEXT) (GLsizei n, const void* arrayset[]) = nullptr;
-		bool EXT_vertex_array_setXXX = false;	
+		#define EXT_vertex_array_setXXX 1	
 
 		//vertex_attrib_64bit
 		void (*glGetVertexAttribLdvEXT) (GLuint index, GLenum pname, GLdouble * params) = nullptr;
@@ -10601,7 +9064,7 @@ namespace TinyExtender
 		void (*glVertexAttribL4dEXT) (GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w) = nullptr;
 		void (*glVertexAttribL4dvEXT) (GLuint index, const GLdouble* v) = nullptr;
 		void (*glVertexAttribLPointerEXT) (GLuint index, GLint size, GLenum type, GLsizei stride, const void* pointer) = nullptr;
-		bool EXT_vertex_attrib_64bit = false;		
+		#define EXT_vertex_attrib_64bit 1		
 	
 		//vertex_shader
 		void (*glBeginVertexShaderEXT) (void) = nullptr;
@@ -10646,128 +9109,73 @@ namespace TinyExtender
 		void (*glVariantuivEXT) (GLuint id, GLuint* addr) = nullptr;
 		void (*glVariantusvEXT) (GLuint id, GLushort* addr) = nullptr;
 		void (*glWriteMaskEXT) (GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW) = nullptr;
-		bool EXT_vertex_shader = false;
+		#define EXT_vertex_shader 1
 
 		//vertex_weighting
 		void (*glVertexWeightPointerEXT) (GLint size, GLenum type, GLsizei stride, void* pointer) = nullptr;
 		void (*glVertexWeightfEXT) (GLfloat weight) = nullptr;
 		void (*glVertexWeightfvEXT) (GLfloat* weight) = nullptr;
-		bool EXT_vertex_weighting = false;
+		#define EXT_vertex_weighting 1
 
 		//win32_keyed_mutex
 		GLboolean(*glAcquireKeyedMutexWin32EXT) (GLuint memory, GLuint64 key, GLuint timeout) = nullptr;
 		GLboolean(*glReleaseKeyedMutexWin32EXT) (GLuint memory, GLuint64 key) = nullptr;
-		bool EXT_win32_keyed_mutex = false;
+		#define EXT_win32_keyed_mutex 1
 		
 		//window_rectangles
 		void (*glWindowRectanglesEXT) (GLenum mode, GLsizei count, const GLint box[]) = nullptr;
-		bool EXT_window_rectangles = false;
+		#define EXT_window_rectangles 1
 
 		//x11_sync_object
 		GLsync(*glImportSyncEXT) (GLenum external_sync_type, GLintptr external_sync, GLbitfield flags) = nullptr;
-		bool EXT_x11_sync_object = false;
+		#define EXT_x11_sync_object 1
 
 		//*< load EXT Extensions
 		void LoadEXTExtensions()
 		{
-			//422 pixels
-			FetchProcAddress(EXT_422_pixels, "EXT_422_pixels");
-
-			//Cg shader
-			FetchProcAddress(EXT_Cg_shader, "EXT_Cg_shader");
-
-			//EGL image array
-			FetchProcAddress(EXT_EGL_image_array, "EXT_EGL_image_array");
-
-			//YUV target
-			FetchProcAddress(EXT_YUV_target, "EXT_YUV_target");
-
-			//abgr
-			FetchProcAddress(EXT_abgr, "EXT_abgr");
-
+			
 			//base instance
 			FetchProcAddress(glDrawArraysInstancedBaseInstanceEXT, "glDrawArraysInstancedBaseInstanceEXT");
 			FetchProcAddress(glDrawElementsInstancedBaseInstanceEXT, "glDrawElementsInstancedBaseInstanceEXT");
-			FetchProcAddress(glDrawElementsInstancedBaseVertexBaseInstanceEXT, "glDrawElementsInstancedBaseVertexBaseInstanceEXT");
-			FetchProcAddress(EXT_base_instance, "EXT_base_instance");
-
-			//bgra
-			FetchProcAddress(EXT_bgra, "EXT_bgra");
+			FetchProcAddress(glDrawElementsInstancedBaseVertexBaseInstanceEXT, "glDrawElementsInstancedBaseVertexBaseInstanceEXT");			
 
 			//bindable uniform
 			FetchProcAddress(glGetUniformBufferSizeEXT, "glGetUniformBufferSizeEXT");
 			FetchProcAddress(glGetUniformOffsetEXT, "glGetUniformOffsetEXT");
-			FetchProcAddress(glUniformBufferEXT, "glUniformBufferEXT");
-			FetchProcAddress(EXT_bindable_uniform, "EXT_bindable_uniform");
+			FetchProcAddress(glUniformBufferEXT, "glUniformBufferEXT");			
 
 			//blend color
-			FetchProcAddress(glBlendColorEXT, "glBlendColorEXT");
-			FetchProcAddress(EXT_blend_color, "EXT_blend_color");
+			FetchProcAddress(glBlendColorEXT, "glBlendColorEXT");			
 
 			//blend equation separate
-			FetchProcAddress(glBlendEquationSeparateEXT, "glBlendEquationSeparateEXT");
-			FetchProcAddress(EXT_blend_equation_separate, "EXT_blend_equation_separate");
+			FetchProcAddress(glBlendEquationSeparateEXT, "glBlendEquationSeparateEXT");			
 
 			//blend func extended
 			FetchProcAddress(glBindFragDataLocationIndexedEXT, "glBindFragDataLocationIndexedEXT");
 			FetchProcAddress(glGetFragDataIndexEXT, "glGetFragDataIndexEXT");
-			FetchProcAddress(glGetProgramResourceLocationIndexEXT, "glGetProgramResourceLocationIndexEXT");
-			FetchProcAddress(EXT_blend_func_extended, "EXT_blend_func_extended");
+			FetchProcAddress(glGetProgramResourceLocationIndexEXT, "glGetProgramResourceLocationIndexEXT");			
 
 			//blend func separate
-			FetchProcAddress(glBlendFuncSeparateEXT, "glBlendFuncSeparateEXT");
-			FetchProcAddress(EXT_blend_func_separate, "EXT_blend_func_separate");
-
-			//blend logic op
-			FetchProcAddress(EXT_blend_logic_op, "EXT_blend_logic_op");
+			FetchProcAddress(glBlendFuncSeparateEXT, "glBlendFuncSeparateEXT");			
 
 			//blend minmax
-			FetchProcAddress(glBlendEquationEXT, "glBlendEquationEXT");
-			FetchProcAddress(EXT_blend_minmax, "EXT_blend_minmax");
-
-			//blend subtract
-			FetchProcAddress(EXT_blend_subtract, "EXT_blend_subtract");
+			FetchProcAddress(glBlendEquationEXT, "glBlendEquationEXT");						
 
 			//buffer storage
 			FetchProcAddress(glBufferStorageEXT, "glBufferStorageEXT");
-			FetchProcAddress(glNamedBufferStorageEXT, "glNamedBufferStorageEXT");
-			FetchProcAddress(EXT_buffer_storage, "EXT_buffer_storage");
+			FetchProcAddress(glNamedBufferStorageEXT, "glNamedBufferStorageEXT");			
 
 			//clear texture
 			FetchProcAddress(glClearTexImageEXT, "glClearTexImageEXT");
-			FetchProcAddress(glClearTexSubImageEXT, "glClearTexSubImageEXT");
-			FetchProcAddress(EXT_clear_texture, "EXT_clear_texture");
-
-			//clip cull distance
-			FetchProcAddress(EXT_clip_cull_distance, "EXT_clip_cull_distance");
-
-			//clip volume hint
-			FetchProcAddress(EXT_clip_volume_hint, "EXT_clip_volume_hint");
-
-			//cmyka
-			FetchProcAddress(EXT_cmyka, "EXT_cmyka");
-
-			//color buffer float
-			FetchProcAddress(EXT_color_buffer_float, "EXT_color_buffer_float");
-
-			//color buffer half float
-			FetchProcAddress(EXT_color_buffer_half_float, "EXT_color_buffer_half_float");
+			FetchProcAddress(glClearTexSubImageEXT, "glClearTexSubImageEXT");						
 
 			//color subtable
 			FetchProcAddress(glColorSubTableEXT, "glColorSubTableEXT");
-			FetchProcAddress(glCopyColorSubTableEXT, "glCopyColorSubTableEXT");
-			FetchProcAddress(EXT_color_subtable, "EXT_color_subtable");
+			FetchProcAddress(glCopyColorSubTableEXT, "glCopyColorSubTableEXT");			
 
 			//compiled vertex array
 			FetchProcAddress(glLockArraysEXT, "glLockArraysEXT");
-			FetchProcAddress(glUnlockArraysEXT, "glUnlockArraysEXT");
-			FetchProcAddress(EXT_compiled_vertex_array, "EXT_compiled_vertex_array");
-
-			//compressed ETC1 RGB8 sub texture
-			FetchProcAddress(EXT_compressed_ETC1_RGB8_sub_texture, "EXT_compressed_ETC1_RGB8_sub_texture");
-
-			//conservative depth
-			FetchProcAddress(EXT_conservative_depth, "EXT_conservative_depth");
+			FetchProcAddress(glUnlockArraysEXT, "glUnlockArraysEXT");			
 
 			//convolution
 			FetchProcAddress(glConvolutionFilter1DEXT, "glConvolutionFilter1DEXT");
@@ -10782,45 +9190,37 @@ namespace TinyExtender
 			FetchProcAddress(glGetConvolutionParameterfvEXT, "glGetConvolutionParameterfvEXT");
 			FetchProcAddress(glGetConvolutionParameterivEXT, "glGetConvolutionParameterivEXT");
 			FetchProcAddress(glGetSeparableFilterEXT, "glGetSeparableFilterEXT");
-			FetchProcAddress(glSeparableFilter2DEXT, "glSeparableFilter2DEXT");
-			FetchProcAddress(EXT_convolution, "EXT_convolution");
+			FetchProcAddress(glSeparableFilter2DEXT, "glSeparableFilter2DEXT");			
 
 			//coordinate frame
 			FetchProcAddress(glBinormalPointerEXT, "glBinormalPointerEXT");
-			FetchProcAddress(glTangentPointerEXT, "glTangentPointerEXT");
-			FetchProcAddress(EXT_coordinate_frame, "EXT_coordinate_frame");
+			FetchProcAddress(glTangentPointerEXT, "glTangentPointerEXT");			
 
 			//copy image
-			FetchProcAddress(glCopyImageSubDataEXT, "glCopyImageSubDataEXT");
-			FetchProcAddress(EXT_copy_image, "EXT_copy_image");
+			FetchProcAddress(glCopyImageSubDataEXT, "glCopyImageSubDataEXT");			
 
 			//copy texture
 			FetchProcAddress(glCopyTexImage1DEXT, "glCopyTexImage1DEXT");
 			FetchProcAddress(glCopyTexImage2DEXT, "glCopyTexImage2DEXT");
 			FetchProcAddress(glCopyTexSubImage1DEXT, "glCopyTexSubImage1DEXT");
 			FetchProcAddress(glCopyTexSubImage2DEXT, "glCopyTexSubImage2DEXT");
-			FetchProcAddress(glCopyTexSubImage3DEXT, "glCopyTexSubImage3DEXT");
-			FetchProcAddress(EXT_copy_texture, "EXT_copy_texture");
+			FetchProcAddress(glCopyTexSubImage3DEXT, "glCopyTexSubImage3DEXT");			
 
 			//cull vertex
 			FetchProcAddress(glCullParameterdvEXT, "glCullParameterdvEXT");
-			FetchProcAddress(glCullParameterfvEXT, "glCullParameterfvEXT");
-			FetchProcAddress(EXT_cull_vertex, "EXT_cull_vertex");
+			FetchProcAddress(glCullParameterfvEXT, "glCullParameterfvEXT");			
 
 			//debug label
 			FetchProcAddress(glGetObjectLabelEXT, "glGetObjectLabelEXT");
-			FetchProcAddress(glLabelObjectEXT, "glLabelObjectEXT");
-			FetchProcAddress(EXT_debug_label, "EXT_debug_label");
+			FetchProcAddress(glLabelObjectEXT, "glLabelObjectEXT");			
 
 			//debug marker
 			FetchProcAddress(glInsertEventMarkerEXT, "glInsertEventMarkerEXT");
 			FetchProcAddress(glPopGroupMarkerEXT, "glPopGroupMarkerEXT");
-			FetchProcAddress(glPushGroupMarkerEXT, "glPushGroupMarkerEXT");
-			FetchProcAddress(EXT_debug_marker, "EXT_debug_marker");
+			FetchProcAddress(glPushGroupMarkerEXT, "glPushGroupMarkerEXT");			
 
 			//depth bounds test
-			FetchProcAddress(glDepthBoundsEXT, "glDepthBoundsEXT");
-			FetchProcAddress(EXT_depth_bounds_test, "EXT_depth_bounds_test");
+			FetchProcAddress(glDepthBoundsEXT, "glDepthBoundsEXT");		
 
 			//direct state access
 			FetchProcAddress(glBindMultiTextureEXT, "glBindMultiTextureEXT");
@@ -10864,1550 +9264,632 @@ namespace TinyExtender
 			FetchProcAddress(glGenerateTextureMipmapEXT, "glGenerateTextureMipmapEXT");
 			FetchProcAddress(glGetCompressedMultiTexImageEXT, "glGetCompressedMultiTexImageEXT");
 			FetchProcAddress(glGetCompressedTextureImageEXT, "glGetCompressedTextureImageEXT");
-
 			FetchProcAddress(glGetDoubleIndexedvEXT, "glGetDoubleIndexedvEXT");
-
 			FetchProcAddress(glGetDoublei_vEXT, "glGetDoublei_vEXT");
-
 			FetchProcAddress(glGetFloatIndexedvEXT, "glGetFloatIndexedvEXT");
-
 			FetchProcAddress(glGetFloati_vEXT, "glGetFloati_vEXT");
-
 			FetchProcAddress(glGetFramebufferParameterivEXT, "glGetFramebufferParameterivEXT");
-
 			FetchProcAddress(glGetMultiTexEnvfvEXT, "glGetMultiTexEnvfvEXT");
-
 			FetchProcAddress(glGetMultiTexEnvivEXT, "glGetMultiTexEnvivEXT");
-
 			FetchProcAddress(glGetMultiTexGendvEXT, "glGetMultiTexGendvEXT");
-
 			FetchProcAddress(glGetMultiTexGenfvEXT, "glGetMultiTexGenfvEXT");
-
 			FetchProcAddress(glGetMultiTexGenivEXT, "glGetMultiTexGenivEXT");
-
 			FetchProcAddress(glGetMultiTexImageEXT, "glGetMultiTexImageEXT");
-
 			FetchProcAddress(glGetMultiTexLevelParameterfvEXT, "glGetMultiTexLevelParameterfvEXT");
-
 			FetchProcAddress(glGetMultiTexLevelParameterivEXT, "glGetMultiTexLevelParameterivEXT");
-
 			FetchProcAddress(glGetMultiTexParameterIivEXT, "glGetMultiTexParameterIivEXT");
-
 			FetchProcAddress(glGetMultiTexParameterIuivEXT, "glGetMultiTexParameterIuivEXT");
-
 			FetchProcAddress(glGetMultiTexParameterfvEXT, "glGetMultiTexParameterfvEXT");
-
 			FetchProcAddress(glGetMultiTexParameterivEXT, "glGetMultiTexParameterivEXT");
-
 			FetchProcAddress(glGetNamedBufferParameterivEXT, "glGetNamedBufferParameterivEXT");
-
 			FetchProcAddress(glGetNamedBufferPointervEXT, "glGetNamedBufferPointervEXT");
-
 			FetchProcAddress(glGetNamedBufferSubDataEXT, "glGetNamedBufferSubDataEXT");
-
 			FetchProcAddress(glGetNamedFramebufferAttachmentParameterivEXT, "glGetNamedFramebufferAttachmentParameterivEXT");
-
 			FetchProcAddress(glGetNamedProgramLocalParameterIivEXT, "glGetNamedProgramLocalParameterIivEXT");
-
 			FetchProcAddress(glGetNamedProgramLocalParameterIuivEXT, "glGetNamedProgramLocalParameterIuivEXT");
-
 			FetchProcAddress(glGetNamedProgramLocalParameterdvEXT, "glGetNamedProgramLocalParameterdvEXT");
-
 			FetchProcAddress(glGetNamedProgramLocalParameterfvEXT, "glGetNamedProgramLocalParameterfvEXT");
-
 			FetchProcAddress(glGetNamedProgramStringEXT, "glGetNamedProgramStringEXT");
-
 			FetchProcAddress(glGetNamedProgramivEXT, "glGetNamedProgramivEXT");
-
 			FetchProcAddress(glGetNamedRenderbufferParameterivEXT, "glGetNamedRenderbufferParameterivEXT");
-
 			FetchProcAddress(glGetPointerIndexedvEXT, "glGetPointerIndexedvEXT");
-
 			FetchProcAddress(glGetPointeri_vEXT, "glGetPointeri_vEXT");
-
 			FetchProcAddress(glGetTextureImageEXT, "glGetTextureImageEXT");
-
 			FetchProcAddress(glGetTextureLevelParameterfvEXT, "glGetTextureLevelParameterfvEXT");
-
 			FetchProcAddress(glGetTextureLevelParameterivEXT, "glGetTextureLevelParameterivEXT");
-
 			FetchProcAddress(glGetTextureParameterIivEXT, "glGetTextureParameterIivEXT");
-
 			FetchProcAddress(glGetTextureParameterIuivEXT, "glGetTextureParameterIuivEXT");
-
 			FetchProcAddress(glGetTextureParameterfvEXT, "glGetTextureParameterfvEXT");
-
 			FetchProcAddress(glGetTextureParameterivEXT, "glGetTextureParameterivEXT");
-
 			FetchProcAddress(glGetVertexArrayIntegeri_vEXT, "glGetVertexArrayIntegeri_vEXT");
-
 			FetchProcAddress(glGetVertexArrayIntegervEXT, "glGetVertexArrayIntegervEXT");
-
 			FetchProcAddress(glGetVertexArrayPointeri_vEXT, "glGetVertexArrayPointeri_vEXT");
-
 			FetchProcAddress(glGetVertexArrayPointervEXT, "glGetVertexArrayPointervEXT");
-
 			FetchProcAddress(glMapNamedBufferEXT, "glMapNamedBufferEXT");
-
 			FetchProcAddress(glMapNamedBufferRangeEXT, "glMapNamedBufferRangeEXT");
-
 			FetchProcAddress(glMatrixFrustumEXT, "glMatrixFrustumEXT");
-
 			FetchProcAddress(glMatrixLoadIdentityEXT, "glMatrixLoadIdentityEXT");
-
 			FetchProcAddress(glMatrixLoadTransposedEXT, "glMatrixLoadTransposedEXT");
-
 			FetchProcAddress(glMatrixLoadTransposefEXT, "glMatrixLoadTransposefEXT");
-
 			FetchProcAddress(glMatrixLoaddEXT, "glMatrixLoaddEXT");
-
 			FetchProcAddress(glMatrixLoadfEXT, "glMatrixLoadfEXT");
-
 			FetchProcAddress(glMatrixMultTransposedEXT, "glMatrixMultTransposedEXT");
-
 			FetchProcAddress(glMatrixMultTransposefEXT, "glMatrixMultTransposefEXT");
-
 			FetchProcAddress(glMatrixMultdEXT, "glMatrixMultdEXT");
-
 			FetchProcAddress(glMatrixMultfEXT, "glMatrixMultfEXT");
-
 			FetchProcAddress(glMatrixOrthoEXT, "glMatrixOrthoEXT");
-
 			FetchProcAddress(glMatrixPopEXT, "glMatrixPopEXT");
-
 			FetchProcAddress(glMatrixPushEXT, "glMatrixPushEXT");
-
 			FetchProcAddress(glMatrixRotatedEXT, "glMatrixRotatedEXT");
-
 			FetchProcAddress(glMatrixRotatefEXT, "glMatrixRotatefEXT");
-
 			FetchProcAddress(glMatrixScaledEXT, "glMatrixScaledEXT");
-
 			FetchProcAddress(glMatrixScalefEXT, "glMatrixScalefEXT");
-
 			FetchProcAddress(glMatrixTranslatedEXT, "glMatrixTranslatedEXT");
-
 			FetchProcAddress(glMatrixTranslatefEXT, "glMatrixTranslatefEXT");
-
 			FetchProcAddress(glMultiTexBufferEXT, "glMultiTexBufferEXT");
-
 			FetchProcAddress(glMultiTexCoordPointerEXT, "glMultiTexCoordPointerEXT");
-
 			FetchProcAddress(glMultiTexEnvfEXT, "glMultiTexEnvfEXT");
-
 			FetchProcAddress(glMultiTexEnvfvEXT, "glMultiTexEnvfvEXT");
-
 			FetchProcAddress(glMultiTexEnviEXT, "glMultiTexEnviEXT");
-
 			FetchProcAddress(glMultiTexEnvivEXT, "glMultiTexEnvivEXT");
-
 			FetchProcAddress(glMultiTexGendEXT, "glMultiTexGendEXT");
-
 			FetchProcAddress(glMultiTexGendvEXT, "glMultiTexGendvEXT");
-
 			FetchProcAddress(glMultiTexGenfEXT, "glMultiTexGenfEXT");
-
 			FetchProcAddress(glMultiTexGenfvEXT, "glMultiTexGenfvEXT");
-
 			FetchProcAddress(glMultiTexGeniEXT, "glMultiTexGeniEXT");
-
 			FetchProcAddress(glMultiTexGenivEXT, "glMultiTexGenivEXT");
-
 			FetchProcAddress(glMultiTexImage1DEXT, "glMultiTexImage1DEXT");
-
 			FetchProcAddress(glMultiTexImage2DEXT, "glMultiTexImage2DEXT");
-
 			FetchProcAddress(glMultiTexImage3DEXT, "glMultiTexImage3DEXT");
-
 			FetchProcAddress(glMultiTexParameterIivEXT, "glMultiTexParameterIivEXT");
-
 			FetchProcAddress(glMultiTexParameterIuivEXT, "glMultiTexParameterIuivEXT");
-
 			FetchProcAddress(glMultiTexParameterfEXT, "glMultiTexParameterfEXT");
-
 			FetchProcAddress(glMultiTexParameterfvEXT, "glMultiTexParameterfvEXT");
-
 			FetchProcAddress(glMultiTexParameteriEXT, "glMultiTexParameteriEXT");
-
 			FetchProcAddress(glMultiTexParameterivEXT, "glMultiTexParameterivEXT");
-
 			FetchProcAddress(glMultiTexRenderbufferEXT, "glMultiTexRenderbufferEXT");
-
 			FetchProcAddress(glMultiTexSubImage1DEXT, "glMultiTexSubImage1DEXT");
-
 			FetchProcAddress(glMultiTexSubImage2DEXT, "glMultiTexSubImage2DEXT");
-
 			FetchProcAddress(glMultiTexSubImage3DEXT, "glMultiTexSubImage3DEXT");
-
 			FetchProcAddress(glNamedBufferDataEXT, "glNamedBufferDataEXT");
-
 			FetchProcAddress(glNamedBufferSubDataEXT, "glNamedBufferSubDataEXT");
-
 			FetchProcAddress(glNamedCopyBufferSubDataEXT, "glNamedCopyBufferSubDataEXT");
-
 			FetchProcAddress(glNamedFramebufferRenderbufferEXT, "glNamedFramebufferRenderbufferEXT");
-
 			FetchProcAddress(glNamedFramebufferTexture1DEXT, "glNamedFramebufferTexture1DEXT");
-
 			FetchProcAddress(glNamedFramebufferTexture2DEXT, "glNamedFramebufferTexture2DEXT");
-
 			FetchProcAddress(glNamedFramebufferTexture3DEXT, "glNamedFramebufferTexture3DEXT");
-
 			FetchProcAddress(glNamedFramebufferTextureEXT, "glNamedFramebufferTextureEXT");
-
 			FetchProcAddress(glNamedFramebufferTextureFaceEXT, "glNamedFramebufferTextureFaceEXT");
-
 			FetchProcAddress(glNamedFramebufferTextureLayerEXT, "glNamedFramebufferTextureLayerEXT");
-
 			FetchProcAddress(glNamedProgramLocalParameter4dEXT, "glNamedProgramLocalParameter4dEXT");
-
 			FetchProcAddress(glNamedProgramLocalParameter4dvEXT, "glNamedProgramLocalParameter4dvEXT");
-
 			FetchProcAddress(glNamedProgramLocalParameter4fEXT, "glNamedProgramLocalParameter4fEXT");
-
 			FetchProcAddress(glNamedProgramLocalParameter4fvEXT, "glNamedProgramLocalParameter4fvEXT");
-
 			FetchProcAddress(glNamedProgramLocalParameterI4iEXT, "glNamedProgramLocalParameterI4iEXT");
-
 			FetchProcAddress(glNamedProgramLocalParameterI4ivEXT, "glNamedProgramLocalParameterI4ivEXT");
-
 			FetchProcAddress(glNamedProgramLocalParameterI4uiEXT, "glNamedProgramLocalParameterI4uiEXT");
-
 			FetchProcAddress(glNamedProgramLocalParameterI4uivEXT, "glNamedProgramLocalParameterI4uivEXT");
-
 			FetchProcAddress(glNamedProgramLocalParameters4fvEXT, "glNamedProgramLocalParameters4fvEXT");
-
 			FetchProcAddress(glNamedProgramLocalParametersI4ivEXT, "glNamedProgramLocalParametersI4ivEXT");
-
 			FetchProcAddress(glNamedProgramLocalParametersI4uivEXT, "glNamedProgramLocalParametersI4uivEXT");
-
 			FetchProcAddress(glNamedProgramStringEXT, "glNamedProgramStringEXT");
-
 			FetchProcAddress(glNamedRenderbufferStorageEXT, "glNamedRenderbufferStorageEXT");
-
 			FetchProcAddress(glNamedRenderbufferStorageMultisampleCoverageEXT, "glNamedRenderbufferStorageMultisampleCoverageEXT");
-
 			FetchProcAddress(glNamedRenderbufferStorageMultisampleEXT, "glNamedRenderbufferStorageMultisampleEXT");
-
 			FetchProcAddress(glProgramUniform1fEXT, "glProgramUniform1fEXT");
-
 			FetchProcAddress(glProgramUniform1fvEXT, "glProgramUniform1fvEXT");
-
 			FetchProcAddress(glProgramUniform1iEXT, "glProgramUniform1iEXT");
-
 			FetchProcAddress(glProgramUniform1ivEXT, "glProgramUniform1ivEXT");
-
 			FetchProcAddress(glProgramUniform1uiEXT, "glProgramUniform1uiEXT");
-
 			FetchProcAddress(glProgramUniform1uivEXT, "glProgramUniform1uivEXT");
-
 			FetchProcAddress(glProgramUniform2fEXT, "glProgramUniform2fEXT");
-
 			FetchProcAddress(glProgramUniform2fvEXT, "glProgramUniform2fvEXT");
-
 			FetchProcAddress(glProgramUniform2iEXT, "glProgramUniform2iEXT");
-
 			FetchProcAddress(glProgramUniform2ivEXT, "glProgramUniform2ivEXT");
-
 			FetchProcAddress(glProgramUniform2uiEXT, "glProgramUniform2uiEXT");
-
 			FetchProcAddress(glProgramUniform2uivEXT, "glProgramUniform2uivEXT");
-
 			FetchProcAddress(glProgramUniform3fEXT, "glProgramUniform3fEXT");
-
 			FetchProcAddress(glProgramUniform3fvEXT, "glProgramUniform3fvEXT");
-
 			FetchProcAddress(glProgramUniform3iEXT, "glProgramUniform3iEXT");
-
 			FetchProcAddress(glProgramUniform3ivEXT, "glProgramUniform3ivEXT");
-
 			FetchProcAddress(glProgramUniform3uiEXT, "glProgramUniform3uiEXT");
-
 			FetchProcAddress(glProgramUniform3uivEXT, "glProgramUniform3uivEXT");
-
 			FetchProcAddress(glProgramUniform4fEXT, "glProgramUniform4fEXT");
-
 			FetchProcAddress(glProgramUniform4fvEXT, "glProgramUniform4fvEXT");
-
 			FetchProcAddress(glProgramUniform4iEXT, "glProgramUniform4iEXT");
-
 			FetchProcAddress(glProgramUniform4ivEXT, "glProgramUniform4ivEXT");
-
 			FetchProcAddress(glProgramUniform4uiEXT, "glProgramUniform4uiEXT");
-
 			FetchProcAddress(glProgramUniform4uivEXT, "glProgramUniform4uivEXT");
-
 			FetchProcAddress(glProgramUniformMatrix2fvEXT, "glProgramUniformMatrix2fvEXT");
-
 			FetchProcAddress(glProgramUniformMatrix2x3fvEXT, "glProgramUniformMatrix2x3fvEXT");
-
 			FetchProcAddress(glProgramUniformMatrix2x4fvEXT, "glProgramUniformMatrix2x4fvEXT");
-
 			FetchProcAddress(glProgramUniformMatrix3fvEXT, "glProgramUniformMatrix3fvEXT");
-
 			FetchProcAddress(glProgramUniformMatrix3x2fvEXT, "glProgramUniformMatrix3x2fvEXT");
-
 			FetchProcAddress(glProgramUniformMatrix3x4fvEXT, "glProgramUniformMatrix3x4fvEXT");
-
 			FetchProcAddress(glProgramUniformMatrix4fvEXT, "glProgramUniformMatrix4fvEXT");
-
 			FetchProcAddress(glProgramUniformMatrix4x2fvEXT, "glProgramUniformMatrix4x2fvEXT");
-
 			FetchProcAddress(glProgramUniformMatrix4x3fvEXT, "glProgramUniformMatrix4x3fvEXT");
-
 			FetchProcAddress(glPushClientAttribDefaultEXT, "glPushClientAttribDefaultEXT");
-
 			FetchProcAddress(glTextureBufferEXT, "glTextureBufferEXT");
-
 			FetchProcAddress(glTextureImage1DEXT, "glTextureImage1DEXT");
-
 			FetchProcAddress(glTextureImage2DEXT, "glTextureImage2DEXT");
-
 			FetchProcAddress(glTextureImage3DEXT, "glTextureImage3DEXT");
-
 			FetchProcAddress(glTextureParameterIivEXT, "glTextureParameterIivEXT");
-
 			FetchProcAddress(glTextureParameterIuivEXT, "glTextureParameterIuivEXT");
-
 			FetchProcAddress(glTextureParameterfEXT, "glTextureParameterfEXT");
-
 			FetchProcAddress(glTextureParameterfvEXT, "glTextureParameterfvEXT");
-
 			FetchProcAddress(glTextureParameteriEXT, "glTextureParameteriEXT");
-
 			FetchProcAddress(glTextureParameterivEXT, "glTextureParameterivEXT");
-
 			FetchProcAddress(glTextureRenderbufferEXT, "glTextureRenderbufferEXT");
-
 			FetchProcAddress(glTextureSubImage1DEXT, "glTextureSubImage1DEXT");
-
 			FetchProcAddress(glTextureSubImage2DEXT, "glTextureSubImage2DEXT");
-
 			FetchProcAddress(glTextureSubImage3DEXT, "glTextureSubImage3DEXT");
-
 			FetchProcAddress(glUnmapNamedBufferEXT, "glUnmapNamedBufferEXT");
-
 			FetchProcAddress(glVertexArrayColorOffsetEXT, "glVertexArrayColorOffsetEXT");
-
 			FetchProcAddress(glVertexArrayEdgeFlagOffsetEXT, "glVertexArrayEdgeFlagOffsetEXT");
-
 			FetchProcAddress(glVertexArrayFogCoordOffsetEXT, "glVertexArrayFogCoordOffsetEXT");
-
 			FetchProcAddress(glVertexArrayIndexOffsetEXT, "glVertexArrayIndexOffsetEXT");
-
 			FetchProcAddress(glVertexArrayMultiTexCoordOffsetEXT, "glVertexArrayMultiTexCoordOffsetEXT");
-
 			FetchProcAddress(glVertexArrayNormalOffsetEXT, "glVertexArrayNormalOffsetEXT");
-
 			FetchProcAddress(glVertexArraySecondaryColorOffsetEXT, "glVertexArraySecondaryColorOffsetEXT");
-
 			FetchProcAddress(glVertexArrayTexCoordOffsetEXT, "glVertexArrayTexCoordOffsetEXT");
-
 			FetchProcAddress(glVertexArrayVertexAttribDivisorEXT, "glVertexArrayVertexAttribDivisorEXT");
-
 			FetchProcAddress(glVertexArrayVertexAttribIOffsetEXT, "glVertexArrayVertexAttribIOffsetEXT");
-
 			FetchProcAddress(glVertexArrayVertexAttribOffsetEXT, "glVertexArrayVertexAttribOffsetEXT");
-
 			FetchProcAddress(glVertexArrayVertexOffsetEXT, "glVertexArrayVertexOffsetEXT");
-
-			FetchProcAddress(EXT_direct_state_access, "EXT_direct_state_access");
-
 
 			//discard framebuffer
 			FetchProcAddress(glDiscardFramebufferEXT, "glDiscardFramebufferEXT");
 
-			FetchProcAddress(EXT_discard_framebuffer, "EXT_discard_framebuffer");
-
-
 			//draw buffers
 			FetchProcAddress(glDrawBuffersEXT, "glDrawBuffersEXT");
 
-			FetchProcAddress(EXT_draw_buffers, "EXT_draw_buffers");
-
-
 			//draw buffers2
 			FetchProcAddress(glColorMaskIndexedEXT, "glColorMaskIndexedEXT");
-
 			FetchProcAddress(glDisableIndexedEXT, "glDisableIndexedEXT");
-
 			FetchProcAddress(glEnableIndexedEXT, "glEnableIndexedEXT");
-
 			FetchProcAddress(glGetBooleanIndexedvEXT, "glGetBooleanIndexedvEXT");
-
 			FetchProcAddress(glGetIntegerIndexedvEXT, "glGetIntegerIndexedvEXT");
-
 			FetchProcAddress(glIsEnabledIndexedEXT, "glIsEnabledIndexedEXT");
-
-			FetchProcAddress(EXT_draw_buffers2, "EXT_draw_buffers2");
-
 
 			//draw buffers indexed
 			FetchProcAddress(glBlendEquationSeparateiEXT, "glBlendEquationSeparateiEXT");
-
 			FetchProcAddress(glBlendEquationiEXT, "glBlendEquationiEXT");
-
 			FetchProcAddress(glBlendFuncSeparateiEXT, "glBlendFuncSeparateiEXT");
-
 			FetchProcAddress(glBlendFunciEXT, "glBlendFunciEXT");
-
 			FetchProcAddress(glColorMaskiEXT, "glColorMaskiEXT");
-
 			FetchProcAddress(glDisableiEXT, "glDisableiEXT");
-
 			FetchProcAddress(glEnableiEXT, "glEnableiEXT");
-
 			FetchProcAddress(glIsEnablediEXT, "glIsEnablediEXT");
-
-			FetchProcAddress(EXT_draw_buffers_indexed, "EXT_draw_buffers_indexed");
-
 
 			//draw elements base vertex
 			FetchProcAddress(glDrawElementsBaseVertexEXT, "glDrawElementsBaseVertexEXT");
-
 			FetchProcAddress(glDrawElementsInstancedBaseVertexEXT, "glDrawElementsInstancedBaseVertexEXT");
-
 			FetchProcAddress(glDrawRangeElementsBaseVertexEXT, "glDrawRangeElementsBaseVertexEXT");
-
 			FetchProcAddress(glMultiDrawElementsBaseVertexEXT, "glMultiDrawElementsBaseVertexEXT");
-
-			FetchProcAddress(EXT_draw_elements_base_vertex, "EXT_draw_elements_base_vertex");
-
 
 			//draw instanced
 			FetchProcAddress(glDrawArraysInstancedEXT, "glDrawArraysInstancedEXT");
-
 			FetchProcAddress(glDrawElementsInstancedEXT, "glDrawElementsInstancedEXT");
-
-			FetchProcAddress(EXT_draw_instanced, "EXT_draw_instanced");
-
 
 			//draw range elements
 			FetchProcAddress(glDrawRangeElementsEXT, "glDrawRangeElementsEXT");
 
-			FetchProcAddress(EXT_draw_range_elements, "EXT_draw_range_elements");
-
-
-
 			//external buffer
 			FetchProcAddress(glBufferStorageExternalEXT, "glBufferStorageExternalEXT");
-
-			FetchProcAddress(glNamedBufferStorageExternalEXT, "glNamedBufferStorageExternalEXT");
-
-			FetchProcAddress(EXT_external_buffer, "EXT_external_buffer");
-
-
-			//float blend
-			FetchProcAddress(EXT_float_blend, "EXT_float_blend");
-
+			FetchProcAddress(glNamedBufferStorageExternalEXT, "glNamedBufferStorageExternalEXT");		
 
 			//fog coord
 			FetchProcAddress(glFogCoordPointerEXT, "glFogCoordPointerEXT");
-
 			FetchProcAddress(glFogCoorddEXT, "glFogCoorddEXT");
-
 			FetchProcAddress(glFogCoorddvEXT, "glFogCoorddvEXT");
-
 			FetchProcAddress(glFogCoordfEXT, "glFogCoordfEXT");
-
 			FetchProcAddress(glFogCoordfvEXT, "glFogCoordfvEXT");
-
-			FetchProcAddress(EXT_fog_coord, "EXT_fog_coord");
-
-
-
-			//frag depth
-			FetchProcAddress(EXT_frag_depth, "EXT_frag_depth");
-
-
 
 			//fragment lighting
 			FetchProcAddress(glFragmentColorMaterialEXT, "glFragmentColorMaterialEXT");
-
 			FetchProcAddress(glFragmentLightModelfEXT, "glFragmentLightModelfEXT");
-
 			FetchProcAddress(glFragmentLightModelfvEXT, "glFragmentLightModelfvEXT");
-
 			FetchProcAddress(glFragmentLightModeliEXT, "glFragmentLightModeliEXT");
-
 			FetchProcAddress(glFragmentLightModelivEXT, "glFragmentLightModelivEXT");
-
 			FetchProcAddress(glFragmentLightfEXT, "glFragmentLightfEXT");
-
 			FetchProcAddress(glFragmentLightfvEXT, "glFragmentLightfvEXT");
-
 			FetchProcAddress(glFragmentLightiEXT, "glFragmentLightiEXT");
-
 			FetchProcAddress(glFragmentLightivEXT, "glFragmentLightivEXT");
-
 			FetchProcAddress(glFragmentMaterialfEXT, "glFragmentMaterialfEXT");
-
 			FetchProcAddress(glFragmentMaterialfvEXT, "glFragmentMaterialfvEXT");
-
 			FetchProcAddress(glFragmentMaterialiEXT, "glFragmentMaterialiEXT");
-
 			FetchProcAddress(glFragmentMaterialivEXT, "glFragmentMaterialivEXT");
-
 			FetchProcAddress(glGetFragmentLightfvEXT, "glGetFragmentLightfvEXT");
-
 			FetchProcAddress(glGetFragmentLightivEXT, "glGetFragmentLightivEXT");
-
 			FetchProcAddress(glGetFragmentMaterialfvEXT, "glGetFragmentMaterialfvEXT");
-
 			FetchProcAddress(glGetFragmentMaterialivEXT, "glGetFragmentMaterialivEXT");
-
 			FetchProcAddress(glLightEnviEXT, "glLightEnviEXT");
-
-			FetchProcAddress(EXT_fragment_lighting, "EXT_fragment_lighting");
-
 
 			//framebuffer blit
 			FetchProcAddress(glBlitFramebufferEXT, "glBlitFramebufferEXT");
 
-			FetchProcAddress(EXT_framebuffer_blit, "EXT_framebuffer_blit");
-
-
 			//framebuffer multisample
 			FetchProcAddress(glRenderbufferStorageMultisampleEXT, "glRenderbufferStorageMultisampleEXT");
 
-			FetchProcAddress(EXT_framebuffer_multisample, "EXT_framebuffer_multisample");
-
-
-			//framebuffer multisample blit scaled
-			FetchProcAddress(EXT_framebuffer_multisample_blit_scaled, "EXT_framebuffer_multisample_blit_scaled");
-
-
 			//framebuffer object
 			FetchProcAddress(glBindFramebufferEXT, "glBindFramebufferEXT");
-
 			FetchProcAddress(glBindRenderbufferEXT, "glBindRenderbufferEXT");
-
 			FetchProcAddress(glCheckFramebufferStatusEXT, "glCheckFramebufferStatusEXT");
-
 			FetchProcAddress(glDeleteFramebuffersEXT, "glDeleteFramebuffersEXT");
-
 			FetchProcAddress(glDeleteRenderbuffersEXT, "glDeleteRenderbuffersEXT");
-
 			FetchProcAddress(glFramebufferRenderbufferEXT, "glFramebufferRenderbufferEXT");
-
 			FetchProcAddress(glFramebufferTexture1DEXT, "glFramebufferTexture1DEXT");
-
 			FetchProcAddress(glFramebufferTexture2DEXT, "glFramebufferTexture2DEXT");
-
 			FetchProcAddress(glFramebufferTexture3DEXT, "glFramebufferTexture3DEXT");
-
 			FetchProcAddress(glGenFramebuffersEXT, "glGenFramebuffersEXT");
-
 			FetchProcAddress(glGenRenderbuffersEXT, "glGenRenderbuffersEXT");
-
 			FetchProcAddress(glGenerateMipmapEXT, "glGenerateMipmapEXT");
-
 			FetchProcAddress(glGetFramebufferAttachmentParameterivEXT, "glGetFramebufferAttachmentParameterivEXT");
-
 			FetchProcAddress(glGetRenderbufferParameterivEXT, "glGetRenderbufferParameterivEXT");
-
 			FetchProcAddress(glIsFramebufferEXT, "glIsFramebufferEXT");
-
 			FetchProcAddress(glIsRenderbufferEXT, "glIsRenderbufferEXT");
-
 			FetchProcAddress(glRenderbufferStorageEXT, "glRenderbufferStorageEXT");
-
-			FetchProcAddress(EXT_framebuffer_object, "EXT_framebuffer_object");
-
-
-			//framebuffer sRGB
-			FetchProcAddress(EXT_framebuffer_sRGB, "EXT_framebuffer_sRGB");
-
-
-			//geometry point size
-			FetchProcAddress(EXT_geometry_point_size, "EXT_geometry_point_size");
-
-
-			//geometry shader
-			FetchProcAddress(EXT_geometry_shader, "EXT_geometry_shader");
-
 
 			//geometry shader4
 			FetchProcAddress(glFramebufferTextureEXT, "glFramebufferTextureEXT");
-
 			FetchProcAddress(glFramebufferTextureFaceEXT, "glFramebufferTextureFaceEXT");
-
 			FetchProcAddress(glProgramParameteriEXT, "glProgramParameteriEXT");
-
-			FetchProcAddress(EXT_geometry_shader4, "EXT_geometry_shader4");
-
 
 			//gpu program parameters
 			FetchProcAddress(glProgramEnvParameters4fvEXT, "glProgramEnvParameters4fvEXT");
-
 			FetchProcAddress(glProgramLocalParameters4fvEXT, "glProgramLocalParameters4fvEXT");
-
-			FetchProcAddress(EXT_gpu_program_parameters, "EXT_gpu_program_parameters");
-
 
 			//gpu shader4
 			FetchProcAddress(glBindFragDataLocationEXT, "glBindFragDataLocationEXT");
-
 			FetchProcAddress(glGetFragDataLocationEXT, "glGetFragDataLocationEXT");
-
 			FetchProcAddress(glGetUniformuivEXT, "glGetUniformuivEXT");
-
 			FetchProcAddress(glGetVertexAttribIivEXT, "glGetVertexAttribIivEXT");
-
 			FetchProcAddress(glGetVertexAttribIuivEXT, "glGetVertexAttribIuivEXT");
-
 			FetchProcAddress(glUniform1uiEXT, "glUniform1uiEXT");
-
 			FetchProcAddress(glUniform1uivEXT, "glUniform1uivEXT");
-
 			FetchProcAddress(glUniform2uiEXT, "glUniform2uiEXT");
-
 			FetchProcAddress(glUniform2uivEXT, "glUniform2uivEXT");
-
 			FetchProcAddress(glUniform3uiEXT, "glUniform3uiEXT");
-
 			FetchProcAddress(glUniform3uivEXT, "glUniform3uivEXT");
-
 			FetchProcAddress(glUniform4uiEXT, "glUniform4uiEXT");
-
 			FetchProcAddress(glUniform4uivEXT, "glUniform4uivEXT");
-
 			FetchProcAddress(glVertexAttribI1iEXT, "glVertexAttribI1iEXT");
-
 			FetchProcAddress(glVertexAttribI1ivEXT, "glVertexAttribI1ivEXT");
-
 			FetchProcAddress(glVertexAttribI1uiEXT, "glVertexAttribI1uiEXT");
-
 			FetchProcAddress(glVertexAttribI1uivEXT, "glVertexAttribI1uivEXT");
-
 			FetchProcAddress(glVertexAttribI2iEXT, "glVertexAttribI2iEXT");
-
 			FetchProcAddress(glVertexAttribI2ivEXT, "glVertexAttribI2ivEXT");
-
 			FetchProcAddress(glVertexAttribI2uiEXT, "glVertexAttribI2uiEXT");
-
 			FetchProcAddress(glVertexAttribI2uivEXT, "glVertexAttribI2uivEXT");
-
 			FetchProcAddress(glVertexAttribI3iEXT, "glVertexAttribI3iEXT");
-
 			FetchProcAddress(glVertexAttribI3ivEXT, "glVertexAttribI3ivEXT");
-
 			FetchProcAddress(glVertexAttribI3uiEXT, "glVertexAttribI3uiEXT");
-
 			FetchProcAddress(glVertexAttribI3uivEXT, "glVertexAttribI3uivEXT");
-
 			FetchProcAddress(glVertexAttribI4bvEXT, "glVertexAttribI4bvEXT");
-
 			FetchProcAddress(glVertexAttribI4iEXT, "glVertexAttribI4iEXT");
-
 			FetchProcAddress(glVertexAttribI4ivEXT, "glVertexAttribI4ivEXT");
-
 			FetchProcAddress(glVertexAttribI4svEXT, "glVertexAttribI4svEXT");
-
 			FetchProcAddress(glVertexAttribI4ubvEXT, "glVertexAttribI4ubvEXT");
-
 			FetchProcAddress(glVertexAttribI4uiEXT, "glVertexAttribI4uiEXT");
-
 			FetchProcAddress(glVertexAttribI4uivEXT, "glVertexAttribI4uivEXT");
-
 			FetchProcAddress(glVertexAttribI4usvEXT, "glVertexAttribI4usvEXT");
-
 			FetchProcAddress(glVertexAttribIPointerEXT, "glVertexAttribIPointerEXT");
-
-			FetchProcAddress(EXT_gpu_shader4, "EXT_gpu_shader4");
-
-
-			//gpu shader5
-			FetchProcAddress(EXT_gpu_shader5, "EXT_gpu_shader5");
-
 
 			//histogram
 			FetchProcAddress(glGetHistogramEXT, "glGetHistogramEXT");
-
 			FetchProcAddress(glGetHistogramParameterfvEXT, "glGetHistogramParameterfvEXT");
-
 			FetchProcAddress(glGetHistogramParameterivEXT, "glGetHistogramParameterivEXT");
-
 			FetchProcAddress(glGetMinmaxEXT, "glGetMinmaxEXT");
-
 			FetchProcAddress(glGetMinmaxParameterfvEXT, "glGetMinmaxParameterfvEXT");
-
 			FetchProcAddress(glGetMinmaxParameterivEXT, "glGetMinmaxParameterivEXT");
-
 			FetchProcAddress(glHistogramEXT, "glHistogramEXT");
-
 			FetchProcAddress(glMinmaxEXT, "glMinmaxEXT");
-
 			FetchProcAddress(glResetHistogramEXT, "glResetHistogramEXT");
-
-			FetchProcAddress(glResetMinmaxEXT, "glResetMinmaxEXT");
-
-			FetchProcAddress(EXT_histogram, "EXT_histogram");
-
-
-			//index array formats
-			FetchProcAddress(EXT_index_array_formats, "EXT_index_array_formats");
-
+			FetchProcAddress(glResetMinmaxEXT, "glResetMinmaxEXT");	
 
 			//index func
 			FetchProcAddress(glIndexFuncEXT, "glIndexFuncEXT");
 
-			FetchProcAddress(EXT_index_func, "EXT_index_func");
-
-
 			//index material
 			FetchProcAddress(glIndexMaterialEXT, "glIndexMaterialEXT");
-
-			FetchProcAddress(EXT_index_material, "EXT_index_material");
-
-
-			//index texture
-			FetchProcAddress(EXT_index_texture, "EXT_index_texture");
-
 
 			//instanced arrays
 			FetchProcAddress(glVertexAttribDivisorEXT, "glVertexAttribDivisorEXT");
 
-			FetchProcAddress(EXT_instanced_arrays, "EXT_instanced_arrays");
-
-
 			//light texture
 			FetchProcAddress(glApplyTextureEXT, "glApplyTextureEXT");
-
 			FetchProcAddress(glTextureLightEXT, "glTextureLightEXT");
-
 			FetchProcAddress(glTextureMaterialEXT, "glTextureMaterialEXT");
-
-			FetchProcAddress(EXT_light_texture, "EXT_light_texture");
-
 
 			//map buffer range
 			FetchProcAddress(glFlushMappedBufferRangeEXT, "glFlushMappedBufferRangeEXT");
-
 			FetchProcAddress(glMapBufferRangeEXT, "glMapBufferRangeEXT");
-
-			FetchProcAddress(EXT_map_buffer_range, "EXT_map_buffer_range");
-
 
 			//memory object
 			FetchProcAddress(glBufferStorageMemEXT, "glBufferStorageMemEXT");
-
 			FetchProcAddress(glCreateMemoryObjectsEXT, "glCreateMemoryObjectsEXT");
-
 			FetchProcAddress(glDeleteMemoryObjectsEXT, "glDeleteMemoryObjectsEXT");
-
 			FetchProcAddress(glGetMemoryObjectParameterivEXT, "glGetMemoryObjectParameterivEXT");
-
 			FetchProcAddress(glGetUnsignedBytei_vEXT, "glGetUnsignedBytei_vEXT");
-
 			FetchProcAddress(glGetUnsignedBytevEXT, "glGetUnsignedBytevEXT");
-
 			FetchProcAddress(glIsMemoryObjectEXT, "glIsMemoryObjectEXT");
-
 			FetchProcAddress(glMemoryObjectParameterivEXT, "glMemoryObjectParameterivEXT");
-
 			FetchProcAddress(glNamedBufferStorageMemEXT, "glNamedBufferStorageMemEXT");
-
 			FetchProcAddress(glTexStorageMem1DEXT, "glTexStorageMem1DEXT");
-
 			FetchProcAddress(glTexStorageMem2DEXT, "glTexStorageMem2DEXT");
-
 			FetchProcAddress(glTexStorageMem2DMultisampleEXT, "glTexStorageMem2DMultisampleEXT");
-
 			FetchProcAddress(glTexStorageMem3DEXT, "glTexStorageMem3DEXT");
-
 			FetchProcAddress(glTexStorageMem3DMultisampleEXT, "glTexStorageMem3DMultisampleEXT");
-
 			FetchProcAddress(glTextureStorageMem1DEXT, "glTextureStorageMem1DEXT");
-
 			FetchProcAddress(glTextureStorageMem2DEXT, "glTextureStorageMem2DEXT");
-
 			FetchProcAddress(glTextureStorageMem2DMultisampleEXT, "glTextureStorageMem2DMultisampleEXT");
-
 			FetchProcAddress(glTextureStorageMem3DEXT, "glTextureStorageMem3DEXT");
-
 			FetchProcAddress(glTextureStorageMem3DMultisampleEXT, "glTextureStorageMem3DMultisampleEXT");
-
-			FetchProcAddress(EXT_memory_object, "EXT_memory_object");
-
 
 			//memory object fd
 			FetchProcAddress(glImportMemoryFdEXT, "glImportMemoryFdEXT");
 
-			FetchProcAddress(EXT_memory_object_fd, "EXT_memory_object_fd");
-
-
 			//memory object win32
 			FetchProcAddress(glImportMemoryWin32HandleEXT, "glImportMemoryWin32HandleEXT");
-
 			FetchProcAddress(glImportMemoryWin32NameEXT, "glImportMemoryWin32NameEXT");
-
-			FetchProcAddress(EXT_memory_object_win32, "EXT_memory_object_win32");
-
-
-			//misc attribute
-			FetchProcAddress(EXT_misc_attribute, "EXT_misc_attribute");
-
 
 			//multi draw arrays
 			FetchProcAddress(glMultiDrawArraysEXT, "glMultiDrawArraysEXT");
-
 			FetchProcAddress(glMultiDrawElementsEXT, "glMultiDrawElementsEXT");
-
-			FetchProcAddress(EXT_multi_draw_arrays, "EXT_multi_draw_arrays");
-
 
 			//multi draw indirect
 			FetchProcAddress(glMultiDrawArraysIndirectEXT, "glMultiDrawArraysIndirectEXT");
-
 			FetchProcAddress(glMultiDrawElementsIndirectEXT, "glMultiDrawElementsIndirectEXT");
-
-			FetchProcAddress(EXT_multi_draw_indirect, "EXT_multi_draw_indirect");
-
-
-			//multiple textures
-			FetchProcAddress(EXT_multiple_textures, "EXT_multiple_textures");
-
 
 			//multisample
 			FetchProcAddress(glSampleMaskEXT, "glSampleMaskEXT");
-
 			FetchProcAddress(glSamplePatternEXT, "glSamplePatternEXT");
-
-			FetchProcAddress(EXT_multisample, "EXT_multisample");
-
-
-			//multisample compatibility
-			FetchProcAddress(EXT_multisample_compatibility, "EXT_multisample_compatibility");
-
 
 			//multisampled render to texture
 			FetchProcAddress(glFramebufferTexture2DMultisampleEXT, "glFramebufferTexture2DMultisampleEXT");
 
-			FetchProcAddress(EXT_multisampled_render_to_texture, "EXT_multisampled_render_to_texture");
-
-
-			//multisampled render to texture2
-			FetchProcAddress(EXT_multisampled_render_to_texture2, "EXT_multisampled_render_to_texture2");
-
-
 			//multiview draw buffers
 			FetchProcAddress(glDrawBuffersIndexedEXT, "glDrawBuffersIndexedEXT");
-
 			FetchProcAddress(glGetIntegeri_vEXT, "glGetIntegeri_vEXT");
-
 			FetchProcAddress(glReadBufferIndexedEXT, "glReadBufferIndexedEXT");
-
-			FetchProcAddress(EXT_multiview_draw_buffers, "EXT_multiview_draw_buffers");
-
-
-			//packed depth stencil
-			FetchProcAddress(EXT_packed_depth_stencil, "EXT_packed_depth_stencil");
-
-
-			//packed float
-			FetchProcAddress(EXT_packed_float, "EXT_packed_float");
-
-
-			//packed pixels
-			FetchProcAddress(EXT_packed_pixels, "EXT_packed_pixels");
-
 
 			//paletted texture
 			FetchProcAddress(glColorTableEXT, "glColorTableEXT");
-
 			FetchProcAddress(glGetColorTableEXT, "glGetColorTableEXT");
-
 			FetchProcAddress(glGetColorTableParameterfvEXT, "glGetColorTableParameterfvEXT");
-
 			FetchProcAddress(glGetColorTableParameterivEXT, "glGetColorTableParameterivEXT");
-
-			FetchProcAddress(EXT_paletted_texture, "EXT_paletted_texture");
-
-
-			//pixel buffer object
-			FetchProcAddress(EXT_pixel_buffer_object, "EXT_pixel_buffer_object");
-
 
 			//pixel transform
 			FetchProcAddress(glGetPixelTransformParameterfvEXT, "glGetPixelTransformParameterfvEXT");
-
 			FetchProcAddress(glGetPixelTransformParameterivEXT, "glGetPixelTransformParameterivEXT");
-
 			FetchProcAddress(glPixelTransformParameterfEXT, "glPixelTransformParameterfEXT");
-
 			FetchProcAddress(glPixelTransformParameterfvEXT, "glPixelTransformParameterfvEXT");
-
 			FetchProcAddress(glPixelTransformParameteriEXT, "glPixelTransformParameteriEXT");
-
-			FetchProcAddress(glPixelTransformParameterivEXT, "glPixelTransformParameterivEXT");
-
-			FetchProcAddress(EXT_pixel_transform, "EXT_pixel_transform");
-
-
-			//pixel transform color table
-			FetchProcAddress(EXT_pixel_transform_color_table, "EXT_pixel_transform_color_table");
-
+			FetchProcAddress(glPixelTransformParameterivEXT, "glPixelTransformParameterivEXT");			
 
 			//point parameters
 			FetchProcAddress(glPointParameterfEXT, "glPointParameterfEXT");
-
 			FetchProcAddress(glPointParameterfvEXT, "glPointParameterfvEXT");
-
-			FetchProcAddress(EXT_point_parameters, "EXT_point_parameters");
-
 
 			//polygon offset
 			FetchProcAddress(glPolygonOffsetEXT, "glPolygonOffsetEXT");
 
-			FetchProcAddress(EXT_polygon_offset, "EXT_polygon_offset");
-
-
 			//polygon offset clamp
-			FetchProcAddress(glPolygonOffsetClampEXT, "glPolygonOffsetClampEXT");
-
-			FetchProcAddress(EXT_polygon_offset_clamp, "EXT_polygon_offset_clamp");
-
-
-			//post depth coverage
-			FetchProcAddress(EXT_post_depth_coverage, "EXT_post_depth_coverage");
-
+			FetchProcAddress(glPolygonOffsetClampEXT, "glPolygonOffsetClampEXT");		
 
 			//provoking vertex
 			FetchProcAddress(glProvokingVertexEXT, "glProvokingVertexEXT");
 
-			FetchProcAddress(EXT_provoking_vertex, "EXT_provoking_vertex");
-
-
-			//pvrtc sRGB
-			FetchProcAddress(EXT_pvrtc_sRGB, "EXT_pvrtc_sRGB");
-
-
 			//raster multisample
 			FetchProcAddress(glCoverageModulationNV, "glCoverageModulationNV");
-
 			FetchProcAddress(glCoverageModulationTableNV, "glCoverageModulationTableNV");
-
 			FetchProcAddress(glGetCoverageModulationTableNV, "glGetCoverageModulationTableNV");
-
-			FetchProcAddress(glRasterSamplesEXT, "glRasterSamplesEXT");
-
-			FetchProcAddress(EXT_raster_multisample, "EXT_raster_multisample");
-
-
-			//read format bgra
-			FetchProcAddress(EXT_read_format_bgra, "EXT_read_format_bgra");
-
-
-			//render snorm
-			FetchProcAddress(EXT_render_snorm, "EXT_render_snorm");
-
-
-			//rescale normal
-			FetchProcAddress(EXT_rescale_normal, "EXT_rescale_normal");
-
-
-			//sRGB
-			FetchProcAddress(EXT_sRGB, "EXT_sRGB");
-
-
-			//sRGB write control
-			FetchProcAddress(EXT_sRGB_write_control, "EXT_sRGB_write_control");
-
+			FetchProcAddress(glRasterSamplesEXT, "glRasterSamplesEXT");	
 
 			//scene marker
 			FetchProcAddress(glBeginSceneEXT, "glBeginSceneEXT");
-
 			FetchProcAddress(glEndSceneEXT, "glEndSceneEXT");
-
-			FetchProcAddress(EXT_scene_marker, "EXT_scene_marker");
-
 
 			//secondary color
 			FetchProcAddress(glSecondaryColor3bEXT, "glSecondaryColor3bEXT");
-
 			FetchProcAddress(glSecondaryColor3bvEXT, "glSecondaryColor3bvEXT");
-
 			FetchProcAddress(glSecondaryColor3dEXT, "glSecondaryColor3dEXT");
-
 			FetchProcAddress(glSecondaryColor3dvEXT, "glSecondaryColor3dvEXT");
-
 			FetchProcAddress(glSecondaryColor3fEXT, "glSecondaryColor3fEXT");
-
 			FetchProcAddress(glSecondaryColor3fvEXT, "glSecondaryColor3fvEXT");
-
 			FetchProcAddress(glSecondaryColor3iEXT, "glSecondaryColor3iEXT");
-
 			FetchProcAddress(glSecondaryColor3ivEXT, "glSecondaryColor3ivEXT");
-
 			FetchProcAddress(glSecondaryColor3sEXT, "glSecondaryColor3sEXT");
-
 			FetchProcAddress(glSecondaryColor3svEXT, "glSecondaryColor3svEXT");
-
 			FetchProcAddress(glSecondaryColor3ubEXT, "glSecondaryColor3ubEXT");
-
 			FetchProcAddress(glSecondaryColor3ubvEXT, "glSecondaryColor3ubvEXT");
-
 			FetchProcAddress(glSecondaryColor3uiEXT, "glSecondaryColor3uiEXT");
-
 			FetchProcAddress(glSecondaryColor3uivEXT, "glSecondaryColor3uivEXT");
-
 			FetchProcAddress(glSecondaryColor3usEXT, "glSecondaryColor3usEXT");
-
 			FetchProcAddress(glSecondaryColor3usvEXT, "glSecondaryColor3usvEXT");
-
 			FetchProcAddress(glSecondaryColorPointerEXT, "glSecondaryColorPointerEXT");
-
-			FetchProcAddress(EXT_secondary_color, "EXT_secondary_color");
-
 
 			//semaphore
 			FetchProcAddress(glDeleteSemaphoresEXT, "glDeleteSemaphoresEXT");
-
 			FetchProcAddress(glGenSemaphoresEXT, "glGenSemaphoresEXT");
-
 			FetchProcAddress(glGetSemaphoreParameterui64vEXT, "glGetSemaphoreParameterui64vEXT");
-
 			FetchProcAddress(glIsSemaphoreEXT, "glIsSemaphoreEXT");
-
 			FetchProcAddress(glSemaphoreParameterui64vEXT, "glSemaphoreParameterui64vEXT");
-
 			FetchProcAddress(glSignalSemaphoreEXT, "glSignalSemaphoreEXT");
-
 			FetchProcAddress(glWaitSemaphoreEXT, "glWaitSemaphoreEXT");
-
-			FetchProcAddress(EXT_semaphore, "EXT_semaphore");
-
 
 			//semaphore fd
 			FetchProcAddress(glImportSemaphoreFdEXT, "glImportSemaphoreFdEXT");
 
-			FetchProcAddress(EXT_semaphore_fd, "EXT_semaphore_fd");
-
-
 			//semaphore win32
 			FetchProcAddress(glImportSemaphoreWin32HandleEXT, "glImportSemaphoreWin32HandleEXT");
-
 			FetchProcAddress(glImportSemaphoreWin32NameEXT, "glImportSemaphoreWin32NameEXT");
-
-			FetchProcAddress(EXT_semaphore_win32, "EXT_semaphore_win32");
-
 
 			//separate shader objects
 			FetchProcAddress(glActiveProgramEXT, "glActiveProgramEXT");
-
 			FetchProcAddress(glCreateShaderProgramEXT, "glCreateShaderProgramEXT");
-
 			FetchProcAddress(glUseShaderProgramEXT, "glUseShaderProgramEXT");
-
-			FetchProcAddress(EXT_separate_shader_objects, "EXT_separate_shader_objects");
-
-
-			//separate specular color
-			FetchProcAddress(EXT_separate_specular_color, "EXT_separate_specular_color");
-
-
-			//shader framebuffer fetch
-			FetchProcAddress(EXT_shader_framebuffer_fetch, "EXT_shader_framebuffer_fetch");
-
-
-			//shader group vote
-			FetchProcAddress(EXT_shader_group_vote, "EXT_shader_group_vote");
-
-
-			//shader image load formatted
-			FetchProcAddress(EXT_shader_image_load_formatted, "EXT_shader_image_load_formatted");
-
 
 			//shader image load store
 			FetchProcAddress(glBindImageTextureEXT, "glBindImageTextureEXT");
-
 			FetchProcAddress(glMemoryBarrierEXT, "glMemoryBarrierEXT");
-
-			FetchProcAddress(EXT_shader_image_load_store, "EXT_shader_image_load_store");
-
-
-			//shader implicit conversions
-			FetchProcAddress(EXT_shader_implicit_conversions, "EXT_shader_implicit_conversions");
-
-
-			//shader integer mix
-			FetchProcAddress(EXT_shader_integer_mix, "EXT_shader_integer_mix");
-
-
-			//shader io blocks
-			FetchProcAddress(EXT_shader_io_blocks, "EXT_shader_io_blocks");
-
-
-			//shader non constant global initializers
-			FetchProcAddress(EXT_shader_non_constant_global_initializers, "EXT_shader_non_constant_global_initializers");
-
-
-			//shader pixel local storage
-			FetchProcAddress(EXT_shader_pixel_local_storage, "EXT_shader_pixel_local_storage");
-
 
 			//shader pixel local storage2
 			FetchProcAddress(glClearPixelLocalStorageuiEXT, "glClearPixelLocalStorageuiEXT");
-
 			FetchProcAddress(glFramebufferPixelLocalStorageSizeEXT, "glFramebufferPixelLocalStorageSizeEXT");
-
 			FetchProcAddress(glGetFramebufferPixelLocalStorageSizeEXT, "glGetFramebufferPixelLocalStorageSizeEXT");
-
-			FetchProcAddress(EXT_shader_pixel_local_storage2, "EXT_shader_pixel_local_storage2");
-
-
-			//shader texture lod
-			FetchProcAddress(EXT_shader_texture_lod, "EXT_shader_texture_lod");
-
-
-			//shadow funcs
-			FetchProcAddress(EXT_shadow_funcs, "EXT_shadow_funcs");
-
-
-			//shadow samplers
-			FetchProcAddress(EXT_shadow_samplers, "EXT_shadow_samplers");
-
-
-			//shared texture palette
-			FetchProcAddress(EXT_shared_texture_palette, "EXT_shared_texture_palette");
-
 
 			//sparse texture
 			FetchProcAddress(glTexPageCommitmentEXT, "glTexPageCommitmentEXT");
-
 			FetchProcAddress(glTexturePageCommitmentEXT, "glTexturePageCommitmentEXT");
-
-			FetchProcAddress(EXT_sparse_texture, "EXT_sparse_texture");
-
-
-			//sparse texture2
-			FetchProcAddress(EXT_sparse_texture2, "EXT_sparse_texture2");
-
-
-			//stencil clear tag
-			FetchProcAddress(EXT_stencil_clear_tag, "EXT_stencil_clear_tag");
-
 
 			//stencil two side
 			FetchProcAddress(glActiveStencilFaceEXT, "glActiveStencilFaceEXT");
 
-			FetchProcAddress(EXT_stencil_two_side, "EXT_stencil_two_side");
-
-
-			//stencil wrap
-			FetchProcAddress(EXT_stencil_wrap, "EXT_stencil_wrap");
-
-
 			//subtexture
 			FetchProcAddress(glTexSubImage1DEXT, "glTexSubImage1DEXT");
-
 			FetchProcAddress(glTexSubImage2DEXT, "glTexSubImage2DEXT");
-
 			FetchProcAddress(glTexSubImage3DEXT, "glTexSubImage3DEXT");
-
-			FetchProcAddress(EXT_subtexture, "EXT_subtexture");
-
-
-			//texture
-			FetchProcAddress(EXT_texture, "EXT_texture");
-
 
 			//texture3D
 			FetchProcAddress(glTexImage3DEXT, "glTexImage3DEXT");
 
-			FetchProcAddress(EXT_texture3D, "EXT_texture3D");
-
-
 			//texture array
 			FetchProcAddress(glFramebufferTextureLayerEXT, "glFramebufferTextureLayerEXT");
-
-			FetchProcAddress(EXT_texture_array, "EXT_texture_array");
-
 
 			//texture buffer object
 			FetchProcAddress(glTexBufferEXT, "glTexBufferEXT");
 
-			FetchProcAddress(EXT_texture_buffer_object, "EXT_texture_buffer_object");
-
-
-			//texture compression astc decode mode
-			FetchProcAddress(EXT_texture_compression_astc_decode_mode, "EXT_texture_compression_astc_decode_mode");
-
-
-			//texture compression astc decode mode rgb9e5
-			FetchProcAddress(EXT_texture_compression_astc_decode_mode_rgb9e5, "EXT_texture_compression_astc_decode_mode_rgb9e5");
-
-
-			//texture compression bptc
-			FetchProcAddress(EXT_texture_compression_bptc, "EXT_texture_compression_bptc");
-
-
-			//texture compression dxt1
-			FetchProcAddress(EXT_texture_compression_dxt1, "EXT_texture_compression_dxt1");
-
-
-			//texture compression latc
-			FetchProcAddress(EXT_texture_compression_latc, "EXT_texture_compression_latc");
-
-
-			//texture compression rgtc
-			FetchProcAddress(EXT_texture_compression_rgtc, "EXT_texture_compression_rgtc");
-
-
-			//texture compression s3tc
-			FetchProcAddress(EXT_texture_compression_s3tc, "EXT_texture_compression_s3tc");
-
-
-			//texture cube map
-			FetchProcAddress(EXT_texture_cube_map, "EXT_texture_cube_map");
-
-
-			//texture cube map array
-			FetchProcAddress(EXT_texture_cube_map_array, "EXT_texture_cube_map_array");
-
-
-			//texture_edge_clamp
-			FetchProcAddress(EXT_texture_edge_clamp, "EXT_texture_edge_clamp");
-
-
-			//texture_env
-			FetchProcAddress(EXT_texture_env, "EXT_texture_env");
-
-
-			//texture_env_add
-			FetchProcAddress(EXT_texture_env_add, "EXT_texture_env_add");
-
-
-			//texture_env_combine
-			FetchProcAddress(EXT_texture_env_combine, "EXT_texture_env_combine");
-
-
-			//texture_env_dot3
-			FetchProcAddress(EXT_texture_env_dot3, "EXT_texture_env_dot3");
-
-
-			//texture_filter_anisotropic
-			FetchProcAddress(EXT_texture_filter_anisotropic, "EXT_texture_filter_anisotropic");
-
-
-			//texture_filter_minmax
-			FetchProcAddress(EXT_texture_filter_minmax, "EXT_texture_filter_minmax");
-
-
-			//texture_format_BGRA8888
-			FetchProcAddress(EXT_texture_format_BGRA8888, "EXT_texture_format_BGRA8888");
-
-
 			//texture_integer
 			FetchProcAddress(glClearColorIiEXT, "glClearColorIiEXT");
-
 			FetchProcAddress(glClearColorIuiEXT, "glClearColorIuiEXT");
-
 			FetchProcAddress(glGetTexParameterIivEXT, "glGetTexParameterIivEXT");
-
 			FetchProcAddress(glGetTexParameterIuivEXT, "glGetTexParameterIuivEXT");
-
 			FetchProcAddress(glTexParameterIivEXT, "glTexParameterIivEXT");
-
 			FetchProcAddress(glTexParameterIuivEXT, "glTexParameterIuivEXT");
-
-			FetchProcAddress(EXT_texture_integer, "EXT_texture_integer");
-
-
-			//texture_lod_bias
-			FetchProcAddress(EXT_texture_lod_bias, "EXT_texture_lod_bias");
-
-
-			//texture_mirror_clamp
-			FetchProcAddress(EXT_texture_mirror_clamp, "EXT_texture_mirror_clamp");
-
-
-			//texture_norm16
-			FetchProcAddress(EXT_texture_norm16, "EXT_texture_norm16");
-
 
 			//texture_object
 			FetchProcAddress(glAreTexturesResidentEXT, "glAreTexturesResidentEXT");
-
 			FetchProcAddress(glBindTextureEXT, "glBindTextureEXT");
-
 			FetchProcAddress(glDeleteTexturesEXT, "glDeleteTexturesEXT");
-
 			FetchProcAddress(glGenTexturesEXT, "glGenTexturesEXT");
-
 			FetchProcAddress(glIsTextureEXT, "glIsTextureEXT");
-
 			FetchProcAddress(glPrioritizeTexturesEXT, "glPrioritizeTexturesEXT");
-
-			FetchProcAddress(EXT_texture_object, "EXT_texture_object");
-
 
 			//texture_perturb_normal
 			FetchProcAddress(glTextureNormalEXT, "glTextureNormalEXT");
 
-			FetchProcAddress(EXT_texture_perturb_normal, "EXT_texture_perturb_normal");
-
-
-			//texture_rectangle
-			FetchProcAddress(EXT_texture_rectangle, "EXT_texture_rectangle");
-
-
-			//texture_rg
-			FetchProcAddress(EXT_texture_rg, "EXT_texture_rg");
-
-
-			//texture_sRGB
-			FetchProcAddress(EXT_texture_sRGB, "EXT_texture_sRGB");
-
-
-			//texture_sRGB_R8
-			FetchProcAddress(EXT_texture_sRGB_R8, "EXT_texture_sRGB_R8");
-
-
-			//texture_sRGB_RG8
-			FetchProcAddress(EXT_texture_sRGB_RG8, "EXT_texture_sRGB_RG8");
-
-
-			//texture_sRGB_decode
-			FetchProcAddress(EXT_texture_sRGB_decode, "EXT_texture_sRGB_decode");
-
-
-			//texture_shared_exponent
-			FetchProcAddress(EXT_texture_shared_exponent, "EXT_texture_shared_exponent");
-
-
-			//texture_snorm
-			FetchProcAddress(EXT_texture_snorm, "EXT_texture_snorm");
-
-
 			//texture_storage
 			FetchProcAddress(glTexStorage1DEXT, "glTexStorage1DEXT");
-
 			FetchProcAddress(glTexStorage2DEXT, "glTexStorage2DEXT");
-
 			FetchProcAddress(glTexStorage3DEXT, "glTexStorage3DEXT");
-
 			FetchProcAddress(glTextureStorage1DEXT, "glTextureStorage1DEXT");
-
 			FetchProcAddress(glTextureStorage2DEXT, "glTextureStorage2DEXT");
-
 			FetchProcAddress(glTextureStorage3DEXT, "glTextureStorage3DEXT");
-
-			FetchProcAddress(EXT_texture_storage, "EXT_texture_storage");
-
-
-			//texture_swizzle
-			FetchProcAddress(EXT_texture_swizzle, "EXT_texture_swizzle");
-
-
-			//texture_type_2_10_10_10_REV
-			FetchProcAddress(EXT_texture_type_2_10_10_10_REV, "EXT_texture_type_2_10_10_10_REV");
-
 
 			//texture_view
 			FetchProcAddress(glTextureViewEXT, "glTextureViewEXT");
 
-			FetchProcAddress(EXT_texture_view, "EXT_texture_view");
-
-
 			//timer_query
 			FetchProcAddress(glGetQueryObjecti64vEXT, "glGetQueryObjecti64vEXT");
-
 			FetchProcAddress(glGetQueryObjectui64vEXT, "glGetQueryObjectui64vEXT");
-
-			FetchProcAddress(EXT_timer_query, "EXT_timer_query");
-
 
 			//transform_feedback
 			FetchProcAddress(glBeginTransformFeedbackEXT, "glBeginTransformFeedbackEXT");
-
 			FetchProcAddress(glBindBufferBaseEXT, "glBindBufferBaseEXT");
-
 			FetchProcAddress(glBindBufferOffsetEXT, "glBindBufferOffsetEXT");
-
 			FetchProcAddress(glBindBufferRangeEXT, "glBindBufferRangeEXT");
-
 			FetchProcAddress(glEndTransformFeedbackEXT, "glEndTransformFeedbackEXT");
-
 			FetchProcAddress(glGetTransformFeedbackVaryingEXT, "glGetTransformFeedbackVaryingEXT");
-
 			FetchProcAddress(glTransformFeedbackVaryingsEXT, "glTransformFeedbackVaryingsEXT");
-
-			FetchProcAddress(EXT_transform_feedback, "EXT_transform_feedback");
-
-
-			//unpack_subimage
-			FetchProcAddress(EXT_unpack_subimage, "EXT_unpack_subimage");
-
 
 			//vertex_array
 			FetchProcAddress(glArrayElementEXT, "glArrayElementEXT");
-
 			FetchProcAddress(glColorPointerEXT, "glColorPointerEXT");
-
 			FetchProcAddress(glDrawArraysEXT, "glDrawArraysEXT");
-
 			FetchProcAddress(glEdgeFlagPointerEXT, "glEdgeFlagPointerEXT");
-
 			FetchProcAddress(glIndexPointerEXT, "glIndexPointerEXT");
-
 			FetchProcAddress(glNormalPointerEXT, "glNormalPointerEXT");
-
 			FetchProcAddress(glTexCoordPointerEXT, "glTexCoordPointerEXT");
-
 			FetchProcAddress(glVertexPointerEXT, "glVertexPointerEXT");
-
-			FetchProcAddress(EXT_vertex_array, "EXT_vertex_array");
-
-
-			//vertex_array_bgra
-			FetchProcAddress(EXT_vertex_array_bgra, "EXT_vertex_array_bgra");
-
 
 			//vertex_array_setXXX
 			FetchProcAddress(glBindArraySetEXT, "glBindArraySetEXT");
-
 			FetchProcAddress(glCreateArraySetExt, "glCreateArraySetExt");
-
 			FetchProcAddress(glDeleteArraySetsEXT, "glDeleteArraySetsEXT");
-
-			FetchProcAddress(EXT_vertex_array_setXXX, "EXT_vertex_array_setXXX");
-
 
 			//vertex_attrib_64bit
 			FetchProcAddress(glGetVertexAttribLdvEXT, "glGetVertexAttribLdvEXT");
-
 			FetchProcAddress(glVertexArrayVertexAttribLOffsetEXT, "glVertexArrayVertexAttribLOffsetEXT");
-
 			FetchProcAddress(glVertexAttribL1dEXT, "glVertexAttribL1dEXT");
-
 			FetchProcAddress(glVertexAttribL1dvEXT, "glVertexAttribL1dvEXT");
-
 			FetchProcAddress(glVertexAttribL2dEXT, "glVertexAttribL2dEXT");
-
 			FetchProcAddress(glVertexAttribL2dvEXT, "glVertexAttribL2dvEXT");
-
 			FetchProcAddress(glVertexAttribL3dEXT, "glVertexAttribL3dEXT");
-
 			FetchProcAddress(glVertexAttribL3dvEXT, "glVertexAttribL3dvEXT");
-
 			FetchProcAddress(glVertexAttribL4dEXT, "glVertexAttribL4dEXT");
-
 			FetchProcAddress(glVertexAttribL4dvEXT, "glVertexAttribL4dvEXT");
-
 			FetchProcAddress(glVertexAttribLPointerEXT, "glVertexAttribLPointerEXT");
-
-			FetchProcAddress(EXT_vertex_attrib_64bit, "EXT_vertex_attrib_64bit");
-
 
 			//vertex_shader
 			FetchProcAddress(glBeginVertexShaderEXT, "glBeginVertexShaderEXT");
-
 			FetchProcAddress(glBindLightParameterEXT, "glBindLightParameterEXT");
-
 			FetchProcAddress(glBindMaterialParameterEXT, "glBindMaterialParameterEXT");
-
 			FetchProcAddress(glBindParameterEXT, "glBindParameterEXT");
-
 			FetchProcAddress(glBindTexGenParameterEXT, "glBindTexGenParameterEXT");
-
 			FetchProcAddress(glBindTextureUnitParameterEXT, "glBindTextureUnitParameterEXT");
-
 			FetchProcAddress(glBindVertexShaderEXT, "glBindVertexShaderEXT");
-
 			FetchProcAddress(glDeleteVertexShaderEXT, "glDeleteVertexShaderEXT");
-
 			FetchProcAddress(glDisableVariantClientStateEXT, "glDisableVariantClientStateEXT");
-
 			FetchProcAddress(glEnableVariantClientStateEXT, "glEnableVariantClientStateEXT");
-
 			FetchProcAddress(glEndVertexShaderEXT, "glEndVertexShaderEXT");
-
 			FetchProcAddress(glExtractComponentEXT, "glExtractComponentEXT");
-
 			FetchProcAddress(glGenSymbolsEXT, "glGenSymbolsEXT");
-
 			FetchProcAddress(glGenVertexShadersEXT, "glGenVertexShadersEXT");
-
 			FetchProcAddress(glGetInvariantBooleanvEXT, "glGetInvariantBooleanvEXT");
-
 			FetchProcAddress(glGetInvariantFloatvEXT, "glGetInvariantFloatvEXT");
-
 			FetchProcAddress(glGetInvariantIntegervEXT, "glGetInvariantIntegervEXT");
-
 			FetchProcAddress(glGetLocalConstantBooleanvEXT, "glGetLocalConstantBooleanvEXT");
-
 			FetchProcAddress(glGetLocalConstantFloatvEXT, "glGetLocalConstantFloatvEXT");
-
 			FetchProcAddress(glGetLocalConstantIntegervEXT, "glGetLocalConstantIntegervEXT");
-
 			FetchProcAddress(glGetVariantBooleanvEXT, "glGetVariantBooleanvEXT");
-
 			FetchProcAddress(glGetVariantFloatvEXT, "glGetVariantFloatvEXT");
-
 			FetchProcAddress(glGetVariantIntegervEXT, "glGetVariantIntegervEXT");
-
 			FetchProcAddress(glGetVariantPointervEXT, "glGetVariantPointervEXT");
-
 			FetchProcAddress(glInsertComponentEXT, "glInsertComponentEXT");
-
 			FetchProcAddress(glIsVariantEnabledEXT, "glIsVariantEnabledEXT");
-
 			FetchProcAddress(glSetInvariantEXT, "glSetInvariantEXT");
-
 			FetchProcAddress(glSetLocalConstantEXT, "glSetLocalConstantEXT");
-
 			FetchProcAddress(glShaderOp1EXT, "glShaderOp1EXT");
-
 			FetchProcAddress(glShaderOp2EXT, "glShaderOp2EXT");
-
 			FetchProcAddress(glShaderOp3EXT, "glShaderOp3EXT");
-
 			FetchProcAddress(glSwizzleEXT, "glSwizzleEXT");
-
 			FetchProcAddress(glVariantPointerEXT, "glVariantPointerEXT");
-
 			FetchProcAddress(glVariantbvEXT, "glVariantbvEXT");
-
 			FetchProcAddress(glVariantdvEXT, "glVariantdvEXT");
-
 			FetchProcAddress(glVariantfvEXT, "glVariantfvEXT");
-
 			FetchProcAddress(glVariantivEXT, "glVariantivEXT");
-
 			FetchProcAddress(glVariantsvEXT, "glVariantsvEXT");
-
 			FetchProcAddress(glVariantubvEXT, "glVariantubvEXT");
-
 			FetchProcAddress(glVariantuivEXT, "glVariantuivEXT");
-
 			FetchProcAddress(glVariantusvEXT, "glVariantusvEXT");
-
 			FetchProcAddress(glWriteMaskEXT, "glWriteMaskEXT");
-
-			FetchProcAddress(EXT_vertex_shader, "EXT_vertex_shader");
-
 
 			//vertex_weighting
 			FetchProcAddress(glVertexWeightPointerEXT, "glVertexWeightPointerEXT");
 			FetchProcAddress(glVertexWeightfEXT, "glVertexWeightfEXT");
-			FetchProcAddress(glVertexWeightfvEXT, "glVertexWeightfvEXT");
-			FetchProcAddress(EXT_vertex_weighting, "EXT_vertex_weighting");
+			FetchProcAddress(glVertexWeightfvEXT, "glVertexWeightfvEXT");			
 
 			//win32_keyed_mutex
 			FetchProcAddress(glAcquireKeyedMutexWin32EXT, "glAcquireKeyedMutexWin32EXT");
-			FetchProcAddress(glReleaseKeyedMutexWin32EXT, "glReleaseKeyedMutexWin32EXT");
-			FetchProcAddress(EXT_win32_keyed_mutex, "EXT_win32_keyed_mutex");
+			FetchProcAddress(glReleaseKeyedMutexWin32EXT, "glReleaseKeyedMutexWin32EXT");			
 
 			//window_rectangles
-			FetchProcAddress(glWindowRectanglesEXT, "glWindowRectanglesEXT");
-			FetchProcAddress(EXT_window_rectangles, "EXT_window_rectangles");
+			FetchProcAddress(glWindowRectanglesEXT, "glWindowRectanglesEXT");			
 
 			//x11_sync_object
 			FetchProcAddress(glImportSyncEXT, "glImportSyncEXT");
-			FetchProcAddress(EXT_x11_sync_object, "EXT_x11_sync_object");
-
 		}
 
 #pragma endregion EXT Extensions
@@ -12417,22 +9899,20 @@ namespace TinyExtender
 
 	//frame terminator 
 	void (*glFrameTerminatorGREMEDY) (void) = nullptr;
-	bool GREMEDY_frame_terminator = false;
+	#define GREMEDY_frame_terminator 1
 
 	//string marker 
 	void (*glStringMarkerGREMEDY) (GLsizei len, const void* string) = nullptr;
-	bool GREMEDY_string_marker = false;
+	#define GREMEDY_string_marker 1
 
 	//*< load Gremedy Extensions
 	void LoadGremedyExtensions()
 	{
 		//frame terminator 
 		FetchProcAddress(glFrameTerminatorGREMEDY, "glFrameTerminatorGREMEDY");
-		FetchProcAddress(GREMEDY_frame_terminator, "GREMEDY_frame_terminator");
 
 		//string marker 
 		FetchProcAddress(glStringMarkerGREMEDY, "glStringMarkerGREMEDY");
-		FetchProcAddress(GREMEDY_string_marker, "GREMEDY_string_marker");
 	}
 
 #pragma endregion Gremedy Extensions
@@ -12441,7 +9921,7 @@ namespace TinyExtender
 #pragma region HP
 
 	//convolution border modes
-	bool convolution_border_modes = false;
+	#define convolution_border_modes 1
 
 	//image transform 
 	void (*glGetImageTransformParameterfvHP) (GLenum target, GLenum pname, const GLfloat * params) = nullptr;
@@ -12450,21 +9930,17 @@ namespace TinyExtender
 	void (*glImageTransformParameterfvHP) (GLenum target, GLenum pname, const GLfloat* params) = nullptr;
 	void (*glImageTransformParameteriHP) (GLenum target, GLenum pname, const GLint param) = nullptr;
 	void (*glImageTransformParameterivHP) (GLenum target, GLenum pname, const GLint* params) = nullptr;
-
-	bool image_transform = false;
+	#define image_transform 1
 
 	//occlusion test
-	bool occlusion_test = false;
+	#define occlusion_test 1
 
 	//texture lighting 
-	bool texture_lighting = false;
+	#define texture_lighting 1
 
 	//*< load HP Extensions
 	void LoadHPExtensions()
 	{
-		//convolution border modes
-		FetchProcAddress(convolution_border_modes, "convolution_border_modes");
-
 		//image transform 
 		FetchProcAddress(glGetImageTransformParameterfvHP, "glGetImageTransformParameterfvHP");
 		FetchProcAddress(glGetImageTransformParameterivHP, "glGetImageTransformParameterivHP");
@@ -12472,13 +9948,6 @@ namespace TinyExtender
 		FetchProcAddress(glImageTransformParameterfvHP, "glImageTransformParameterfvHP");
 		FetchProcAddress(glImageTransformParameteriHP, "glImageTransformParameteriHP");
 		FetchProcAddress(glImageTransformParameterivHP, "glImageTransformParameterivHP");
-		FetchProcAddress(image_transform, "image_transform");
-
-		//occlusion test
-		FetchProcAddress(occlusion_test, "occlusion_test");
-
-		//texture lighting 
-		FetchProcAddress(texture_lighting, "texture_lighting");
 	}
 
 #pragma endregion HP Extensions
@@ -12521,22 +9990,22 @@ namespace TinyExtender
 	};
 
 	//cull vertex 
-	bool IBM_cull_vertex = false;
+	#define IBM_cull_vertex 1
 
 	//multimode draw arrays
 	void (*glMultiModeDrawArraysIBM) (const GLenum * mode, const GLint * first, const GLsizei * count, GLsizei primcount, GLint modestride) = nullptr;
 	void (*glMultiModeDrawElementsIBM) (const GLenum* mode, const GLsizei* count, GLenum type, const void* const* indices, GLsizei primcount, GLint modestride) = nullptr;
 
-	bool IBM_multimode_draw_arrays = false;
+	#define IBM_multimode_draw_arrays 1
 
 	//rasterpos clip
-	bool IBM_rasterpos_clip = false;
+	#define IBM_rasterpos_clip 1
 
 	//static data
-	bool IBM_static_data = false;
+	#define IBM_static_data 1
 
 	//texture mirrored_ repeat 
-	bool IBM_texture_mirrored_repeat = false;
+	#define IBM_texture_mirrored_repeat 1
 
 	//vertex array lists 
 	void (*glColorPointerListIBM) (GLint size, GLenum type, GLint stride, const void** pointer, GLint ptrstride) = nullptr;
@@ -12548,27 +10017,14 @@ namespace TinyExtender
 	void (*glTexCoordPointerListIBM) (GLint size, GLenum type, GLint stride, const void** pointer, GLint ptrstride) = nullptr;
 	void (*glVertexPointerListIBM) (GLint size, GLenum type, GLint stride, const void** pointer, GLint ptrstride) = nullptr;
 
-	bool IBM_vertex_array_lists = false;
+	#define IBM_vertex_array_lists 1
 
 	//*< load IBM Extensions
 	void LoadIBMExtensions()
 	{
-		//cull vertex 
-		FetchProcAddress(IBM_cull_vertex, "IBM_cull_vertex");
-
 		//multimode draw arrays
 		FetchProcAddress(glMultiModeDrawArraysIBM, "glMultiModeDrawArraysIBM");
 		FetchProcAddress(glMultiModeDrawElementsIBM, "glMultiModeDrawElementsIBM");
-		FetchProcAddress(IBM_multimode_draw_arrays, "IBM_multimode_draw_arrays");
-
-		//rasterpos clip
-		FetchProcAddress(IBM_rasterpos_clip, "IBM_rasterpos_clip");
-
-		//static data
-		FetchProcAddress(IBM_static_data, "IBM_static_data");
-
-		//texture mirrored_ repeat 
-		FetchProcAddress(IBM_texture_mirrored_repeat, "IBM_texture_mirrored_repeat");
 
 		//vertex array lists 
 		FetchProcAddress(glColorPointerListIBM, "glColorPointerListIBM");
@@ -12579,7 +10035,6 @@ namespace TinyExtender
 		FetchProcAddress(glSecondaryColorPointerListIBM, "glSecondaryColorPointerListIBM");
 		FetchProcAddress(glTexCoordPointerListIBM, "glTexCoordPointerListIBM");
 		FetchProcAddress(glVertexPointerListIBM, "glVertexPointerListIBM");
-		FetchProcAddress(IBM_vertex_array_lists, "IBM_vertex_array_lists");
 	}	
 
 #pragma endregion IBM Extensions
@@ -12604,22 +10059,16 @@ namespace TinyExtender
 	};
 
 	//color clamp
-	bool INGR_color_clamp = false;
+	#define INGR_color_clamp 1
 
 	//interlace read
-	bool INGR_interlace_read = false;
+	#define INGR_interlace_read 1
 
 	//*< load INGR Extensions
 	void LoadINGRExtensions()
 	{
-		//color clamp
-		FetchProcAddress(INGR_color_clamp, "INGR_color_clamp");
 
-		//interlace read
-		FetchProcAddress(INGR_interlace_read, "INGR_interlace_read");
 	}
-
-
 
 #pragma endregion INGR Extensions
 
@@ -12668,26 +10117,26 @@ namespace TinyExtender
 	};
 
 	//conservative rasterization
-	bool INTEL_conservative_rasterization = false;
+	#define INTEL_conservative_rasterization 1
 
 	//fragment shader ordering
-	bool INTEL_fragment_shader_ordering = false;
+	#define INTEL_fragment_shader_ordering 1
 
 	//framebuffer CMAA 
-	bool INTEL_framebuffer_CMAA = false;
+	#define INTEL_framebuffer_CMAA 1
 
 	//map texture
 	void* (*glMapTexture2DINTEL) (GLuint texture, GLint level, GLbitfield access, GLint * stride, GLenum * layout) = nullptr;
 	void (*glSyncTextureINTEL) (GLuint texture) = nullptr;
 	void (*glUnmapTexture2DINTEL) (GLuint texture, GLint level) = nullptr;
-	bool INTEL_map_texture = false;
+	#define INTEL_map_texture 1
 
 	//parallel arrays
 	void (*glColorPointervINTEL) (GLint size, GLenum type, const void** pointer) = nullptr;
 	void (*glNormalPointervINTEL) (GLenum type, const void** pointer) = nullptr;
 	void (*glTexCoordPointervINTEL) (GLint size, GLenum type, const void** pointer) = nullptr;
 	void (*glVertexPointervINTEL) (GLint size, GLenum type, const void** pointer) = nullptr;
-	bool INTEL_parallel_arrays = false;
+	#define INTEL_parallel_arrays 1
 
 	//performance query
 	void (*glBeginPerfQueryINTEL) (GLuint queryHandle) = nullptr;
@@ -12700,37 +10149,26 @@ namespace TinyExtender
 	void (*glGetPerfQueryDataINTEL) (GLuint queryHandle, GLuint flags, GLsizei dataSize, void* data, GLuint* bytesWritten) = nullptr;
 	void (*glGetPerfQueryIdByNameINTEL) (GLchar* queryName, GLuint* queryId) = nullptr;
 	void (*glGetPerfQueryInfoINTEL) (GLuint queryId, GLuint queryNameLength, GLchar* queryName, GLuint* dataSize, GLuint* noCounters, GLuint* noInstances, GLuint* capsMask) = nullptr;
-	bool INTEL_performance_query = false;
+	#define INTEL_performance_query 1
 
 	//texture scissor
 	void (*glTexScissorFuncINTEL) (GLenum target, GLenum lfunc, GLenum hfunc) = nullptr;
 	void (*glTexScissorINTEL) (GLenum target, GLclampf tlow, GLclampf thigh) = nullptr;
-	bool INTEL_texture_scissor = false;
+	#define INTEL_texture_scissor 1
 
 	//*< load Intel Extensions
 	void LoadIntelExtensions()
 	{
-		//conservative rasterization
-		FetchProcAddress(INTEL_conservative_rasterization, "INTEL_conservative_rasterization");
-
-		//fragment shader ordering
-		FetchProcAddress(INTEL_fragment_shader_ordering, "INTEL_fragment_shader_ordering");
-
-		//framebuffer CMAA 
-		FetchProcAddress(INTEL_framebuffer_CMAA, "INTEL_framebuffer_CMAA");
-
 		//map texture
 		FetchProcAddress(glMapTexture2DINTEL, "glMapTexture2DINTEL");
 		FetchProcAddress(glSyncTextureINTEL, "glSyncTextureINTEL");
 		FetchProcAddress(glUnmapTexture2DINTEL, "glUnmapTexture2DINTEL");
-		FetchProcAddress(INTEL_map_texture, "INTEL_map_texture");
 
 		//parallel arrays
 		FetchProcAddress(glColorPointervINTEL, "glColorPointervINTEL");
 		FetchProcAddress(glNormalPointervINTEL, "glNormalPointervINTEL");
 		FetchProcAddress(glTexCoordPointervINTEL, "glTexCoordPointervINTEL");
 		FetchProcAddress(glVertexPointervINTEL, "glVertexPointervINTEL");
-		FetchProcAddress(INTEL_parallel_arrays, "INTEL_parallel_arrays");
 
 		//performance query
 		FetchProcAddress(glBeginPerfQueryINTEL, "glBeginPerfQueryINTEL");
@@ -12743,15 +10181,13 @@ namespace TinyExtender
 		FetchProcAddress(glGetPerfQueryDataINTEL, "glGetPerfQueryDataINTEL");
 		FetchProcAddress(glGetPerfQueryIdByNameINTEL, "glGetPerfQueryIdByNameINTEL");
 		FetchProcAddress(glGetPerfQueryInfoINTEL, "glGetPerfQueryInfoINTEL");
-		FetchProcAddress(INTEL_performance_query, "INTEL_performance_query");
 
 		//texture scissor
 		FetchProcAddress(glTexScissorFuncINTEL, "glTexScissorFuncINTEL");
 		FetchProcAddress(glTexScissorINTEL, "glTexScissorINTEL");
-		FetchProcAddress(INTEL_texture_scissor, "INTEL_texture_scissor");
 	}
 
-#pragma endregion intel Extensions
+#pragma endregion Intel Extensions
 
 	//OpenGL KHR Extensions
 #pragma region KHR
@@ -12868,13 +10304,13 @@ namespace TinyExtender
 
 	//blend equation advanced
 	void (*glBlendBarrierKHR) (void) = nullptr;
-	bool KHR_blend_equation_advanced = false;
+	#define KHR_blend_equation_advanced 1
 
 	//blend equation advanced coherent
-	bool KHR_blend_equation_advanced_coherent = false;
+	#define KHR_blend_equation_advanced_coherent 1
 
 	//context flush control
-	bool KHR_context_flush_control = false;
+	#define KHR_context_flush_control 1
 
 	//debug
 	typedef void (*GLDEBUGPROC)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar * message, const void* userParam);
@@ -12888,47 +10324,39 @@ namespace TinyExtender
 	void (*glObjectPtrLabel) (void* ptr, GLsizei length, const GLchar* label) = nullptr;
 	void (*glPopDebugGroup) (void) = nullptr;
 	void (*glPushDebugGroup) (GLenum source, GLuint id, GLsizei length, const GLchar* message) = nullptr;
-	bool KHR_debug = false;
+	#define KHR_debug 1
 
 	//no error
-	bool KHR_no_error = false;
+	#define KHR_no_error 1
 
 	//parallel shader compile
 	void (*glMaxShaderCompilerThreadsKHR) (GLuint count) = nullptr;
-	bool KHR_parallel_shader_compile = false;
+	#define KHR_parallel_shader_compile 1
 
 	//robust buffer access behavior 
-	bool KHR_robust_buffer_access_behavior = false;
+	#define KHR_robust_buffer_access_behavior 1
 
 	//robustness
 	void (*glGetnUniformfv) (GLuint program, GLint location, GLsizei bufSize, GLfloat * params) = nullptr;
 	void (*glGetnUniformiv) (GLuint program, GLint location, GLsizei bufSize, GLint* params) = nullptr;
 	void (*glGetnUniformuiv) (GLuint program, GLint location, GLsizei bufSize, GLuint* params) = nullptr;
 	void (*glReadnPixels) (GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, void* data) = nullptr;
-	bool KHR_robustness = false;
+	#define KHR_robustness 1
 
 	//texture compression astc hdr
-	bool KHR_texture_compression_astc_hdr = false;
+	#define KHR_texture_compression_astc_hdr 1
 
 	//texture compression astc ldr
-	bool KHR_texture_compression_astc_ldr = false;
+	#define KHR_texture_compression_astc_ldr 1
 
 	//texture compression astc sliced 3d
-	bool KHR_texture_compression_astc_sliced_3d = false;
+	#define KHR_texture_compression_astc_sliced_3d 1
 
 	//*< load KHR Extensions
 	void LoadKHRExtensions()
 	{
 		//blend equation advanced
 		FetchProcAddress(glBlendBarrierKHR, "glBlendBarrierKHR");
-
-		FetchProcAddress(KHR_blend_equation_advanced, "KHR_blend_equation_advanced");
-
-		//blend equation advanced coherent
-		FetchProcAddress(KHR_blend_equation_advanced_coherent, "KHR_blend_equation_advanced_coherent");
-
-		//context flush control
-		FetchProcAddress(KHR_context_flush_control, "KHR_context_flush_control");
 
 		//debug
 		FetchProcAddress(glDebugMessageCallback, "glDebugMessageCallback");
@@ -12941,33 +10369,15 @@ namespace TinyExtender
 		FetchProcAddress(glObjectPtrLabel, "glObjectPtrLabel");
 		FetchProcAddress(glPopDebugGroup, "glPopDebugGroup");
 		FetchProcAddress(glPushDebugGroup, "glPushDebugGroup");
-		FetchProcAddress(KHR_debug, "KHR_debug");
-
-		//no error
-		FetchProcAddress(KHR_no_error, "KHR_no_error");
 
 		//parallel shader compile
 		FetchProcAddress(glMaxShaderCompilerThreadsKHR, "glMaxShaderCompilerThreadsKHR");
-		FetchProcAddress(KHR_parallel_shader_compile, "KHR_parallel_shader_compile");
-
-		//robust buffer access behavior 
-		FetchProcAddress(KHR_robust_buffer_access_behavior, "KHR_robust_buffer_access_behavior");
 
 		//robustness
 		FetchProcAddress(glGetnUniformfv, "glGetnUniformfv");
 		FetchProcAddress(glGetnUniformiv, "glGetnUniformiv");
 		FetchProcAddress(glGetnUniformuiv, "glGetnUniformuiv");
 		FetchProcAddress(glReadnPixels, "glReadnPixels");
-		FetchProcAddress(KHR_robustness, "KHR_robustness");
-
-		//texture compression astc hdr
-		FetchProcAddress(KHR_texture_compression_astc_hdr, "KHR_texture_compression_astc_hdr");
-
-		//texture compression astc ldr
-		FetchProcAddress(KHR_texture_compression_astc_ldr, "KHR_texture_compression_astc_ldr");
-
-		//texture compression astc sliced 3d
-		FetchProcAddress(KHR_texture_compression_astc_sliced_3d, "KHR_texture_compression_astc_sliced_3d");
 	}
 
 	
@@ -12992,7 +10402,7 @@ namespace TinyExtender
 	void (*glDrawBufferRegion) (GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest) = nullptr;
 	GLuint(*glNewBufferRegion) (GLenum region) = nullptr;
 	void (*glReadBufferRegion) (GLuint region, GLint x, GLint y, GLsizei width, GLsizei height) = nullptr;
-	bool KTX_buffer_region = false;
+	#define KTX_buffer_region 1
 
 	//*< load KTX Extensions
 	void LoadKTXExtensions()
@@ -13003,7 +10413,6 @@ namespace TinyExtender
 		FetchProcAddress(glDrawBufferRegion, "glDrawBufferRegion");
 		FetchProcAddress(glNewBufferRegion, "glNewBufferRegion");
 		FetchProcAddress(glReadBufferRegion, "glReadBufferRegion");
-		FetchProcAddress(KTX_buffer_region, "KTX_buffer_region");
 	}
 
 #pragma endregion KTX Extensions
@@ -13023,13 +10432,12 @@ namespace TinyExtender
 	};
 
 	//texture stack
-	bool MESAX_texture_stack = false;
+	#define MESAX_texture_stack 1
 
 	//*< load MESAX Extensions
 	void LoadMESAXExtensions()
 	{
-		//texture stack
-		FetchProcAddress(MESAX_texture_stack, "MESAX_texture_stack");
+
 	}
 
 #pragma endregion MESAX Extensions
@@ -13049,14 +10457,14 @@ namespace TinyExtender
 	};
 
 	//pack_invert
-	bool MESA_pack_invert = false;
+	#define MESA_pack_invert 1
 
 	//resize_buffers
 	void (*glResizeBuffersMESA) (void) = nullptr;
-	bool MESA_resize_buffers = false;
+	#define MESA_resize_buffers 1
 
 	//shader_integer_functions
-	bool MESA_shader_integer_functions = false;
+	#define MESA_shader_integer_functions 1
 
 	//window_pos
 	void (*glWindowPos2dMESA) (GLdouble x, GLdouble y) = nullptr;
@@ -13083,23 +10491,16 @@ namespace TinyExtender
 	void (*glWindowPos4ivMESA) (const GLint* p) = nullptr;
 	void (*glWindowPos4sMESA) (GLshort x, GLshort y, GLshort z, GLshort w) = nullptr;
 	void (*glWindowPos4svMESA) (const GLshort* p) = nullptr;
-	bool MESA_window_pos = false;
+	#define MESA_window_pos 1
 
 	//ycbcr_texture
-	bool MESA_ycbcr_texture = false;
+	#define MESA_ycbcr_texture 1
 
 	//*< load MESA Extensions
 	void LoadMESAExtensions()
 	{
-		//pack_invert
-		FetchProcAddress(MESA_pack_invert, "MESA_pack_invert");
-
 		//resize_buffers
 		FetchProcAddress(glResizeBuffersMESA, "glResizeBuffersMESA");
-		FetchProcAddress(MESA_resize_buffers, "MESA_resize_buffers");
-
-		//shader_integer_functions
-		FetchProcAddress(MESA_shader_integer_functions, "MESA_shader_integer_functions");
 
 		//window_pos
 		FetchProcAddress(glWindowPos2dMESA, "glWindowPos2dMESA");
@@ -13126,10 +10527,6 @@ namespace TinyExtender
 		FetchProcAddress(glWindowPos4ivMESA, "glWindowPos4ivMESA");
 		FetchProcAddress(glWindowPos4sMESA, "glWindowPos4sMESA");
 		FetchProcAddress(glWindowPos4svMESA, "glWindowPos4svMESA");
-		FetchProcAddress(MESA_window_pos, "MESA_window_pos");
-
-		//ycbcr_texture
-		FetchProcAddress(MESA_ycbcr_texture, "MESA_ycbcr_texture");
 	}
 
 #pragma endregion MESA Extensions
@@ -13152,41 +10549,33 @@ namespace TinyExtender
 	};
 
 	//blend_equation_advanced_multi_draw_buffers
-	bool NVX_blend_equation_advanced_multi_draw_buffers = false;
+	#define NVX_blend_equation_advanced_multi_draw_buffers 1
 
 	//conditional_render
 	void (*glBeginConditionalRenderNVX) (GLuint id) = nullptr;
 	void (*glEndConditionalRenderNVX) (void) = nullptr;
-	bool NVX_conditional_render = false;
+	#define NVX_conditional_render 1
 
 	//gpu_memory_info
-	bool NVX_gpu_memory_info = false;
+	#define NVX_gpu_memory_info 1
 
 	//linked_gpu_multicast
 	void (*glLGPUCopyImageSubDataNVX) (GLuint sourceGpu, GLbitfield destinationGpuMask, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srxY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth) = nullptr;
 	void (*glLGPUInterlockNVX) (void) = nullptr;
 	void (*glLGPUNamedBufferSubDataNVX) (GLbitfield gpuMask, GLuint buffer, GLintptr offset, GLsizeiptr size, const void* data) = nullptr;
-	bool NVX_linked_gpu_multicast = false;
+	#define NVX_linked_gpu_multicast 1
 
 	//*< load NVX Extensions
 	void LoadNVXExtensions()
 	{
-		//blend_equation_advanced_multi_draw_buffers
-		FetchProcAddress(NVX_blend_equation_advanced_multi_draw_buffers, "NVX_blend_equation_advanced_multi_draw_buffers");
-
 		//conditional_render
 		FetchProcAddress(glBeginConditionalRenderNVX, "glBeginConditionalRenderNVX");
 		FetchProcAddress(glEndConditionalRenderNVX, "glEndConditionalRenderNVX");
-		FetchProcAddress(NVX_conditional_render, "NVX_conditional_render");
-
-		//gpu_memory_info
-		FetchProcAddress(NVX_gpu_memory_info, "NVX_gpu_memory_info");
 
 		//linked_gpu_multicast
 		FetchProcAddress(glLGPUCopyImageSubDataNVX, "glLGPUCopyImageSubDataNVX");
 		FetchProcAddress(glLGPUInterlockNVX, "glLGPUInterlockNVX");
 		FetchProcAddress(glLGPUNamedBufferSubDataNVX, "glLGPUNamedBufferSubDataNVX");
-		FetchProcAddress(NVX_linked_gpu_multicast, "NVX_linked_gpu_multicast");
 	}		
 
 #pragma endregion NVX Extensions
@@ -14368,26 +11757,26 @@ namespace TinyExtender
 		//3dvision_settings
 		void (*glStereoParameterfNV) (GLenum pname, GLfloat param) = nullptr;
 		void (*glStereoParameteriNV) (GLenum pname, GLint param) = nullptr;
-		bool NV_3dvision_settings = false;
+		#define NV_3dvision_settings 1
 
 		//EGL_stream_consumer_external
-		bool NV_EGL_stream_consumer_external = false;
+		#define NV_EGL_stream_consumer_external 1
 
 		//alpha_to_coverage_dither_control
-		bool NV_alpha_to_coverage_dither_control = false;
+		#define NV_alpha_to_coverage_dither_control 1
 
 		//bgr
-		bool NV_bgr = false;
+		#define NV_bgr 1
 
 		//bindless_multi_draw_indirect
 		void (*glMultiDrawArraysIndirectBindlessNV) (GLenum mode, const void* indirect, GLsizei drawCount, GLsizei stride, GLint vertexBufferCount) = nullptr;
 		void (*glMultiDrawElementsIndirectBindlessNV) (GLenum mode, GLenum type, const void* indirect, GLsizei drawCount, GLsizei stride, GLint vertexBufferCount) = nullptr;
-		bool NV_bindless_multi_draw_indirect = false;
+		#define NV_bindless_multi_draw_indirect 1
 
 		//bindless_multi_draw_indirect_count
 		void (*glMultiDrawArraysIndirectBindlessCountNV) (GLenum mode, const void* indirect, GLintptr drawCount, GLsizei maxDrawCount, GLsizei stride, GLint vertexBufferCount) = nullptr;
 		void (*glMultiDrawElementsIndirectBindlessCountNV) (GLenum mode, GLenum type, const void* indirect, GLintptr drawCount, GLsizei maxDrawCount, GLsizei stride, GLint vertexBufferCount) = nullptr;
-		bool NV_bindless_multi_draw_indirect_count = false;
+		#define NV_bindless_multi_draw_indirect_count 1
 
 		//bindless_texture
 		GLuint64(*glGetImageHandleNV) (GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format) = nullptr;
@@ -14403,25 +11792,25 @@ namespace TinyExtender
 		void (*glProgramUniformHandleui64vNV) (GLuint program, GLint location, GLsizei count, const GLuint64* values) = nullptr;
 		void (*glUniformHandleui64NV) (GLint location, GLuint64 value) = nullptr;
 		void (*glUniformHandleui64vNV) (GLint location, GLsizei count, const GLuint64* value) = nullptr;
-		bool NV_bindless_texture = false;
+		#define NV_bindless_texture 1
 		
 		//blend_equation_advanced
 		void (*glBlendBarrierNV) (void) = nullptr;
 		void (*glBlendParameteriNV) (GLenum pname, GLint value) = nullptr;
-		bool NV_blend_equation_advanced = false;
+		#define NV_blend_equation_advanced 1
 
 		//blend_equation_advanced_coherent
-		bool NV_blend_equation_advanced_coherent = false;
+		#define NV_blend_equation_advanced_coherent 1
 
 		//blend_minmax_factor
-		bool NV_blend_minmax_factor = false;
+		#define NV_blend_minmax_factor 1
 
 		//blend_square
-		bool NV_blend_square = false;
+		#define NV_blend_square 1
 
 		//clip_space_w_scaling
 		void (*glViewportPositionWScaleNV) (GLuint index, GLfloat xcoeff, GLfloat ycoeff) = nullptr;
-		bool NV_clip_space_w_scaling = false;
+		#define NV_clip_space_w_scaling 1
 
 		//command_list
 		void (*glCallCommandListNV) (GLuint list) = nullptr;
@@ -14441,66 +11830,66 @@ namespace TinyExtender
 		GLboolean(*glIsStateNV) (GLuint state) = nullptr;
 		void (*glListDrawCommandsStatesClientNV) (GLuint list, GLuint segment, const void** indirects, const GLsizei* sizes, const GLuint* states, const GLuint* fbos, GLuint count) = nullptr;
 		void (*glStateCaptureNV) (GLuint state, GLenum mode) = nullptr;
-		bool NV_command_list = false;
+		#define NV_command_list 1
 
 		//compute_program5
-		bool NV_compute_program5 = false;
+		#define NV_compute_program5 1
 
 		//conditional_render
 		void (*glBeginConditionalRenderNV) (GLuint id, GLenum mode) = nullptr;
 		void (*glEndConditionalRenderNV) (void) = nullptr;
-		bool NV_conditional_render = false;
+		#define NV_conditional_render 1
 
 		//conservative_raster
 		void (*glSubpixelPrecisionBiasNV) (GLuint xbits, GLuint ybits) = nullptr;
-		bool NV_conservative_raster = false;
+		#define NV_conservative_raster 1
 
 		//conservative_raster_dilate
 		void (*glConservativeRasterParameterfNV) (GLenum pname, GLfloat value) = nullptr;
-		bool NV_conservative_raster_dilate = false;
+		#define NV_conservative_raster_dilate 1
 
 		//conservative_raster_pre_snap_triangles
 		void (*glConservativeRasterParameteriNV) (GLenum pname, GLint param) = nullptr;
-		bool NV_conservative_raster_pre_snap_triangles = false;
+		#define NV_conservative_raster_pre_snap_triangles 1
 
 		//copy_buffer
 		void (*glCopyBufferSubDataNV) (GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size) = nullptr;
-		bool NV_copy_buffer = false;
+		#define NV_copy_buffer 1
 
 		//copy_depth_to_color
-		bool NV_copy_depth_to_color = false;
+		#define NV_copy_depth_to_color 1
 
 		//copy_image
 		void (*glCopyImageSubDataNV) (GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth) = nullptr;
-		bool NV_copy_image = false;		
+		#define NV_copy_image 1		
 
 		//deep_texture3D
-		bool NV_deep_texture3D = false;
+		#define NV_deep_texture3D 1
 
 		//depth_buffer_float
 		void (*glClearDepthdNV) (GLdouble depth) = nullptr;
 		void (*glDepthBoundsdNV) (GLdouble zmin, GLdouble zmax) = nullptr;
 		void (*glDepthRangedNV) (GLdouble zNear, GLdouble zFar) = nullptr;
-		bool NV_depth_buffer_float = false;
+		#define NV_depth_buffer_float 1
 
 		//depth_clamp
-		bool NV_depth_clamp = false;
+		#define NV_depth_clamp 1
 
 		//depth_range_unclamped
-		bool NV_depth_range_unclamped = false;
+		#define NV_depth_range_unclamped 1
 
 		//draw_buffers
 		void (*glDrawBuffersNV) (GLsizei n, const GLenum * bufs) = nullptr;
-		bool NV_draw_buffers = false;
+		#define NV_draw_buffers 1
 
 		//draw_instanced
 		void (*glDrawArraysInstancedNV) (GLenum mode, GLint first, GLsizei count, GLsizei primcount) = nullptr;
 		void (*glDrawElementsInstancedNV) (GLenum mode, GLsizei count, GLenum type, const void* indices, GLsizei primcount) = nullptr;
-		bool NV_draw_instanced = false;
+		#define NV_draw_instanced 1
 
 		//draw_texture
 		void (*glDrawTextureNV) (GLuint texture, GLuint sampler, GLfloat x0, GLfloat y0, GLfloat x1, GLfloat y1, GLfloat z, GLfloat s0, GLfloat t0, GLfloat s1, GLfloat t1) = nullptr;
-		bool NV_draw_texture = false;
+		#define NV_draw_texture 1
 
 		//draw_vulkan_image
 		typedef void (APIENTRY * GLVULKANPROCNV)(void);
@@ -14510,7 +11899,7 @@ namespace TinyExtender
 		void (*glSignalVkFenceNV) (GLuint64 vkFence) = nullptr;
 		void (*glSignalVkSemaphoreNV) (GLuint64 vkSemaphore) = nullptr;
 		void (*glWaitVkSemaphoreNV) (GLuint64 vkSemaphore) = nullptr;
-		bool NV_draw_vulkan_image = false;
+		#define NV_draw_vulkan_image 1
 
 		//evaluators
 		void (*glEvalMapsNV) (GLenum target, GLenum mode) = nullptr;
@@ -14522,19 +11911,19 @@ namespace TinyExtender
 		void (*glMapControlPointsNV) (GLenum target, GLuint index, GLenum type, GLsizei ustride, GLsizei vstride, GLint uorder, GLint vorder, GLboolean packed, const void* points) = nullptr;
 		void (*glMapParameterfvNV) (GLenum target, GLenum pname, const GLfloat* params) = nullptr;
 		void (*glMapParameterivNV) (GLenum target, GLenum pname, const GLint* params) = nullptr;
-		bool NV_evaluators = false;
+		#define NV_evaluators 1
 
 		//explicit_attrib_location
-		bool NV_explicit_attrib_location = false;
+		#define NV_explicit_attrib_location 1
 
 		//explicit_multisample
 		void (*glGetMultisamplefvNV) (GLenum pname, GLuint index, GLfloat * val) = nullptr;
 		void (*glSampleMaskIndexedNV) (GLuint index, GLbitfield mask) = nullptr;
 		void (*glTexRenderbufferNV) (GLenum target, GLuint renderbuffer) = nullptr;
-		bool NV_explicit_multisample = false;
+		#define NV_explicit_multisample 1
 
 		//fbo_color_attachments
-		bool NV_fbo_color_attachments = false;
+		#define NV_fbo_color_attachments 1
 
 		//fence
 		void (*glDeleteFencesNV) (GLsizei n, const GLuint * fences) = nullptr;
@@ -14544,20 +11933,20 @@ namespace TinyExtender
 		GLboolean(*glIsFenceNV) (GLuint fence) = nullptr;
 		void (*glSetFenceNV) (GLuint fence, GLenum condition) = nullptr;
 		GLboolean(*glTestFenceNV) (GLuint fence) = nullptr;
-		bool NV_fence = false;
+		#define NV_fence 1
 
 		//fill_rectangle
-		bool NV_fill_rectangle = false;
+		#define NV_fill_rectangle 1
 		
 		//float_buffer
-		bool NV_float_buffer = false;
+		#define NV_float_buffer 1
 
 		//fog_distance
-		bool NV_fog_distance = false;
+		#define NV_fog_distance 1
 
 		//fragment_coverage_to_color
 		void (*glFragmentCoverageColorNV) (GLuint color) = nullptr;
-		bool NV_fragment_coverage_to_color = false;
+		#define NV_fragment_coverage_to_color 1
 
 		//fragment_program
 		void (*glGetProgramNamedParameterdvNV) (GLuint id, GLsizei len, const GLubyte * name, GLdouble * params) = nullptr;
@@ -14566,47 +11955,47 @@ namespace TinyExtender
 		void (*glProgramNamedParameter4dvNV) (GLuint id, GLsizei len, const GLubyte* name, const GLdouble v[]) = nullptr;
 		void (*glProgramNamedParameter4fNV) (GLuint id, GLsizei len, const GLubyte* name, GLfloat x, GLfloat y, GLfloat z, GLfloat w) = nullptr;
 		void (*glProgramNamedParameter4fvNV) (GLuint id, GLsizei len, const GLubyte* name, const GLfloat v[]) = nullptr;
-		bool NV_fragment_program = false;
+		#define NV_fragment_program 1
 
 		//fragment_program2
-		bool NV_fragment_program2 = false;
+		#define NV_fragment_program2 1
 
 		//fragment_program4
-		bool NV_fragment_program4 = false;	
+		#define NV_fragment_program4 1	
 
 		//fragment_program_option
-		bool NV_fragment_program_option = false;
+		#define NV_fragment_program_option 1
 
 		//fragment_shader_interlock
-		bool NV_fragment_shader_interlock = false;
+		#define NV_fragment_shader_interlock 1
 
 		//framebuffer_blit
 		void (*glBlitFramebufferNV) (GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter) = nullptr;
-		bool NV_framebuffer_blit = false;
+		#define NV_framebuffer_blit 1
 
 		//framebuffer_mixed_samples
-		bool NV_framebuffer_mixed_samples = false;
+		#define NV_framebuffer_mixed_samples 1
 
 		//framebuffer_multisample
 		void (*glRenderbufferStorageMultisampleNV) (GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height) = nullptr;
-		bool NV_framebuffer_multisample = false;
+		#define NV_framebuffer_multisample 1
 
 		//framebuffer_multisample_coverage
 		void (*glRenderbufferStorageMultisampleCoverageNV) (GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height) = nullptr;
-		bool NV_framebuffer_multisample_coverage = false;
+		#define NV_framebuffer_multisample_coverage 1
 
 		//generate_mipmap_sRGB
-		bool NV_generate_mipmap_sRGB = false;
+		#define NV_generate_mipmap_sRGB 1
 
 		//geometry_program4
 		void (*glProgramVertexLimitNV) (GLenum target, GLint limit) = nullptr;
-		bool NV_geometry_program4 = false;
+		#define NV_geometry_program4 1
 
 		//geometry_shader4
-		bool NV_geometry_shader4 = false;
+		#define NV_geometry_shader4 1
 
 		//geometry_shader_passthrough
-		bool NV_geometry_shader_passthrough = false;
+		#define NV_geometry_shader_passthrough 1
 
 		//gpu_multicast
 		void (*glMulticastBarrierNV) (void) = nullptr;
@@ -14621,7 +12010,7 @@ namespace TinyExtender
 		void (*glMulticastGetQueryObjectuivNV) (GLuint gpu, GLuint id, GLenum pname, GLuint* params) = nullptr;
 		void (*glMulticastWaitSyncNV) (GLuint signalGpu, GLbitfield waitGpuMask) = nullptr;
 		void (*glRenderGpuMaskNV) (GLbitfield mask) = nullptr;
-		bool NV_gpu_multicast = false;
+		#define NV_gpu_multicast 1
 
 		//gpu_program4
 		void (*glProgramEnvParameterI4iNV) (GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w) = nullptr;
@@ -14636,16 +12025,16 @@ namespace TinyExtender
 		void (*glProgramLocalParameterI4uivNV) (GLenum target, GLuint index, const GLuint* params) = nullptr;
 		void (*glProgramLocalParametersI4ivNV) (GLenum target, GLuint index, GLsizei count, const GLint* params) = nullptr;
 		void (*glProgramLocalParametersI4uivNV) (GLenum target, GLuint index, GLsizei count, const GLuint* params) = nullptr;
-		bool NV_gpu_program4 = false;
+		#define NV_gpu_program4 1
 
 		//gpu_program5
-		bool NV_gpu_program5 = false;
+		#define NV_gpu_program5 1
 
 		//gpu_program5_mem_extended
-		bool NV_gpu_program5_mem_extended = false;
+		#define NV_gpu_program5_mem_extended 1
 
 		//gpu_program_fp64
-		bool NV_gpu_program_fp64 = false;
+		#define NV_gpu_program_fp64 1
 
 		//gpu_shader5
 		void (*glGetUniformi64vNV) (GLuint program, GLint location, GLint64EXT * params) = nullptr;
@@ -14682,7 +12071,7 @@ namespace TinyExtender
 		void (*glUniform4i64vNV) (GLint location, GLsizei count, const GLint64EXT* value) = nullptr;
 		void (*glUniform4ui64NV) (GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w) = nullptr;
 		void (*glUniform4ui64vNV) (GLint location, GLsizei count, const GLuint64EXT* value) = nullptr;
-		bool NV_gpu_shader5 = false;
+		#define NV_gpu_shader5 1
 
 		//half_float
 		void (*glColor3hNV) (GLhalf red, GLhalf green, GLhalf blue) = nullptr;
@@ -14733,27 +12122,27 @@ namespace TinyExtender
 		void (*glVertexWeighthvNV) (const GLhalf* weight) = nullptr;
 
 		//half_float
-		bool NV_half_float = false;
+		#define NV_half_float 1
 
 		//image_formats
-		bool NV_image_formats = false;
+		#define NV_image_formats 1
 
 		//instanced_arrays
 		void (*glVertexAttribDivisorNV) (GLuint index, GLuint divisor) = nullptr;
-		bool NV_instanced_arrays = false;
+		#define NV_instanced_arrays 1
 
 		//internalformat_sample_query
 		void (*glGetInternalformatSampleivNV) (GLenum target, GLenum internalformat, GLsizei samples, GLenum pname, GLsizei bufSize, GLint * params) = nullptr;
-		bool NV_internalformat_sample_query = false;
+		#define NV_internalformat_sample_query 1
 
 		//light_max_exponent
-		bool NV_light_max_exponent = false;
+		#define NV_light_max_exponent 1
 
 		//multisample_coverage
-		bool NV_multisample_coverage = false;
+		#define NV_multisample_coverage 1
 
 		//multisample_filter_hint
-		bool NV_multisample_filter_hint = false;
+		#define NV_multisample_filter_hint 1
 
 		//non_square_matrices
 		void (*glUniformMatrix2x3fvNV) (GLint location, GLsizei count, GLboolean transpose, const GLfloat * value) = nullptr;
@@ -14762,7 +12151,7 @@ namespace TinyExtender
 		void (*glUniformMatrix3x4fvNV) (GLint location, GLsizei count, GLboolean transpose, const GLfloat* value) = nullptr;
 		void (*glUniformMatrix4x2fvNV) (GLint location, GLsizei count, GLboolean transpose, const GLfloat* value) = nullptr;
 		void (*glUniformMatrix4x3fvNV) (GLint location, GLsizei count, GLboolean transpose, const GLfloat* value) = nullptr;
-		bool NV_non_square_matrices = false;
+		#define NV_non_square_matrices 1
 
 		//occlusion_query
 		void (*glBeginOcclusionQueryNV) (GLuint id) = nullptr;
@@ -14772,28 +12161,28 @@ namespace TinyExtender
 		void (*glGetOcclusionQueryivNV) (GLuint id, GLenum pname, GLint* params) = nullptr;
 		void (*glGetOcclusionQueryuivNV) (GLuint id, GLenum pname, GLuint* params) = nullptr;
 		GLboolean(*glIsOcclusionQueryNV) (GLuint id) = nullptr;
-		bool NV_occlusion_query = false;
+		#define NV_occlusion_query 1
 
 		//pack_subimage
-		bool NV_pack_subimage = false;
+		#define NV_pack_subimage 1
 
 		//packed_depth_stencil
-		bool NV_packed_depth_stencil = false;
+		#define NV_packed_depth_stencil 1
 
 		//packed_float
-		bool NV_packed_float = false;
+		#define NV_packed_float 1
 
 		//packed_float_linear
-		bool NV_packed_float_linear = false;
+		#define NV_packed_float_linear 1
 
 		//parameter_buffer_object
 		void (*glProgramBufferParametersIivNV) (GLenum target, GLuint buffer, GLuint index, GLsizei count, const GLint * params) = nullptr;
 		void (*glProgramBufferParametersIuivNV) (GLenum target, GLuint buffer, GLuint index, GLsizei count, const GLuint* params) = nullptr;
 		void (*glProgramBufferParametersfvNV) (GLenum target, GLuint buffer, GLuint index, GLsizei count, const GLfloat* params) = nullptr;
-		bool NV_parameter_buffer_object = false;
+		#define NV_parameter_buffer_object 1
 
 		//parameter_buffer_object2
-		bool NV_parameter_buffer_object2 = false;
+		#define NV_parameter_buffer_object2 1
 
 		//path_rendering
 		void (*glCopyPathNV) (GLuint resultPath, GLuint srcPath) = nullptr;
@@ -14860,30 +12249,30 @@ namespace TinyExtender
 		void (*glStencilThenCoverStrokePathNV) (GLuint path, GLint reference, GLuint mask, GLenum coverMode) = nullptr;
 		void (*glTransformPathNV) (GLuint resultPath, GLuint srcPath, GLenum transformType, const GLfloat* transformValues) = nullptr;
 		void (*glWeightPathsNV) (GLuint resultPath, GLsizei numPaths, const GLuint paths[], const GLfloat weights[]) = nullptr;
-		bool NV_path_rendering = false;
+		#define NV_path_rendering 1
 
 		//path_rendering_shared_edge
-		bool NV_path_rendering_shared_edge = false;
+		#define NV_path_rendering_shared_edge 1
 
 		//pixel_buffer_object
-		bool NV_pixel_buffer_object = false;
+		#define NV_pixel_buffer_object 1
 
 		//pixel_data_range
 		void (*glFlushPixelDataRangeNV) (GLenum target) = nullptr;
 		void (*glPixelDataRangeNV) (GLenum target, GLsizei length, void* pointer) = nullptr;
-		bool NV_pixel_data_range = false;
+		#define NV_pixel_data_range 1
 
 		//platform_binary
-		bool NV_platform_binary = false;
+		#define NV_platform_binary 1
 
 		//point_sprite
 		void (*glPointParameteriNV) (GLenum pname, GLint param) = nullptr;
 		void (*glPointParameterivNV) (GLenum pname, const GLint* params) = nullptr;
-		bool NV_point_sprite = false;
+		#define NV_point_sprite 1
 
 		//polygon_mode
 		void (*glPolygonModeNV) (GLenum face, GLenum mode) = nullptr;
-		bool NV_polygon_mode = false;
+		#define NV_polygon_mode 1
 
 		//present_video
 		void (*glGetVideoi64vNV) (GLuint video_slot, GLenum pname, GLint64EXT * params) = nullptr;
@@ -14892,21 +12281,21 @@ namespace TinyExtender
 		void (*glGetVideouivNV) (GLuint video_slot, GLenum pname, GLuint* params) = nullptr;
 		void (*glPresentFrameDualFillNV) (GLuint video_slot, GLuint64EXT minPresentTime, GLuint beginPresentTimeId, GLuint presentDurationId, GLenum type, GLenum target0, GLuint fill0, GLenum target1, GLuint fill1, GLenum target2, GLuint fill2, GLenum target3, GLuint fill3) = nullptr;
 		void (*glPresentFrameKeyedNV) (GLuint video_slot, GLuint64EXT minPresentTime, GLuint beginPresentTimeId, GLuint presentDurationId, GLenum type, GLenum target0, GLuint fill0, GLuint key0, GLenum target1, GLuint fill1, GLuint key1) = nullptr;
-		bool NV_present_video = false;		
+		#define NV_present_video 1		
 
 		//primitive_restart
 		void (*glPrimitiveRestartIndexNV) (GLuint index) = nullptr;
 		void (*glPrimitiveRestartNV) (void) = nullptr;
-		bool NV_primitive_restart = false;
+		#define NV_primitive_restart 1
 
 		//read_depth
-		bool NV_read_depth = false;
+		#define NV_read_depth 1
 
 		//read_depth_stencil
-		bool NV_read_depth_stencil = false;
+		#define NV_read_depth_stencil 1
 
 		//read_stencil
-		bool NV_read_stencil = false;
+		#define NV_read_stencil 1
 
 		//register_combiners
 		void (*glCombinerInputNV) (GLenum stage, GLenum portion, GLenum variable, GLenum input, GLenum mapping, GLenum componentUsage) = nullptr;
@@ -14922,41 +12311,41 @@ namespace TinyExtender
 		void (*glGetCombinerOutputParameterivNV) (GLenum stage, GLenum portion, GLenum pname, GLint* params) = nullptr;
 		void (*glGetFinalCombinerInputParameterfvNV) (GLenum variable, GLenum pname, GLfloat* params) = nullptr;
 		void (*glGetFinalCombinerInputParameterivNV) (GLenum variable, GLenum pname, GLint* params) = nullptr;
-		bool NV_register_combiners = false;
+		#define NV_register_combiners 1
 
 		//register_combiners2
 		void (*glCombinerStageParameterfvNV) (GLenum stage, GLenum pname, const GLfloat * params) = nullptr;
 		void (*glGetCombinerStageParameterfvNV) (GLenum stage, GLenum pname, GLfloat* params) = nullptr;
-		bool NV_register_combiners2 = false;	
+		#define NV_register_combiners2 1	
 
 		//robustness_video_memory_purge
-		bool NV_robustness_video_memory_purge = false;
+		#define NV_robustness_video_memory_purge 1
 
 		//sRGB_formats
-		bool NV_sRGB_formats = false;
+		#define NV_sRGB_formats 1
 
 		//sample_locations
 		void (*glFramebufferSampleLocationsfvNV) (GLenum target, GLuint start, GLsizei count, const GLfloat * v) = nullptr;
 		void (*glNamedFramebufferSampleLocationsfvNV) (GLuint framebuffer, GLuint start, GLsizei count, const GLfloat* v) = nullptr;
-		bool NV_sample_locations = false;
+		#define NV_sample_locations 1
 
 		//sample_mask_override_coverage
-		bool NV_sample_mask_override_coverage = false;
+		#define NV_sample_mask_override_coverage 1
 
 		//shader_atomic_counters
-		bool NV_shader_atomic_counters = false;
+		#define NV_shader_atomic_counters 1
 
 		//shader_atomic_float
-		bool NV_shader_atomic_float = false;
+		#define NV_shader_atomic_float 1
 
 		//shader_atomic_float64
-		bool NV_shader_atomic_float64 = false;
+		#define NV_shader_atomic_float64 1
 
 		//shader_atomic_fp16_vector
-		bool NV_shader_atomic_fp16_vector = false;
+		#define NV_shader_atomic_fp16_vector 1
 
 		//shader_atomic_int64
-		bool NV_shader_atomic_int64 = false;
+		#define NV_shader_atomic_int64 1
 
 		//shader_buffer_load
 		void (*glGetBufferParameterui64vNV) (GLenum target, GLenum pname, GLuint64EXT * params) = nullptr;
@@ -14972,37 +12361,37 @@ namespace TinyExtender
 		void (*glProgramUniformui64vNV) (GLuint program, GLint location, GLsizei count, const GLuint64EXT* value) = nullptr;
 		void (*glUniformui64NV) (GLint location, GLuint64EXT value) = nullptr;
 		void (*glUniformui64vNV) (GLint location, GLsizei count, const GLuint64EXT* value) = nullptr;
-		bool NV_shader_buffer_load = false;
+		#define NV_shader_buffer_load 1
 
 		//shader_noperspective_interpolation
-		bool NV_shader_noperspective_interpolation = false;
+		#define NV_shader_noperspective_interpolation 1
 
 		//shader_storage_buffer_object
-		bool NV_shader_storage_buffer_object = false;
+		#define NV_shader_storage_buffer_object 1
 
 		//shader_thread_group
-		bool NV_shader_thread_group = false;
+		#define NV_shader_thread_group 1
 
 		//shader_thread_shuffle
-		bool NV_shader_thread_shuffle = false;
+		#define NV_shader_thread_shuffle 1
 
 		//shadow_samplers_array
-		bool NV_shadow_samplers_array = false;
+		#define NV_shadow_samplers_array 1
 
 		//shadow_samplers_cube
-		bool NV_shadow_samplers_cube = false;
+		#define NV_shadow_samplers_cube 1
 
 		//stereo_view_rendering
-		bool NV_stereo_view_rendering = false;
+		#define NV_stereo_view_rendering 1
 
 		//tessellation_program5
-		bool NV_tessellation_program5 = false;
+		#define NV_tessellation_program5 1
 
 		//texgen_emboss
-		bool NV_texgen_emboss = false;
+		#define NV_texgen_emboss 1
 
 		//texgen_reflection
-		bool NV_texgen_reflection = false;
+		#define NV_texgen_reflection 1
 
 		//texture_array
 		void (*glCompressedTexImage3DNV) (GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void* data) = nullptr;
@@ -15011,32 +12400,32 @@ namespace TinyExtender
 		void (*glFramebufferTextureLayerNV) (GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer) = nullptr;
 		void (*glTexImage3DNV) (GLenum target, GLint level, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void* pixels) = nullptr;
 		void (*glTexSubImage3DNV) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void* pixels) = nullptr;
-		bool NV_texture_array = false;
+		#define NV_texture_array 1
 
 		//texture_barrier
 		void (*glTextureBarrierNV) (void) = nullptr;
-		bool NV_texture_barrier = false;
+		#define NV_texture_barrier 1
 
 		//texture_border_clamp
-		bool NV_texture_border_clamp = false;
+		#define NV_texture_border_clamp 1
 
 		//texture_compression_latc
-		bool NV_texture_compression_latc = false;
+		#define NV_texture_compression_latc 1
 
 		//texture_compression_s3tc
-		bool NV_texture_compression_s3tc = false;
+		#define NV_texture_compression_s3tc 1
 
 		//texture_compression_s3tc_update
-		bool NV_texture_compression_s3tc_update = false;
+		#define NV_texture_compression_s3tc_update 1
 
 		//texture_compression_vtc
-		bool NV_texture_compression_vtc = false;
+		#define NV_texture_compression_vtc 1
 
 		//texture_env_combine4
-		bool NV_texture_env_combine4 = false;
+		#define NV_texture_env_combine4 1
 
 		//texture_expand_normal
-		bool NV_texture_expand_normal = false;
+		#define NV_texture_expand_normal 1
 
 		//texture_multisample
 		void (*glTexImage2DMultisampleCoverageNV) (GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations) = nullptr;
@@ -15045,25 +12434,25 @@ namespace TinyExtender
 		void (*glTextureImage2DMultisampleNV) (GLuint texture, GLenum target, GLsizei samples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations) = nullptr;
 		void (*glTextureImage3DMultisampleCoverageNV) (GLuint texture, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations) = nullptr;
 		void (*glTextureImage3DMultisampleNV) (GLuint texture, GLenum target, GLsizei samples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations) = nullptr;
-		bool NV_texture_multisample = false;
+		#define NV_texture_multisample 1
 
 		//texture_npot_2D_mipmap
-		bool NV_texture_npot_2D_mipmap = false;
+		#define NV_texture_npot_2D_mipmap 1
 
 		//texture_rectangle
-		bool NV_texture_rectangle = false;
+		#define NV_texture_rectangle 1
 
 		//texture_rectangle_compressed
-		bool NV_texture_rectangle_compressed = false;
+		#define NV_texture_rectangle_compressed 1
 
 		//texture_shader
-		bool NV_texture_shader = false;
+		#define NV_texture_shader 1
 
 		//texture_shader2
-		bool NV_texture_shader2 = false;
+		#define NV_texture_shader2 1
 
 		//texture_shader3
-		bool NV_texture_shader3 = false;
+		#define NV_texture_shader3 1
 
 		//transform_feedback
 		void (*glActiveVaryingNV) (GLuint program, const GLchar * name) = nullptr;
@@ -15077,7 +12466,7 @@ namespace TinyExtender
 		GLint(*glGetVaryingLocationNV) (GLuint program, const GLchar* name) = nullptr;
 		void (*glTransformFeedbackAttribsNV) (GLuint count, const GLint* attribs, GLenum bufferMode) = nullptr;
 		void (*glTransformFeedbackVaryingsNV) (GLuint program, GLsizei count, const GLint* locations, GLenum bufferMode) = nullptr;
-		bool NV_transform_feedback = false;
+		#define NV_transform_feedback 1
 
 		//transform_feedback2
 		void (*glBindTransformFeedbackNV) (GLenum target, GLuint id) = nullptr;
@@ -15087,10 +12476,10 @@ namespace TinyExtender
 		GLboolean(*glIsTransformFeedbackNV) (GLuint id) = nullptr;
 		void (*glPauseTransformFeedbackNV) (void) = nullptr;
 		void (*glResumeTransformFeedbackNV) (void) = nullptr;
-		bool NV_transform_feedback2 = false;
+		#define NV_transform_feedback2 1
 
 		//uniform_buffer_unified_memory
-		bool NV_uniform_buffer_unified_memory = false;
+		#define NV_uniform_buffer_unified_memory 1
 		
 		//vdpau_interop
 		void (*glVDPAUFiniNV) (void) = nullptr;
@@ -15103,15 +12492,15 @@ namespace TinyExtender
 		void (*glVDPAUSurfaceAccessNV) (GLvdpauSurfaceNV surface, GLenum access) = nullptr;
 		void (*glVDPAUUnmapSurfacesNV) (GLsizei numSurface, const GLvdpauSurfaceNV* surfaces) = nullptr;
 		void (*glVDPAUUnregisterSurfaceNV) (GLvdpauSurfaceNV surface) = nullptr;
-		bool NV_vdpau_interop = false;
+		#define NV_vdpau_interop 1
 
 		//vertex_array_range
 		void (*glFlushVertexArrayRangeNV) (void) = nullptr;
 		void (*glVertexArrayRangeNV) (GLsizei length, void* pointer) = nullptr;
-		bool NV_vertex_array_range = false;		
+		#define NV_vertex_array_range 1		
 
 		//vertex_array_range2
-		bool NV_vertex_array_range2 = false;
+		#define NV_vertex_array_range2 1
 
 		//vertex_attrib_integer_64bit
 		void (*glGetVertexAttribLi64vNV) (GLuint index, GLenum pname, GLint64EXT * params) = nullptr;
@@ -15133,7 +12522,7 @@ namespace TinyExtender
 		void (*glVertexAttribL4ui64NV) (GLuint index, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w) = nullptr;
 		void (*glVertexAttribL4ui64vNV) (GLuint index, const GLuint64EXT* v) = nullptr;
 		void (*glVertexAttribLFormatNV) (GLuint index, GLint size, GLenum type, GLsizei stride) = nullptr;
-		bool NV_vertex_attrib_integer_64bit = false;
+		#define NV_vertex_attrib_integer_64bit 1
 
 		//vertex_buffer_unified_memory
 		void (*glBufferAddressRangeNV) (GLenum pname, GLuint index, GLuint64EXT address, GLsizeiptr length) = nullptr;
@@ -15148,7 +12537,7 @@ namespace TinyExtender
 		void (*glVertexAttribFormatNV) (GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride) = nullptr;
 		void (*glVertexAttribIFormatNV) (GLuint index, GLint size, GLenum type, GLsizei stride) = nullptr;
 		void (*glVertexFormatNV) (GLint size, GLenum type, GLsizei stride) = nullptr;
-		bool NV_vertex_buffer_unified_memory = false;
+		#define NV_vertex_buffer_unified_memory 1
 
 		//vertex_program
 		GLboolean(*glAreProgramsResidentNV) (GLsizei n, const GLuint * ids, GLboolean * residences) = nullptr;
@@ -15215,22 +12604,22 @@ namespace TinyExtender
 		void (*glVertexAttribs4fvNV) (GLuint index, GLsizei n, const GLfloat* v) = nullptr;
 		void (*glVertexAttribs4svNV) (GLuint index, GLsizei n, const GLshort* v) = nullptr;
 		void (*glVertexAttribs4ubvNV) (GLuint index, GLsizei n, const GLubyte* v) = nullptr;
-		bool NV_vertex_program = false;
+		#define NV_vertex_program 1
 
 		//vertex_program1_1
-		bool NV_vertex_program1_1 = false;
+		#define NV_vertex_program1_1 1
 
 		//vertex_program2
-		bool NV_vertex_program2 = false;
+		#define NV_vertex_program2 1
 
 		//vertex_program2_option
-		bool NV_vertex_program2_option = false;
+		#define NV_vertex_program2_option 1
 
 		//vertex_program3
-		bool NV_vertex_program3 = false;
+		#define NV_vertex_program3 1
 
 		//vertex_program4
-		bool NV_vertex_program4 = false;
+		#define NV_vertex_program4 1
 
 		//video_capture
 		void (*glBeginVideoCaptureNV) (GLuint video_capture_slot) = nullptr;
@@ -15245,7 +12634,7 @@ namespace TinyExtender
 		void (*glVideoCaptureStreamParameterdvNV) (GLuint video_capture_slot, GLuint stream, GLenum pname, const GLdouble* params) = nullptr;
 		void (*glVideoCaptureStreamParameterfvNV) (GLuint video_capture_slot, GLuint stream, GLenum pname, const GLfloat* params) = nullptr;
 		void (*glVideoCaptureStreamParameterivNV) (GLuint video_capture_slot, GLuint stream, GLenum pname, const GLint* params) = nullptr;
-		bool NV_video_capture = false;
+		#define NV_video_capture 1
 
 		//viewport_array
 		void (*glDepthRangeArrayfvNV) (GLuint first, GLsizei count, const GLfloat * v) = nullptr;
@@ -15260,41 +12649,29 @@ namespace TinyExtender
 		void (*glViewportArrayvNV) (GLuint first, GLsizei count, const GLfloat* v) = nullptr;
 		void (*glViewportIndexedfNV) (GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h) = nullptr;
 		void (*glViewportIndexedfvNV) (GLuint index, const GLfloat* v) = nullptr;
-		bool NV_viewport_array = false;
+		#define NV_viewport_array 1
 
 		//viewport_array2
-		bool NV_viewport_array2 = false;
+		#define NV_viewport_array2 1
 			   		 	  
 		//viewport_swizzle
 		void (*glViewportSwizzleNV) (GLuint index, GLenum swizzlex, GLenum swizzley, GLenum swizzlez, GLenum swizzlew) = nullptr;
-		bool NV_viewport_swizzle = false;
+		#define NV_viewport_swizzle 1
 
 		//*< load NV Extensions
 		void LoadNVExtensions()
 		{
 			//3dvision_settings
 			FetchProcAddress(glStereoParameterfNV, "glStereoParameterfNV");
-			FetchProcAddress(glStereoParameteriNV, "glStereoParameteriNV");
-			FetchProcAddress(NV_3dvision_settings, "NV_3dvision_settings");
-
-			//EGL_stream_consumer_external
-			FetchProcAddress(NV_EGL_stream_consumer_external, "NV_EGL_stream_consumer_external");
-
-			//alpha_to_coverage_dither_control
-			FetchProcAddress(NV_alpha_to_coverage_dither_control, "NV_alpha_to_coverage_dither_control");
-
-			//bgr
-			FetchProcAddress(NV_bgr, "NV_bgr");
+			FetchProcAddress(glStereoParameteriNV, "glStereoParameteriNV");			
 
 			//bindless_multi_draw_indirect
 			FetchProcAddress(glMultiDrawArraysIndirectBindlessNV, "glMultiDrawArraysIndirectBindlessNV");
-			FetchProcAddress(glMultiDrawElementsIndirectBindlessNV, "glMultiDrawElementsIndirectBindlessNV");
-			FetchProcAddress(NV_bindless_multi_draw_indirect, "NV_bindless_multi_draw_indirect");
+			FetchProcAddress(glMultiDrawElementsIndirectBindlessNV, "glMultiDrawElementsIndirectBindlessNV");			
 
 			//bindless_multi_draw_indirect_count
 			FetchProcAddress(glMultiDrawArraysIndirectBindlessCountNV, "glMultiDrawArraysIndirectBindlessCountNV");
-			FetchProcAddress(glMultiDrawElementsIndirectBindlessCountNV, "glMultiDrawElementsIndirectBindlessCountNV");
-			FetchProcAddress(NV_bindless_multi_draw_indirect_count, "NV_bindless_multi_draw_indirect_count");
+			FetchProcAddress(glMultiDrawElementsIndirectBindlessCountNV, "glMultiDrawElementsIndirectBindlessCountNV");			
 
 			//bindless_texture
 			FetchProcAddress(glGetImageHandleNV, "glGetImageHandleNV");
@@ -15309,26 +12686,14 @@ namespace TinyExtender
 			FetchProcAddress(glProgramUniformHandleui64NV, "glProgramUniformHandleui64NV");
 			FetchProcAddress(glProgramUniformHandleui64vNV, "glProgramUniformHandleui64vNV");
 			FetchProcAddress(glUniformHandleui64NV, "glUniformHandleui64NV");
-			FetchProcAddress(glUniformHandleui64vNV, "glUniformHandleui64vNV");
-			FetchProcAddress(NV_bindless_texture, "NV_bindless_texture");
+			FetchProcAddress(glUniformHandleui64vNV, "glUniformHandleui64vNV");			
 
 			//blend_equation_advanced
 			FetchProcAddress(glBlendBarrierNV, "glBlendBarrierNV");
 			FetchProcAddress(glBlendParameteriNV, "glBlendParameteriNV");
-			FetchProcAddress(NV_blend_equation_advanced, "NV_blend_equation_advanced");
-
-			//blend_equation_advanced_coherent
-			FetchProcAddress(NV_blend_equation_advanced_coherent, "NV_blend_equation_advanced_coherent");
-
-			//blend_minmax_factor
-			FetchProcAddress(NV_blend_minmax_factor, "NV_blend_minmax_factor");
-
-			//blend_square
-			FetchProcAddress(NV_blend_square, "NV_blend_square");
 
 			//clip_space_w_scaling
-			FetchProcAddress(glViewportPositionWScaleNV, "glViewportPositionWScaleNV");
-			FetchProcAddress(NV_clip_space_w_scaling, "NV_clip_space_w_scaling");
+			FetchProcAddress(glViewportPositionWScaleNV, "glViewportPositionWScaleNV");			
 
 			//command_list
 			FetchProcAddress(glCallCommandListNV, "glCallCommandListNV");
@@ -15348,74 +12713,47 @@ namespace TinyExtender
 			FetchProcAddress(glIsStateNV, "glIsStateNV");
 			FetchProcAddress(glListDrawCommandsStatesClientNV, "glListDrawCommandsStatesClientNV");
 			FetchProcAddress(glStateCaptureNV, "glStateCaptureNV");
-			FetchProcAddress(NV_command_list, "NV_command_list");
-
-			//compute_program5
-			FetchProcAddress(NV_compute_program5, "NV_compute_program5");
 
 			//conditional_render
 			FetchProcAddress(glBeginConditionalRenderNV, "glBeginConditionalRenderNV");
-			FetchProcAddress(glEndConditionalRenderNV, "glEndConditionalRenderNV");
-			FetchProcAddress(NV_conditional_render, "NV_conditional_render");
+			FetchProcAddress(glEndConditionalRenderNV, "glEndConditionalRenderNV");			
 
 			//conservative_raster
-			FetchProcAddress(glSubpixelPrecisionBiasNV, "glSubpixelPrecisionBiasNV");
-			FetchProcAddress(NV_conservative_raster, "NV_conservative_raster");
+			FetchProcAddress(glSubpixelPrecisionBiasNV, "glSubpixelPrecisionBiasNV");			
 
 			//conservative_raster_dilate
-			FetchProcAddress(glConservativeRasterParameterfNV, "glConservativeRasterParameterfNV");
-			FetchProcAddress(NV_conservative_raster_dilate, "NV_conservative_raster_dilate");
+			FetchProcAddress(glConservativeRasterParameterfNV, "glConservativeRasterParameterfNV");			
 
 			//conservative_raster_pre_snap_triangles
-			FetchProcAddress(glConservativeRasterParameteriNV, "glConservativeRasterParameteriNV");
-			FetchProcAddress(NV_conservative_raster_pre_snap_triangles, "NV_conservative_raster_pre_snap_triangles");
+			FetchProcAddress(glConservativeRasterParameteriNV, "glConservativeRasterParameteriNV");			
 
 			//copy_buffer
-			FetchProcAddress(glCopyBufferSubDataNV, "glCopyBufferSubDataNV");
-			FetchProcAddress(NV_copy_buffer, "NV_copy_buffer");
-
-			//copy_depth_to_color
-			FetchProcAddress(NV_copy_depth_to_color, "NV_copy_depth_to_color");
+			FetchProcAddress(glCopyBufferSubDataNV, "glCopyBufferSubDataNV");			
 
 			//copy_image
-			FetchProcAddress(glCopyImageSubDataNV, "glCopyImageSubDataNV");
-			FetchProcAddress(NV_copy_image, "NV_copy_image");
-
-			//deep_texture3D
-			FetchProcAddress(NV_deep_texture3D, "NV_deep_texture3D");
+			FetchProcAddress(glCopyImageSubDataNV, "glCopyImageSubDataNV");			
 
 			//depth_buffer_float
 			FetchProcAddress(glClearDepthdNV, "glClearDepthdNV");
 			FetchProcAddress(glDepthBoundsdNV, "glDepthBoundsdNV");
-			FetchProcAddress(glDepthRangedNV, "glDepthRangedNV");
-			FetchProcAddress(NV_depth_buffer_float, "NV_depth_buffer_float");
-
-			//depth_clamp
-			FetchProcAddress(NV_depth_clamp, "NV_depth_clamp");
-
-			//depth_range_unclamped
-			FetchProcAddress(NV_depth_range_unclamped, "NV_depth_range_unclamped");
+			FetchProcAddress(glDepthRangedNV, "glDepthRangedNV");			
 
 			//draw_buffers
-			FetchProcAddress(glDrawBuffersNV, "glDrawBuffersNV");
-			FetchProcAddress(NV_draw_buffers, "NV_draw_buffers");
+			FetchProcAddress(glDrawBuffersNV, "glDrawBuffersNV");			
 
 			//draw_instanced
 			FetchProcAddress(glDrawArraysInstancedNV, "glDrawArraysInstancedNV");
-			FetchProcAddress(glDrawElementsInstancedNV, "glDrawElementsInstancedNV");
-			FetchProcAddress(NV_draw_instanced, "NV_draw_instanced");
+			FetchProcAddress(glDrawElementsInstancedNV, "glDrawElementsInstancedNV");			
 
 			//draw_texture
-			FetchProcAddress(glDrawTextureNV, "glDrawTextureNV");
-			FetchProcAddress(NV_draw_texture, "NV_draw_texture");
+			FetchProcAddress(glDrawTextureNV, "glDrawTextureNV");			
 
 			//draw_vulkan_image
 			FetchProcAddress(glDrawVkImageNV, "glDrawVkImageNV");
 			FetchProcAddress(glGetVkProcAddrNV, "glGetVkProcAddrNV");
 			FetchProcAddress(glSignalVkFenceNV, "glSignalVkFenceNV");
 			FetchProcAddress(glSignalVkSemaphoreNV, "glSignalVkSemaphoreNV");
-			FetchProcAddress(glWaitVkSemaphoreNV, "glWaitVkSemaphoreNV");
-			FetchProcAddress(NV_draw_vulkan_image, "NV_draw_vulkan_image");
+			FetchProcAddress(glWaitVkSemaphoreNV, "glWaitVkSemaphoreNV");			
 
 			//evaluators
 			FetchProcAddress(glEvalMapsNV, "glEvalMapsNV");
@@ -15426,20 +12764,12 @@ namespace TinyExtender
 			FetchProcAddress(glGetMapParameterivNV, "glGetMapParameterivNV");
 			FetchProcAddress(glMapControlPointsNV, "glMapControlPointsNV");
 			FetchProcAddress(glMapParameterfvNV, "glMapParameterfvNV");
-			FetchProcAddress(glMapParameterivNV, "glMapParameterivNV");
-			FetchProcAddress(NV_evaluators, "NV_evaluators");
-
-			//explicit_attrib_location
-			FetchProcAddress(NV_explicit_attrib_location, "NV_explicit_attrib_location");
+			FetchProcAddress(glMapParameterivNV, "glMapParameterivNV");			
 
 			//explicit_multisample
 			FetchProcAddress(glGetMultisamplefvNV, "glGetMultisamplefvNV");
 			FetchProcAddress(glSampleMaskIndexedNV, "glSampleMaskIndexedNV");
-			FetchProcAddress(glTexRenderbufferNV, "glTexRenderbufferNV");
-			FetchProcAddress(NV_explicit_multisample, "NV_explicit_multisample");
-
-			//fbo_color_attachments
-			FetchProcAddress(NV_fbo_color_attachments, "NV_fbo_color_attachments");
+			FetchProcAddress(glTexRenderbufferNV, "glTexRenderbufferNV");			
 
 			//fence
 			FetchProcAddress(glDeleteFencesNV, "glDeleteFencesNV");
@@ -15448,21 +12778,10 @@ namespace TinyExtender
 			FetchProcAddress(glGetFenceivNV, "glGetFenceivNV");
 			FetchProcAddress(glIsFenceNV, "glIsFenceNV");
 			FetchProcAddress(glSetFenceNV, "glSetFenceNV");
-			FetchProcAddress(glTestFenceNV, "glTestFenceNV");
-			FetchProcAddress(NV_fence, "NV_fence");
-
-			//fill_rectangle
-			FetchProcAddress(NV_fill_rectangle, "NV_fill_rectangle");
-
-			//float_buffer
-			FetchProcAddress(NV_float_buffer, "NV_float_buffer");
-
-			//fog_distance
-			FetchProcAddress(NV_fog_distance, "NV_fog_distance");
+			FetchProcAddress(glTestFenceNV, "glTestFenceNV");			
 
 			//fragment_coverage_to_color
-			FetchProcAddress(glFragmentCoverageColorNV, "glFragmentCoverageColorNV");
-			FetchProcAddress(NV_fragment_coverage_to_color, "NV_fragment_coverage_to_color");
+			FetchProcAddress(glFragmentCoverageColorNV, "glFragmentCoverageColorNV");			
 
 			//fragment_program
 			FetchProcAddress(glGetProgramNamedParameterdvNV, "glGetProgramNamedParameterdvNV");
@@ -15470,48 +12789,20 @@ namespace TinyExtender
 			FetchProcAddress(glProgramNamedParameter4dNV, "glProgramNamedParameter4dNV");
 			FetchProcAddress(glProgramNamedParameter4dvNV, "glProgramNamedParameter4dvNV");
 			FetchProcAddress(glProgramNamedParameter4fNV, "glProgramNamedParameter4fNV");
-			FetchProcAddress(glProgramNamedParameter4fvNV, "glProgramNamedParameter4fvNV");
-			FetchProcAddress(NV_fragment_program, "NV_fragment_program");
-
-			//fragment_program2
-			FetchProcAddress(NV_fragment_program2, "NV_fragment_program2");
-
-			//fragment_program4
-			FetchProcAddress(NV_fragment_program4, "NV_fragment_program4");
-
-			//fragment_program_option
-			FetchProcAddress(NV_fragment_program_option, "NV_fragment_program_option");
-
-			//fragment_shader_interlock
-			FetchProcAddress(NV_fragment_shader_interlock, "NV_fragment_shader_interlock");
+			FetchProcAddress(glProgramNamedParameter4fvNV, "glProgramNamedParameter4fvNV");			
 
 			//framebuffer_blit
-			FetchProcAddress(glBlitFramebufferNV, "glBlitFramebufferNV");
-			FetchProcAddress(NV_framebuffer_blit, "NV_framebuffer_blit");
-
-			//framebuffer_mixed_samples
-			FetchProcAddress(NV_framebuffer_mixed_samples, "NV_framebuffer_mixed_samples");
+			FetchProcAddress(glBlitFramebufferNV, "glBlitFramebufferNV");			
 
 			//framebuffer_multisample
 			FetchProcAddress(glRenderbufferStorageMultisampleNV, "glRenderbufferStorageMultisampleNV");
-			FetchProcAddress(NV_framebuffer_multisample, "NV_framebuffer_multisample");
+			
 
 			//framebuffer_multisample_coverage
-			FetchProcAddress(glRenderbufferStorageMultisampleCoverageNV, "glRenderbufferStorageMultisampleCoverageNV");
-			FetchProcAddress(NV_framebuffer_multisample_coverage, "NV_framebuffer_multisample_coverage");
-
-			//generate_mipmap_sRGB
-			FetchProcAddress(NV_generate_mipmap_sRGB, "NV_generate_mipmap_sRGB");
+			FetchProcAddress(glRenderbufferStorageMultisampleCoverageNV, "glRenderbufferStorageMultisampleCoverageNV");			
 
 			//geometry_program4
-			FetchProcAddress(glProgramVertexLimitNV, "glProgramVertexLimitNV");
-			FetchProcAddress(NV_geometry_program4, "NV_geometry_program4");
-
-			//geometry_shader4
-			FetchProcAddress(NV_geometry_shader4, "NV_geometry_shader4");
-
-			//geometry_shader_passthrough
-			FetchProcAddress(NV_geometry_shader_passthrough, "NV_geometry_shader_passthrough");
+			FetchProcAddress(glProgramVertexLimitNV, "glProgramVertexLimitNV");			
 
 			//gpu_multicast
 			FetchProcAddress(glMulticastBarrierNV, "glMulticastBarrierNV");
@@ -15525,8 +12816,7 @@ namespace TinyExtender
 			FetchProcAddress(glMulticastGetQueryObjectui64vNV, "glMulticastGetQueryObjectui64vNV");
 			FetchProcAddress(glMulticastGetQueryObjectuivNV, "glMulticastGetQueryObjectuivNV");
 			FetchProcAddress(glMulticastWaitSyncNV, "glMulticastWaitSyncNV");
-			FetchProcAddress(glRenderGpuMaskNV, "glRenderGpuMaskNV");
-			FetchProcAddress(NV_gpu_multicast, "NV_gpu_multicast");
+			FetchProcAddress(glRenderGpuMaskNV, "glRenderGpuMaskNV");	
 
 			//gpu_program4
 			FetchProcAddress(glProgramEnvParameterI4iNV, "glProgramEnvParameterI4iNV");
@@ -15540,17 +12830,7 @@ namespace TinyExtender
 			FetchProcAddress(glProgramLocalParameterI4uiNV, "glProgramLocalParameterI4uiNV");
 			FetchProcAddress(glProgramLocalParameterI4uivNV, "glProgramLocalParameterI4uivNV");
 			FetchProcAddress(glProgramLocalParametersI4ivNV, "glProgramLocalParametersI4ivNV");
-			FetchProcAddress(glProgramLocalParametersI4uivNV, "glProgramLocalParametersI4uivNV");
-			FetchProcAddress(NV_gpu_program4, "NV_gpu_program4");
-
-			//gpu_program5
-			FetchProcAddress(NV_gpu_program5, "NV_gpu_program5");
-
-			//gpu_program5_mem_extended
-			FetchProcAddress(NV_gpu_program5_mem_extended, "NV_gpu_program5_mem_extended");
-
-			//gpu_program_fp64
-			FetchProcAddress(NV_gpu_program_fp64, "NV_gpu_program_fp64");
+			FetchProcAddress(glProgramLocalParametersI4uivNV, "glProgramLocalParametersI4uivNV");			
 
 			//gpu_shader5
 			FetchProcAddress(glGetUniformi64vNV, "glGetUniformi64vNV");
@@ -15586,8 +12866,7 @@ namespace TinyExtender
 			FetchProcAddress(glUniform4i64NV, "glUniform4i64NV");
 			FetchProcAddress(glUniform4i64vNV, "glUniform4i64vNV");
 			FetchProcAddress(glUniform4ui64NV, "glUniform4ui64NV");
-			FetchProcAddress(glUniform4ui64vNV, "glUniform4ui64vNV");
-			FetchProcAddress(NV_gpu_shader5, "NV_gpu_shader5");
+			FetchProcAddress(glUniform4ui64vNV, "glUniform4ui64vNV");			
 
 			//half_float
 			FetchProcAddress(glColor3hNV, "glColor3hNV");
@@ -15635,30 +12914,13 @@ namespace TinyExtender
 			FetchProcAddress(glVertexAttribs3hvNV, "glVertexAttribs3hvNV");
 			FetchProcAddress(glVertexAttribs4hvNV, "glVertexAttribs4hvNV");
 			FetchProcAddress(glVertexWeighthNV, "glVertexWeighthNV");
-			FetchProcAddress(glVertexWeighthvNV, "glVertexWeighthvNV");
-
-			//half_float
-			FetchProcAddress(NV_half_float, "NV_half_float");
-
-			//image_formats
-			FetchProcAddress(NV_image_formats, "NV_image_formats");
+			FetchProcAddress(glVertexWeighthvNV, "glVertexWeighthvNV");			
 
 			//instanced_arrays
-			FetchProcAddress(glVertexAttribDivisorNV, "glVertexAttribDivisorNV");
-			FetchProcAddress(NV_instanced_arrays, "NV_instanced_arrays");
+			FetchProcAddress(glVertexAttribDivisorNV, "glVertexAttribDivisorNV");			
 
 			//internalformat_sample_query
-			FetchProcAddress(glGetInternalformatSampleivNV, "glGetInternalformatSampleivNV");
-			FetchProcAddress(NV_internalformat_sample_query, "NV_internalformat_sample_query");
-
-			//light_max_exponent
-			FetchProcAddress(NV_light_max_exponent, "NV_light_max_exponent");
-
-			//multisample_coverage
-			FetchProcAddress(NV_multisample_coverage, "NV_multisample_coverage");
-
-			//multisample_filter_hint
-			FetchProcAddress(NV_multisample_filter_hint, "NV_multisample_filter_hint");
+			FetchProcAddress(glGetInternalformatSampleivNV, "glGetInternalformatSampleivNV");						
 
 			//non_square_matrices
 			FetchProcAddress(glUniformMatrix2x3fvNV, "glUniformMatrix2x3fvNV");
@@ -15666,8 +12928,7 @@ namespace TinyExtender
 			FetchProcAddress(glUniformMatrix3x2fvNV, "glUniformMatrix3x2fvNV");
 			FetchProcAddress(glUniformMatrix3x4fvNV, "glUniformMatrix3x4fvNV");
 			FetchProcAddress(glUniformMatrix4x2fvNV, "glUniformMatrix4x2fvNV");
-			FetchProcAddress(glUniformMatrix4x3fvNV, "glUniformMatrix4x3fvNV");
-			FetchProcAddress(NV_non_square_matrices, "NV_non_square_matrices");
+			FetchProcAddress(glUniformMatrix4x3fvNV, "glUniformMatrix4x3fvNV");			
 
 			//occlusion_query
 			FetchProcAddress(glBeginOcclusionQueryNV, "glBeginOcclusionQueryNV");
@@ -15676,29 +12937,12 @@ namespace TinyExtender
 			FetchProcAddress(glGenOcclusionQueriesNV, "glGenOcclusionQueriesNV");
 			FetchProcAddress(glGetOcclusionQueryivNV, "glGetOcclusionQueryivNV");
 			FetchProcAddress(glGetOcclusionQueryuivNV, "glGetOcclusionQueryuivNV");
-			FetchProcAddress(glIsOcclusionQueryNV, "glIsOcclusionQueryNV");
-			FetchProcAddress(NV_occlusion_query, "NV_occlusion_query");
-
-			//pack_subimage
-			FetchProcAddress(NV_pack_subimage, "NV_pack_subimage");
-
-			//packed_depth_stencil
-			FetchProcAddress(NV_packed_depth_stencil, "NV_packed_depth_stencil");
-
-			//packed_float
-			FetchProcAddress(NV_packed_float, "NV_packed_float");
-
-			//packed_float_linear
-			FetchProcAddress(NV_packed_float_linear, "NV_packed_float_linear");
+			FetchProcAddress(glIsOcclusionQueryNV, "glIsOcclusionQueryNV");			
 
 			//parameter_buffer_object
 			FetchProcAddress(glProgramBufferParametersIivNV, "glProgramBufferParametersIivNV");
 			FetchProcAddress(glProgramBufferParametersIuivNV, "glProgramBufferParametersIuivNV");
-			FetchProcAddress(glProgramBufferParametersfvNV, "glProgramBufferParametersfvNV");
-			FetchProcAddress(NV_parameter_buffer_object, "NV_parameter_buffer_object");
-
-			//parameter_buffer_object2
-			FetchProcAddress(NV_parameter_buffer_object2, "NV_parameter_buffer_object2");
+			FetchProcAddress(glProgramBufferParametersfvNV, "glProgramBufferParametersfvNV");			
 
 			//path_rendering
 			FetchProcAddress(glCopyPathNV, "glCopyPathNV");
@@ -15764,31 +13008,18 @@ namespace TinyExtender
 			FetchProcAddress(glStencilThenCoverStrokePathInstancedNV, "glStencilThenCoverStrokePathInstancedNV");
 			FetchProcAddress(glStencilThenCoverStrokePathNV, "glStencilThenCoverStrokePathNV");
 			FetchProcAddress(glTransformPathNV, "glTransformPathNV");
-			FetchProcAddress(glWeightPathsNV, "glWeightPathsNV");
-			FetchProcAddress(NV_path_rendering, "NV_path_rendering");
-
-			//path_rendering_shared_edge
-			FetchProcAddress(NV_path_rendering_shared_edge, "NV_path_rendering_shared_edge");
-
-			//pixel_buffer_object
-			FetchProcAddress(NV_pixel_buffer_object, "NV_pixel_buffer_object");
+			FetchProcAddress(glWeightPathsNV, "glWeightPathsNV");			
 
 			//pixel_data_range
 			FetchProcAddress(glFlushPixelDataRangeNV, "glFlushPixelDataRangeNV");
-			FetchProcAddress(glPixelDataRangeNV, "glPixelDataRangeNV");
-			FetchProcAddress(NV_pixel_data_range, "NV_pixel_data_range");
-
-			//platform_binary
-			FetchProcAddress(NV_platform_binary, "NV_platform_binary");
+			FetchProcAddress(glPixelDataRangeNV, "glPixelDataRangeNV");			
 
 			//point_sprite
 			FetchProcAddress(glPointParameteriNV, "glPointParameteriNV");
-			FetchProcAddress(glPointParameterivNV, "glPointParameterivNV");
-			FetchProcAddress(NV_point_sprite, "NV_point_sprite");
+			FetchProcAddress(glPointParameterivNV, "glPointParameterivNV");			
 
 			//polygon_mode
-			FetchProcAddress(glPolygonModeNV, "glPolygonModeNV");
-			FetchProcAddress(NV_polygon_mode, "NV_polygon_mode");
+			FetchProcAddress(glPolygonModeNV, "glPolygonModeNV");			
 
 			//present_video
 			FetchProcAddress(glGetVideoi64vNV, "glGetVideoi64vNV");
@@ -15796,22 +13027,11 @@ namespace TinyExtender
 			FetchProcAddress(glGetVideoui64vNV, "glGetVideoui64vNV");
 			FetchProcAddress(glGetVideouivNV, "glGetVideouivNV");
 			FetchProcAddress(glPresentFrameDualFillNV, "glPresentFrameDualFillNV");
-			FetchProcAddress(glPresentFrameKeyedNV, "glPresentFrameKeyedNV");
-			FetchProcAddress(NV_present_video, "NV_present_video");
+			FetchProcAddress(glPresentFrameKeyedNV, "glPresentFrameKeyedNV");			
 
 			//primitive_restart
 			FetchProcAddress(glPrimitiveRestartIndexNV, "glPrimitiveRestartIndexNV");
-			FetchProcAddress(glPrimitiveRestartNV, "glPrimitiveRestartNV");
-			FetchProcAddress(NV_primitive_restart, "NV_primitive_restart");
-
-			//read_depth
-			FetchProcAddress(NV_read_depth, "NV_read_depth");
-
-			//read_depth_stencil
-			FetchProcAddress(NV_read_depth_stencil, "NV_read_depth_stencil");
-
-			//read_stencil
-			FetchProcAddress(NV_read_stencil, "NV_read_stencil");
+			FetchProcAddress(glPrimitiveRestartNV, "glPrimitiveRestartNV");			
 
 			//register_combiners
 			FetchProcAddress(glCombinerInputNV, "glCombinerInputNV");
@@ -15826,42 +13046,15 @@ namespace TinyExtender
 			FetchProcAddress(glGetCombinerOutputParameterfvNV, "glGetCombinerOutputParameterfvNV");
 			FetchProcAddress(glGetCombinerOutputParameterivNV, "glGetCombinerOutputParameterivNV");
 			FetchProcAddress(glGetFinalCombinerInputParameterfvNV, "glGetFinalCombinerInputParameterfvNV");
-			FetchProcAddress(glGetFinalCombinerInputParameterivNV, "glGetFinalCombinerInputParameterivNV");
-			FetchProcAddress(NV_register_combiners, "NV_register_combiners");
+			FetchProcAddress(glGetFinalCombinerInputParameterivNV, "glGetFinalCombinerInputParameterivNV");			
 
 			//register_combiners2
 			FetchProcAddress(glCombinerStageParameterfvNV, "glCombinerStageParameterfvNV");
-			FetchProcAddress(glGetCombinerStageParameterfvNV, "glGetCombinerStageParameterfvNV");
-			FetchProcAddress(NV_register_combiners2, "NV_register_combiners2");
-
-			//robustness_video_memory_purge
-			FetchProcAddress(NV_robustness_video_memory_purge, "NV_robustness_video_memory_purge");
-
-			//sRGB_formats
-			FetchProcAddress(NV_sRGB_formats, "NV_sRGB_formats");
+			FetchProcAddress(glGetCombinerStageParameterfvNV, "glGetCombinerStageParameterfvNV");			
 
 			//sample_locations
 			FetchProcAddress(glFramebufferSampleLocationsfvNV, "glFramebufferSampleLocationsfvNV");
-			FetchProcAddress(glNamedFramebufferSampleLocationsfvNV, "glNamedFramebufferSampleLocationsfvNV");
-			FetchProcAddress(NV_sample_locations, "NV_sample_locations");
-
-			//sample_mask_override_coverage
-			FetchProcAddress(NV_sample_mask_override_coverage, "NV_sample_mask_override_coverage");
-
-			//shader_atomic_counters
-			FetchProcAddress(NV_shader_atomic_counters, "NV_shader_atomic_counters");
-
-			//shader_atomic_float
-			FetchProcAddress(NV_shader_atomic_float, "NV_shader_atomic_float");
-
-			//shader_atomic_float64
-			FetchProcAddress(NV_shader_atomic_float64, "NV_shader_atomic_float64");
-
-			//shader_atomic_fp16_vector
-			FetchProcAddress(NV_shader_atomic_fp16_vector, "NV_shader_atomic_fp16_vector");
-
-			//shader_atomic_int64
-			FetchProcAddress(NV_shader_atomic_int64, "NV_shader_atomic_int64");
+			FetchProcAddress(glNamedFramebufferSampleLocationsfvNV, "glNamedFramebufferSampleLocationsfvNV");			
 
 			//shader_buffer_load
 			FetchProcAddress(glGetBufferParameterui64vNV, "glGetBufferParameterui64vNV");
@@ -15876,38 +13069,7 @@ namespace TinyExtender
 			FetchProcAddress(glProgramUniformui64NV, "glProgramUniformui64NV");
 			FetchProcAddress(glProgramUniformui64vNV, "glProgramUniformui64vNV");
 			FetchProcAddress(glUniformui64NV, "glUniformui64NV");
-			FetchProcAddress(glUniformui64vNV, "glUniformui64vNV");
-			FetchProcAddress(NV_shader_buffer_load, "NV_shader_buffer_load");
-
-			//shader_noperspective_interpolation
-			FetchProcAddress(NV_shader_noperspective_interpolation, "NV_shader_noperspective_interpolation");
-
-			//shader_storage_buffer_object
-			FetchProcAddress(NV_shader_storage_buffer_object, "NV_shader_storage_buffer_object");
-
-			//shader_thread_group
-			FetchProcAddress(NV_shader_thread_group, "NV_shader_thread_group");
-
-			//shader_thread_shuffle
-			FetchProcAddress(NV_shader_thread_shuffle, "NV_shader_thread_shuffle");
-
-			//shadow_samplers_array
-			FetchProcAddress(NV_shadow_samplers_array, "NV_shadow_samplers_array");
-
-			//shadow_samplers_cube
-			FetchProcAddress(NV_shadow_samplers_cube, "NV_shadow_samplers_cube");
-
-			//stereo_view_rendering
-			FetchProcAddress(NV_stereo_view_rendering, "NV_stereo_view_rendering");
-
-			//tessellation_program5
-			FetchProcAddress(NV_tessellation_program5, "NV_tessellation_program5");
-
-			//texgen_emboss
-			FetchProcAddress(NV_texgen_emboss, "NV_texgen_emboss");
-
-			//texgen_reflection
-			FetchProcAddress(NV_texgen_reflection, "NV_texgen_reflection");
+			FetchProcAddress(glUniformui64vNV, "glUniformui64vNV");			
 
 			//texture_array
 			FetchProcAddress(glCompressedTexImage3DNV, "glCompressedTexImage3DNV");
@@ -15915,33 +13077,10 @@ namespace TinyExtender
 			FetchProcAddress(glCopyTexSubImage3DNV, "glCopyTexSubImage3DNV");
 			FetchProcAddress(glFramebufferTextureLayerNV, "glFramebufferTextureLayerNV");
 			FetchProcAddress(glTexImage3DNV, "glTexImage3DNV");
-			FetchProcAddress(glTexSubImage3DNV, "glTexSubImage3DNV");
-			FetchProcAddress(NV_texture_array, "NV_texture_array");
+			FetchProcAddress(glTexSubImage3DNV, "glTexSubImage3DNV");			
 
 			//texture_barrier
-			FetchProcAddress(glTextureBarrierNV, "glTextureBarrierNV");
-			FetchProcAddress(NV_texture_barrier, "NV_texture_barrier");
-
-			//texture_border_clamp
-			FetchProcAddress(NV_texture_border_clamp, "NV_texture_border_clamp");
-
-			//texture_compression_latc
-			FetchProcAddress(NV_texture_compression_latc, "NV_texture_compression_latc");
-
-			//texture_compression_s3tc
-			FetchProcAddress(NV_texture_compression_s3tc, "NV_texture_compression_s3tc");
-
-			//texture_compression_s3tc_update
-			FetchProcAddress(NV_texture_compression_s3tc_update, "NV_texture_compression_s3tc_update");
-
-			//texture_compression_vtc
-			FetchProcAddress(NV_texture_compression_vtc, "NV_texture_compression_vtc");
-
-			//texture_env_combine4
-			FetchProcAddress(NV_texture_env_combine4, "NV_texture_env_combine4");
-
-			//texture_expand_normal
-			FetchProcAddress(NV_texture_expand_normal, "NV_texture_expand_normal");
+			FetchProcAddress(glTextureBarrierNV, "glTextureBarrierNV");			
 
 			//texture_multisample
 			FetchProcAddress(glTexImage2DMultisampleCoverageNV, "glTexImage2DMultisampleCoverageNV");
@@ -15949,26 +13088,7 @@ namespace TinyExtender
 			FetchProcAddress(glTextureImage2DMultisampleCoverageNV, "glTextureImage2DMultisampleCoverageNV");
 			FetchProcAddress(glTextureImage2DMultisampleNV, "glTextureImage2DMultisampleNV");
 			FetchProcAddress(glTextureImage3DMultisampleCoverageNV, "glTextureImage3DMultisampleCoverageNV");
-			FetchProcAddress(glTextureImage3DMultisampleNV, "glTextureImage3DMultisampleNV");
-			FetchProcAddress(NV_texture_multisample, "NV_texture_multisample");
-
-			//texture_npot_2D_mipmap
-			FetchProcAddress(NV_texture_npot_2D_mipmap, "NV_texture_npot_2D_mipmap");
-
-			//texture_rectangle
-			FetchProcAddress(NV_texture_rectangle, "NV_texture_rectangle");
-
-			//texture_rectangle_compressed
-			FetchProcAddress(NV_texture_rectangle_compressed, "NV_texture_rectangle_compressed");
-
-			//texture_shader
-			FetchProcAddress(NV_texture_shader, "NV_texture_shader");
-
-			//texture_shader2
-			FetchProcAddress(NV_texture_shader2, "NV_texture_shader2");
-
-			//texture_shader3
-			FetchProcAddress(NV_texture_shader3, "NV_texture_shader3");
+			FetchProcAddress(glTextureImage3DMultisampleNV, "glTextureImage3DMultisampleNV");			
 
 			//transform_feedback
 			FetchProcAddress(glActiveVaryingNV, "glActiveVaryingNV");
@@ -15981,8 +13101,7 @@ namespace TinyExtender
 			FetchProcAddress(glGetTransformFeedbackVaryingNV, "glGetTransformFeedbackVaryingNV");
 			FetchProcAddress(glGetVaryingLocationNV, "glGetVaryingLocationNV");
 			FetchProcAddress(glTransformFeedbackAttribsNV, "glTransformFeedbackAttribsNV");
-			FetchProcAddress(glTransformFeedbackVaryingsNV, "glTransformFeedbackVaryingsNV");
-			FetchProcAddress(NV_transform_feedback, "NV_transform_feedback");
+			FetchProcAddress(glTransformFeedbackVaryingsNV, "glTransformFeedbackVaryingsNV");			
 
 			//transform_feedback2
 			FetchProcAddress(glBindTransformFeedbackNV, "glBindTransformFeedbackNV");
@@ -15991,11 +13110,7 @@ namespace TinyExtender
 			FetchProcAddress(glGenTransformFeedbacksNV, "glGenTransformFeedbacksNV");
 			FetchProcAddress(glIsTransformFeedbackNV, "glIsTransformFeedbackNV");
 			FetchProcAddress(glPauseTransformFeedbackNV, "glPauseTransformFeedbackNV");
-			FetchProcAddress(glResumeTransformFeedbackNV, "glResumeTransformFeedbackNV");
-			FetchProcAddress(NV_transform_feedback2, "NV_transform_feedback2");
-
-			//uniform_buffer_unified_memory
-			FetchProcAddress(NV_uniform_buffer_unified_memory, "NV_uniform_buffer_unified_memory");
+			FetchProcAddress(glResumeTransformFeedbackNV, "glResumeTransformFeedbackNV");			
 
 			//vdpau_interop
 			FetchProcAddress(glVDPAUFiniNV, "glVDPAUFiniNV");
@@ -16007,16 +13122,11 @@ namespace TinyExtender
 			FetchProcAddress(glVDPAURegisterVideoSurfaceNV, "glVDPAURegisterVideoSurfaceNV");
 			FetchProcAddress(glVDPAUSurfaceAccessNV, "glVDPAUSurfaceAccessNV");
 			FetchProcAddress(glVDPAUUnmapSurfacesNV, "glVDPAUUnmapSurfacesNV");
-			FetchProcAddress(glVDPAUUnregisterSurfaceNV, "glVDPAUUnregisterSurfaceNV");
-			FetchProcAddress(NV_vdpau_interop, "NV_vdpau_interop");
+			FetchProcAddress(glVDPAUUnregisterSurfaceNV, "glVDPAUUnregisterSurfaceNV");			
 
 			//vertex_array_range
 			FetchProcAddress(glFlushVertexArrayRangeNV, "glFlushVertexArrayRangeNV");
-			FetchProcAddress(glVertexArrayRangeNV, "glVertexArrayRangeNV");
-			FetchProcAddress(NV_vertex_array_range, "NV_vertex_array_range");
-
-			//vertex_array_range2
-			FetchProcAddress(NV_vertex_array_range2, "NV_vertex_array_range2");
+			FetchProcAddress(glVertexArrayRangeNV, "glVertexArrayRangeNV");			
 
 			//vertex_attrib_integer_64bit
 			FetchProcAddress(glGetVertexAttribLi64vNV, "glGetVertexAttribLi64vNV");
@@ -16037,8 +13147,7 @@ namespace TinyExtender
 			FetchProcAddress(glVertexAttribL4i64vNV, "glVertexAttribL4i64vNV");
 			FetchProcAddress(glVertexAttribL4ui64NV, "glVertexAttribL4ui64NV");
 			FetchProcAddress(glVertexAttribL4ui64vNV, "glVertexAttribL4ui64vNV");
-			FetchProcAddress(glVertexAttribLFormatNV, "glVertexAttribLFormatNV");
-			FetchProcAddress(NV_vertex_attrib_integer_64bit, "NV_vertex_attrib_integer_64bit");
+			FetchProcAddress(glVertexAttribLFormatNV, "glVertexAttribLFormatNV");			
 
 			//vertex_buffer_unified_memory
 			FetchProcAddress(glBufferAddressRangeNV, "glBufferAddressRangeNV");
@@ -16052,8 +13161,7 @@ namespace TinyExtender
 			FetchProcAddress(glTexCoordFormatNV, "glTexCoordFormatNV");
 			FetchProcAddress(glVertexAttribFormatNV, "glVertexAttribFormatNV");
 			FetchProcAddress(glVertexAttribIFormatNV, "glVertexAttribIFormatNV");
-			FetchProcAddress(glVertexFormatNV, "glVertexFormatNV");
-			FetchProcAddress(NV_vertex_buffer_unified_memory, "NV_vertex_buffer_unified_memory");
+			FetchProcAddress(glVertexFormatNV, "glVertexFormatNV");			
 
 			//vertex_program
 			FetchProcAddress(glAreProgramsResidentNV, "glAreProgramsResidentNV");
@@ -16120,22 +13228,6 @@ namespace TinyExtender
 			FetchProcAddress(glVertexAttribs4fvNV, "glVertexAttribs4fvNV");
 			FetchProcAddress(glVertexAttribs4svNV, "glVertexAttribs4svNV");
 			FetchProcAddress(glVertexAttribs4ubvNV, "glVertexAttribs4ubvNV");
-			FetchProcAddress(NV_vertex_program, "NV_vertex_program");
-
-			//vertex_program1_1
-			FetchProcAddress(NV_vertex_program1_1, "NV_vertex_program1_1");
-
-			//vertex_program2
-			FetchProcAddress(NV_vertex_program2, "NV_vertex_program2");
-
-			//vertex_program2_option
-			FetchProcAddress(NV_vertex_program2_option, "NV_vertex_program2_option");
-
-			//vertex_program3
-			FetchProcAddress(NV_vertex_program3, "NV_vertex_program3");
-
-			//vertex_program4
-			FetchProcAddress(NV_vertex_program4, "NV_vertex_program4");
 
 			//video_capture
 			FetchProcAddress(glBeginVideoCaptureNV, "glBeginVideoCaptureNV");
@@ -16149,8 +13241,7 @@ namespace TinyExtender
 			FetchProcAddress(glVideoCaptureNV, "glVideoCaptureNV");
 			FetchProcAddress(glVideoCaptureStreamParameterdvNV, "glVideoCaptureStreamParameterdvNV");
 			FetchProcAddress(glVideoCaptureStreamParameterfvNV, "glVideoCaptureStreamParameterfvNV");
-			FetchProcAddress(glVideoCaptureStreamParameterivNV, "glVideoCaptureStreamParameterivNV");
-			FetchProcAddress(NV_video_capture, "NV_video_capture");
+			FetchProcAddress(glVideoCaptureStreamParameterivNV, "glVideoCaptureStreamParameterivNV");			
 
 			//viewport_array
 			FetchProcAddress(glDepthRangeArrayfvNV, "glDepthRangeArrayfvNV");
@@ -16164,15 +13255,10 @@ namespace TinyExtender
 			FetchProcAddress(glScissorIndexedvNV, "glScissorIndexedvNV");
 			FetchProcAddress(glViewportArrayvNV, "glViewportArrayvNV");
 			FetchProcAddress(glViewportIndexedfNV, "glViewportIndexedfNV");
-			FetchProcAddress(glViewportIndexedfvNV, "glViewportIndexedfvNV");
-			FetchProcAddress(NV_viewport_array, "NV_viewport_array");
-
-			//viewport_array2
-			FetchProcAddress(NV_viewport_array2, "NV_viewport_array2");
+			FetchProcAddress(glViewportIndexedfvNV, "glViewportIndexedfvNV");			
 
 			//viewport_swizzle
-			FetchProcAddress(glViewportSwizzleNV, "glViewportSwizzleNV");
-			FetchProcAddress(NV_viewport_swizzle, "NV_viewport_swizzle");
+			FetchProcAddress(glViewportSwizzleNV, "glViewportSwizzleNV");			
 		}
 
 #pragma endregion NV Extensions
@@ -16181,13 +13267,12 @@ namespace TinyExtender
 #pragma region OES
 
 		//byte coordinates
-		bool byte_coordinates = false;
+		#define byte_coordinates 1
 
 		//*< load OES Extensions
 		void LoadOESExtensions()
 		{
-			//byte coordinates
-			FetchProcAddress(byte_coordinates, "FetchProcAddress");
+
 		}		
 		
 #pragma endregion OES Extensions
@@ -16215,25 +13300,18 @@ namespace TinyExtender
 	};
 
 	//interlace
-	bool OML_interlace = false;
+	#define OML_interlace 1
 
 	//resample
-	bool OML_resample = false;
+	#define OML_resample 1
 
 	//subsample
-	bool GLEW_OML_subsample = false;
+	#define GLEW_OML_subsample 1
 
 	//*< load OML Extensions
 	void LoadOMLExtensions()
 	{
-		//interlace
-		FetchProcAddress(OML_interlace, "");
 
-		//resample
-		FetchProcAddress(OML_resample, "");
-
-		//subsample
-		FetchProcAddress(GLEW_OML_subsample, "");
 	}
 
 #pragma endregion OML Extensions
@@ -16252,28 +13330,23 @@ namespace TinyExtender
 
 	//multiview
 	void (*glFramebufferTextureMultiviewOVR) (GLenum target, GLenum attachment, GLuint texture, GLint level, GLint baseViewIndex, GLsizei numViews) = nullptr;
-	bool OVR_multiview = false;
+	#define OVR_multiview 1
 
 	//multiview2
-	bool OVR_multiview2 = false;
+	#define OVR_multiview2 1
 
 	//OVR multiview multisampled render to texture
 	void (*glFramebufferTextureMultisampleMultiviewOVR) (GLenum target, GLenum attachment, GLuint texture, GLint level, GLsizei samples, GLint baseViewIndex, GLsizei numViews) = nullptr;
-	bool OVR_multiview_multisampled_render_to_texture = false;
+	#define OVR_multiview_multisampled_render_to_texture 1
 
 	//*< load OVR Extensions
 	void LoadOVRExtensions()
 	{
 		//multiview
 		FetchProcAddress(glFramebufferTextureMultiviewOVR, "glFramebufferTextureMultiviewOVR");
-		FetchProcAddress(OVR_multiview, "OVR_multiview");
-
-		//multiview2
-		FetchProcAddress(OVR_multiview2, "OVR_multiview2");
 
 		//OVR multiview multisampled render to texture
 		FetchProcAddress(glFramebufferTextureMultisampleMultiviewOVR, "glFramebufferTextureMultisampleMultiviewOVR");
-		FetchProcAddress(OVR_multiview_multisampled_render_to_texture, "OVR_multiview_multisampled_render_to_texture");
 	}
 
 #pragma endregion OVE Extensions
@@ -16331,19 +13404,15 @@ namespace TinyExtender
 	};
 
 	//misc_hints
-	bool PGI_misc_hints = false;
+	#define PGI_misc_hints 1
 
 	//vertex hints
-	bool PGI_vertex_hints = false;
+	#define PGI_vertex_hints 1
 
 	//*< load PGI Extensions
 	void LoadPGIExtensions()
 	{
-		//misc_hints
-		FetchProcAddress(PGI_misc_hints, "PGI_misc_hints");
 
-		//vertex hints
-		FetchProcAddress(PGI_vertex_hints, "PGI_vertex_hints");
 	}	
 
 #pragma endregion PGI Extensions
@@ -16428,10 +13497,10 @@ namespace TinyExtender
 
 	//alpha_test
 	void (*glAlphaFuncQCOM) (GLenum func, GLclampf ref) = nullptr;
-	bool QCOM_alpha_test = false;
+	#define QCOM_alpha_test 1
 
 	//binning_control
-	bool QCOM_binning_control = false;
+	#define QCOM_binning_control 1
 
 	//driver_control
 	void (*glDisableDriverControlQCOM) (GLuint driverControl) = nullptr;
@@ -16440,7 +13509,7 @@ namespace TinyExtender
 	void (*glGetDriverControlsQCOM) (GLint* num, GLsizei size, GLuint* driverControls) = nullptr;
 
 	//driver_control
-	bool QCOM_driver_control = false;	
+	#define QCOM_driver_control 1	
 
 	//extended_get
 	void (*glExtGetBufferPointervQCOM) (GLenum target, void** params) = nullptr;
@@ -16451,54 +13520,47 @@ namespace TinyExtender
 	void (*glExtGetTexSubImageQCOM) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, void* texels) = nullptr;
 	void (*glExtGetTexturesQCOM) (GLuint* textures, GLint maxTextures, GLint* numTextures) = nullptr;
 	void (*glExtTexObjectStateOverrideiQCOM) (GLenum target, GLenum pname, GLint param) = nullptr;
-	bool QCOM_extended_get = false;
+	#define QCOM_extended_get 1
 
 	//extended_get2
 	void (*glExtGetProgramBinarySourceQCOM) (GLuint program, GLenum shadertype, GLchar * source, GLint * length) = nullptr;
 	void (*glExtGetProgramsQCOM) (GLuint* programs, GLint maxPrograms, GLint* numPrograms) = nullptr;
 	void (*glExtGetShadersQCOM) (GLuint* shaders, GLint maxShaders, GLint* numShaders) = nullptr;
 	GLboolean(*glExtIsProgramBinaryQCOM) (GLuint program) = nullptr;
-	bool QCOM_extended_get2 = false;
+	#define QCOM_extended_get2 1
 
 	//framebuffer_foveated
 	void (*glFramebufferFoveationConfigQCOM) (GLuint fbo, GLuint numLayers, GLuint focalPointsPerLayer, GLuint requestedFeatures, GLuint * providedFeatures) = nullptr;
 	void (*glFramebufferFoveationParametersQCOM) (GLuint fbo, GLuint layer, GLuint focalPoint, GLfloat focalX, GLfloat focalY, GLfloat gainX, GLfloat gainY, GLfloat foveaArea) = nullptr;
-	bool QCOM_framebuffer_foveated = false;
+	#define QCOM_framebuffer_foveated 1
 
 	//perfmon_global_mode
-	bool QCOM_perfmon_global_mode = false;
+	#define QCOM_perfmon_global_mode 1
 
 	//shader_framebuffer_fetch_noncoherent
 	void (*glFramebufferFetchBarrierQCOM) (void) = nullptr;
-	bool QCOM_shader_framebuffer_fetch_noncoherent = false;
+	#define QCOM_shader_framebuffer_fetch_noncoherent 1
 
 	//tiled_rendering
 	void (*glEndTilingQCOM) (GLbitfield preserveMask) = nullptr;
 	void (*glStartTilingQCOM) (GLuint x, GLuint y, GLuint width, GLuint height, GLbitfield preserveMask) = nullptr;
-	bool QCOM_tiled_rendering = false;
+	#define QCOM_tiled_rendering 1
 
 	//writeonly_rendering
-	bool QCOM_writeonly_rendering = false;
+	#define QCOM_writeonly_rendering 1
 
 	//*< load QCOM Extensions
 	void LoadQCOMExtensions()
 	{
 		//alpha_test
 		FetchProcAddress(glAlphaFuncQCOM, "glAlphaFuncQCOM");
-		FetchProcAddress(QCOM_alpha_test, "QCOM_alpha_test");
-
-		//binning_control
-		FetchProcAddress(QCOM_binning_control, "QCOM_binning_control");
-
+		
 		//driver_control
 		FetchProcAddress(glDisableDriverControlQCOM, "glDisableDriverControlQCOM");
 		FetchProcAddress(glEnableDriverControlQCOM, "glEnableDriverControlQCOM");
 		FetchProcAddress(glGetDriverControlStringQCOM, "glGetDriverControlStringQCOM");
 		FetchProcAddress(glGetDriverControlsQCOM, "glGetDriverControlsQCOM");
-
-		//driver_control
-		FetchProcAddress(QCOM_driver_control, "QCOM_driver_control");
-
+		
 		//extended_get
 		FetchProcAddress(glExtGetBufferPointervQCOM, "glExtGetBufferPointervQCOM");
 		FetchProcAddress(glExtGetBuffersQCOM, "glExtGetBuffersQCOM");
@@ -16508,34 +13570,23 @@ namespace TinyExtender
 		FetchProcAddress(glExtGetTexSubImageQCOM, "glExtGetTexSubImageQCOM");
 		FetchProcAddress(glExtGetTexturesQCOM, "glExtGetTexturesQCOM");
 		FetchProcAddress(glExtTexObjectStateOverrideiQCOM, "glExtTexObjectStateOverrideiQCOM");
-		FetchProcAddress(QCOM_extended_get, "QCOM_extended_get");
-
+		
 		//extended_get2
 		FetchProcAddress(glExtGetProgramBinarySourceQCOM, "glExtGetProgramBinarySourceQCOM");
 		FetchProcAddress(glExtGetProgramsQCOM, "glExtGetProgramsQCOM");
 		FetchProcAddress(glExtGetShadersQCOM, "glExtGetShadersQCOM");
 		FetchProcAddress(glExtIsProgramBinaryQCOM, "glExtIsProgramBinaryQCOM");
-		FetchProcAddress(QCOM_extended_get2, "QCOM_extended_get2");
-
+		
 		//framebuffer_foveated
 		FetchProcAddress(glFramebufferFoveationConfigQCOM, "glFramebufferFoveationConfigQCOM");
-		FetchProcAddress(glFramebufferFoveationParametersQCOM, "glFramebufferFoveationParametersQCOM");
-		FetchProcAddress(QCOM_framebuffer_foveated, "QCOM_framebuffer_foveated");
-
-		//perfmon_global_mode
-		FetchProcAddress(QCOM_perfmon_global_mode, "QCOM_perfmon_global_mode");
+		FetchProcAddress(glFramebufferFoveationParametersQCOM, "glFramebufferFoveationParametersQCOM");		
 
 		//shader_framebuffer_fetch_noncoherent
 		FetchProcAddress(glFramebufferFetchBarrierQCOM, "glFramebufferFetchBarrierQCOM");
-		FetchProcAddress(QCOM_shader_framebuffer_fetch_noncoherent, "QCOM_shader_framebuffer_fetch_noncoherent");
-
+		
 		//tiled_rendering
 		FetchProcAddress(glEndTilingQCOM, "glEndTilingQCOM");
-		FetchProcAddress(glStartTilingQCOM, "glStartTilingQCOM");
-		FetchProcAddress(QCOM_tiled_rendering, "QCOM_tiled_rendering");
-
-		//writeonly_rendering
-		FetchProcAddress(QCOM_writeonly_rendering, "QCOM_writeonly_rendering");
+		FetchProcAddress(glStartTilingQCOM, "glStartTilingQCOM");		
 	}
 
 #pragma endregion QCOM Extensions
@@ -16604,7 +13655,7 @@ namespace TinyExtender
 	void (*glTexEnvxv) (GLenum target, GLenum pname, const GLfixed* params) = nullptr;
 	void (*glTexParameterx) (GLenum target, GLenum pname, GLfixed param) = nullptr;
 	void (*glTranslatex) (GLfixed x, GLfixed y, GLfixed z) = nullptr;
-	bool REGAL_ES1_0_compatibility = false;
+	#define REGAL_ES1_0_compatibility 1
 
 	//ES1_1_compatibility
 	void (*glClipPlanef) (GLenum plane, const GLfloat * equation) = nullptr;
@@ -16620,28 +13671,28 @@ namespace TinyExtender
 	void (*glPointParameterxv) (GLenum pname, const GLfixed* params) = nullptr;
 	void (*glPointSizePointerOES) (GLenum type, GLsizei stride, const void* pointer) = nullptr;
 	void (*glTexParameterxv) (GLenum target, GLenum pname, const GLfixed* params) = nullptr;
-	bool REGAL_ES1_1_compatibility = false;
+	#define REGAL_ES1_1_compatibility 1
 
 	//enable
-	bool REGAL_enable = false;
+	#define REGAL_enable 1
 
 	//error_string
 	const GLchar * (*glErrorStringREGAL) (GLenum error) = nullptr;
-	bool REGAL_error_string = false;
+	#define REGAL_error_string 1
 
 	//extension_query
 	GLboolean(*glGetExtensionREGAL) (const GLchar * ext) = nullptr;
 	GLboolean(*glIsSupportedREGAL) (const GLchar* ext) = nullptr;
-	bool REGAL_extension_query = false;
+	#define REGAL_extension_query 1
 
 	//log
 	typedef void (GLLOGPROCREGAL)(GLenum stream, GLsizei length, const GLchar * message, void* context);
 	void (*glLogMessageCallbackREGAL) (GLLOGPROCREGAL callback) = nullptr;
-	bool REGAL_log = false;
+	#define REGAL_log 1
 
 	//proc_address
 	void* (*glGetProcAddressREGAL) (const GLchar * name) = nullptr;
-	bool REGAL_proc_address = false;
+	#define REGAL_proc_address 1
 
 	//*< load Regal Extensions
 	void LoadRegalExtensions()
@@ -16678,7 +13729,6 @@ namespace TinyExtender
 		FetchProcAddress(glTexEnvxv, "glTexEnvxv");
 		FetchProcAddress(glTexParameterx, "glTexParameterx");
 		FetchProcAddress(glTranslatex, "glTranslatex");
-		FetchProcAddress(REGAL_ES1_0_compatibility, "REGAL_ES1_0_compatibility");
 
 		//ES1_1_compatibility
 		FetchProcAddress(glClipPlanef, "glClipPlanef");
@@ -16694,27 +13744,19 @@ namespace TinyExtender
 		FetchProcAddress(glPointParameterxv, "glPointParameterxv");
 		FetchProcAddress(glPointSizePointerOES, "glPointSizePointerOES");
 		FetchProcAddress(glTexParameterxv, "glTexParameterxv");
-		FetchProcAddress(REGAL_ES1_1_compatibility, "REGAL_ES1_1_compatibility");
-
-		//enable
-		FetchProcAddress(REGAL_enable, "REGAL_enable");
 
 		//error_string
 		FetchProcAddress(glErrorStringREGAL, "glErrorStringREGAL");
-		FetchProcAddress(REGAL_error_string, "REGAL_error_string");
 
 		//extension_query
 		FetchProcAddress(glGetExtensionREGAL, "glGetExtensionREGAL");
 		FetchProcAddress(glIsSupportedREGAL, "glIsSupportedREGAL");
-		FetchProcAddress(REGAL_extension_query, "REGAL_extension_query");
 
 		//log
 		FetchProcAddress(glLogMessageCallbackREGAL, "glLogMessageCallbackREGAL");
-		FetchProcAddress(REGAL_log, "REGAL_log");
 
 		//proc_address
 		FetchProcAddress(glGetProcAddressREGAL, "glGetProcAddressREGAL");
-		FetchProcAddress(REGAL_proc_address, "REGAL_proc_address");
 	}
 
 #pragma endregion Regal Extensions
@@ -16730,12 +13772,12 @@ namespace TinyExtender
 	};
 
 	//screen_coordinates
-	bool screen_coordinates = false;
+	#define REND_screen_coordinates 1
 
 	//*< load REND Extensions
 	void LoadRENDExtensions()
 	{
-		FetchProcAddress(screen_coordinates, "screen_coordinates");
+
 	}
 
 #pragma endregion REND Extensions
@@ -16755,12 +13797,12 @@ namespace TinyExtender
 	};
 
 	//s3tc
-	bool S3_s3tc = false;
+	#define S3_s3tc 1
 
 	//*< load S3 Extensions
 	void LoadS3Extensions()
 	{
-		FetchProcAddress(S3_s3tc, "S3_s3tc");
+
 	}
 
 #pragma endregion S3 Extensions
@@ -16840,149 +13882,111 @@ namespace TinyExtender
 	};
 
 	//clip_band_hint
-	bool SGIS_clip_band_hint = false;
+	#define SGIS_clip_band_hint 1
 
 	//color_range
-	bool SGIS_color_range = false;
+	#define SGIS_color_range 1
 
 	//detail_texture
 	void (*glDetailTexFuncSGIS) (GLenum target, GLsizei n, const GLfloat * points) = nullptr;
 	void (*glGetDetailTexFuncSGIS) (GLenum target, GLfloat* points) = nullptr;
-	bool SGIS_detail_texture = false;
+	#define SGIS_detail_texture 1
 
 	//fog_function
 	void (*glFogFuncSGIS) (GLsizei n, const GLfloat * points) = nullptr;
 	void (*glGetFogFuncSGIS) (GLfloat* points) = nullptr;
-	bool SGIS_fog_function = false;
+	#define SGIS_fog_function 1
 
 	//generate_mipmap
-	bool SGIS_generate_mipmap = false;
+	#define SGIS_generate_mipmap 1
 
 	//line_texgen
-	bool SGIS_line_texgen = false;
+	#define SGIS_line_texgen 1
 
 	//multisample
 	void (*glSampleMaskSGIS) (GLclampf value, GLboolean invert) = nullptr;
 	void (*glSamplePatternSGIS) (GLenum pattern) = nullptr;
-	bool SGIS_multisample = false;
+	#define SGIS_multisample 1
 
 	//multitexture
 	void (*glInterleavedTextureCoordSetsSGIS) (GLint factor) = nullptr;
 	void (*glSelectTextureCoordSetSGIS) (GLenum target) = nullptr;
 	void (*glSelectTextureSGIS) (GLenum target) = nullptr;
 	void (*glSelectTextureTransformSGIS) (GLenum target) = nullptr;
-	bool SGIS_multitexture = false;
+	#define SGIS_multitexture 1
 
 	//pixel_texture
-	bool SGIS_pixel_texture = false;
+	#define SGIS_pixel_texture 1
 
 	//point_line_texgen
-	bool SGIS_point_line_texgen = false;
+	#define SGIS_point_line_texgen 1
 
 	//shared_multisample
 	void (*glMultisampleSubRectPosSGIS) (GLint x, GLint y) = nullptr;
-	bool SGIS_shared_multisample = false;
+	#define SGIS_shared_multisample 1
 
 	//sharpen_texture
 	void (*glGetSharpenTexFuncSGIS) (GLenum target, GLfloat * points) = nullptr;
 	void (*glSharpenTexFuncSGIS) (GLenum target, GLsizei n, const GLfloat* points) = nullptr;
-	bool SGIS_sharpen_texture = false;
+	#define SGIS_sharpen_texture 1
 
 	//texture4D
 	void (*glTexImage4DSGIS) (GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLsizei extent, GLint border, GLenum format, GLenum type, const void* pixels) = nullptr;
 	void (*glTexSubImage4DSGIS) (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint woffset, GLsizei width, GLsizei height, GLsizei depth, GLsizei extent, GLenum format, GLenum type, const void* pixels) = nullptr;
-	bool SGIS_texture4D = false;
+	#define SGIS_texture4D 1
 
 	//texture_border_clamp
-	bool SGIS_texture_border_clamp = false;
+	#define SGIS_texture_border_clamp 1
 
 	//texture_edge_clamp
-	bool SGIS_texture_edge_clamp = false;
+	#define SGIS_texture_edge_clamp 1
 
 	//texture_filter4
 	void (*glGetTexFilterFuncSGIS) (GLenum target, GLenum filter, GLfloat * weights) = nullptr;
 	void (*glTexFilterFuncSGIS) (GLenum target, GLenum filter, GLsizei n, const GLfloat* weights) = nullptr;
-	bool SGIS_texture_filter4 = false;
+	#define SGIS_texture_filter4 1
 
 	//texture_lod
-	bool SGIS_texture_lod = false;
+	#define SGIS_texture_lod 1
 
 	//texture_select
-	bool SGIS_texture_select = false;
+	#define SGIS_texture_select 1
 
 	//*< load SGIS Extensions
 	void LoadSGISExtensions()
 	{
-		//clip_band_hint
-		FetchProcAddress(SGIS_clip_band_hint, "SGIS_clip_band_hint");
-
-		//color_range
-		FetchProcAddress(SGIS_color_range, "SGIS_color_range");
-
 		//detail_texture
 		FetchProcAddress(glDetailTexFuncSGIS, "glDetailTexFuncSGIS");
 		FetchProcAddress(glGetDetailTexFuncSGIS, "glGetDetailTexFuncSGIS");
-		FetchProcAddress(SGIS_detail_texture, "SGIS_detail_texture");
 
 		//fog_function
 		FetchProcAddress(glFogFuncSGIS, "glFogFuncSGIS");
 		FetchProcAddress(glGetFogFuncSGIS, "glGetFogFuncSGIS");
-		FetchProcAddress(SGIS_fog_function, "SGIS_fog_function");
-
-		//generate_mipmap
-		FetchProcAddress(SGIS_generate_mipmap, "SGIS_generate_mipmap");
-
-		//line_texgen
-		FetchProcAddress(SGIS_line_texgen, "SGIS_line_texgen");
 
 		//multisample
 		FetchProcAddress(glSampleMaskSGIS, "glSampleMaskSGIS");
 		FetchProcAddress(glSamplePatternSGIS, "glSamplePatternSGIS");
-		FetchProcAddress(SGIS_multisample, "SGIS_multisample");
 
 		//multitexture
 		FetchProcAddress(glInterleavedTextureCoordSetsSGIS, "glInterleavedTextureCoordSetsSGIS");
 		FetchProcAddress(glSelectTextureCoordSetSGIS, "glSelectTextureCoordSetSGIS");
 		FetchProcAddress(glSelectTextureSGIS, "glSelectTextureSGIS");
 		FetchProcAddress(glSelectTextureTransformSGIS, "glSelectTextureTransformSGIS");
-		FetchProcAddress(SGIS_multitexture, "SGIS_multitexture");
-
-		//pixel_texture
-		FetchProcAddress(SGIS_pixel_texture, "SGIS_pixel_texture");
-
-		//point_line_texgen
-		FetchProcAddress(SGIS_point_line_texgen, "SGIS_point_line_texgen");
 
 		//shared_multisample
 		FetchProcAddress(glMultisampleSubRectPosSGIS, "glMultisampleSubRectPosSGIS");
-		FetchProcAddress(SGIS_shared_multisample, "SGIS_shared_multisample");
 
 		//sharpen_texture
 		FetchProcAddress(glGetSharpenTexFuncSGIS, "glGetSharpenTexFuncSGIS");
 		FetchProcAddress(glSharpenTexFuncSGIS, "glSharpenTexFuncSGIS");
-		FetchProcAddress(SGIS_sharpen_texture, "SGIS_sharpen_texture");
 
 		//texture4D
 		FetchProcAddress(glTexImage4DSGIS, "glTexImage4DSGIS");
 		FetchProcAddress(glTexSubImage4DSGIS, "glTexSubImage4DSGIS");
-		FetchProcAddress(SGIS_texture4D, "SGIS_texture4D");
-
-		//texture_border_clamp
-		FetchProcAddress(SGIS_texture_border_clamp, "SGIS_texture_border_clamp");
-
-		//texture_edge_clamp
-		FetchProcAddress(SGIS_texture_edge_clamp, "SGIS_texture_edge_clamp");
 
 		//texture_filter4
 		FetchProcAddress(glGetTexFilterFuncSGIS, "glGetTexFilterFuncSGIS");
 		FetchProcAddress(glTexFilterFuncSGIS, "glTexFilterFuncSGIS");
-		FetchProcAddress(SGIS_texture_filter4, "SGIS_texture_filter4");
-
-		//texture_lod
-		FetchProcAddress(SGIS_texture_lod, "SGIS_texture_lod");
-
-		//texture_select
-		FetchProcAddress(SGIS_texture_select, "SGIS_texture_select");
 	}
 
 #pragma endregion SGIS Extensions
@@ -17255,103 +14259,103 @@ namespace TinyExtender
 	GLuint(*glGenAsyncMarkersSGIX) (GLsizei range) = nullptr;
 	GLboolean(*glIsAsyncMarkerSGIX) (GLuint marker) = nullptr;
 	GLint(*glPollAsyncSGIX) (GLuint* markerp) = nullptr;
-	bool SGIX_async = false;
+	#define SGIX_async 1
 
 	//async_histogram
-	bool SGIX_async_histogram = false;
+	#define SGIX_async_histogram 1
 
 	//async_pixel
-	bool SGIX_async_pixel = false;
+	#define SGIX_async_pixel 1
 
 	//bali_g_instruments
-	bool SGIX_bali_g_instruments = false;
+	#define SGIX_bali_g_instruments 1
 
 	//bali_r_instruments
-	bool SGIX_bali_r_instruments = false;
+	#define SGIX_bali_r_instruments 1
 
 	//bali_timer_instruments
-	bool SGIX_bali_timer_instruments = false;
+	#define SGIX_bali_timer_instruments 1
 
 	//blend_alpha_minmax
-	bool SGIX_blend_alpha_minmax = false;
+	#define SGIX_blend_alpha_minmax 1
 
 	//blend_cadd
-	bool SGIX_blend_cadd = false;
+	#define SGIX_blend_cadd 1
 
 	//blend_cmultiply
-	bool SGIX_blend_cmultiply = false;
+	#define SGIX_blend_cmultiply 1
 
 	//calligraphic_fragment
-	bool SGIX_calligraphic_fragment = false;
+	#define SGIX_calligraphic_fragment 1
 
 	//clipmap
-	bool SGIX_clipmap = false;
+	#define SGIX_clipmap 1
 
 	//color_matrix_accuracy
-	bool SGIX_color_matrix_accuracy = false;
+	#define SGIX_color_matrix_accuracy 1
 
 	//color_table_index_mode
-	bool SGIX_color_table_index_mode = false;
+	#define SGIX_color_table_index_mode 1
 
 	//complex_polar
-	bool SGIX_complex_polar = false;
+	#define SGIX_complex_polar 1
 
 	//convolution_accuracy
-	bool SGIX_convolution_accuracy = false;
+	#define SGIX_convolution_accuracy 1
 
 	//cube_map
-	bool SGIX_cube_map = false;
+	#define SGIX_cube_map 1
 
 	//cylinder_texgen
-	bool SGIX_cylinder_texgen = false;
+	#define SGIX_cylinder_texgen 1
 
 	//datapipe
 	void (*glAddressSpace) (GLenum space, GLbitfield mask) = nullptr;
 	GLint(*glDataPipe) (GLenum space) = nullptr;
-	bool SGIX_datapipe = false;
+	#define SGIX_datapipe 1
 
 	//decimation
-	bool SGIX_decimation = false;
+	#define SGIX_decimation 1
 
 	//depth_pass_instrument
-	bool SGIX_depth_pass_instrument = false;
+	#define SGIX_depth_pass_instrument 1
 
 	//depth_texture
-	bool SGIX_depth_texture = false;
+	#define SGIX_depth_texture 1
 
 	//dvc
-	bool SGIX_dvc = false;
+	#define SGIX_dvc 1
 
 	//flush_raster
 	void (*glFlushRasterSGIX) (void) = nullptr;
-	bool SGIX_flush_raster = false;
+	#define SGIX_flush_raster 1
 
 	//fog_blend
-	bool SGIX_fog_blend = false;
+	#define SGIX_fog_blend 1
 
 	//fog_factor_to_alpha
-	bool SGIX_fog_factor_to_alpha = false;
+	#define SGIX_fog_factor_to_alpha 1
 
 	//fog_layers
 	void (*glFogLayersSGIX) (GLsizei n, const GLfloat * points) = nullptr;
 	void (*glGetFogLayersSGIX) (GLfloat* points) = nullptr;
-	bool SGIX_fog_layers = false;
+	#define SGIX_fog_layers 1
 
 	//fog_offset
-	bool SGIX_fog_offset = false;
+	#define SGIX_fog_offset 1
 
 	//fog_patchy
-	bool SGIX_fog_patchy = false;
+	#define SGIX_fog_patchy 1
 
 	//fog_scale
-	bool SGIX_fog_scale = false;
+	#define SGIX_fog_scale 1
 
 	//fog_texture
 	void (*glTextureFogSGIX) (GLenum pname) = nullptr;
-	bool SGIX_fog_texture = false;
+	#define SGIX_fog_texture 1
 
 	//fragment_lighting_space
-	bool SGIX_fragment_lighting_space = false;
+	#define SGIX_fragment_lighting_space 1
 
 	//fragment_specular_lighting
 	void (*glFragmentColorMaterialSGIX) (GLenum face, GLenum mode) = nullptr;
@@ -17371,42 +14375,42 @@ namespace TinyExtender
 	void (*glGetFragmentLightivSGIX) (GLenum light, GLenum value, GLint* data) = nullptr;
 	void (*glGetFragmentMaterialfvSGIX) (GLenum face, GLenum pname, const GLfloat* data) = nullptr;
 	void (*glGetFragmentMaterialivSGIX) (GLenum face, GLenum pname, const GLint* data) = nullptr;
-	bool SGIX_fragment_specular_lighting = false;
+	#define SGIX_fragment_specular_lighting 1
 
 	//fragments_instrument
-	bool SGIX_fragments_instrument = false;
+	#define SGIX_fragments_instrument 1
 
 	//framezoom
 	void (*glFrameZoomSGIX) (GLint factor) = nullptr;
-	bool SGIX_framezoom = false;
+	#define SGIX_framezoom 1
 
 	//icc_texture
-	bool SGIX_icc_texture = false;
+	#define SGIX_icc_texture 1
 
 	//igloo_interface
 	void (*glIglooInterfaceSGIX) (GLenum pname, void* param) = nullptr;
-	bool SGIX_igloo_interface = false;
+	#define SGIX_igloo_interface 1
 
 	//image_compression
-	bool SGIX_image_compression = false;
+	#define SGIX_image_compression 1
 
 	//impact_pixel_texture
-	bool SGIX_impact_pixel_texture = false;
+	#define SGIX_impact_pixel_texture 1
 
 	//instrument_error
-	bool SGIX_instrument_error = false;
+	#define SGIX_instrument_error 1
 
 	//interlace
-	bool SGIX_interlace = false;
+	#define SGIX_interlace 1
 
 	//ir_instrument1
-	bool SGIX_ir_instrument1 = false;
+	#define SGIX_ir_instrument1 1
 
 	//line_quality_hint
-	bool SGIX_line_quality_hint = false;
+	#define SGIX_line_quality_hint 1
 
 	//list_priority
-	bool SGIX_list_priority = false;
+	#define SGIX_list_priority 1
 
 	//mpeg1
 	void (*glAllocMPEGPredictorsSGIX) (GLsizei width, GLsizei height, GLsizei n, GLuint * predictors) = nullptr;
@@ -17420,120 +14424,120 @@ namespace TinyExtender
 	void (*glMPEGPredictorSGIX) (GLenum target, GLenum format, GLenum type, void* pixels) = nullptr;
 	void (*glMPEGQuantTableubv) (GLenum target, GLubyte* values) = nullptr;
 	void (*glSwapMPEGPredictorsSGIX) (GLenum target0, GLenum target1) = nullptr;
-	bool SGIX_mpeg1 = false;
+	#define SGIX_mpeg1 1
 
 	//mpeg2
-	bool SGIX_mpeg2 = false;
+	#define SGIX_mpeg2 1
 
 	//nonlinear_lighting_pervertex
 	void (*glGetNonlinLightfvSGIX) (GLenum light, GLenum pname, GLint * terms, GLfloat * data) = nullptr;
 	void (*glGetNonlinMaterialfvSGIX) (GLenum face, GLenum pname, GLint* terms, const GLfloat* data) = nullptr;
 	void (*glNonlinLightfvSGIX) (GLenum light, GLenum pname, GLint terms, GLfloat* params) = nullptr;
 	void (*glNonlinMaterialfvSGIX) (GLenum face, GLenum pname, GLint terms, const GLfloat* params) = nullptr;
-	bool SGIX_nonlinear_lighting_pervertex = false;
+	#define SGIX_nonlinear_lighting_pervertex 1
 
 	//nurbs_eval
-	bool SGIX_nurbs_eval = false;
+	#define SGIX_nurbs_eval 1
 
 	//occlusion_instrument
-	bool SGIX_occlusion_instrument = false;
+	#define SGIX_occlusion_instrument 1
 
 	//packed_6bytes
-	bool SGIX_packed_6bytes = false;
+	#define SGIX_packed_6bytes 1
 
 	//pixel_texture
 	void (*glPixelTexGenSGIX) (GLenum mode) = nullptr;
-	bool SGIX_pixel_texture = false;
+	#define SGIX_pixel_texture 1
 
 	//pixel_texture_bits
-	bool SGIX_pixel_texture_bits = false;
+	#define SGIX_pixel_texture_bits 1
 
 	//pixel_texture_lod
-	bool SGIX_pixel_texture_lod = false;
+	#define SGIX_pixel_texture_lod 1
 
 	//pixel_tiles
-	bool SGIX_pixel_tiles = false;
+	#define SGIX_pixel_tiles 1
 
 	//polynomial_ffd
 	void (*glDeformSGIX) (GLbitfield mask) = nullptr;
 	void (*glLoadIdentityDeformationMapSGIX) (GLbitfield mask) = nullptr;
-	bool SGIX_polynomial_ffd = false;
+	#define SGIX_polynomial_ffd 1
 
 	//quad_mesh
 	void (*glMeshBreadthSGIX) (GLint breadth) = nullptr;
 	void (*glMeshStrideSGIX) (GLint stride) = nullptr;
-	bool SGIX_quad_mesh = false;
+	#define SGIX_quad_mesh 1
 
 	//reference_plane
 	void (*glReferencePlaneSGIX) (const GLdouble * equation) = nullptr;
-	bool SGIX_reference_plane = false;
+	#define SGIX_reference_plane 1
 
 	//resample
-	bool SGIX_resample = false;
+	#define SGIX_resample 1
 
 	//scalebias_hint
-	bool SGIX_scalebias_hint = false;
+	#define SGIX_scalebias_hint 1
 
 	//shadow
-	bool SGIX_shadow = false;
+	#define SGIX_shadow 1
 
 	//shadow_ambient
-	bool SGIX_shadow_ambient = false;
+	#define SGIX_shadow_ambient 1
 
 	//slim
-	bool SGIX_slim = false;
+	#define SGIX_slim 1
 
 	//spotlight_cutoff
-	bool SGIX_spotlight_cutoff = false;
+	#define SGIX_spotlight_cutoff 1
 
 	//sprite
 	void (*glSpriteParameterfSGIX) (GLenum pname, GLfloat param) = nullptr;
 	void (*glSpriteParameterfvSGIX) (GLenum pname, GLfloat* params) = nullptr;
 	void (*glSpriteParameteriSGIX) (GLenum pname, GLint param) = nullptr;
 	void (*glSpriteParameterivSGIX) (GLenum pname, GLint* params) = nullptr;
-	bool SGIX_sprite = false;
+	#define SGIX_sprite 1
 
 	//subdiv_patch
-	bool SGIX_subdiv_patch = false;
+	#define SGIX_subdiv_patch 1
 
 	//subsample
-	bool SGIX_subsample = false;
+	#define SGIX_subsample 1
 
 	//tag_sample_buffer
 	void (*glTagSampleBufferSGIX) (void) = nullptr;
-	bool SGIX_tag_sample_buffer = false;
+	#define SGIX_tag_sample_buffer 1
 
 	//texture_add_env
-	bool SGIX_texture_add_env = false;
+	#define SGIX_texture_add_env 1
 
 	//texture_coordinate_clamp
-	bool SGIX_texture_coordinate_clamp = false;
+	#define SGIX_texture_coordinate_clamp 1
 
 	//texture_lod_bias
-	bool SGIX_texture_lod_bias = false;
+	#define SGIX_texture_lod_bias 1
 
 	//texture_mipmap_anisotropic
-	bool SGIX_texture_mipmap_anisotropic = false;
+	#define SGIX_texture_mipmap_anisotropic 1
 
 	//texture_multi_buffer
-	bool SGIX_texture_multi_buffer = false;		
+	#define SGIX_texture_multi_buffer 1		
 
 	//texture_phase
-	bool SGIX_texture_phase = false;
+	#define SGIX_texture_phase 1
 
 	//texture_range
-	bool SGIX_texture_range = false;
+	#define SGIX_texture_range 1
 
 	//texture_scale_bias
-	bool SGIX_texture_scale_bias = false;
+	#define SGIX_texture_scale_bias 1
 
 	//texture_supersample
-	bool SGIX_texture_supersample = false;
+	#define SGIX_texture_supersample 1
 
 	//vector_ops
 	void (*glGetVectorOperationSGIX) (GLenum operation) = nullptr;
 	void (*glVectorOperationSGIX) (GLenum operation) = nullptr;
-	bool SGIX_vector_ops = false;
+	#define SGIX_vector_ops 1
 
 	//vertex_array_object
 	GLboolean(*glAreVertexArraysResidentSGIX) (GLsizei n, const GLuint * arrays, GLboolean * residences) = nullptr;
@@ -17542,22 +14546,22 @@ namespace TinyExtender
 	void (*glGenVertexArraysSGIX) (GLsizei n, GLuint* arrays) = nullptr;
 	GLboolean(*glIsVertexArraySGIX) (GLuint array) = nullptr;
 	void (*glPrioritizeVertexArraysSGIX) (GLsizei n, const GLuint* arrays, const GLclampf* priorities) = nullptr;
-	bool SGIX_vertex_array_object = false;
+	#define SGIX_vertex_array_object 1
 
 	//vertex_preclip
-	bool SGIX_vertex_preclip = false;		
+	#define SGIX_vertex_preclip 1		
 
 	//vertex_preclip_hint
-	bool SGIX_vertex_preclip_hint = false;
+	#define SGIX_vertex_preclip_hint 1
 
 	//ycrcb
-	bool SGIX_ycrcb = false;
+	#define SGIX_ycrcb 1
 
 	//ycrcb_subsample
-	bool SGIX_ycrcb_subsample = false;
+	#define SGIX_ycrcb_subsample 1
 
 	//ycrcba
-	bool SGIX_ycrcba = false;
+	#define SGIX_ycrcba 1
 
 	//*< load SGIX Extensions
 	void LoadSGIXExtensions()
@@ -17568,104 +14572,21 @@ namespace TinyExtender
 		FetchProcAddress(glFinishAsyncSGIX, "glFinishAsyncSGIX");
 		FetchProcAddress(glGenAsyncMarkersSGIX, "glGenAsyncMarkersSGIX");
 		FetchProcAddress(glIsAsyncMarkerSGIX, "glIsAsyncMarkerSGIX");
-		FetchProcAddress(glPollAsyncSGIX, "glPollAsyncSGIX");
-		FetchProcAddress(SGIX_async, "SGIX_async");
-
-		//async_histogram
-		FetchProcAddress(SGIX_async_histogram, "SGIX_async_histogram");
-
-		//async_pixel
-		FetchProcAddress(SGIX_async_pixel, "SGIX_async_pixel");
-
-		//bali_g_instruments
-		FetchProcAddress(SGIX_bali_g_instruments, "SGIX_bali_g_instruments");
-
-		//bali_r_instruments
-		FetchProcAddress(SGIX_bali_r_instruments, "SGIX_bali_r_instruments");
-
-		//bali_timer_instruments
-		FetchProcAddress(SGIX_bali_timer_instruments, "SGIX_bali_timer_instruments");
-
-		//blend_alpha_minmax
-		FetchProcAddress(SGIX_blend_alpha_minmax, "SGIX_blend_alpha_minmax");
-
-		//blend_cadd
-		FetchProcAddress(SGIX_blend_cadd, "SGIX_blend_cadd");
-
-		//blend_cmultiply
-		FetchProcAddress(SGIX_blend_cmultiply, "SGIX_blend_cmultiply");
-
-		//calligraphic_fragment
-		FetchProcAddress(SGIX_calligraphic_fragment, "SGIX_calligraphic_fragment");
-
-		//clipmap
-		FetchProcAddress(SGIX_clipmap, "SGIX_clipmap");
-
-		//color_matrix_accuracy
-		FetchProcAddress(SGIX_color_matrix_accuracy, "SGIX_color_matrix_accuracy");
-
-		//color_table_index_mode
-		FetchProcAddress(SGIX_color_table_index_mode, "SGIX_color_table_index_mode");
-
-		//complex_polar
-		FetchProcAddress(SGIX_complex_polar, "SGIX_complex_polar");
-
-		//convolution_accuracy
-		FetchProcAddress(SGIX_convolution_accuracy, "SGIX_convolution_accuracy");
-
-		//cube_map
-		FetchProcAddress(SGIX_cube_map, "SGIX_cube_map");
-
-		//cylinder_texgen
-		FetchProcAddress(SGIX_cylinder_texgen, "SGIX_cylinder_texgen");
+		FetchProcAddress(glPollAsyncSGIX, "glPollAsyncSGIX");		
 
 		//datapipe
 		FetchProcAddress(glAddressSpace, "glAddressSpace");
 		FetchProcAddress(glDataPipe, "glDataPipe");
-		FetchProcAddress(SGIX_datapipe, "SGIX_datapipe");
-
-		//decimation
-		FetchProcAddress(SGIX_decimation, "SGIX_decimation");
-
-		//depth_pass_instrument
-		FetchProcAddress(SGIX_depth_pass_instrument, "SGIX_depth_pass_instrument");
-
-		//depth_texture
-		FetchProcAddress(SGIX_depth_texture, "SGIX_depth_texture");
-
-		//dvc
-		FetchProcAddress(SGIX_dvc, "SGIX_dvc");
 
 		//flush_raster
-		FetchProcAddress(glFlushRasterSGIX, "glFlushRasterSGIX");
-		FetchProcAddress(SGIX_flush_raster, "SGIX_flush_raster");
-
-		//fog_blend
-		FetchProcAddress(SGIX_fog_blend, "SGIX_fog_blend");
-
-		//fog_factor_to_alpha
-		FetchProcAddress(SGIX_fog_factor_to_alpha, "SGIX_fog_factor_to_alpha");
+		FetchProcAddress(glFlushRasterSGIX, "glFlushRasterSGIX");		
 
 		//fog_layers
 		FetchProcAddress(glFogLayersSGIX, "glFogLayersSGIX");
-		FetchProcAddress(glGetFogLayersSGIX, "glGetFogLayersSGIX");
-		FetchProcAddress(SGIX_fog_layers, "SGIX_fog_layers");
-
-		//fog_offset
-		FetchProcAddress(SGIX_fog_offset, "SGIX_fog_offset");
-
-		//fog_patchy
-		FetchProcAddress(SGIX_fog_patchy, "SGIX_fog_patchy");
-
-		//fog_scale
-		FetchProcAddress(SGIX_fog_scale, "SGIX_fog_scale");
+		FetchProcAddress(glGetFogLayersSGIX, "glGetFogLayersSGIX");		
 
 		//fog_texture
-		FetchProcAddress(glTextureFogSGIX, "glTextureFogSGIX");
-		FetchProcAddress(SGIX_fog_texture, "SGIX_fog_texture");
-
-		//fragment_lighting_space
-		FetchProcAddress(SGIX_fragment_lighting_space, "SGIX_fragment_lighting_space");
+		FetchProcAddress(glTextureFogSGIX, "glTextureFogSGIX");		
 
 		//fragment_specular_lighting
 		FetchProcAddress(glFragmentColorMaterialSGIX, "glFragmentColorMaterialSGIX");
@@ -17684,43 +14605,13 @@ namespace TinyExtender
 		FetchProcAddress(glGetFragmentLightfvSGIX, "glGetFragmentLightfvSGIX");
 		FetchProcAddress(glGetFragmentLightivSGIX, "glGetFragmentLightivSGIX");
 		FetchProcAddress(glGetFragmentMaterialfvSGIX, "glGetFragmentMaterialfvSGIX");
-		FetchProcAddress(glGetFragmentMaterialivSGIX, "glGetFragmentMaterialivSGIX");
-		FetchProcAddress(SGIX_fragment_specular_lighting, "SGIX_fragment_specular_lighting");
-
-		//fragments_instrument
-		FetchProcAddress(SGIX_fragments_instrument, "SGIX_fragments_instrument");
+		FetchProcAddress(glGetFragmentMaterialivSGIX, "glGetFragmentMaterialivSGIX");		
 
 		//framezoom
-		FetchProcAddress(glFrameZoomSGIX, "glFrameZoomSGIX");
-		FetchProcAddress(SGIX_framezoom, "SGIX_framezoom");
-
-		//icc_texture
-		FetchProcAddress(SGIX_icc_texture, "SGIX_icc_texture");
+		FetchProcAddress(glFrameZoomSGIX, "glFrameZoomSGIX");		
 
 		//igloo_interface
-		FetchProcAddress(glIglooInterfaceSGIX, "glIglooInterfaceSGIX");
-		FetchProcAddress(SGIX_igloo_interface, "SGIX_igloo_interface");
-
-		//image_compression
-		FetchProcAddress(SGIX_image_compression, "SGIX_image_compression");
-
-		//impact_pixel_texture
-		FetchProcAddress(SGIX_impact_pixel_texture, "SGIX_impact_pixel_texture");
-
-		//instrument_error
-		FetchProcAddress(SGIX_instrument_error, "SGIX_instrument_error");
-
-		//interlace
-		FetchProcAddress(SGIX_interlace, "SGIX_interlace");
-
-		//ir_instrument1
-		FetchProcAddress(SGIX_ir_instrument1, "SGIX_ir_instrument1");
-
-		//line_quality_hint
-		FetchProcAddress(SGIX_line_quality_hint, "SGIX_line_quality_hint");
-
-		//list_priority
-		FetchProcAddress(SGIX_list_priority, "SGIX_list_priority");
+		FetchProcAddress(glIglooInterfaceSGIX, "glIglooInterfaceSGIX");		
 
 		//mpeg1
 		FetchProcAddress(glAllocMPEGPredictorsSGIX, "glAllocMPEGPredictorsSGIX");
@@ -17733,121 +14624,40 @@ namespace TinyExtender
 		FetchProcAddress(glIsMPEGPredictorSGIX, "glIsMPEGPredictorSGIX");
 		FetchProcAddress(glMPEGPredictorSGIX, "glMPEGPredictorSGIX");
 		FetchProcAddress(glMPEGQuantTableubv, "glMPEGQuantTableubv");
-		FetchProcAddress(glSwapMPEGPredictorsSGIX, "glSwapMPEGPredictorsSGIX");
-		FetchProcAddress(SGIX_mpeg1, "SGIX_mpeg1");
-
-		//mpeg2
-		FetchProcAddress(SGIX_mpeg2, "SGIX_mpeg2");
+		FetchProcAddress(glSwapMPEGPredictorsSGIX, "glSwapMPEGPredictorsSGIX");		
 
 		//nonlinear_lighting_pervertex
 		FetchProcAddress(glGetNonlinLightfvSGIX, "glGetNonlinLightfvSGIX");
 		FetchProcAddress(glGetNonlinMaterialfvSGIX, "glGetNonlinMaterialfvSGIX");
 		FetchProcAddress(glNonlinLightfvSGIX, "glNonlinLightfvSGIX");
-		FetchProcAddress(glNonlinMaterialfvSGIX, "glNonlinMaterialfvSGIX");
-		FetchProcAddress(SGIX_nonlinear_lighting_pervertex, "SGIX_nonlinear_lighting_pervertex");
-
-		//nurbs_eval
-		FetchProcAddress(SGIX_nurbs_eval, "SGIX_nurbs_eval");
-
-		//occlusion_instrument
-		FetchProcAddress(SGIX_occlusion_instrument, "SGIX_occlusion_instrument");
-
-		//packed_6bytes
-		FetchProcAddress(SGIX_packed_6bytes, "SGIX_packed_6bytes");
+		FetchProcAddress(glNonlinMaterialfvSGIX, "glNonlinMaterialfvSGIX");		
 
 		//pixel_texture
-		FetchProcAddress(glPixelTexGenSGIX, "glPixelTexGenSGIX");
-		FetchProcAddress(SGIX_pixel_texture, "SGIX_pixel_texture");
-
-		//pixel_texture_bits
-		FetchProcAddress(SGIX_pixel_texture_bits, "SGIX_pixel_texture_bits");
-
-		//pixel_texture_lod
-		FetchProcAddress(SGIX_pixel_texture_lod, "SGIX_pixel_texture_lod");
-
-		//pixel_tiles
-		FetchProcAddress(SGIX_pixel_tiles, "SGIX_pixel_tiles");
+		FetchProcAddress(glPixelTexGenSGIX, "glPixelTexGenSGIX");		
 
 		//polynomial_ffd
 		FetchProcAddress(glDeformSGIX, "glDeformSGIX");
-		FetchProcAddress(glLoadIdentityDeformationMapSGIX, "glLoadIdentityDeformationMapSGIX");
-		FetchProcAddress(SGIX_polynomial_ffd, "SGIX_polynomial_ffd");
+		FetchProcAddress(glLoadIdentityDeformationMapSGIX, "glLoadIdentityDeformationMapSGIX");		
 
 		//quad_mesh
 		FetchProcAddress(glMeshBreadthSGIX, "glMeshBreadthSGIX");
-		FetchProcAddress(glMeshStrideSGIX, "glMeshStrideSGIX");
-		FetchProcAddress(SGIX_quad_mesh, "SGIX_quad_mesh");
+		FetchProcAddress(glMeshStrideSGIX, "glMeshStrideSGIX");		
 
 		//reference_plane
-		FetchProcAddress(glReferencePlaneSGIX, "glReferencePlaneSGIX");
-		FetchProcAddress(SGIX_reference_plane, "SGIX_reference_plane");
-
-		//resample
-		FetchProcAddress(SGIX_resample, "SGIX_resample");
-
-		//scalebias_hint
-		FetchProcAddress(SGIX_scalebias_hint, "SGIX_scalebias_hint");
-
-		//shadow
-		FetchProcAddress(SGIX_shadow, "SGIX_shadow");
-
-		//shadow_ambient
-		FetchProcAddress(SGIX_shadow_ambient, "SGIX_shadow_ambient");
-
-		//slim
-		FetchProcAddress(SGIX_slim, "SGIX_slim");
-
-		//spotlight_cutoff
-		FetchProcAddress(SGIX_spotlight_cutoff, "SGIX_spotlight_cutoff");
+		FetchProcAddress(glReferencePlaneSGIX, "glReferencePlaneSGIX");		
 
 		//sprite
 		FetchProcAddress(glSpriteParameterfSGIX, "glSpriteParameterfSGIX");
 		FetchProcAddress(glSpriteParameterfvSGIX, "glSpriteParameterfvSGIX");
 		FetchProcAddress(glSpriteParameteriSGIX, "glSpriteParameteriSGIX");
-		FetchProcAddress(glSpriteParameterivSGIX, "glSpriteParameterivSGIX");
-		FetchProcAddress(SGIX_sprite, "SGIX_sprite");
-
-		//subdiv_patch
-		FetchProcAddress(SGIX_subdiv_patch, "SGIX_subdiv_patch");
-
-		//subsample
-		FetchProcAddress(SGIX_subsample, "SGIX_subsample");
+		FetchProcAddress(glSpriteParameterivSGIX, "glSpriteParameterivSGIX");		
 
 		//tag_sample_buffer
-		FetchProcAddress(glTagSampleBufferSGIX, "glTagSampleBufferSGIX");
-		FetchProcAddress(SGIX_tag_sample_buffer, "SGIX_tag_sample_buffer");
-
-		//texture_add_env
-		FetchProcAddress(SGIX_texture_add_env, "SGIX_texture_add_env");
-
-		//texture_coordinate_clamp
-		FetchProcAddress(SGIX_texture_coordinate_clamp, "SGIX_texture_coordinate_clamp");
-
-		//texture_lod_bias
-		FetchProcAddress(SGIX_texture_lod_bias, "SGIX_texture_lod_bias");
-
-		//texture_mipmap_anisotropic
-		FetchProcAddress(SGIX_texture_mipmap_anisotropic, "SGIX_texture_mipmap_anisotropic");
-
-		//texture_multi_buffer
-		FetchProcAddress(SGIX_texture_multi_buffer, "SGIX_texture_multi_buffer");
-
-		//texture_phase
-		FetchProcAddress(SGIX_texture_phase, "SGIX_texture_phase");
-
-		//texture_range
-		FetchProcAddress(SGIX_texture_range, "SGIX_texture_range");
-
-		//texture_scale_bias
-		FetchProcAddress(SGIX_texture_scale_bias, "SGIX_texture_scale_bias");
-
-		//texture_supersample
-		FetchProcAddress(SGIX_texture_supersample, "SGIX_texture_supersample");
+		FetchProcAddress(glTagSampleBufferSGIX, "glTagSampleBufferSGIX");		
 
 		//vector_ops
 		FetchProcAddress(glGetVectorOperationSGIX, "glGetVectorOperationSGIX");
-		FetchProcAddress(glVectorOperationSGIX, "glVectorOperationSGIX");
-		FetchProcAddress(SGIX_vector_ops, "SGIX_vector_ops");
+		FetchProcAddress(glVectorOperationSGIX, "glVectorOperationSGIX");		
 
 		//vertex_array_object
 		FetchProcAddress(glAreVertexArraysResidentSGIX, "glAreVertexArraysResidentSGIX");
@@ -17855,23 +14665,7 @@ namespace TinyExtender
 		FetchProcAddress(glDeleteVertexArraysSGIX, "glDeleteVertexArraysSGIX");
 		FetchProcAddress(glGenVertexArraysSGIX, "glGenVertexArraysSGIX");
 		FetchProcAddress(glIsVertexArraySGIX, "glIsVertexArraySGIX");
-		FetchProcAddress(glPrioritizeVertexArraysSGIX, "glPrioritizeVertexArraysSGIX");
-		FetchProcAddress(SGIX_vertex_array_object, "SGIX_vertex_array_object");
-
-		//vertex_preclip
-		FetchProcAddress(SGIX_vertex_preclip, "SGIX_vertex_preclip");
-
-		//vertex_preclip_hint
-		FetchProcAddress(SGIX_vertex_preclip_hint, "SGIX_vertex_preclip_hint");
-
-		//ycrcb
-		FetchProcAddress(SGIX_ycrcb, "SGIX_ycrcb");
-
-		//ycrcb_subsample
-		FetchProcAddress(SGIX_ycrcb_subsample, "SGIX_ycrcb_subsample");
-
-		//ycrcba
-		FetchProcAddress(SGIX_ycrcba, "SGIX_ycrcba");
+		FetchProcAddress(glPrioritizeVertexArraysSGIX, "glPrioritizeVertexArraysSGIX");		
 	}
 
 #pragma endregion SGIX Extensions
@@ -17934,7 +14728,7 @@ namespace TinyExtender
 	};
 
 	//color_matrix
-	bool SGI_color_matrix = false;
+	#define SGI_color_matrix 1
 
 	//color_table
 	void (*glColorTableParameterfvSGI) (GLenum target, GLenum pname, const GLfloat * params) = nullptr;
@@ -17944,13 +14738,13 @@ namespace TinyExtender
 	void (*glGetColorTableParameterfvSGI) (GLenum target, GLenum pname, GLfloat* params) = nullptr;
 	void (*glGetColorTableParameterivSGI) (GLenum target, GLenum pname, GLint* params) = nullptr;
 	void (*glGetColorTableSGI) (GLenum target, GLenum format, GLenum type, void* table) = nullptr;
-	bool SGI_color_table = false;
+	#define SGI_color_table 1
 
 	//complex
-	bool SGI_complex = false;
+	#define SGI_complex 1
 
 	//complex_type
-	bool SGI_complex_type = false;
+	#define SGI_complex_type 1
 
 	//fft
 	void (*glGetPixelTransformParameterfvSGI) (GLenum target, GLenum pname, GLfloat * params) = nullptr;
@@ -17960,17 +14754,14 @@ namespace TinyExtender
 	void (*glPixelTransformParameteriSGI) (GLenum target, GLenum pname, GLint param) = nullptr;
 	void (*glPixelTransformParameterivSGI) (GLenum target, GLenum pname, const GLint* params) = nullptr;
 	void (*glPixelTransformSGI) (GLenum target) = nullptr;
-	bool SGI_fft = false;
+	#define SGI_fft 1
 
 	//texture_color_table
-	bool SGI_texture_color_table = false;
+	#define SGI_texture_color_table 1
 
 	//*< load SGI Extensions
 	void LoadSGIExtensions()
 	{
-		//color_matrix
-		FetchProcAddress(SGI_color_matrix, "SGI_color_matrix");
-
 		//color_table
 		FetchProcAddress(glColorTableParameterfvSGI, "glColorTableParameterfvSGI");
 		FetchProcAddress(glColorTableParameterivSGI, "glColorTableParameterivSGI");
@@ -17979,13 +14770,6 @@ namespace TinyExtender
 		FetchProcAddress(glGetColorTableParameterfvSGI, "glGetColorTableParameterfvSGI");
 		FetchProcAddress(glGetColorTableParameterivSGI, "glGetColorTableParameterivSGI");
 		FetchProcAddress(glGetColorTableSGI, "glGetColorTableSGI");
-		FetchProcAddress(SGI_color_table, "SGI_color_table");
-
-		//complex
-		FetchProcAddress(SGI_complex, "SGI_complex");
-
-		//complex_type
-		FetchProcAddress(SGI_complex_type, "SGI_complex_type");
 
 		//fft
 		FetchProcAddress(glGetPixelTransformParameterfvSGI, "glGetPixelTransformParameterfvSGI");
@@ -17995,11 +14779,6 @@ namespace TinyExtender
 		FetchProcAddress(glPixelTransformParameteriSGI, "glPixelTransformParameteriSGI");
 		FetchProcAddress(glPixelTransformParameterivSGI, "glPixelTransformParameterivSGI");
 		FetchProcAddress(glPixelTransformSGI, "glPixelTransformSGI");
-
-		FetchProcAddress(SGI_fft, "SGI_fft");
-
-		//texture_color_table
-		FetchProcAddress(SGI_texture_color_table, "SGI_texture_color_table");
 	}
 
 #pragma endregion SGI Extensions
@@ -18016,13 +14795,12 @@ namespace TinyExtender
 
 	//constant data
 	void (*glFinishTextureSUNX) (void) = nullptr;
-	bool SUNX_constant_data = false;
+	#define SUNX_constant_data 1
 
 	//*< load SUNX Extensions
 	void LoadSUNXExtensions()
 	{
 		FetchProcAddress(glFinishTextureSUNX, "glFinishTextureSUNX");
-		FetchProcAddress(SUNX_constant_data, "glFinishTextureSUNX");
 	}
 
 #pragma endregion SUNX Extensions
@@ -18067,7 +14845,7 @@ namespace TinyExtender
 	};
 
 	//convolution_border_modes
-	bool SUN_convolution_border_modes = false;
+	#define SUN_convolution_border_modes 1
 
 	//global_alpha
 	void (*glGlobalAlphaFactorbSUN) (GLbyte factor) = nullptr;
@@ -18078,17 +14856,17 @@ namespace TinyExtender
 	void (*glGlobalAlphaFactorubSUN) (GLubyte factor) = nullptr;
 	void (*glGlobalAlphaFactoruiSUN) (GLuint factor) = nullptr;
 	void (*glGlobalAlphaFactorusSUN) (GLushort factor) = nullptr;
-	bool SUN_global_alpha = false;
+	#define SUN_global_alpha 1
 
 	//mesh_array
-	bool SUN_mesh_array = false;
+	#define SUN_mesh_array 1
 
 	//read_video_pixels
 	void (*glReadVideoPixelsSUN) (GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, void* pixels) = nullptr;
-	bool SUN_read_video_pixels = false;
+	#define SUN_read_video_pixels 1
 
 	//slice_accum
-	bool SUN_slice_accum = false;
+	#define SUN_slice_accum 1
 
 	//triangle list
 	void (*glReplacementCodePointerSUN) (GLenum type, GLsizei stride, const void* pointer) = nullptr;
@@ -18098,7 +14876,7 @@ namespace TinyExtender
 	void (*glReplacementCodeuivSUN) (const GLuint* code) = nullptr;
 	void (*glReplacementCodeusSUN) (GLushort code) = nullptr;
 	void (*glReplacementCodeusvSUN) (const GLushort* code) = nullptr;
-	bool SUN_triangle_list = false;
+	#define SUN_triangle_list 1
 
 	//vertex
 	void (*glColor3fVertex3fSUN) (GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z) = nullptr;
@@ -18141,13 +14919,11 @@ namespace TinyExtender
 	void (*glTexCoord4fColor4fNormal3fVertex4fvSUN) (const GLfloat* tc, const GLfloat* c, const GLfloat* n, const GLfloat* v) = nullptr;
 	void (*glTexCoord4fVertex4fSUN) (GLfloat s, GLfloat t, GLfloat p, GLfloat q, GLfloat x, GLfloat y, GLfloat z, GLfloat w) = nullptr;
 	void (*glTexCoord4fVertex4fvSUN) (const GLfloat* tc, const GLfloat* v) = nullptr;
-	bool SUN_vertex = false;
+	#define SUN_vertex 1
 
 	//*< load SUN Extensions
 	void LoadSUNExtensions()
 	{
-		//convolution_border_modes
-		FetchProcAddress(SUN_convolution_border_modes, "SUN_convolution_border_modes");
 		//global_alpha
 		FetchProcAddress(glGlobalAlphaFactorbSUN, "glGlobalAlphaFactorbSUN");
 		FetchProcAddress(glGlobalAlphaFactordSUN, "glGlobalAlphaFactordSUN");
@@ -18157,17 +14933,9 @@ namespace TinyExtender
 		FetchProcAddress(glGlobalAlphaFactorubSUN, "glGlobalAlphaFactorubSUN");
 		FetchProcAddress(glGlobalAlphaFactoruiSUN, "glGlobalAlphaFactoruiSUN");
 		FetchProcAddress(glGlobalAlphaFactorusSUN, "glGlobalAlphaFactorusSUN");
-		FetchProcAddress(SUN_global_alpha, "SUN_global_alpha");
-
-		//mesh_array
-		FetchProcAddress(SUN_mesh_array, "SUN_mesh_array");
 
 		//read_video_pixels
 		FetchProcAddress(glReadVideoPixelsSUN, "glReadVideoPixelsSUN");
-		FetchProcAddress(SUN_read_video_pixels, "SUN_read_video_pixels");
-
-		//slice_accum
-		FetchProcAddress(SUN_slice_accum, "SUN_slice_accum");
 
 		//triangle list
 		FetchProcAddress(glReplacementCodePointerSUN, "glReplacementCodePointerSUN");
@@ -18177,7 +14945,6 @@ namespace TinyExtender
 		FetchProcAddress(glReplacementCodeuivSUN, "glReplacementCodeuivSUN");
 		FetchProcAddress(glReplacementCodeusSUN, "glReplacementCodeusSUN");
 		FetchProcAddress(glReplacementCodeusvSUN, "glReplacementCodeusvSUN");
-		FetchProcAddress(SUN_triangle_list, "SUN_triangle_list");
 
 		//vertex
 		FetchProcAddress(glColor3fVertex3fSUN, "glColor3fVertex3fSUN");
@@ -18220,7 +14987,6 @@ namespace TinyExtender
 		FetchProcAddress(glTexCoord4fColor4fNormal3fVertex4fvSUN, "glTexCoord4fColor4fNormal3fVertex4fvSUN");
 		FetchProcAddress(glTexCoord4fVertex4fSUN, "glTexCoord4fVertex4fSUN");
 		FetchProcAddress(glTexCoord4fVertex4fvSUN, "glTexCoord4fVertex4fvSUN");
-		FetchProcAddress(SUN_vertex, "SUN_vertex");
 	}
 	
 #pragma endregion SUN Extensions
@@ -18239,33 +15005,23 @@ namespace TinyExtender
 	};
 
 	//phong shading
-	bool phong_shading = false;
+	#define phong_shading 1
 
 	//scene markerXXX
-	bool scene_markerXXX = false;
+	#define scene_markerXXX 1
 
 	//specular fog
-	bool specular_fog = false;
+	#define specular_fog 1
 
 	//swap hint
 	void (*glAddSwapHintRectWIN) (GLint x, GLint y, GLsizei width, GLsizei height) = nullptr;
-	bool swap_hint = false;
+	#define swap_hint 1
 
 	//*< load WIN Extensions
 	void LoadWINExtensions()
 	{
-		//phong shading
-		FetchProcAddress(phong_shading, "phong_shading");
-
-		//scene markerXXX
-		FetchProcAddress(scene_markerXXX, "scene_markerXXX");
-
-		//specular fog
-		FetchProcAddress(specular_fog, "specular_fog");
-
 		//swap hint
 		FetchProcAddress(glAddSwapHintRectWIN, "glAddSwapHintRectWIN");
-		FetchProcAddress(swap_hint, "swap_hint");
 	}
 
 #pragma endregion WIN Extensions
@@ -18291,45 +15047,45 @@ namespace TinyExtender
 		version4_6 =		1L << 17,
 	};
 
-	enum vendor_t : long long unsigned int
+	enum class vendor_t
 	{
-		V3DFX		 = 1L << 1,
-		AMD			 = 1L << 2, 
-		Android		 = 1L << 3,
-		Angle		 = 1L << 4,
-		Apple		 = 1L << 5,
-		ARB			 = 1L << 6,
-		ARM			 = 1L << 7,
-		ATIX		 = 1L << 8,
-		ATI			 = 1L << 9,
-		EGL_KHR		 = 1L << 10,
-		EGL_NV		 = 1L << 11,
-		EXT			 = 1L << 12,
-		Gremedy		 = 1L << 13,
-		HP			 = 1L << 14,
-		IBM			 = 1L << 15,
-		INGR		 = 1L << 16,
-		Intel		 = 1L << 17,
-		KHR			 = 1L << 18,
-		KTX			 = 1L << 19,
-		MesaX		 = 1L << 20,
-		Mesa		 = 1L << 21, 
-		NVX			 = 1L << 22,
-		NV			 = 1L << 23,
-		OES			 = 1L << 24,
-		OML			 = 1L << 25,
-		OVR			 = 1L << 26,
-		PGI			 = 1L << 27,
-		QCOM		 = 1L << 28,
-		Regal		 = 1L << 29,
-		REND		 = 1L << 30,
-		S3			 = 1L << 31,
-		SGIS		 = 1L << 32,
-		SGIX		 = 1L << 33,
-		SGI			 = 1L << 34,
-		SUNX		 = 1L << 35,
-		SUN			 = 1L << 36,
-		WIN			 = 1L << 37,
+		V3DFX,
+		AMD,
+		Android,
+		Angle,
+		Apple,
+		ARB,
+		ARM,
+		ATIX,
+		ATI,
+		EGL_KHR,
+		EGL_NV,
+		EXT,
+		Gremedy,
+		HP,
+		IBM,
+		INGR,
+		Intel,
+		KHR,
+		KTX,
+		MesaX,
+		Mesa,
+		NVX,
+		NV,
+		OES,
+		OML,
+		OVR,
+		PGI,
+		QCOM,
+		Regal,
+		REND,
+		S3,
+		SGIS,
+		SGIX,
+		SGI,
+		SUNX,
+		SUN,
+		WIN,
 	};
 
 	enum class error_t
@@ -18748,7 +15504,7 @@ namespace TinyExtender
 	}
 
 	//*< load specific OpenGL extensions via OpenGL versions
-	std::error_code InitializeExtensionsSpecific(unsigned int OpenGLVersions, long long unsigned int vendors)
+	std::error_code InitializeExtensionsSpecific(unsigned int OpenGLVersions)
 	{
 		std::error_code errCode = error_t::success;
 
@@ -18946,6 +15702,7 @@ namespace TinyExtender
 				errCode = TinyExtender::error_t::Unsupported4_4;
 			}
 		}
+/*
 
 		if (vendors & vendor_t::V3DFX)
 		{
@@ -19095,9 +15852,129 @@ namespace TinyExtender
 		if (vendors & vendor_t::WIN)
 		{
 			LoadWINExtensions();
-		}
+		}*/
 
 		return errCode;
+	}
+
+	void InitializeVendorExtensions(vendor_t vendor)
+	{
+		switch (vendor)
+		{
+		case TinyExtender::vendor_t::V3DFX:
+			Load3DFXExtensions();
+			break;
+		case TinyExtender::vendor_t::AMD:
+			LoadAMDExtensions();
+			break;
+		case TinyExtender::vendor_t::Android:
+			LoadAndroidExtensions();
+			break;
+		case TinyExtender::vendor_t::Angle:
+			LoadAngleExtensions();
+			break;
+		case TinyExtender::vendor_t::Apple:
+			LoadAppleExtensions();
+			break;
+		case TinyExtender::vendor_t::ARB:
+			LoadARBExtensions();
+			break;
+		case TinyExtender::vendor_t::ARM:
+			LoadARMExtensions();
+			break;
+		case TinyExtender::vendor_t::ATIX:
+			LoadATIXExtensions();
+			break;
+		case TinyExtender::vendor_t::ATI:
+			LoadATIExtensions();
+			break;
+		case TinyExtender::vendor_t::EGL_KHR:
+			LoadEGLKHRExtensions();
+			break;
+		case TinyExtender::vendor_t::EGL_NV:
+			LoadEGLNVExtensions();
+			break;
+		case TinyExtender::vendor_t::EXT:
+			LoadEXTExtensions();
+			break;
+		case TinyExtender::vendor_t::Gremedy:
+			LoadGremedyExtensions();
+			break;
+		case TinyExtender::vendor_t::HP:
+			LoadHPExtensions();
+			break;
+		case TinyExtender::vendor_t::IBM:
+			LoadIBMExtensions();
+			break;
+		case TinyExtender::vendor_t::INGR:
+			LoadINGRExtensions();
+			break;
+		case TinyExtender::vendor_t::Intel:
+			LoadIntelExtensions();
+			break;
+		case TinyExtender::vendor_t::KHR:
+			LoadKHRExtensions();
+			break;
+		case TinyExtender::vendor_t::KTX:
+			LoadKTXExtensions();
+			break;
+		case TinyExtender::vendor_t::MesaX:
+			LoadMESAXExtensions();
+			break;
+		case TinyExtender::vendor_t::Mesa:
+			LoadMESAExtensions();
+			break;
+		case TinyExtender::vendor_t::NVX:
+			LoadNVXExtensions();
+			break;
+		case TinyExtender::vendor_t::NV:
+			LoadNVExtensions();
+			break;
+		case TinyExtender::vendor_t::OES:
+			LoadOESExtensions();
+			break;
+		case TinyExtender::vendor_t::OML:
+			LoadOMLExtensions();
+			break;
+		case TinyExtender::vendor_t::OVR:
+			LoadOVRExtensions();
+			break;
+		case TinyExtender::vendor_t::PGI:
+			LoadPGIExtensions();
+			break;
+		case TinyExtender::vendor_t::QCOM:
+			LoadQCOMExtensions();
+			break;
+		case TinyExtender::vendor_t::Regal:
+			LoadRegalExtensions();
+			break;
+		case TinyExtender::vendor_t::REND:
+			LoadRENDExtensions();
+			break;
+		case TinyExtender::vendor_t::S3:
+			LoadS3Extensions();
+			break;
+		case TinyExtender::vendor_t::SGIS:
+			LoadSGISExtensions();
+			break;
+		case TinyExtender::vendor_t::SGIX:
+			LoadSGIXExtensions();
+			break;
+		case TinyExtender::vendor_t::SGI:
+			LoadSGIExtensions();
+			break;
+		case TinyExtender::vendor_t::SUNX:
+			LoadSUNXExtensions();
+			break;
+		case TinyExtender::vendor_t::SUN:
+			LoadSUNExtensions();
+			break;
+		case TinyExtender::vendor_t::WIN:
+			LoadWINExtensions();
+			break;
+		default:
+			break;
+		}
 	}
 
 	//*< whether an extension is supported
